@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>賭命大賽 v0.22 </title>
+<title>賭命大賽 v0.24 </title>
 <style>
 :root{--bg:#121018;--panel:#211b2a;--panel2:#2f263b;--gold:#e3bd65;--red:#ff4b5f;--green:#61e294;--blue:#65b7ff;--muted:#b8aec7;--text:#f8f0ff;}
 *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top,#30233d,#100e15 70%);color:var(--text);font-family:"Microsoft JhengHei",system-ui,sans-serif;overflow-x:hidden}.wrap{width:1080px;height:1080px;margin:0 auto;padding:10px;overflow:hidden}h1{margin:2px 0 6px;text-align:center;color:var(--gold);letter-spacing:2px;font-size:22px}.top{display:grid;grid-template-columns:680px 370px;gap:10px}.panel{background:rgba(33,27,42,.92);border:1px solid rgba(227,189,101,.35);box-shadow:0 0 24px rgba(0,0,0,.35);border-radius:14px;padding:10px}.status{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.phase{font-size:22px;color:var(--gold);font-weight:800}.btn{background:linear-gradient(#4c385f,#33263f);color:var(--text);border:1px solid rgba(227,189,101,.55);border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700}.btn:hover{filter:brightness(1.15)}.btn:disabled{opacity:.35;cursor:not-allowed}.danger{color:var(--red)!important}.safe{color:var(--green)!important}.muted{color:var(--muted)}.players{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.player{position:relative;min-height:176px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:2px solid var(--c);border-radius:14px;padding:8px;box-shadow:0 0 18px color-mix(in srgb,var(--c),transparent 72%)}.player.dead{filter:grayscale(.7);opacity:.55}.phead{display:flex;align-items:center;justify-content:space-between;gap:8px}.name{font-size:16px;font-weight:900;color:var(--c)}.tag{font-size:12px;border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:3px 8px;color:var(--muted)}.score{font-size:22px;font-weight:900;color:var(--gold)}.roles{display:flex;gap:5px;margin:6px 0}.role{flex:1;min-height:42px;text-align:center;border-radius:14px;padding:7px 2px;background:linear-gradient(#191320,#0f0b14);border:1px solid rgba(255,255,255,.16);font-size:12px;position:relative;overflow:hidden}.role .icon{display:block;font-size:20px;line-height:20px;filter:drop-shadow(0 0 6px rgba(255,255,255,.16))}.role .rlabel{display:block;margin-top:3px;font-size:11px;color:var(--muted);font-weight:900}.role.captain{border-color:rgba(227,189,101,.62);box-shadow:inset 0 0 18px rgba(227,189,101,.08)}.role.captain .icon{font-size:22px}.role.deadrole{background:linear-gradient(#351721,#190c12);color:#ff9aa8;opacity:.62}.role.deadrole:after{content:'✕';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;color:#ff4055;text-shadow:0 0 14px #ff4055;font-weight:1000}.role.deadrole .icon{filter:grayscale(1);opacity:.4}.deck{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin:8px 0}.card{width:30px;height:40px;border-radius:8px;background:#17121e;border:1px solid rgba(227,189,101,.5);display:flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 4px 10px rgba(0,0,0,.3)}.card.bang{background:#4a121b;color:#fff;border-color:#ff6476}.card.blank{background:#1e2c35;color:#fff;text-shadow:0 0 8px rgba(255,255,255,.45)}.card.back{background:repeating-linear-gradient(45deg,#24172f,#24172f 6px,#342142 6px,#342142 12px);color:#a994bd}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.choice{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#191421;cursor:pointer}.choice.selected{outline:2px solid var(--gold);background:#30213b}.choice.cheat{color:var(--red);font-weight:900}.choice.cheat:hover::after{content:"但要注意你可能會被質疑。";position:absolute;transform:translate(-90px,34px);background:#08070a;color:#fff;border:1px solid var(--red);padding:8px;border-radius:8px;z-index:5;width:210px}.log{height:242px;overflow:auto;background:#100d15;border-radius:12px;padding:10px;font-size:14px;line-height:1.55}.log p{margin:0 0 6px}.shot{animation:flash .6s ease}@keyframes flash{0%{box-shadow:0 0 0 var(--red)}50%{box-shadow:0 0 35px var(--red)}100%{box-shadow:0 0 18px color-mix(in srgb,var(--c),transparent 72%)}}.centerText{font-size:15px;line-height:1.55}.betBox{display:flex;gap:6px;flex-wrap:wrap}.bet{width:42px;height:42px;border-radius:10px;background:#16111d;border:1px solid rgba(255,255,255,.24);color:white;cursor:pointer;font-size:18px;font-weight:900}.bet.sel{background:#573d20;border-color:var(--gold);color:var(--gold)}select{background:#18131f;color:white;border:1px solid rgba(227,189,101,.5);border-radius:8px;padding:8px}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;z-index:10}.modal{width:min(560px,92vw);background:#201929;border:1px solid var(--gold);border-radius:18px;padding:18px;text-align:center}.hidden{display:none}.small{font-size:12px}.bulletLine{display:flex;align-items:center;gap:8px;min-height:64px}.bigBang{font-size:42px;color:var(--red);font-weight:900;text-shadow:0 0 20px var(--red)}
@@ -180,17 +180,18 @@ body:after{content:none!important;display:none!important}
 .firework{position:absolute;width:7px;height:7px;border-radius:50%;background:#ffe08a;box-shadow:0 0 16px #ffe08a;animation:fireworkBurst 1.35s ease-in-out infinite;opacity:.85}
 .firework.f1{left:13%;top:18%;animation-delay:.05s}.firework.f2{left:82%;top:22%;animation-delay:.28s}.firework.f3{left:28%;top:72%;animation-delay:.55s}.firework.f4{left:72%;top:67%;animation-delay:.82s}.firework.f5{left:50%;top:12%;animation-delay:1.05s}
 @keyframes fireworkBurst{0%{transform:scale(.4);opacity:0;box-shadow:0 0 0 #ffe08a}18%{opacity:1}55%{transform:scale(1.2);box-shadow:0 -44px 0 #ff4b5f,38px -20px 0 #65b7ff,38px 24px 0 #61e294,0 46px 0 #ffd166,-38px 24px 0 #b86cff,-38px -20px 0 #fff}100%{transform:scale(1.8);opacity:0}}
-.briefcaseScene{height:310px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.briefcaseScene{height:360px;position:relative;display:flex;align-items:center;justify-content:center;overflow:visible}
 .briefcase{position:relative;width:300px;height:178px;background:linear-gradient(#151515,#050505);border:3px solid #3b3328;border-radius:16px;box-shadow:0 24px 45px rgba(0,0,0,.65);animation:caseSlide .55s ease forwards}
 .briefcase:before{content:'';position:absolute;left:94px;top:-34px;width:108px;height:42px;border:10px solid #111;border-bottom:0;border-radius:18px 18px 0 0}
 .briefcaseLid{position:absolute;left:-3px;right:-3px;top:-3px;height:82px;border-radius:16px 16px 6px 6px;background:linear-gradient(#202020,#070707);border:3px solid #3b3328;transform-origin:bottom center;animation:caseOpen .8s ease .45s forwards}
 .cashGlow{position:absolute;left:50%;top:52%;width:250px;height:90px;transform:translate(-50%,-50%);background:radial-gradient(circle,#fff3a0,rgba(255,211,77,.42),transparent 70%);opacity:0;animation:cashGlow 2.6s ease .85s forwards}
-.money{position:absolute;left:50%;top:52%;font-size:42px;opacity:0;animation:moneyFly 2.6s ease forwards}
+.money{position:absolute;left:50%;top:52%;font-size:42px;opacity:0;z-index:4;filter:drop-shadow(0 0 12px rgba(255,238,138,.72));animation:moneyFly 3.4s ease forwards}
 .money.m1{animation-delay:.95s}.money.m2{animation-delay:1.1s}.money.m3{animation-delay:1.24s}.money.m4{animation-delay:1.36s}.money.m5{animation-delay:1.5s}.money.m6{animation-delay:1.64s}
 @keyframes caseSlide{0%{transform:translateY(240px) scale(.85);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
 @keyframes caseOpen{0%{transform:rotateX(0)}100%{transform:perspective(400px) rotateX(68deg)}}
 @keyframes cashGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}35%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}100%{opacity:.15;transform:translate(-50%,-50%) scale(1.4)}}
-@keyframes moneyFly{0%{opacity:0;transform:translate(-50%,20px) rotate(0deg) scale(.6)}20%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--x)),var(--y)) rotate(var(--r)) scale(1.15)}}
+@keyframes moneyFly{0%{opacity:0;transform:translate(-50%,34px) rotate(0deg) scale(.45)}10%{opacity:1}42%{opacity:1;transform:translate(calc(-50% + var(--x) * .55),calc(var(--y) * .62)) rotate(calc(var(--r) * .55)) scale(1.22)}100%{opacity:0;transform:translate(calc(-50% + var(--x)),var(--y)) rotate(var(--r)) scale(1.02)}}
+.moneyStorm{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}.moneyRain{position:absolute;left:var(--left);top:-80px;font-size:var(--size);opacity:0;filter:drop-shadow(0 0 10px rgba(255,238,138,.65));animation:moneyRain var(--dur) linear var(--delay) infinite}.moneyRain:nth-child(3n){transform-origin:center;}.prizeRichText{position:relative;z-index:3;color:#ffe08a;font-weight:1000;text-shadow:0 0 18px rgba(227,189,101,.8)}@keyframes moneyRain{0%{opacity:0;transform:translateY(-80px) translateX(0) rotate(0deg) scale(.65)}8%{opacity:1}48%{opacity:1;transform:translateY(52vh) translateX(var(--drift)) rotate(var(--rot)) scale(1.12)}100%{opacity:0;transform:translateY(115vh) translateX(calc(var(--drift) * -0.35)) rotate(calc(var(--rot) * 1.8)) scale(.9)}}
 .challengeGroupNotice{position:fixed;left:50%;top:12%;transform:translateX(-50%);z-index:86;background:rgba(8,6,12,.94);border:1px solid rgba(227,189,101,.55);border-radius:18px;padding:12px 20px;color:#ffe08a;font-weight:1000;box-shadow:0 0 38px rgba(0,0,0,.65);text-align:center;animation:groupNoticeFade 1.7s ease forwards}
 @keyframes groupNoticeFade{0%{opacity:0;transform:translate(-50%,-12px)}18%{opacity:1;transform:translate(-50%,0)}82%{opacity:1}100%{opacity:0;visibility:hidden}}
 
@@ -208,16 +209,29 @@ body:after{content:none!important;display:none!important}
 .role.deadrole:after{z-index:2;pointer-events:none}
 .role .rlabel{position:relative;z-index:3}
 
+/* v0.24e：開發者模式鎖頭 */
+.devLockBtn{position:fixed;right:14px;top:10px;z-index:60;width:42px;height:42px;border-radius:50%;border:1px solid var(--gold);background:linear-gradient(#50365f,#21162b);color:#ffe08a;font-size:22px;font-weight:1000;cursor:pointer;box-shadow:0 0 18px rgba(227,189,101,.22)}
+.devLockBtn.on{background:linear-gradient(#6b4a22,#2a1a0c);box-shadow:0 0 24px rgba(227,189,101,.45)}
+.devBox{margin-top:8px;background:rgba(8,6,12,.88);border:1px solid rgba(227,189,101,.42);border-radius:12px;padding:8px;max-height:260px;overflow:auto}
+.devBoxTitle{color:#ffe08a;font-weight:1000;margin-bottom:6px}
+.devRow{font-size:12px;line-height:1.45;border-top:1px solid rgba(255,255,255,.08);padding:5px 0;color:#e9ddf2}
+.devRow:first-of-type{border-top:0}
+.devCards{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
+.devMiniCard{min-width:28px;height:24px;border-radius:6px;border:1px solid rgba(227,189,101,.35);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;background:#18111f}
+.devMiniCard.bang{background:#4a121b;color:#fff;border-color:#ff6476}.devMiniCard.blank{background:#1e2c35;color:#fff}
+
+#modal.hidden{display:none!important}
 @media(max-width:900px){.wrap{width:100vw;height:auto;overflow:visible}.top{grid-template-columns:1fr}.players{grid-template-columns:1fr}.handPanel{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <button class="helpBtn" onclick="openHelp()" title="教學與行動卡一覽">？</button>
-<h1>賭命大賽 v0.22｜質疑佇列修正版</h1>
+<button class="devLockBtn" id="devLockBtn" onclick="toggleDevMode()" title="開發者模式">🔒</button>
+<h1>賭命大賽 v0.24e</h1>
 <div class="top">
  <div class="panel">
-  <div class="status"><div><div class="phase" id="phaseTitle">設定遊戲</div><div class="muted" id="hint">選擇人數後開始。</div></div><div><select id="playerCount"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select> <button class="btn" onclick="newGame()">新遊戲</button> <button class="btn" id="nextBtn" onclick="nextStep()" disabled>下一步</button></div></div>
+  <div class="status"><div><div class="phase" id="phaseTitle">設定遊戲</div><div class="muted" id="hint">選擇人數後開始。</div></div><div><select id="playerCount"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select> <select id="aiDifficulty" title="AI等級"><option value="normal">普通AI</option><option value="hard" selected>困難AI</option></select> <button class="btn" onclick="safeNewGame()">新遊戲</button> <button class="btn" id="nextBtn" onclick="nextStep()" disabled>下一步</button></div></div>
   <div class="centerText" id="mainArea"></div>
  </div>
  <div class="panel"><b style="color:var(--gold)">紀錄</b><div class="log" id="log"></div></div>
@@ -225,7 +239,7 @@ body:after{content:none!important;display:none!important}
 <div class="players" id="players"></div>
 <div class="handPanel" id="handPanel"></div>
 </div>
-<div class="overlay" id="modal"><div class="modal"><h2 style="color:var(--gold)">賭命大賽</h2><p>每局隨機分發角色代號與頭像。黑衣裁判會在作弊被抓時登場；【上子彈】會把一張空響替換成 BANG。</p><p class="muted">流程：藏子彈 → 轉輪 → 下注 → 挑戰 → 開槍 → 得分</p><button class="btn" onclick="newGame();document.getElementById('modal').classList.add('hidden')">開始遊戲</button></div></div>
+<div class="overlay" id="modal"><div class="modal"><h2 style="color:var(--gold)">賭命大賽</h2><p>每局隨機分發角色代號與頭像。黑衣裁判會在作弊被抓時登場；【上子彈】會把一張空響替換成 BANG。</p><p class="muted">流程：藏子彈 → 轉輪 → 下注 → 挑戰 → 開槍 → 得分</p><p class="muted">v0.24：困難AI每局生成人格，且每個AI有獨立仇恨值與懷疑度記憶庫。</p><button class="btn" onclick="startGameFromModal()">開始遊戲</button></div></div>
 <div id="gunOverlayRoot"></div>
 
 <div class="overlay hidden" id="helpModal"><div class="modal helpModal"><h2>賭命大賽｜教學與行動卡一覽</h2>
@@ -233,13 +247,15 @@ body:after{content:none!important;display:none!important}
 <ol class="ruleList">
 <li><b>藏子彈：</b>每人秘密藏一張子彈。藏 BANG 就是作弊，本輪射自己不會中彈，但可能被質疑。</li>
 <li><b>轉輪：</b>剩餘子彈堆洗牌。</li>
-<li><b>下注：</b>選擇本輪要開幾槍，0～5 不是擲骰，是自己決定。</li>
+<li><b>下注：</b>所有玩家先暗中決定本輪要開幾槍，0～5 不是擲骰；玩家選定後才同步公開所有數字。</li>
 <li><b>挑戰：</b>每輪可質疑一次。抓到作弊者，對方被裁判射殺，質疑者抽 3 張；質疑錯誤，自己一張空響換成 BANG，被誣告者抽 1 張。</li>
-<li><b>開槍：</b>依下注值一發一發開。中彈者本輪停止射擊並失去一名角色。</li>
+<li><b>開槍：</b>依下注值一發一發開。中彈者本輪停止射擊並失去一名角色；抽行動卡與子彈重置延後到回合結算。</li>
 <li><b>得分：</b>存活者獲得 1 + 下注值。先到 15 分後比最高分；最高分平手則存活者繼續。</li>
 </ol>
 <h3>死亡與淘汰</h3>
-<ul class="ruleList"><li>失去角色後，子彈堆重置為 1 BANG + 6 空響，並抽 1 張行動卡。</li><li>隊長死亡即淘汰，但部分行動卡仍可於指定階段使用。</li></ul>
+<ul class="ruleList"><li>失去角色後不會立刻重置子彈或抽牌；本回合結束時才統一重置為 1 BANG + 6 空響，並依死亡次數抽行動卡。</li><li>隊長死亡即淘汰，但部分行動卡仍可於指定階段使用。</li></ul>
+<h3>困難 AI</h3>
+<ul class="ruleList"><li>困難AI每局開始會生成一組性格，十種個性共 100 點：複雜、搗蛋、詐欺、記仇、貪心、膽小、賭徒、疑神疑鬼、冷靜、正義。</li><li>每個AI都有自己的記憶庫，仇恨值與懷疑度分開計算，不共享資訊。</li><li>搗蛋AI偏好押 3～5 來誘導質疑，但本身不一定藏 BANG。</li></ul>
 <h3>行動卡一覽</h3>
 <div class="helpGrid">
 <div class="helpCard"><b>兩連發 ×2</b><small>Phase 5。開過兩槍後使用。接下來兩槍可指向任意活著玩家，第一槍後可更換目標。</small></div>
@@ -248,11 +264,11 @@ body:after{content:none!important;display:none!important}
 <div class="helpCard"><b>死亡之骰 ×2</b><small>Phase 4。指定玩家重新隨機 0～5 作為本輪下注。淘汰後可用。</small></div>
 <div class="helpCard"><b>再來一發 ×2</b><small>Phase 6。指定一名活著玩家再開一槍，本次不計分。淘汰後可用。</small></div>
 <div class="helpCard"><b>互射吧 ×3</b><small>Phase 5。接下來一槍，所有本輪存活玩家都必須各自指定一名玩家；沒有剩餘射擊數者只指向，不開火。淘汰後可用。</small></div>
-<div class="helpCard"><b>乾了伏特加 ×1</b><small>Phase 6。若你是存活玩家中下注最高者，額外 +2；並列最高額外 +1。</small></div>
+<div class="helpCard"><b>乾了伏特加 ×1</b><small>Phase 6。只有本輪存活玩家中下注最高者才能使用；單獨最高額外 +2，並列最高額外 +1。不是最高者不能使用，卡片保留。</small></div>
 <div class="helpCard"><b>鳴槍慶祝 ×3</b><small>Phase 5。接下來一槍，所有開槍者都朝天空，而且絕對視為空槍。</small></div>
 <div class="helpCard"><b>賄賂裁判 ×1</b><small>Phase 4。作弊被抓時使用。不失去角色，但質疑者仍抽 3 張；藏起來的 BANG 放回牌堆。</small></div>
 <div class="helpCard"><b>就打你 ×3</b><small>Phase 5。你的下一槍改射任意其他存活玩家。</small></div>
-<div class="helpCard"><b>掏口袋 ×1</b><small>Phase 6。得分階段額外質疑一名玩家作弊。淘汰後可用。</small></div>
+<div class="helpCard"><b>掏口袋 ×1</b><small>Phase 6。得分階段額外質疑一名本輪仍存活玩家作弊；不能對本輪死亡或已淘汰玩家使用。淘汰後可用。</small></div>
 <div class="helpCard"><b>空槍 ×3</b><small>Phase 5。你的下一槍朝天空開槍。</small></div>
 <div class="helpCard"><b>偷窺 ×4</b><small>Phase 2。查看自己子彈堆前 3 張，並指定另一名玩家得知自己第一張。</small></div>
 </div>
@@ -277,26 +293,122 @@ function colorLabel(p){return p&&p.colorName?`(${p.colorName})`:'';}
 function avatarImg(p,cls='roundAvatar'){return p&&p.avatar?`<img class="${cls}" src="${p.avatar}" alt="${p.name}">`:'';}
 
 let players=[], phase=0, shotNo=0, gameOver=false;
-let actionDeck=[], discardPile=[], nextShotGlobal=null, phase6Ready=false, phase6Scored=false, roundDeaths=[];
+let actionDeck=[], discardPile=[], nextShotGlobal=null, phase6Ready=false, phase6Scored=false, roundDeaths=[], roundDeathEvents=[];
+let pendingVictoryCeremony=null;
 let uiLocked=false, shotResolving=false;
-let challengeQueue=[], challengeQueueCallback=null, currentChallengeGroupText='';
+let challengeQueue=[], challengeQueueCallback=null, currentChallengeGroupText='', activeChallengeGroup=null;
 const PH=['設定','Phase 1 藏子彈','Phase 2 轉輪','Phase 3 下注','Phase 4 挑戰','Phase 5 開槍','Phase 6 得分'];
 const DEAD_USABLE=new Set(['上子彈','多開一槍','死亡之骰','互射吧','鳴槍慶祝','再來一發','掏口袋']);
 function openHelp(){document.getElementById('helpModal').classList.remove('hidden');}
+function toggleDevMode(){
+ if(!developerMode){
+  const pw=prompt('開發者模式密碼');
+  if(pw!=='6028'){ if(pw!==null)alert('密碼錯誤'); return; }
+  developerMode=true;
+  log('開發者模式已開啟：可查看所有玩家手牌、藏牌、子彈堆與困難AI性格。');
+ }else{
+  developerMode=false;
+  log('開發者模式已關閉。');
+ }
+ const b=document.getElementById('devLockBtn');
+ if(b){b.textContent=developerMode?'🔓':'🔒'; b.classList.toggle('on',developerMode);}
+ render();
+}
+function cardMini(c){return `<span class="devMiniCard ${c==='BANG'?'bang':c==='空響'?'blank':''}">${c==='BANG'?'BANG':c==='空響'?'空':c}</span>`;}
+function devHandText(p){return (p.hand&&p.hand.length)?p.hand.map(c=>c.name).join('、'):'無';}
+function devPersonalityText(ai){if(!isHardAI(ai))return '普通AI'; return PERSONALITY_KEYS.map(k=>`${PERSONALITY_NAMES[k]}${ai.personalityMatrix[k]||0}`).join(' / ');}
+function renderDeveloperPanel(){
+ if(!developerMode)return '';
+ const rows=players.map(p=>{
+  const deck=(p.deck||[]).map(cardMini).join('');
+  const mem=isHardAI(p)?`<br>仇恨：${Object.entries(p.aiMemory?.hatred||{}).map(([id,o])=>`${players[id]?.name||id}:${o.value}`).join('、')||'無'}<br>懷疑：${Object.entries(p.aiMemory?.suspicion||{}).map(([id,o])=>`${players[id]?.name||id}:${o.value}`).join('、')||'無'}`:'';
+  const per=p.id===0?'玩家':devPersonalityText(p);
+  return `<div class="devRow"><b style="color:${p.color}">${p.name}</b>｜藏：${p.hidden||'-'}｜下注：${p.bet??'-'}｜實彈${p.bangs}｜手牌：${devHandText(p)}<br>${per}${mem}<div class="devCards">${deck}</div></div>`;
+ }).join('');
+ return `<div class="devBox"><div class="devBoxTitle">🔓 開發者模式：全玩家牌面與 AI 個性</div>${rows}</div>`;
+}
+
+function safeNewGame(){
+ try{newGame();}
+ catch(e){console.error('新遊戲初始化失敗：',e); alert('新遊戲初始化失敗：'+((e&&e.message)?e.message:String(e)));}
+}
+function startGameFromModal(){
+ const m=document.getElementById('modal');
+ if(m)m.classList.add('hidden');
+ try{
+  newGame();
+ }catch(e){
+  console.error('新遊戲初始化失敗：',e);
+  const msg=(e&&e.message)?e.message:String(e);
+  alert('新遊戲初始化失敗：'+msg);
+ }
+}
 const AI_TYPES=['conservative','gambler','troll','revenge'];
+const PERSONALITY_KEYS=['Complex','Prank','Fraud','Revenge','Greedy','Coward','Risk','Suspicious','Calm','Justice'];
+const PERSONALITY_NAMES={Complex:'複雜',Prank:'搗蛋',Fraud:'詐欺',Revenge:'記仇',Greedy:'貪心',Coward:'膽小',Risk:'賭徒',Suspicious:'疑神疑鬼',Calm:'冷靜',Justice:'正義'};
 const AI_MEMORY_KEY='RR_WCRR_AI_MEMORY_v06';
 let aiMemoryStore={};
+let currentAIDifficulty='hard';
+let developerMode=false;
 function loadAIMemory(){try{aiMemoryStore=JSON.parse(localStorage.getItem(AI_MEMORY_KEY)||'{}')||{};}catch(e){aiMemoryStore={};}}
 function saveAIMemory(){try{localStorage.setItem(AI_MEMORY_KEY,JSON.stringify(aiMemoryStore));}catch(e){}}
 function pickAIType(){let r=Math.random(); if(r<.30)return 'conservative'; if(r<.60)return 'gambler'; if(r<.82)return 'troll'; return 'revenge';}
-function ensureAIMemory(id){const k='AI'+id; if(!aiMemoryStore[k])aiMemoryStore[k]=[]; return aiMemoryStore[k];}
-function recordHate(victim,actor,value,type){
- if(!victim||victim.id===0||!actor||victim.id===actor.id)return;
- const arr=ensureAIMemory(victim.id); arr.push({target:actor.id,value,type,round:Date.now()});
- while(arr.length>10)arr.shift(); saveAIMemory();
+function randomPersonality(){
+ // 100 點自由切分，允許 0，也允許單一特質極端突出。
+ if(Math.random()<0.10){const o={}; PERSONALITY_KEYS.forEach(k=>o[k]=0); o[PERSONALITY_KEYS[Math.floor(Math.random()*PERSONALITY_KEYS.length)]]=100; return o;}
+ const cuts=[0,100]; for(let i=0;i<9;i++)cuts.push(Math.floor(Math.random()*101)); cuts.sort((a,b)=>a-b);
+ const o={}; PERSONALITY_KEYS.forEach((k,i)=>o[k]=cuts[i+1]-cuts[i]);
+ // 少量洗牌，避免固定前幾項比較容易拿到高值。
+ const vals=PERSONALITY_KEYS.map(k=>o[k]); shuffle(vals); PERSONALITY_KEYS.forEach((k,i)=>o[k]=vals[i]);
+ return o;
 }
-function hateScore(ai,target){if(!ai||ai.id===0||!target)return 0; const arr=ensureAIMemory(ai.id); return arr.filter(e=>e.target===target.id).reduce((s,e)=>s+e.value,0);}
+function topTraits(ai,n=2){if(!ai||!ai.personalityMatrix)return ''; return PERSONALITY_KEYS.slice().sort((a,b)=>ai.personalityMatrix[b]-ai.personalityMatrix[a]).slice(0,n).map(k=>`${PERSONALITY_NAMES[k]}${ai.personalityMatrix[k]}`).join(' / ');}
+function initAIMind(p){
+ if(p.id===0){p.aiLevel='player'; p.personality='player'; p.personalityMatrix=null; p.aiMemory=null; return;}
+ p.aiLevel=currentAIDifficulty;
+ p.aiMemory={hatred:{},suspicion:{}};
+ if(currentAIDifficulty==='hard'){
+  p.personality='personality';
+  p.personalityMatrix=randomPersonality();
+ }else{
+  p.personality=pickAIType();
+  p.personalityMatrix=null;
+ }
+}
+function isHardAI(ai){return ai&&ai.id!==0&&ai.aiLevel==='hard'&&ai.personalityMatrix;}
+function trait(ai,key){return isHardAI(ai)?(ai.personalityMatrix[key]||0):0;}
+function trait01(ai,key){return trait(ai,key)/100;}
+function clamp(v,a=0,b=100){return Math.max(a,Math.min(b,v));}
+function ensureAIMemory(id){const k='AI'+id; if(!aiMemoryStore[k])aiMemoryStore[k]=[]; return aiMemoryStore[k];}
+function addMindValue(ai,kind,target,value,type){
+ if(!isHardAI(ai)||!target||ai.id===target.id)return;
+ const box=ai.aiMemory[kind]||(ai.aiMemory[kind]={});
+ const old=box[target.id]?.value||0;
+ box[target.id]={value:clamp(old+value,0,100),type:type||'',turn:Date.now()};
+}
+function mindValue(ai,kind,target){if(!isHardAI(ai)||!target)return 0; return ai.aiMemory?.[kind]?.[target.id]?.value||0;}
+function recordHate(victim,actor,value,type){
+ if(!victim||!actor||victim.id===actor.id)return;
+ if(isHardAI(victim))addMindValue(victim,'hatred',actor,value,type);
+ // 普通AI沿用舊式短記憶，困難AI也保留一份弱化紀錄供舊函式相容。
+ if(victim.id!==0){const arr=ensureAIMemory(victim.id); arr.push({target:actor.id,value,type,round:Date.now()}); while(arr.length>10)arr.shift(); saveAIMemory();}
+}
+function recordSuspicion(observer,target,value,type){addMindValue(observer,'suspicion',target,value,type);}
+function recordSuspicionForAll(target,value,type,exceptId=null){players.slice(1).forEach(ai=>{if(ai.id!==exceptId&&ai.id!==target.id)recordSuspicion(ai,target,value,type);});}
+function hateScore(ai,target){
+ if(isHardAI(ai))return mindValue(ai,'hatred',target);
+ if(!ai||ai.id===0||!target)return 0; const arr=ensureAIMemory(ai.id); return arr.filter(e=>e.target===target.id).reduce((s,e)=>s+e.value,0);
+}
+function suspicionScore(ai,target){return isHardAI(ai)?mindValue(ai,'suspicion',target):0;}
+function decayAIMemory(){players.slice(1).forEach(ai=>{if(!isHardAI(ai))return; ['hatred','suspicion'].forEach(kind=>{Object.keys(ai.aiMemory[kind]||{}).forEach(id=>{ai.aiMemory[kind][id].value=clamp(ai.aiMemory[kind][id].value-(kind==='hatred'?3:5),0,100);});});});}
 function personalityMul(ai,key){
+ if(isHardAI(ai)){
+  if(key==='risk')return clamp(0.75 + trait01(ai,'Risk')*.95 + trait01(ai,'Greedy')*.35 + trait01(ai,'Prank')*.28 - trait01(ai,'Coward')*.45 - trait01(ai,'Calm')*.20,.35,1.95);
+  if(key==='cheat')return clamp(0.55 + trait01(ai,'Fraud')*1.55 + trait01(ai,'Complex')*.25 - trait01(ai,'Justice')*.75 - trait01(ai,'Coward')*.45 - trait01(ai,'Prank')*.70,.05,2.20);
+  if(key==='challenge')return clamp(0.55 + trait01(ai,'Suspicious')*1.25 + trait01(ai,'Justice')*.65 + trait01(ai,'Revenge')*.35 - trait01(ai,'Calm')*.25 - trait01(ai,'Prank')*.20,.15,2.10);
+  if(key==='attack')return clamp(0.70 + trait01(ai,'Revenge')*1.15 + trait01(ai,'Prank')*.55 + trait01(ai,'Greedy')*.25 - trait01(ai,'Coward')*.40,.20,2.25);
+  return 1;
+ }
  const t=ai.personality;
  if(key==='risk'){return t==='conservative'?.72:t==='gambler'?1.28:t==='troll'?1.38:t==='revenge'?1.05:1;}
  if(key==='cheat'){return t==='conservative'?.42:t==='gambler'?1.55:t==='troll'?.10:t==='revenge'?.95:1;}
@@ -304,6 +416,7 @@ function personalityMul(ai,key){
  if(key==='attack'){return t==='conservative'?.65:t==='gambler'?1.25:t==='troll'?1.1:t==='revenge'?1.45:1;}
  return 1;
 }
+function aiDebugLabel(ai){return isHardAI(ai)?`困難AI｜${topTraits(ai,2)}`:'普通AI';}
 function showEvent(title,challenger,target,sub='',kind=''){
  const root=document.getElementById('eventRoot'); if(!root)return; root.innerHTML='';
  document.querySelectorAll('.eventTheater').forEach(x=>x.remove());
@@ -353,8 +466,16 @@ function showRoundSummary(scoreLines, deathLines){
  const scoreHtml=(scoreLines&&scoreLines.length?scoreLines:['本輪無人得分。']).map(x=>`<div class="roundSummaryLine">${x}</div>`).join('');
  const deadHtml=(deathLines&&deathLines.length?deathLines:['本輪無人陣亡。']).map(x=>`<div class="roundSummaryLine roundSummaryDead">${x}</div>`).join('');
  const d=document.createElement('div'); d.className='roundSummaryOverlay';
- d.innerHTML=`<div class="roundSummaryBox"><h2>回合結算</h2><div class="roundSummaryGrid"><div class="roundSummaryPane"><b>得分</b>${scoreHtml}</div><div class="roundSummaryPane"><b>陣亡</b>${deadHtml}</div></div><p style="margin-top:14px"><button class="btn" onclick="this.closest('.roundSummaryOverlay').remove()">繼續</button></p></div>`;
+ d.innerHTML=`<div class="roundSummaryBox"><h2>回合結算</h2><div class="roundSummaryGrid"><div class="roundSummaryPane"><b>得分</b>${scoreHtml}</div><div class="roundSummaryPane"><b>陣亡</b>${deadHtml}</div></div><p style="margin-top:14px"><button class="btn" onclick="continueAfterRoundSummary()">繼續</button></p></div>`;
  document.body.appendChild(d);
+}
+function continueAfterRoundSummary(){
+ document.querySelectorAll('.roundSummaryOverlay').forEach(x=>x.remove());
+ if(pendingVictoryCeremony){
+  const v=pendingVictoryCeremony;
+  pendingVictoryCeremony=null;
+  showVictoryCeremony(v.winners,v.reason);
+ }
 }
 function showAIThinking(ai){
  if(!ai||ai.id===0)return;
@@ -399,7 +520,23 @@ function showPeekOverlay(owner,cards,subtitle='這就是你接下來的子彈順
 
 function log(t){const box=document.getElementById('log'); box.innerHTML='<p>'+t+'</p>'+box.innerHTML;}
 function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function newGame(){let n=+document.getElementById('playerCount').value; players=[]; loadAIMemory(); initActionDeck(); const identities=shuffle(ROLE_POOL.slice()).slice(0,n); for(let i=0;i<n;i++){const role=identities[i]; players.push({id:i,name:role.codeName,color:role.color,colorName:role.colorName,cname:'',avatar:role.avatar,silhouette:role.silhouette,roleKey:role.key,score:0,roles:[true,true,true,true],out:false,hidden:null,deck:[],bet:null,shotsTaken:0,aliveThisRound:true,challenged:false,knownTop:[],bangs:1,hand:[],nextShotTarget:null,burstShots:0,burstTarget:null,pendingScoreBonus:0,lastBets:[],personality:i===0?'player':pickAIType(),roundNo:0}); resetDeck(players[i]); ensureAIMemory(i);} players.forEach(p=>drawCards(p,1,false)); phase=1; gameOver=false; nextShotGlobal=null; roundDeaths=[]; log('新遊戲開始。角色代號已隨機分發，每位角色抽 1 張行動卡。'); render(); setupPhase1();}
+function newGame(){
+ let n=+document.getElementById('playerCount').value;
+ currentAIDifficulty=document.getElementById('aiDifficulty')?.value||'hard';
+ players=[]; loadAIMemory(); initActionDeck();
+ const identities=shuffle(ROLE_POOL.slice()).slice(0,n);
+ for(let i=0;i<n;i++){
+  const role=identities[i];
+  const p={id:i,name:role.codeName,color:role.color,colorName:role.colorName,cname:'',avatar:role.avatar,silhouette:role.silhouette,roleKey:role.key,score:0,roles:[true,true,true,true],out:false,hidden:null,deck:[],bet:null,shotsTaken:0,aliveThisRound:true,challenged:false,knownTop:[],bangs:1,hand:[],nextShotTarget:null,burstShots:0,burstTarget:null,pendingScoreBonus:0,pendingDeathEvents:[],lastBets:[],lastHides:[],roundNo:0};
+  initAIMind(p);
+  players.push(p); resetDeck(p); ensureAIMemory(i);
+ }
+ players.forEach(p=>drawCards(p,1,false));
+ phase=1; gameOver=false; nextShotGlobal=null; pendingVictoryCeremony=null; roundDeaths=[]; roundDeathEvents=[];
+ log(`新遊戲開始。角色代號已隨機分發，每位角色抽 1 張行動卡。${currentAIDifficulty==='hard'?'困難AI已生成各自性格與獨立記憶庫。':'普通AI維持原本邏輯。'}`);
+ if(currentAIDifficulty==='hard')console.table(players.slice(1).map(p=>({AI:p.name,...p.personalityMatrix})));
+ render(); setupPhase1();
+}
 function resetDeck(p){p.deck=['BANG','空響','空響','空響','空響','空響','空響'];p.bangs=1;}
 function initActionDeck(){actionDeck=[]; discardPile=[]; const add=(name,count,phase,txt)=>{for(let i=0;i<count;i++)actionDeck.push({name,phase,txt})};
  add('兩連發',2,'Phase 5','開過兩槍後使用。你接下來兩槍可指向任意活著玩家。');
@@ -408,20 +545,53 @@ function initActionDeck(){actionDeck=[]; discardPile=[]; const add=(name,count,p
  add('死亡之骰',2,'Phase 4','指定玩家重新隨機 0～5 作為本輪下注。淘汰後可用。');
  add('再來一發',2,'Phase 6','指定一名活著玩家再開一槍，本次不計分。淘汰後可用。');
  add('互射吧',3,'Phase 5','接下來一槍，所有活著玩家都要指定一名其他活著玩家；沒有剩餘射擊數者只指人、不會開火。淘汰後可用。');
- add('乾了伏特加',1,'Phase 6','若你是存活玩家中下注最高，額外 +2；並列最高 +1。');
+ add('乾了伏特加',1,'Phase 6','只有本輪存活玩家中下注最高者才能使用；單獨最高 +2，並列最高 +1。不是最高者不能使用，卡片保留。');
  add('鳴槍慶祝',3,'Phase 5','接下來一槍，所有開槍者都朝天空，且絕對視為空槍。淘汰後可用。');
  add('賄賂裁判',1,'Phase 4','被抓到作弊時使用。不失去隊員，但質疑者仍抽 3 張。');
  add('就打你',3,'Phase 5','你的下一槍改射任意其他存活玩家。');
- add('掏口袋',1,'Phase 6','得分階段額外質疑一名玩家作弊，無論本輪是否質疑過。淘汰後可用。');
+ add('掏口袋',1,'Phase 6','得分階段額外質疑一名本輪仍存活玩家作弊；不能對死人或淘汰者使用。淘汰後可用。');
  add('空槍',3,'Phase 5','你的下一槍朝天空開槍。');
  add('偷窺',4,'Phase 2','查看自己子彈堆前 3 張，並讓一名玩家知道自己第一張。');
  shuffle(actionDeck);}
-function drawCards(p,n=1,announce=true){let got=0; for(let i=0;i<n;i++){if(actionDeck.length===0){actionDeck=shuffle(discardPile.splice(0)); if(actionDeck.length===0)break;} const c=actionDeck.pop(); p.hand.push(c); got++;} if(announce&&got)log(`${p.name} 抽 ${got} 張行動卡，目前 🃏×${p.hand.length}。`); render();}
+function drawCards(p,n=1,announce=true){let got=0; for(let i=0;i<n;i++){if(actionDeck.length===0){actionDeck=shuffle(discardPile.splice(0)); if(actionDeck.length===0)break;} const c=actionDeck.pop(); p.hand.push(c); got++;} if(announce&&got)log(`${p.name} 抽 ${got} 張行動卡，目前 🃏×${p.hand.length}。`); if(announce)render();}
 function discardCard(card){discardPile.push(card)}
 function showCardFlash(who,name,txt){const d=document.createElement('div'); d.className='cardFlash'; d.innerHTML=`<h2>${name}</h2><p>${who}<br>${txt}</p>`; document.body.appendChild(d); setTimeout(()=>d.remove(),1150);}
-function addBangToStack(p){let idx=p.deck.indexOf('空響'); if(idx>=0){p.deck[idx]='BANG';p.bangs++;shuffle(p.deck);return true;} return false;}
+function addBangToStack(p){
+ if(!p||!Array.isArray(p.deck))return false;
+ // 固定張數規則：只把一張空響替換成 BANG，不新增子彈牌。
+ // 若已經開過槍，優先替換尚未開出的空響，避免改到已翻出的歷史牌面。
+ let start=Math.max(0,p.shotsTaken||0);
+ let idx=p.deck.findIndex((c,i)=>i>=start&&c==='空響');
+ if(idx<0)idx=p.deck.indexOf('空響');
+ if(idx>=0){p.deck[idx]='BANG';p.bangs=(p.bangs||0)+1;shuffle(p.deck);return true;}
+ return false;
+}
 function findCardIndex(p,name){return p.hand.findIndex(c=>c.name===name)}
 function removeAndFlash(p,idx){const card=p.hand[idx]; p.hand.splice(idx,1); discardCard(card); showCardFlash(`${p.name} 使用`,card.name,card.txt); log(`<b>${p.name} 使用【${card.name}】。</b>`); return card;}
+function isHighestLivingBet(p){
+ const alive=livingThisRound();
+ if(!p || !alive.includes(p) || !alive.length)return false;
+ const max=Math.max(...alive.map(x=>x.bet||0));
+ return (p.bet||0)===max;
+}
+function vodkaBonusFor(p){
+ if(!isHighestLivingBet(p))return 0;
+ const alive=livingThisRound();
+ const max=Math.max(...alive.map(x=>x.bet||0));
+ const tied=alive.filter(x=>(x.bet||0)===max);
+ return tied.length===1?2:1;
+}
+function setGlobalShotEffect(effect,who,cardName){
+ const old=nextShotGlobal;
+ nextShotGlobal=effect;
+ players.forEach(x=>{x.mutualTarget=null});
+ if(old&&old!==effect){
+  const oldName=old==='others'?'互射吧':old==='sky'?'鳴槍慶祝':'前一個效果';
+  log(`<span class="muted">後發覆蓋：${who.name} 的【${cardName}】覆蓋了【${oldName}】，下一槍只結算最後發動的效果。</span>`);
+ } else {
+  log(`<span class="muted">後發規則：下一槍目前以 ${who.name} 最後發動的【${cardName}】為準。</span>`);
+ }
+}
 function useCard(p,idx,targetId=null){const card=p.hand[idx]; if(!card||!canUseCard(p,card))return false;
  if(card.name==='上子彈'){
   const t=players[targetId];
@@ -429,7 +599,7 @@ function useCard(p,idx,targetId=null){const card=p.hand[idx]; if(!card||!canUseC
   if(!t.deck.includes('空響')){log(`${t.name} 的子彈堆沒有空響，【上子彈】無法使用，卡片保留。`); return false;}
   removeAndFlash(p,idx);
   recordHate(t,p,18,'上子彈');
-  if(addBangToStack(t))log(`${t.name} 的一張空響被替換成 BANG，總牌數不變。`);
+  if(addBangToStack(t))log(`${t.name} 的一張空響被替換成 BANG，總牌數不變。`); recordSuspicionForAll(t,12,'被上子彈');
  }
  else {removeAndFlash(p,idx);}
  if(false){}
@@ -455,66 +625,154 @@ function useCard(p,idx,targetId=null){const card=p.hand[idx]; if(!card||!canUseC
  }
  else if(card.name==='空槍'){p.nextShotTarget='sky'; log(`${p.name} 下一槍將朝天空。`);}
  else if(card.name==='就打你'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound&&t.id!==p.id){p.nextShotTarget=t.id; recordHate(t,p,12,'就打你瞄準'); log(`${p.name} 下一槍將指向 ${t.name}。`);}}
- else if(card.name==='互射吧'){nextShotGlobal='others'; players.forEach(x=>{x.mutualTarget=null}); log(`<span class="danger">下一槍全體存活玩家都必須指定其他玩家；沒有剩餘射擊數者只指人，不會開火。</span>`);}
- else if(card.name==='鳴槍慶祝'){nextShotGlobal='sky'; log(`<span class="safe">下一槍全體開槍者都朝天空，且絕對空槍。</span>`);}
+ else if(card.name==='互射吧'){setGlobalShotEffect('others',p,'互射吧'); log(`<span class="danger">下一槍全體存活玩家都必須指定其他玩家；沒有剩餘射擊數者只指人，不會開火。</span>`);}
+ else if(card.name==='鳴槍慶祝'){setGlobalShotEffect('sky',p,'鳴槍慶祝'); log(`<span class="safe">下一槍全體開槍者都朝天空，且絕對空槍。</span>`);}
  else if(card.name==='兩連發'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound&&t.id!==p.id){p.burstShots=2; p.burstTarget=t.id; recordHate(t,p,18,'兩連發瞄準'); log(`${p.name} 接下來兩槍將優先指向 ${t.name}。`);}}
- else if(card.name==='多開一槍'){const t=players[targetId]; if(t&&!t.out){let old=t.bet??0; t.bet=(old>=5)?0:old+1; log(`${t.name} 下注由 ${old} 變成 ${t.bet}。`);}}
- else if(card.name==='死亡之骰'){const t=players[targetId]; if(t&&!t.out){let old=t.bet??0; t.bet=Math.floor(Math.random()*6); log(`${t.name} 被死亡之骰改成下注 ${t.bet}（原本 ${old}）。`);}}
+ else if(card.name==='多開一槍'){const t=players[targetId]; if(t&&!t.out){let old=t.bet??0; t.bet=(old>=5)?0:old+1; recordHate(t,p,10,'多開一槍'); recordSuspicionForAll(t,6,'被多開一槍'); log(`${t.name} 下注由 ${old} 變成 ${t.bet}。`);}}
+ else if(card.name==='死亡之骰'){const t=players[targetId]; if(t&&!t.out){let old=t.bet??0; t.bet=Math.floor(Math.random()*6); recordHate(t,p,12,'死亡之骰'); log(`${t.name} 被死亡之骰改成下注 ${t.bet}（原本 ${old}）。`);}}
  else if(card.name==='再來一發'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound){recordHate(t,p,20,'再來一發'); extraShot(t,`${p.name} 的【再來一發】`);}}
- else if(card.name==='乾了伏特加'){let alive=livingThisRound(); let max=Math.max(...alive.map(x=>x.bet||0)); let tied=alive.filter(x=>(x.bet||0)===max); if(alive.includes(p)&&(p.bet||0)===max){let bonus=tied.length===1?2:1; p.pendingScoreBonus+=bonus; log(`${p.name} 乾了伏特加，待會額外 +${bonus} 分。`);}}
- else if(card.name==='掏口袋'){const t=players[targetId]; if(t&&!t.out){resolveChallenge(p,t,true);}}
+ else if(card.name==='乾了伏特加'){const bonus=vodkaBonusFor(p); if(!bonus){log(`${p.name} 不是本輪存活玩家中的最高下注者，【乾了伏特加】不能使用，卡片保留。`); return false;} p.pendingScoreBonus+=bonus; log(`${p.name} 乾了伏特加，待會額外 +${bonus} 分。`);}
+ else if(card.name==='掏口袋'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound){resolveChallenge(p,t,true);} else {log('【掏口袋】不能對已死亡或淘汰的玩家使用，卡片保留。'); return false;}}
  render(); return true;}
 function canUseCard(p,card){if(!card)return false; if(p.out && !DEAD_USABLE.has(card.name))return false; if(card.name==='上子彈')return phase===1;
  if(card.name==='偷窺')return phase===2 && !p.out;
  if(card.name==='多開一槍'||card.name==='死亡之骰')return phase===4;
- if(card.name==='互射吧'||card.name==='鳴槍慶祝')return phase===5 && nextShotGlobal==null;
- if(card.name==='空槍'||card.name==='就打你')return phase===5 && !p.out && p.aliveThisRound && p.shotsTaken<(p.bet||0) && p.nextShotTarget==null;
+ if(card.name==='互射吧'||card.name==='鳴槍慶祝')return phase===5;
+ if(card.name==='空槍'||card.name==='就打你')return phase===5 && !p.out && p.aliveThisRound && p.shotsTaken<(p.bet||0) && true;
  if(card.name==='兩連發')return phase===5 && !p.out && p.aliveThisRound && shotNo>=2 && p.shotsTaken<(p.bet||0) && p.burstShots<=0;
  if(card.name==='再來一發'||card.name==='掏口袋')return phase===6 && phase6Ready && !phase6Scored;
- if(card.name==='乾了伏特加')return phase===6 && phase6Ready && !phase6Scored && !p.out && p.aliveThisRound;
+ if(card.name==='乾了伏特加')return phase===6 && phase6Ready && !phase6Scored && !p.out && p.aliveThisRound && isHighestLivingBet(p);
  if(card.name==='賄賂裁判')return false; return false;}
-function renderHand(){const box=document.getElementById('handPanel'); if(!box)return; const p=players[0]; if(!p){box.innerHTML='';return;} const cards=p.hand.map((c,i)=>{const usable=canUseCard(p,c); return `<div class="actionCard ${usable?'':'disabled'}" onclick="playerUseCard(${i})"><b>${c.name}</b><span>${c.phase}<br>${c.txt}</span></div>`}).join('') || '<span class="muted">目前沒有行動卡。</span>'; box.innerHTML=`<div class="handBox"><div class="handTitle">我的行動卡 <span class="cardCount">🃏×${p.hand.length}</span></div><div class="actionCards">${cards}</div></div><div class="handBox"><div class="handTitle">行動卡牌庫</div><div class="muted">牌庫：${actionDeck.length}｜棄牌：${discardPile.length}<br>已實作完整 30 張。<br>淘汰後可用：上子彈、多開一槍、死亡之骰、互射吧、鳴槍慶祝、再來一發、掏口袋。</div></div>`;}
-function playerUseCard(idx){const p=players[0], card=p.hand[idx]; if(!card||!canUseCard(p,card))return; const aliveTargets=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==0); const anyTargets=players.filter(x=>!x.out&&x.id!==0); if(card.name==='上子彈'){
+
+function renderHand(){
+ const box=document.getElementById('handPanel');
+ if(!box)return;
+ const me=players&&players[0];
+ if(!me){box.innerHTML='';return;}
+ const hand=(me.hand||[]).map((c,i)=>{
+  const ok=typeof canUseCard==='function'?canUseCard(me,c):false;
+  return `<div class="actionCard ${ok?'':'disabled'}" onclick="playerUseCard(${i})"><b>${c.name}</b><span>${c.phase||''}<br>${c.txt||''}</span></div>`;
+ }).join('') || '<span class="muted small">目前沒有行動卡。</span>';
+ let info='';
+ if(developerMode){
+  info=renderDeveloperPanel();
+ }else if(currentAIDifficulty==='hard'){
+  info=`<div class="handBox"><div class="handTitle">AI等級</div><div class="small muted">困難AI：每局隱藏生成性格，且每個AI有獨立仇恨/懷疑記憶庫。按右上角鎖頭輸入密碼可開啟開發者模式。</div></div>`;
+ }else{
+  info=`<div class="handBox"><div class="handTitle">AI等級</div><div class="small muted">普通AI：維持原本行為邏輯。</div></div>`;
+ }
+ box.innerHTML=`<div class="handBox"><div class="handTitle">你的行動卡 <span class="cardCount">${me.hand?me.hand.length:0}</span></div><div class="actionCards">${hand}</div></div>${info}`;
+}
+
+function render(){
+ const playersBox=document.getElementById('players');
+ if(!playersBox)return;
+ playersBox.innerHTML=players.map(p=>{
+  const reveal=developerMode;
+  const identity=`${colorLabel(p)} ${p.id===0?'你操控':(p.aiLevel==='hard'?'對手':'對手')}｜${p.out?'淘汰':p.aliveThisRound?'存活':'本輪死亡'}`;
+  const hideText=reveal?(p.hidden||'-'):(p.id===0&&p.hidden?p.hidden:'?');
+  const deckHtml=(p.deck||[]).map((c,idx)=>{
+   const face=reveal||idx<p.shotsTaken;
+   return `<div class="card ${face?(c==='BANG'?'bang':'blank'):'back'}">${face?(c==='BANG'?'BANG':'空'):''}</div>`;
+  }).join('');
+  const devLine=reveal?`<div class="small" style="color:#ffe08a;margin-top:3px">手牌：${devHandText(p)}</div>`:'';
+  return `<div class="player ${p.out?'dead':''}" id="p${p.id}" style="--c:${p.color}"><div class="phead compact"><div class="portraitWrap"><img class="portrait ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="${p.name}"><div><div class="codename">${p.name}</div><div class="identityLine">${identity}</div></div></div><div class="score">${p.score}</div></div><div class="roles">${p.roles.map((r,i)=>`<div class="role ${i===3?'captain':''} ${i===3&&r&&p.roles.filter(Boolean).length===1?'critical':''} ${!r?'deadrole':''}">${i<3?`<img class="roleSilhouette" src="${p.silhouette||p.avatar}" alt="手下">`:`<img class="roleCaptainImg ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="隊長">`}<span class="rlabel">${i<3?'手下':'隊長'}</span></div>`).join('')}</div><div class="small muted">🎯${p.bet??'-'}｜🃏×${p.hand?p.hand.length:0}｜實彈${p.bangs}｜藏：${hideText}</div>${devLine}<div class="deck">${deckHtml}</div></div>`;
+ }).join('');
+ renderHand();
+}
+function playerUseCard(idx){const p=players[0], card=p.hand[idx]; if(!card)return; if(!canUseCard(p,card)){if(card.name==='乾了伏特加')log('只有本輪存活玩家中下注最高者才能使用【乾了伏特加】，卡片保留。'); return;} const aliveTargets=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==0); const anyTargets=players.filter(x=>!x.out&&x.id!==0); if(card.name==='上子彈'){
  const targets=players.filter(x=>!x.out&&x.deck&&x.deck.includes('空響'));
  if(!targets.length){log('沒有玩家的子彈堆還有空響，【上子彈】暫時不能使用。');return;}
  showTargetPicker('選擇要把一張空響替換成 BANG 的玩家',targets,tid=>useCard(p,idx,tid));
 }
  else if(card.name==='偷窺'){showTargetPicker('選擇一名玩家讓他偷看自己第一張',anyTargets,tid=>useCard(p,idx,tid));}
  else if(card.name==='就打你'||card.name==='兩連發'){showTargetPicker('選擇射擊目標',aliveTargets,tid=>useCard(p,idx,tid));}
- else if(card.name==='多開一槍'||card.name==='死亡之骰'||card.name==='掏口袋'){showTargetPicker('選擇目標玩家',players.filter(x=>!x.out&&x.id!==0),tid=>useCard(p,idx,tid));}
+ else if(card.name==='多開一槍'||card.name==='死亡之骰'){showTargetPicker('選擇目標玩家',players.filter(x=>!x.out&&x.id!==0),tid=>useCard(p,idx,tid));}
+ else if(card.name==='掏口袋'){showTargetPicker('選擇掏口袋質疑目標',players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==0),tid=>useCard(p,idx,tid));}
  else if(card.name==='再來一發'){showTargetPicker('選擇再開一槍的玩家',players.filter(x=>!x.out&&x.aliveThisRound),tid=>useCard(p,idx,tid));}
  else {useCard(p,idx,null);} }
 function showTargetPicker(title,targets,cb){const old=document.getElementById('targetModal'); if(old)old.remove(); const d=document.createElement('div'); d.id='targetModal'; d.className='overlay'; d.innerHTML=`<div class="modal"><h2 style="color:var(--gold)">${title}</h2><div class="targetGrid">${targets.map(t=>`<button class="targetBtn" onclick="window.__targetPick(${t.id})">${t.name}</button>`).join('')||'<span class="muted">沒有合法目標</span>'}</div><p><button class="btn" onclick="document.getElementById('targetModal').remove()">取消</button></p></div>`; window.__targetPick=(id)=>{d.remove(); cb(id); delete window.__targetPick;}; document.body.appendChild(d);}
-function chooseThreatTarget(ai){const candidates=players.filter(p=>!p.out&&p.id!==ai.id); candidates.sort((a,b)=>(b.score*2+(b.bet||0)*3+b.hand.length+hateScore(ai,b)*1.6)-(a.score*2+(a.bet||0)*3+a.hand.length+hateScore(ai,a)*1.6)); return candidates[0];}
-function chooseAliveTarget(ai){let candidates=players.filter(p=>!p.out&&p.aliveThisRound&&p.id!==ai.id); candidates.sort((a,b)=>(b.score*3+(b.bet||0)*2+b.hand.length+hateScore(ai,b)*2.0)-(a.score*3+(a.bet||0)*2+a.hand.length+hateScore(ai,a)*2.0)); return candidates[0];}
+function targetScoreForCard(ai,t){
+ let score=t.score*2+(t.bet||0)*3+t.hand.length;
+ score += hateScore(ai,t)*(isHardAI(ai)?2.2:1.6);
+ score += suspicionScore(ai,t)*(isHardAI(ai)?0.8:0);
+ if(isHardAI(ai))score += trait(ai,'Revenge')*.15*hateScore(ai,t)/20 + trait(ai,'Prank')*.18 + trait(ai,'Greedy')*.05*t.score;
+ return score+Math.random()*4;
+}
+function targetScoreForShot(ai,t){
+ let score=t.score*3+(t.bet||0)*2+t.hand.length;
+ score += hateScore(ai,t)*(isHardAI(ai)?2.8:2.0);
+ score += suspicionScore(ai,t)*(isHardAI(ai)?0.5:0);
+ if(isHardAI(ai))score += trait(ai,'Revenge')*.22*hateScore(ai,t)/20 + trait(ai,'Prank')*.12;
+ return score+Math.random()*5;
+}
+function chooseThreatTarget(ai){
+ const candidates=players.filter(p=>!p.out&&p.id!==ai.id);
+ candidates.sort((a,b)=>targetScoreForCard(ai,b)-targetScoreForCard(ai,a));
+ return candidates[0];
+}
+function chooseAliveTarget(ai){let candidates=players.filter(p=>!p.out&&p.aliveThisRound&&p.id!==ai.id); candidates.sort((a,b)=>targetScoreForShot(ai,b)-targetScoreForShot(ai,a)); return candidates[0];}
 function mutualParticipants(){return players.filter(p=>!p.out&&p.aliveThisRound);}
 function needPlayerMutualTarget(){const p=players[0]; return nextShotGlobal==='others' && p && !p.out && p.aliveThisRound && typeof p.mutualTarget!=='number';}
 function askPlayerMutualTarget(){const p=players[0]; const targets=mutualParticipants().filter(x=>x.id!==0); showTargetPicker('互射吧：所有存活者都要指一名玩家',targets,tid=>{p.mutualTarget=tid; const t=players[tid]; if(t){recordHate(t,p,10,'互射吧瞄準'); const canFire=p.shotsTaken<(p.bet||0); log(`互射吧：${p.name} 指定 ${t.name}${canFire?'為射擊目標':'，但沒有剩餘射擊數，不會開火'}。`);} doShot();});}
 function assignAIMutualTargets(){if(nextShotGlobal!=='others')return; mutualParticipants().forEach(p=>{if(p.id===0)return; if(typeof p.mutualTarget==='number')return; const t=chooseForcedTarget(p); if(t){p.mutualTarget=t.id; const canFire=p.shotsTaken<(p.bet||0); log(`互射吧：${p.name} 指定 ${t.name}${canFire?'為射擊目標':'，但沒有剩餘射擊數，不會開火'}。`);}});}
-function aiUseChance(ai,t,card){let ch=0.1; if(t.score>=12)ch+=0.22; if((t.bet||0)>=4)ch+=0.18; if(t.hand.length>=3)ch+=0.08; if(ai.hand.length>=4)ch+=0.08; ch += hateScore(ai,t)*0.006; ch *= personalityMul(ai,'attack'); return Math.min(.78,ch);}
+function aiUseChance(ai,t,card){let ch=0.1; if(t.score>=12)ch+=0.22; if((t.bet||0)>=4)ch+=0.18; if(t.hand.length>=3)ch+=0.08; if(ai.hand.length>=4)ch+=0.08; ch += hateScore(ai,t)*0.006 + suspicionScore(ai,t)*0.003; if(isHardAI(ai)){ch += trait01(ai,'Prank')*.18 + trait01(ai,'Revenge')*.20 + trait01(ai,'Greedy')*.06 - trait01(ai,'Coward')*.12;} ch *= personalityMul(ai,'attack'); return Math.min(.86,ch);}
 function aiUsePhaseCards(phaseName){players.slice(1).forEach(ai=>{if(Math.random()<0.28)showAIThinking(ai); if(ai.out&&!['Phase 1','Phase 4','Phase 5','Phase 6'].includes(phaseName))return; let guard=0; while(guard++<4){let idx=ai.hand.findIndex(c=>c.name==='上子彈'&&phaseName==='Phase 1'); if(idx>=0){let t=chooseThreatTarget(ai); if(t&&Math.random()<aiUseChance(ai,t,'上子彈')){useCard(ai,idx,t.id);continue;}}
  idx=ai.hand.findIndex(c=>c.name==='偷窺'&&phaseName==='Phase 2'); if(idx>=0&&!ai.out&&Math.random()<0.82){let others=players.filter(x=>!x.out&&x.id!==ai.id); let t=others[Math.floor(Math.random()*others.length)]; useCard(ai,idx,t?.id);continue;} break;}})}
-function aiUsePhase4Cards(){players.slice(1).forEach(ai=>{if(Math.random()<0.24)showAIThinking(ai); if(ai.out&&!ai.hand.some(c=>DEAD_USABLE.has(c.name)))return; let guard=0; while(guard++<2){let idx=ai.hand.findIndex(c=>c.name==='死亡之骰'); let t=chooseThreatTarget(ai); if(idx>=0&&t&&Math.random()<0.22+Math.max(0,t.score-ai.score)*0.025){useCard(ai,idx,t.id);continue;} idx=ai.hand.findIndex(c=>c.name==='多開一槍'); t=chooseThreatTarget(ai); if(idx>=0&&t&&Math.random()<0.18+((t.bet||0)>=4?0.12:0)){useCard(ai,idx,t.id);continue;} break;}})}
-function aiUseShotCards(){players.slice(1).forEach(ai=>{if(Math.random()<0.18)showAIThinking(ai); if(ai.out){if(nextShotGlobal==null){let idx=ai.hand.findIndex(c=>c.name==='互射吧'||c.name==='鳴槍慶祝'); if(idx>=0&&Math.random()<0.15)useCard(ai,idx,null);} return;} if(!ai.aliveThisRound||ai.shotsTaken>=(ai.bet||0))return; const next=ai.deck[ai.shotsTaken]; const hp=ai.roles.filter(Boolean).length; const leader=players.filter(x=>!x.out).sort((a,b)=>b.score-a.score)[0]; if(nextShotGlobal==null){let idxG=ai.hand.findIndex(c=>c.name==='互射吧'&&leader&&leader.id!==ai.id); if(idxG>=0&&Math.random()<0.12+leader.score*0.01){useCard(ai,idxG,null);return;} let idxC=ai.hand.findIndex(c=>c.name==='鳴槍慶祝'); if(idxC>=0&&next==='BANG'&&Math.random()<0.55){useCard(ai,idxC,null);return;}}
- if(next==='BANG'){let idx=ai.hand.findIndex(c=>c.name==='空槍'); if(idx>=0&&(hp<=2||Math.random()<0.9)){useCard(ai,idx,null);return;}}
- let idx2=ai.hand.findIndex(c=>c.name==='兩連發'); let t=chooseAliveTarget(ai); if(idx2>=0&&t&&shotNo>=2&&ai.bet-ai.shotsTaken>=2&&Math.random()<0.28){useCard(ai,idx2,t.id);return;}
- let idx=ai.hand.findIndex(c=>c.name==='就打你'); if(idx>=0&&t&&ai.bet>=2&&Math.random()<0.28+t.score*0.015){useCard(ai,idx,t.id);return;}
+function aiUsePhase4Cards(){players.slice(1).forEach(ai=>{if(Math.random()<0.24)showAIThinking(ai); if(ai.out&&!ai.hand.some(c=>DEAD_USABLE.has(c.name)))return; let guard=0; while(guard++<2){let idx=ai.hand.findIndex(c=>c.name==='死亡之骰'); let t=chooseThreatTarget(ai); if(idx>=0&&t&&Math.random()<0.16+Math.max(0,t.score-ai.score)*0.02+trait01(ai,'Prank')*.22+trait01(ai,'Revenge')*.14){useCard(ai,idx,t.id);continue;} idx=ai.hand.findIndex(c=>c.name==='多開一槍'); t=chooseThreatTarget(ai); if(idx>=0&&t&&Math.random()<0.14+((t.bet||0)>=4?0.12:0)+trait01(ai,'Prank')*.18+trait01(ai,'Greedy')*.08){useCard(ai,idx,t.id);continue;} break;}})}
+function aiUseShotCards(){players.slice(1).forEach(ai=>{if(Math.random()<0.18)showAIThinking(ai); if(ai.out){let idx=ai.hand.findIndex(c=>c.name==='互射吧'||c.name==='鳴槍慶祝'); if(idx>=0&&Math.random()<0.12+trait01(ai,'Prank')*.25)useCard(ai,idx,null); return;} if(!ai.aliveThisRound||ai.shotsTaken>=(ai.bet||0))return; const next=ai.deck[ai.shotsTaken]; const hp=ai.roles.filter(Boolean).length; const leader=players.filter(x=>!x.out).sort((a,b)=>b.score-a.score)[0]; {let idxG=ai.hand.findIndex(c=>c.name==='互射吧'&&leader&&leader.id!==ai.id); if(idxG>=0&&Math.random()<0.10+leader.score*0.008+trait01(ai,'Prank')*.24+trait01(ai,'Revenge')*.08){useCard(ai,idxG,null);return;} let idxC=ai.hand.findIndex(c=>c.name==='鳴槍慶祝'); if(idxC>=0&&next==='BANG'&&Math.random()<0.52+trait01(ai,'Coward')*.22){useCard(ai,idxC,null);return;}}
+ if(next==='BANG'){let idx=ai.hand.findIndex(c=>c.name==='空槍'); if(idx>=0&&(hp<=2||Math.random()<0.86+trait01(ai,'Coward')*.12)){useCard(ai,idx,null);return;}}
+ let idx2=ai.hand.findIndex(c=>c.name==='兩連發'); let t=chooseAliveTarget(ai); if(idx2>=0&&t&&shotNo>=2&&ai.bet-ai.shotsTaken>=2&&Math.random()<0.22+trait01(ai,'Revenge')*.20+trait01(ai,'Prank')*.10){useCard(ai,idx2,t.id);return;}
+ let idx=ai.hand.findIndex(c=>c.name==='就打你'); if(idx>=0&&t&&ai.bet>=2&&Math.random()<0.22+t.score*0.012+trait01(ai,'Revenge')*.20+trait01(ai,'Prank')*.12){useCard(ai,idx,t.id);return;}
  });}
-function aiUsePhase6Cards(){players.slice(1).forEach(ai=>{if(Math.random()<0.20)showAIThinking(ai); let guard=0; while(guard++<2){let leader=players.filter(x=>!x.out).sort((a,b)=>b.score-a.score)[0]; let idx=ai.hand.findIndex(c=>c.name==='再來一發'); if(idx>=0&&leader&&leader.id!==ai.id&&leader.aliveThisRound&&Math.random()<0.28+leader.score*0.012){useCard(ai,idx,leader.id);continue;} idx=ai.hand.findIndex(c=>c.name==='乾了伏特加'); if(idx>=0&&canUseCard(ai,ai.hand[idx])&&Math.random()<0.9){useCard(ai,idx,null);continue;} idx=ai.hand.findIndex(c=>c.name==='掏口袋'); if(idx>=0&&leader&&leader.id!==ai.id&&Math.random()<0.18){useCard(ai,idx,leader.id);continue;} break;}})}
+function aiUsePhase6Cards(){players.slice(1).forEach(ai=>{if(Math.random()<0.20)showAIThinking(ai); let guard=0; while(guard++<2){let leader=players.filter(x=>!x.out).sort((a,b)=>b.score-a.score)[0]; let idx=ai.hand.findIndex(c=>c.name==='再來一發'); if(idx>=0&&leader&&leader.id!==ai.id&&leader.aliveThisRound&&Math.random()<0.22+leader.score*0.01+trait01(ai,'Revenge')*.18){useCard(ai,idx,leader.id);continue;} idx=ai.hand.findIndex(c=>c.name==='乾了伏特加'); if(idx>=0&&canUseCard(ai,ai.hand[idx])&&Math.random()<0.72+trait01(ai,'Greedy')*.25){useCard(ai,idx,null);continue;} idx=ai.hand.findIndex(c=>c.name==='掏口袋'); if(idx>=0){let t=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==ai.id).sort((a,b)=>suspicionScore(ai,b)-suspicionScore(ai,a))[0]||((leader&&!leader.out&&leader.aliveThisRound&&leader.id!==ai.id)?leader:null); if(t&&t.id!==ai.id&&Math.random()<0.12+trait01(ai,'Suspicious')*.22+suspicionScore(ai,t)*.004){useCard(ai,idx,t.id);continue;}} break;}})}
 function alivePlayers(){return players.filter(p=>!p.out)}
 function livingThisRound(){return players.filter(p=>!p.out && p.aliveThisRound)}
 function setPhaseTitle(h=''){document.getElementById('phaseTitle').textContent=PH[phase];document.getElementById('hint').textContent=h;document.getElementById('nextBtn').disabled=false;}
 function showStage(title,sub=''){const old=document.querySelector('.stageBanner'); if(old)old.remove(); const d=document.createElement('div'); d.className='stageBanner'; d.innerHTML=`<div class="stageCard"><h2>${title}</h2><p>${sub}</p></div>`; document.body.appendChild(d); setTimeout(()=>d.remove(),1350);}
-function render(){document.getElementById('players').innerHTML=players.map(p=>`<div class="player ${p.out?'dead':''}" id="p${p.id}" style="--c:${p.color}"><div class="phead compact"><div class="portraitWrap"><img class="portrait ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="${p.name}"><div><div class="codename">${p.name}</div><div class="identityLine">${colorLabel(p)} ${p.id===0?'你操控':'對手'}｜${p.out?'淘汰':p.aliveThisRound?'存活':'本輪死亡'}</div></div></div><div class="score">${p.score}</div></div><div class="roles">${p.roles.map((r,i)=>`<div class="role ${i===3?'captain':''} ${i===3&&r&&p.roles.filter(Boolean).length===1?'critical':''} ${!r?'deadrole':''}">${i<3?`<img class="roleSilhouette" src="${p.silhouette||p.avatar}" alt="手下">`:`<img class="roleCaptainImg ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="隊長">`}<span class="rlabel">${i<3?'手下':'隊長'}</span></div>`).join('')}</div><div class="small muted">🎯${p.bet??'-'}｜🃏×${p.hand?p.hand.length:0}｜實彈${p.bangs}｜藏：${p.id===0&&p.hidden?p.hidden:'?'}</div><div class="deck">${p.deck.map((c,idx)=>`<div class="card ${idx<p.shotsTaken?(c==='BANG'?'bang':'blank'):'back'}">${idx<p.shotsTaken?(c==='BANG'?'BANG':'空'):''}</div>`).join('')}</div></div>`).join(''); renderHand();}
-function setupRound(){players.forEach(p=>{if(!p.out){p.hidden=null;p.bet=null;p.shotsTaken=0;p.aliveThisRound=true;p.challenged=false;p.knownTop=[];p.nextShotTarget=null;p.burstShots=0;p.burstTarget=null;p.pendingScoreBonus=0;p.roundNo=(p.roundNo||0)+1;if(p.id!==0)p.personality=pickAIType();}}); nextShotGlobal=null; phase6Ready=false; phase6Scored=false; roundDeaths=[]; phase=1; setupPhase1(); render();}
+function render(){
+ const playersBox=document.getElementById('players');
+ if(!playersBox)return;
+ playersBox.innerHTML=players.map(p=>{
+  const reveal=developerMode;
+  const identity=`${colorLabel(p)} ${p.id===0?'你操控':(p.aiLevel==='hard'?'對手':'對手')}｜${p.out?'淘汰':p.aliveThisRound?'存活':'本輪死亡'}`;
+  const hideText=reveal?(p.hidden||'-'):(p.id===0&&p.hidden?p.hidden:'?');
+  const deckHtml=(p.deck||[]).map((c,idx)=>{
+   const face=reveal||idx<p.shotsTaken;
+   return `<div class="card ${face?(c==='BANG'?'bang':'blank'):'back'}">${face?(c==='BANG'?'BANG':'空'):''}</div>`;
+  }).join('');
+  const devLine=reveal?`<div class="small" style="color:#ffe08a;margin-top:3px">手牌：${devHandText(p)}</div>`:'';
+  return `<div class="player ${p.out?'dead':''}" id="p${p.id}" style="--c:${p.color}"><div class="phead compact"><div class="portraitWrap"><img class="portrait ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="${p.name}"><div><div class="codename">${p.name}</div><div class="identityLine">${identity}</div></div></div><div class="score">${p.score}</div></div><div class="roles">${p.roles.map((r,i)=>`<div class="role ${i===3?'captain':''} ${i===3&&r&&p.roles.filter(Boolean).length===1?'critical':''} ${!r?'deadrole':''}">${i<3?`<img class="roleSilhouette" src="${p.silhouette||p.avatar}" alt="手下">`:`<img class="roleCaptainImg ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="隊長">`}<span class="rlabel">${i<3?'手下':'隊長'}</span></div>`).join('')}</div><div class="small muted">🎯${p.bet??'-'}｜🃏×${p.hand?p.hand.length:0}｜實彈${p.bangs}｜藏：${hideText}</div>${devLine}<div class="deck">${deckHtml}</div></div>`;
+ }).join('');
+ renderHand();
+}
+function setupRound(){
+ decayAIMemory();
+ players.forEach(p=>{if(!p.out){p.hidden=null;p.bet=null;p.shotsTaken=0;p.aliveThisRound=true;p.challenged=false;p.knownTop=[];p.nextShotTarget=null;p.burstShots=0;p.burstTarget=null;p.pendingScoreBonus=0;p.pendingDeathEvents=[];p.roundNo=(p.roundNo||0)+1;}});
+ nextShotGlobal=null; pendingVictoryCeremony=null; phase6Ready=false; phase6Scored=false; roundDeaths=[]; roundDeathEvents=[]; phase=1; setupPhase1(); render();
+}
 function setupPhase1(){showStage('第一階段：藏子彈','選擇藏空響，或冒險藏 BANG 作弊');setPhaseTitle('可先使用【上子彈】，再選擇要藏空響或藏 BANG（作弊）。');document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 1</span><h3>你要藏哪一張子彈？</h3><div class="controls"><button class="choice" onclick="chooseHide('空響')">藏 空響</button><button class="choice cheat" onclick="chooseHide('BANG')">藏 BANG（作弊）</button></div><p class="muted">藏 BANG 代表本輪你牌堆沒有實彈，但可能在挑戰階段被質疑。</p>`;document.getElementById('nextBtn').disabled=true;aiUsePhaseCards('Phase 1');players.slice(1).forEach(ai=>aiHide(ai));}
 function chooseHide(type){let p=players[0]; if(p.out)return; p.hidden=type; buildDeckAfterHide(p); log(`${p.name} 藏了${type==='BANG'?'BANG（作弊）':'空響'}。`); document.getElementById('nextBtn').disabled=false; render();}
-function aiHide(p){let cheatChance=0.16*personalityMul(p,'cheat'); if(p.score>=12)cheatChance+=.10*personalityMul(p,'cheat'); if(p.roles.filter(Boolean).length<=1)cheatChance*=.45; if(p.personality==='troll')cheatChance=Math.min(0.04,cheatChance); p.hidden=Math.random()<cheatChance?'BANG':'空響'; buildDeckAfterHide(p);}
+function aiHide(p){
+ let cheatChance=0.16*personalityMul(p,'cheat');
+ if(p.score>=12)cheatChance+=.10*personalityMul(p,'cheat');
+ if(p.roles.filter(Boolean).length<=1)cheatChance*=.45;
+ if(isHardAI(p)){
+  cheatChance += trait01(p,'Fraud')*.24 + trait01(p,'Greedy')*.06 + trait01(p,'Complex')*.05;
+  cheatChance -= trait01(p,'Prank')*.18 + trait01(p,'Justice')*.16 + trait01(p,'Coward')*.10 + trait01(p,'Calm')*.06;
+  if((p.lastHides||[]).slice(-2).every(x=>x==='空響') && trait(p,'Complex')>35)cheatChance+=.06;
+  if((p.lastHides||[]).slice(-2).every(x=>x==='BANG') && trait(p,'Complex')>25)cheatChance-=.10;
+ }else if(p.personality==='troll')cheatChance=Math.min(0.04,cheatChance);
+ cheatChance=clamp(cheatChance,0.01,0.62);
+ p.hidden=Math.random()<cheatChance?'BANG':'空響';
+ if(!p.lastHides)p.lastHides=[]; p.lastHides.push(p.hidden); while(p.lastHides.length>6)p.lastHides.shift();
+ buildDeckAfterHide(p);
+}
 function buildDeckAfterHide(p){let blanks=6, bangs=p.bangs; if(p.hidden==='BANG')bangs--; else blanks--; p.deck=[]; for(let i=0;i<bangs;i++)p.deck.push('BANG'); for(let i=0;i<blanks;i++)p.deck.push('空響');}
 function nextStep(){if(gameOver||uiLocked||shotResolving)return; if(phase===1){phase=2; setupPhase2();} else if(phase===2){phase=3; setupPhase3();} else if(phase===3){phase=4; setupPhase4();} else if(phase===4){phase=5; setupPhase5();} else if(phase===5){doShot();} else if(phase===6){if(!phase6Scored)scorePhase6(); else setupRound();}}
 function setupPhase2(){showStage('第二階段：轉輪','洗勻子彈堆，命運開始轉動');uiLocked=true;document.getElementById('nextBtn').disabled=true;players.forEach(p=>{if(!p.out)shuffle(p.deck)});setPhaseTitle('轉輪動畫播放中，請稍候。');document.getElementById('nextBtn').disabled=true;document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 2</span><h3>轉輪中……</h3><p>左輪彈巢正在旋轉，動畫結束後才能操作。</p><p class="muted">背景操作已暫時鎖定。</p>';render();setTimeout(()=>triggerRevolverOverlay(()=>{uiLocked=false;aiUsePhaseCards('Phase 2');setPhaseTitle('所有玩家洗勻自己的子彈堆。');document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 2</span><h3>轉輪完成</h3><p>若有【偷窺】可在此階段使用，按下一步進入下注。</p><p class="muted">轉輪完成，現在可以進行偷窺或下一步。</p>';document.getElementById('nextBtn').disabled=false;render();}),1320);}
-function setupPhase3(){showStage('第三階段：下注','自行決定本輪射擊數，不是擲骰');setPhaseTitle('選擇本輪要開幾槍。數字由玩家自行決定，不是擲骰。');players.slice(1).forEach(aiBet);document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 3</span><h3>選擇下注值 / 射擊數</h3><div class="betBox">${[0,1,2,3,4,5].map(n=>`<button class="bet" onclick="setBet(${n})">${n}</button>`).join('')}</div><div class="riskBox" id="riskPreview">選擇下注值後會顯示大概風險。</div>`;document.getElementById('nextBtn').disabled=true;render();}
-function setBet(n){players[0].bet=n;document.querySelectorAll('.bet').forEach((b,i)=>b.classList.toggle('sel',i===n));let prob=survivalProb(players[0],n);document.getElementById('riskPreview').innerHTML=`下注 ${n}：存活約 <b class="safe">${Math.round(prob*100)}%</b>，成功得 <b>${n+1}</b> 分；中彈本輪不得分。`;document.getElementById('nextBtn').disabled=false;render();}
+function setupPhase3(){showStage('第三階段：下注','自行決定本輪射擊數，不是擲骰');setPhaseTitle('選擇本輪要開幾槍。數字由玩家自行決定，不是擲骰。');players.forEach(p=>{p.bet=null;});document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 3</span><h3>選擇下注值 / 射擊數</h3><p class="muted">下注採同步公開：你選定前，AI 不會先公開數字。</p><div class="betBox">${[0,1,2,3,4,5].map(n=>`<button class="bet" onclick="setBet(${n})">${n}</button>`).join('')}</div><div class="riskBox" id="riskPreview">選擇下注值後，所有玩家才會同時公開下注。</div>`;document.getElementById('nextBtn').disabled=true;render();}
+function setBet(n){if(players[0].bet!==null)return; players[0].bet=n;players.slice(1).forEach(aiBet);document.querySelectorAll('.bet').forEach((b,i)=>{b.classList.toggle('sel',i===n); b.disabled=true;});let prob=survivalProb(players[0],n);const reveal=players.filter(p=>!p.out).map(p=>`${p.name}：${p.bet}`).join('｜');document.getElementById('riskPreview').innerHTML=`下注 ${n}：存活約 <b class="safe">${Math.round(prob*100)}%</b>，成功得 <b>${n+1}</b> 分；中彈本輪不得分。<br><b style="color:var(--gold)">同步公開：</b>${reveal}`;log(`下注同步公開：${reveal}`);updateSuspicionAfterBetReveal();document.getElementById('nextBtn').disabled=false;render();}
 function aiBet(p){
  let best=1,bestVal=-99999; const alive=players.filter(x=>!x.out); const leader=Math.max(...alive.map(x=>x.score)); const hp=p.roles.filter(Boolean).length;
  for(let b=0;b<=5;b++){
@@ -523,61 +781,111 @@ function aiBet(p){
   let catchup=Math.max(0,leader-p.score)*28; let leaderCaution=(p.score>=leader&&p.score>=10)?b*55:0; let winBonus=(p.score+b+1>=15)?850:0;
   let zeroPenalty=(p.score<14?260:80); let midPreference=(b>=1&&b<=3)?90:0; let desperate=(leader>=13&&p.score+3<leader)?b*70:0;
   let personalityBias=0;
-  if(p.personality==='conservative'){personalityBias += (b>=1&&b<=2?170:0) - (b>=4?320:0) - (b===0&&p.score<12?80:0);}
-  if(p.personality==='gambler'){personalityBias += (b>=4?260:0) + (b===5?110:0) - (b===0?260:0); deathPenalty*=.82;}
-  if(p.personality==='troll'){personalityBias += (b>=4?420:0) + (b===5?180:0) - (b<=1?240:0); deathPenalty*=.86;}
-  if(p.personality==='revenge'){let maxH=Math.max(0,...players.filter(x=>!x.out&&x.id!==p.id).map(x=>hateScore(p,x))); personalityBias += maxH*2.2 + (maxH>25&&b>=3?160:0);}
-  let val=prob*(gain+winBonus+midPreference+catchup+desperate+personalityBias)-(1-prob)*(deathPenalty/riskMul+lostOpportunity)-leaderCaution-(b===0?zeroPenalty:0)+Math.random()*75;
+  if(isHardAI(p)){
+   personalityBias += trait(p,'Calm')*((b>=2&&b<=3)?4.0:0) - trait(p,'Calm')*(b===5?2.4:0);
+   personalityBias += trait(p,'Coward')*((b<=1)?4.4:0) - trait(p,'Coward')*(b>=4?5.0:0);
+   personalityBias += trait(p,'Greedy')*(b>=4?4.2:b===3?2.2:0);
+   personalityBias += trait(p,'Risk')*((b===0||b===5)?4.6:(b===4?2.8:0));
+   personalityBias += trait(p,'Prank')*((b>=3&&b<=5)?5.0:0) - trait(p,'Prank')*(b<=1?3.5:0);
+   personalityBias += trait(p,'Fraud')*((p.hidden==='BANG'&&b>=3)?4.2:(p.hidden==='BANG'?1.0:0));
+   personalityBias += trait(p,'Justice')*((b>=1&&b<=3)?2.1:0) - trait(p,'Justice')*(b===5?2.2:0);
+   const recent=(p.lastBets||[]).slice(-3);
+   if(trait(p,'Complex')>0){
+    const same=recent.filter(x=>x===b).length;
+    personalityBias += trait(p,'Complex')*((same? -3.0*same:1.2) + (recent.length&&Math.abs(b-recent[recent.length-1])>=3?2.4:0));
+    if(recent.length>=2&&recent.every(x=>x>=4) && b<=2)personalityBias += trait(p,'Complex')*3.4;
+    if(recent.length>=2&&recent.every(x=>x<=1) && b>=4)personalityBias += trait(p,'Complex')*3.4;
+   }
+   let maxH=Math.max(0,...players.filter(x=>!x.out&&x.id!==p.id).map(x=>hateScore(p,x)));
+   personalityBias += trait(p,'Revenge')*(maxH>35&&b>=3?3.5:0);
+   deathPenalty *= clamp(1.15-trait01(p,'Risk')*.35-trait01(p,'Prank')*.18+trait01(p,'Coward')*.35,.65,1.55);
+  }else{
+   if(p.personality==='conservative'){personalityBias += (b>=1&&b<=2?170:0) - (b>=4?320:0) - (b===0&&p.score<12?80:0);}
+   if(p.personality==='gambler'){personalityBias += (b>=4?260:0) + (b===5?110:0) - (b===0?260:0); deathPenalty*=.82;}
+   if(p.personality==='troll'){personalityBias += (b>=4?420:0) + (b===5?180:0) - (b<=1?240:0); deathPenalty*=.86;}
+   if(p.personality==='revenge'){let maxH=Math.max(0,...players.filter(x=>!x.out&&x.id!==p.id).map(x=>hateScore(p,x))); personalityBias += maxH*2.2 + (maxH>25&&b>=3?160:0);}
+  }
+  let val=prob*(gain+winBonus+midPreference+catchup+desperate+personalityBias)-(1-prob)*(deathPenalty/riskMul+lostOpportunity)-leaderCaution-(b===0?zeroPenalty:0)+Math.random()*(isHardAI(p)?120:75);
   if(val>bestVal){bestVal=val;best=b}
  }
- p.bet=best;
+ p.bet=best; if(!p.lastBets)p.lastBets=[]; p.lastBets.push(best); while(p.lastBets.length>6)p.lastBets.shift();
 }
 function survivalProb(p,b){if(b===0)return 1; if(p.knownTop&&p.knownTop.length){let known=p.knownTop.slice(0,Math.min(b,p.knownTop.length)); if(known.includes('BANG'))return 0.02; if(b<=known.length)return 0.98;} let bangs=p.deck.filter(x=>x==='BANG').length; let total=p.deck.length; let safe=1; for(let i=0;i<b;i++){safe*=Math.max(0,total-bangs-i)/Math.max(1,total-i)} return Math.max(0,Math.min(1,safe));}
-function setupPhase4(){showStage('第四階段：挑戰','質疑要有理由，亂抓會讓自己多一發 BANG');setPhaseTitle('可質疑，也可使用【多開一槍】或【死亡之骰】。');aiUsePhase4Cards();document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 4</span><h3>挑戰 / 質疑作弊</h3><p>你本輪可質疑一次，也可以跳過。</p><div class="controls">${players.filter(p=>p.id!==0&&!p.out).map(p=>`<button class="btn" onclick="playerChallenge(${p.id})">質疑 ${p.name}</button>`).join('')}<button class="btn" onclick="skipChallenge()">跳過質疑</button></div><p class="muted">若多人質疑，會依序進入質疑對決；同一名被質疑者會顯示多人 VS 一人的提示。</p>`;document.getElementById('nextBtn').disabled=true;render();}
+function updateSuspicionAfterBetReveal(){
+ players.slice(1).forEach(ai=>{if(!isHardAI(ai))return; players.forEach(t=>{if(t.out||t.id===ai.id)return; let add=0; if((t.bet||0)>=5)add+=16; else if((t.bet||0)>=4)add+=10; else if((t.bet||0)>=3)add+=5; if(t.score>=12&&t.bet>=3)add+=4; if(t.hidden==='BANG'&&Math.random()<0.18)add+=6; recordSuspicion(ai,t,add,'高下注');});});
+}
+
+function setupPhase4(){players.filter(p=>!p.out&&p.bet==null).forEach(p=>{p.bet=0;});showStage('第四階段：挑戰','先行動卡，後質疑；質疑要有理由，亂抓會讓自己多一發 BANG');setPhaseTitle('先使用行動卡，再宣告質疑；可用【多開一槍】或【死亡之骰】。');aiUsePhase4Cards();document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 4</span><h3>行動卡 → 挑戰 / 質疑作弊</h3><p>先使用本階段行動卡；確認後再質疑或跳過。本輪可質疑一次。</p><div class="controls">${players.filter(p=>p.id!==0&&!p.out).map(p=>`<button class="btn" onclick="playerChallenge(${p.id})">質疑 ${p.name}</button>`).join('')}<button class="btn" onclick="skipChallenge()">跳過質疑</button></div><p class="muted">若多人質疑，會依序進入質疑對決；同一名被質疑者會顯示多人 VS 一人的提示。</p>`;document.getElementById('nextBtn').disabled=true;render();}
 function playerChallenge(id){const q=[{challenger:players[0],target:players[id],fromPocket:false}].concat(aiChallenges(true)); startChallengeQueue(q,()=>{phase=5;setupPhase5();});}
 function skipChallenge(){log(`${players[0].name} 跳過質疑。`); const q=aiChallenges(true); startChallengeQueue(q,()=>{phase=5;setupPhase5();});}
 function aiChallenges(returnOnly=false){
  const q=[];
- players.slice(1).forEach(ai=>{if(ai.out)return; let targets=players.filter(p=>!p.out&&p.id!==ai.id); targets.forEach(t=>{
-  let suspicion=0.02; if(t.bet>=4)suspicion+=0.08; if(t.score>=12)suspicion+=0.08; if(t.roles.filter(Boolean).length<=1)suspicion-=0.05;
-  if(t.hidden==='BANG'&&Math.random()<0.28)suspicion+=0.18;
-  suspicion += hateScore(ai,t)*0.0035;
-  suspicion *= personalityMul(ai,'challenge');
-  if(ai.personality==='troll'&&t.bet>=4)suspicion*=0.65;
-  let falseAccuseCost=ai.bangs>=2?0.18:0;
-  if(Math.random()<Math.max(0,suspicion-falseAccuseCost))q.push({challenger:ai,target:t,fromPocket:false});
- });});
+ players.slice(1).forEach(ai=>{
+  if(ai.out)return;
+  let bestT=null,bestScore=-999;
+  players.filter(p=>!p.out&&p.id!==ai.id).forEach(t=>{
+   let s=2;
+   if(t.bet>=4)s+=10; if(t.bet>=5)s+=8; if(t.score>=12)s+=8; if(t.roles.filter(Boolean).length<=1)s-=5;
+   s += suspicionScore(ai,t)*1.15 + hateScore(ai,t)*(isHardAI(ai)?0.22:0.35);
+   if(t.hidden==='BANG'&&Math.random()<0.22)s+=18;
+   if(isHardAI(ai)){
+    s += trait(ai,'Suspicious')*.55 + trait(ai,'Justice')*.30 + trait(ai,'Revenge')*.15;
+    if(trait(ai,'Prank')>40 && t.bet>=4)s-=trait(ai,'Prank')*.38; // 搗蛋型知道高押未必作弊，比較不亂抓同類行為。
+    if(trait(ai,'Calm')>35)s-=trait(ai,'Calm')*.22;
+   }
+   s*=personalityMul(ai,'challenge');
+   s+=Math.random()*18;
+   if(s>bestScore){bestScore=s;bestT=t;}
+  });
+  let threshold=isHardAI(ai)?(42-trait(ai,'Suspicious')*.12-trait(ai,'Justice')*.06+trait(ai,'Calm')*.10):(36);
+  let falseAccuseCost=ai.bangs>=2?10:0;
+  if(bestT && bestScore>falseAccuseCost+threshold)q.push({challenger:ai,target:bestT,fromPocket:false});
+ });
  if(returnOnly)return q;
  startChallengeQueue(q,()=>{});
  return q;
 }
 function startChallengeQueue(q,onDone){
- challengeQueue=(q||[]).filter(x=>x&&x.challenger&&x.target&&!x.challenger.out&&!x.target.out);
+ const raw=(q||[]).filter(x=>x&&x.challenger&&x.target&&!x.challenger.out&&!x.target.out);
+ challengeQueue=groupChallengesByTarget(raw);
  challengeQueueCallback=onDone||null;
  if(!challengeQueue.length){const cb=challengeQueueCallback; challengeQueueCallback=null; if(cb)cb(); return;}
  document.getElementById('nextBtn').disabled=true;
  showChallengeGroupNotice(challengeQueue);
  processNextChallenge();
 }
+function groupChallengesByTarget(raw){
+ const map=new Map(), groups=[];
+ raw.forEach(x=>{
+  const key=`${x.target.id}|${x.fromPocket?'pocket':'normal'}`;
+  if(!map.has(key)){
+   const g={challengers:[],target:x.target,fromPocket:!!x.fromPocket};
+   map.set(key,g); groups.push(g);
+  }
+  const g=map.get(key);
+  if(!g.challengers.some(c=>c.id===x.challenger.id))g.challengers.push(x.challenger);
+ });
+ return groups.filter(g=>g.challengers.length&&g.target&&!g.target.out);
+}
+function challengersText(list){return (list||[]).map(c=>c.name).join('、');}
 function showChallengeGroupNotice(q){
- const byTarget={};
- q.forEach(x=>{const k=x.target.id; if(!byTarget[k])byTarget[k]=[]; byTarget[k].push(x.challenger.name);});
- const groups=Object.keys(byTarget).filter(k=>byTarget[k].length>1).map(k=>`${byTarget[k].join('、')} VS ${players[k].name}`);
+ const groups=(q||[]).filter(g=>g.challengers&&g.challengers.length>1).map(g=>`${challengersText(g.challengers)} VS ${g.target.name}`);
  if(!groups.length)return;
  document.querySelectorAll('.challengeGroupNotice').forEach(x=>x.remove());
- const d=document.createElement('div'); d.className='challengeGroupNotice'; d.innerHTML=`多人質疑成立<br>${groups.join('<br>')}`;
+ const d=document.createElement('div'); d.className='challengeGroupNotice'; d.innerHTML=`多人質疑合併<br>${groups.join('<br>')}`;
  document.body.appendChild(d); setTimeout(()=>{if(d.parentNode)d.remove();},1750);
 }
 function processNextChallenge(){
  if(!challengeQueue.length){const cb=challengeQueueCallback; challengeQueueCallback=null; if(cb)cb(); return;}
  const item=challengeQueue.shift();
- if(!item.challenger||!item.target||item.challenger.out||item.target.out){setTimeout(processNextChallenge,120);return;}
- const same=[item.challenger.name].concat(challengeQueue.filter(x=>x.target&&x.target.id===item.target.id).map(x=>x.challenger.name));
- currentChallengeGroupText=same.length>1?`${same.join('、')} VS ${item.target.name}`:'';
- resolveChallenge(item.challenger,item.target,item.fromPocket);
+ item.challengers=(item.challengers||[]).filter(c=>c&&!c.out);
+ if(!item.challengers.length||!item.target||item.target.out){setTimeout(processNextChallenge,120);return;}
+ currentChallengeGroupText=item.challengers.length>1?`${challengersText(item.challengers)} VS ${item.target.name}`:'';
+ resolveChallengeGroup(item.challengers,item.target,item.fromPocket);
 }
-function showChallengeShowdown(challenger,target,fromPocket=false){
+function showChallengeShowdownGroup(challengers,target,fromPocket=false){
  const old=document.getElementById('showdownOverlay'); if(old)old.remove();
+ activeChallengeGroup={challengerIds:challengers.map(c=>c.id),targetId:target.id,fromPocket:!!fromPocket};
  const d=document.createElement('div'); d.id='showdownOverlay'; d.className='showdownOverlay heartbeat';
  const isBang=target.hidden==='BANG';
  const bribeIdx=findCardIndex(target,'賄賂裁判');
@@ -585,72 +893,85 @@ function showChallengeShowdown(challenger,target,fromPocket=false){
  const actionText=fromPocket?'掏口袋質疑':'質疑';
  const cardText=isBang?'BANG':'空響';
  const cardClass=isBang?'revealBang':'revealBlank';
+ const leftText=challengersText(challengers);
  const finalActions = playerCanBribe
-  ? `<div class="showdownWarn">你被抓到作弊！可以現在打出【賄賂裁判】。</div><div class="showdownActions"><button class="btn" onclick="resolveChallengeAfterShowdown(${challenger.id},${target.id},${fromPocket?'true':'false'},true)">使用【賄賂裁判】</button><button class="btn" onclick="resolveChallengeAfterShowdown(${challenger.id},${target.id},${fromPocket?'true':'false'},false)">不使用</button></div>`
-  : `<div class="showdownActions"><button class="btn" onclick="resolveChallengeAfterShowdown(${challenger.id},${target.id},${fromPocket?'true':'false'},false)">翻牌結算</button></div>`;
- d.innerHTML=`<div class="showdownBox heartbeatBox"><div class="showdownTitle">質疑對決</div>${currentChallengeGroupText?`<div class="showdownHint" style="color:#ffe08a">${currentChallengeGroupText}</div>`:''}<div class="showdownDuel"><span>${challenger.name}</span><span class="showdownVs">VS</span><span>${target.name}</span></div><div class="showdownHint">${challenger.name} ${actionText} ${target.name} 藏 BANG。</div><div class="showdownCountdown">心臟跳動中……3 秒後翻牌</div><div id="showdownCard" class="showdownCard revealPending">？</div><div id="showdownActions" class="showdownActions"><button class="btn" disabled>等待翻牌……</button></div></div>`;
+  ? `<div class="showdownWarn">你被多人抓到作弊！可以現在打出【賄賂裁判】。</div><div class="showdownActions"><button class="btn" onclick="resolveChallengeGroupAfterShowdown(true)">使用【賄賂裁判】</button><button class="btn" onclick="resolveChallengeGroupAfterShowdown(false)">不使用</button></div>`
+  : `<div class="showdownActions"><button class="btn" onclick="resolveChallengeGroupAfterShowdown(false)">翻牌結算</button></div>`;
+ d.innerHTML=`<div class="showdownBox heartbeatBox"><div class="showdownTitle">質疑對決</div>${currentChallengeGroupText?`<div class="showdownHint" style="color:#ffe08a">${currentChallengeGroupText}</div>`:''}<div class="showdownDuel"><span>${leftText}</span><span class="showdownVs">VS</span><span>${target.name}</span></div><div class="showdownHint">${leftText} ${actionText} ${target.name} 藏 BANG。</div><div class="showdownCountdown">心臟跳動中……3 秒後翻牌</div><div id="showdownCard" class="showdownCard revealPending">？</div><div id="showdownActions" class="showdownActions"><button class="btn" disabled>等待翻牌……</button></div></div>`;
  document.body.appendChild(d);
  setTimeout(()=>{
   const card=d.querySelector('#showdownCard'); const actions=d.querySelector('#showdownActions'); const cd=d.querySelector('.showdownCountdown');
   if(card){card.className=`showdownCard ${cardClass}`; card.textContent=cardText;}
   if(cd)cd.textContent=isBang?'翻開：BANG！':'翻開：空響。';
   if(actions)actions.outerHTML=finalActions;
-  if(!playerCanBribe){ setTimeout(()=>resolveChallengeAfterShowdown(challenger.id,target.id,fromPocket,false),450); }
+  if(!playerCanBribe){ setTimeout(()=>resolveChallengeGroupAfterShowdown(false),450); }
  },3000);
 }
-function resolveChallengeAfterShowdown(challengerId,targetId,fromPocket=false,useBribe=false){
+function resolveChallengeGroupAfterShowdown(useBribe=false){
  const old=document.getElementById('showdownOverlay'); if(old)old.remove();
- const challenger=players[challengerId], target=players[targetId];
- if(!challenger||!target)return;
- const delay=finishChallenge(challenger,target,fromPocket,useBribe)||900;
+ const g=activeChallengeGroup; activeChallengeGroup=null;
+ if(!g)return;
+ const challengers=(g.challengerIds||[]).map(id=>players[id]).filter(Boolean);
+ const target=players[g.targetId];
+ if(!target||!challengers.length)return;
+ const delay=finishChallengeGroup(challengers,target,g.fromPocket,useBribe)||900;
  currentChallengeGroupText='';
  if(challengeQueueCallback){setTimeout(processNextChallenge,delay);}
 }
-function resolveChallenge(challenger,target,fromPocket=false){
- if(challenger.out&&!fromPocket&&!DEAD_USABLE.has('掏口袋'))return;
+function resolveChallengeGroup(challengers,target,fromPocket=false){
+ challengers=(challengers||[]).filter(c=>c&&!c.out);
+ if(!challengers.length)return;
  const actionText=fromPocket?' 掏口袋質疑 ':' 質疑 ';
- log(`${challenger.name}${actionText}${target.name} 藏 BANG。`);
- showChallengeShowdown(challenger,target,fromPocket);
+ log(`${challengersText(challengers)}${actionText}${target.name} 藏 BANG。`);
+ showChallengeShowdownGroup(challengers,target,fromPocket);
 }
-function finishChallenge(challenger,target,fromPocket=false,forceBribe=false){
+function resolveChallenge(challenger,target,fromPocket=false){
+ if(!challenger||!target)return;
+ resolveChallengeGroup([challenger],target,fromPocket);
+}
+function finishChallengeGroup(challengers,target,fromPocket=false,forceBribe=false){
+ challengers=(challengers||[]).filter(c=>c&&!c.out);
+ if(!challengers.length||!target)return 900;
+ const names=challengersText(challengers);
  if(target.hidden==='BANG'){
-  recordHate(target,challenger,35,fromPocket?'掏口袋成功':'質疑成功');
+  challengers.forEach(c=>recordHate(target,c,35,fromPocket?'掏口袋成功':'質疑成功'));
+  recordSuspicionForAll(target,34,fromPocket?'掏口袋抓到作弊':'質疑抓到作弊');
+  challengers.forEach(c=>recordSuspicion(c,target,26,'親自抓到作弊'));
   let bribe=findCardIndex(target,'賄賂裁判');
   if(forceBribe&&target.id===0&&bribe>=0){
    removeAndFlash(target,bribe);
-   showSimpleEvent('💰 賄賂裁判',`${target.name} 在最後一刻塞錢成功。<br>裁判放下槍，沒有射殺。<br>但 ${challenger.name} 仍抽 3 張。`,'safe');
-   log(`<span class="safe">${target.name} 使用【賄賂裁判】，沒有失去角色；質疑者仍抽 3 張。</span>`);
-   target.hidden='空響'; addBangToStack(target); drawCards(challenger,3);
-   render();
-   return 1750;
+   showSimpleEvent('💰 賄賂裁判',`${target.name} 在最後一刻塞錢成功。<br>裁判放下槍，沒有射殺。<br>但 ${names} 仍各抽 3 張。`,'safe');
+   log(`<span class="safe">${target.name} 使用【賄賂裁判】，沒有失去角色；所有質疑者仍各抽 3 張。</span>`);
+   target.hidden='空響'; addBangToStack(target); challengers.forEach(c=>drawCards(c,3));
+   render(); return 1750;
   } else if(target.id!==0 && bribe>=0){
    removeAndFlash(target,bribe);
-   showSimpleEvent('💰 賄賂裁判',`${target.name} 塞錢成功，沒有被射殺。<br>但 ${challenger.name} 仍抽 3 張。`,'safe');
-   log(`<span class="safe">賄賂裁判成功！${target.name} 不失去角色，但藏起的 BANG 被放回子彈堆。</span>`);
-   target.hidden='空響'; addBangToStack(target); drawCards(challenger,3);
-   render();
-   return 1750;
+   showSimpleEvent('💰 賄賂裁判',`${target.name} 塞錢成功，沒有被射殺。<br>但 ${names} 仍各抽 3 張。`,'safe');
+   log(`<span class="safe">賄賂裁判成功！${target.name} 不失去角色；所有質疑者仍各抽 3 張。</span>`);
+   target.hidden='空響'; addBangToStack(target); challengers.forEach(c=>drawCards(c,3));
+   render(); return 1750;
   } else {
    triggerJudgeExecution(target);
-   log(`<span class="danger">質疑成功！${target.name} 被黑衣裁判射殺。</span>`);
-   loseRole(target,'裁判射殺'); drawCards(challenger,3); log(`${challenger.name} 因質疑正確獲得 3 張行動卡。`);
-   render();
-   return 2350;
+   log(`<span class="danger">質疑成功！${names} 抓到 ${target.name} 作弊；黑衣裁判只處決 ${target.name} 一次。</span>`);
+   loseRole(target,'裁判射殺'); challengers.forEach(c=>drawCards(c,3)); log(`${names} 因質疑正確各獲得 3 張行動卡。`);
+   render(); return 2350;
   }
  } else {
-  recordHate(target,challenger,22,fromPocket?'掏口袋誣告':'質疑誣告');
-  showSimpleEvent('❌ 誣告！',`${target.name} 翻出空響。<br>${challenger.name} 的一張空響替換成 BANG。<br>${target.name} 抽 1 張行動卡補償。`,'danger');
-  log(`質疑失敗。${challenger.name} 一張空響換成 BANG；${target.name} 獲得 1 張行動卡補償。`);
-  if(!challenger.out)addBang(challenger); drawCards(target,1);
-  render();
-  return 1850;
+  challengers.forEach(c=>recordHate(target,c,22,fromPocket?'掏口袋誣告':'質疑誣告'));
+  recordSuspicionForAll(target,-22,'被證明空響');
+  challengers.forEach(c=>recordSuspicionForAll(c,8,'發起誣告',c.id));
+  showSimpleEvent('❌ 誣告！',`${target.name} 翻出空響。<br>${names} 的一張空響各替換成 BANG。<br>${target.name} 抽 ${challengers.length} 張行動卡補償。`,'danger');
+  log(`質疑失敗。${names} 各一張空響換成 BANG；${target.name} 獲得 ${challengers.length} 張行動卡補償。`);
+  challengers.forEach(c=>{if(!c.out){ if(!addBangToStack(c))log(`${c.name} 沒有空響可替換，沒有增加子彈張數。`); }}); drawCards(target,challengers.length);
+  render(); return 1850;
  }
- render();
- return 900;
 }
-function addBang(p){addBangToStack(p)}
+function finishChallenge(challenger,target,fromPocket=false,forceBribe=false){
+ return finishChallengeGroup([challenger],target,fromPocket,forceBribe);
+}
+function addBang(p){return addBangToStack(p)}
 function setupPhase5(){showStage('第五階段：開槍','一發一發翻牌，直到完成下注或有人中彈');shotNo=0;nextShotGlobal=null;setPhaseTitle('按「下一步」逐發開槍。可用第五階段行動卡。');document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 5</span><h3>開槍階段</h3><div id="shotText" class="bulletLine">準備第一發。</div><p class="muted">每一發都會倒數後射擊。</p><div id="shotResult" class="shotResult safe" style="position:static;margin-top:8px">槍口已舉起。</div>';render();}
-function chooseForcedTarget(shooter){let candidates=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==shooter.id); candidates.sort((a,b)=>((b.score*3+(b.bet||0)*2+b.hand.length+hateScore(shooter,b)*2.4)-((a.score*3+(a.bet||0)*2+a.hand.length+hateScore(shooter,a)*2.4)))); const t=candidates[0]||null; if(t)recordHate(t,shooter,10,'互射吧瞄準'); return t;}
+function chooseForcedTarget(shooter){let candidates=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==shooter.id); candidates.sort((a,b)=>targetScoreForShot(shooter,b)-targetScoreForShot(shooter,a)); const t=candidates[0]||null; if(t)recordHate(t,shooter,10,'互射吧瞄準'); return t;}
 function doShot(){
  if(uiLocked||shotResolving)return;
  let active=players.filter(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet);
@@ -712,13 +1033,12 @@ function doShot(){
   if(hits.some(x=>x.id===0))triggerCameraBreak();
   render();
   uiLocked=false; shotResolving=false; document.getElementById('nextBtn').disabled=false;
-  if(players.filter(p=>!p.out).length<=1){declareLast();return;}
   active=players.filter(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet);
   if(active.length===0){setTimeout(()=>{if(!uiLocked&&!shotResolving){phase=6;setupPhase6();}},450);}
  },1550);
 }
 function extraShot(t,reason){if(!t||t.out||!t.aliveThisRound)return; if(t.deck.length===0)t.deck=['空響']; let c=t.deck[t.shotsTaken] || t.deck[0] || '空響'; t.shotsTaken=Math.min(t.shotsTaken+1,t.deck.length); log(`${reason}：${t.name} 額外開一槍。`); if(c==='BANG'){triggerGunOverlay('再來一發 BANG！',t.id===0); log(`<span class="danger">再來一發 BANG！${t.name} 中彈。</span>`); loseRole(t,'再來一發'); if(t.id===0)triggerCameraBreak();} else {triggerGunOverlay('再來一發 Click……',false); log(`${t.name} 額外一槍是空響。`);}}
-function loseRole(p,reason){let idx=p.roles.findIndex(r=>r); if(idx<0)return; p.roles[idx]=false; p.aliveThisRound=false; const deathText=`${avatarImg(p)}${p.name} ${idx<3?'手下陣亡':'隊長陣亡'}（${reason||'中彈'}）`; roundDeaths.push(deathText); resetDeck(p); p.nextShotTarget=null; p.burstShots=0; p.burstTarget=null; log(`${p.name} 失去${idx<3?'一名隊員':'隊長'}，子彈堆重置為 1 BANG + 6 空響。`); drawCards(p,1); if(idx===3){p.out=true;log(`<span class="danger">${p.name} 隊長死亡，淘汰，但仍可打出指定行動卡。</span>`);} }
+function loseRole(p,reason){let idx=p.roles.findIndex(r=>r); if(idx<0)return; p.roles[idx]=false; p.aliveThisRound=false; const deathText=`${avatarImg(p)}${p.name} ${idx<3?'手下陣亡':'隊長陣亡'}（${reason||'中彈'}）`; roundDeaths.push(deathText); const ev={player:p,roleIndex:idx,reason:reason||'中彈'}; roundDeathEvents.push(ev); if(!p.pendingDeathEvents)p.pendingDeathEvents=[]; p.pendingDeathEvents.push(ev); p.nextShotTarget=null; p.burstShots=0; p.burstTarget=null; log(`${p.name} 失去${idx<3?'一名隊員':'隊長'}，死亡效果延後到本回合結算。`); if(idx===3){log(`<span class="danger">${p.name} 隊長死亡，將於回合結算時淘汰。</span>`);} }
 function setupPhase6(){showStage('第六階段：得分','先處理第六階段行動卡，再結算分數');phase6Ready=true; phase6Scored=false; setPhaseTitle('可使用【再來一發】【乾了伏特加】【掏口袋】；按下一步結算得分。');document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 6</span><h3>得分前反應時間</h3><p>可先打第六階段行動卡。按下一步後，存活者獲得 1 + 下注值 + 額外分。</p>'; aiUsePhase6Cards(); render();}
 function showVictoryCeremony(winners,reason='最高分獲勝'){
  document.querySelectorAll('.victoryOverlay').forEach(x=>x.remove());
@@ -731,35 +1051,96 @@ function showVictoryCeremony(winners,reason='最高分獲勝'){
 }
 function openPrizeCase(){
  const d=document.querySelector('.victoryOverlay'); if(!d)return;
- d.innerHTML=`<div class="victoryBox"><h2>黑色手提包</h2><div class="briefcaseScene"><div class="cashGlow"></div><div class="briefcase"><div class="briefcaseLid"></div></div>
- <div class="money m1" style="--x:-160px;--y:-150px;--r:-28deg">💵</div><div class="money m2" style="--x:150px;--y:-165px;--r:26deg">💵</div><div class="money m3" style="--x:-90px;--y:-210px;--r:18deg">💸</div><div class="money m4" style="--x:90px;--y:-220px;--r:-18deg">💸</div><div class="money m5" style="--x:-210px;--y:-80px;--r:42deg">💵</div><div class="money m6" style="--x:210px;--y:-86px;--r:-42deg">💵</div></div><p class="safe">獎金已開箱。</p><button class="btn" onclick="document.querySelector('.victoryOverlay')?.remove()">關閉</button></div>`;
- setTimeout(()=>{},3000);
+ const bills=Array.from({length:160},(_,i)=>{
+  const left=(i*37%101);
+  const drift=((i*53)%520)-260;
+  const rot=((i*71)%900)-450;
+  const size=30+((i*11)%34);
+  const dur=(2.2+((i*7)%22)/10).toFixed(1);
+  const delay=(-((i*13)%62)/10).toFixed(1);
+  const icon=i%5===0?'💰':(i%3===0?'💸':'💵');
+  return `<span class="moneyRain" style="--left:${left}%;--drift:${drift}px;--rot:${rot}deg;--size:${size}px;--dur:${dur}s;--delay:${delay}s">${icon}</span>`;
+ }).join('');
+ const burst=Array.from({length:72},(_,i)=>{
+  const x=((i*97)%620)-310;
+  const y=-(95+((i*43)%310));
+  const r=((i*89)%960)-480;
+  const size=34+((i*17)%32);
+  const delay=(0.72+((i*7)%42)/100).toFixed(2);
+  const dur=(2.55+((i*5)%12)/10).toFixed(2);
+  const icon=i%6===0?'💰':(i%2===0?'💸':'💵');
+  return `<div class="money" style="--x:${x}px;--y:${y}px;--r:${r}deg;font-size:${size}px;animation-delay:${delay}s;animation-duration:${dur}s">${icon}</div>`;
+ }).join('');
+ d.innerHTML=`<div class="moneyStorm">${bills}</div><div class="victoryBox"><h2>黑色手提包</h2><div class="briefcaseScene"><div class="cashGlow"></div><div class="briefcase"><div class="briefcaseLid"></div></div>${burst}</div><p class="prizeRichText">獎金狂撒中，錢源源不斷。</p><button class="btn" onclick="document.querySelector('.victoryOverlay')?.remove()">關閉</button></div>`;
 }
+
+function applyRoundSettlement(){
+ const events=roundDeathEvents.slice();
+ if(!events.length)return [];
+ const lines=[];
+ const byPlayer=new Map();
+ events.forEach(ev=>{if(!byPlayer.has(ev.player.id))byPlayer.set(ev.player.id,[]); byPlayer.get(ev.player.id).push(ev);});
+ byPlayer.forEach((arr,id)=>{
+  const p=players[id]; if(!p)return;
+  const deaths=arr.length;
+  resetDeck(p);
+  p.hidden=null;
+  p.knownTop=[];
+  p.nextShotTarget=null;
+  p.burstShots=0;
+  p.burstTarget=null;
+  p.mutualTarget=null;
+  drawCards(p,deaths);
+  lines.push(`${avatarImg(p)}${p.name} 子彈重置為 1 BANG + 6 空響，抽 ${deaths} 張行動卡。`);
+  if(arr.some(ev=>ev.roleIndex===3)){
+   p.out=true;
+   p.aliveThisRound=false;
+   lines.push(`<span class="roundSummaryDead">${avatarImg(p)}${p.name} 隊長死亡，正式淘汰。</span>`);
+   log(`<span class="danger">${p.name} 隊長死亡，於回合結算正式淘汰。</span>`);
+  }
+ });
+ roundDeathEvents=[];
+ players.forEach(p=>{p.pendingDeathEvents=[];});
+ return lines;
+}
+
 function scorePhase6(){
  phase6Scored=true;
  let lines=[];
  players.forEach(p=>{if(!p.out&&p.aliveThisRound){let g=1+(p.bet||0)+(p.pendingScoreBonus||0); p.score+=g; lines.push(`${avatarImg(p)}${p.name} 存活，+${g} 分。`); p.pendingScoreBonus=0;}});
  log(lines.join('<br>')||'本輪無人得分。');
- showRoundSummary(lines,roundDeaths.slice());
+ const settlementLines=applyRoundSettlement();
+ const summaryLines=lines.concat(settlementLines);
+ showRoundSummary(summaryLines,roundDeaths.slice());
  render();
- let reached=players.filter(p=>!p.out&&p.score>=15);
+ let alive=players.filter(p=>!p.out);
+ if(alive.length<=1){
+  const winners=alive.length?alive:players.slice().sort((a,b)=>b.score-a.score).slice(0,1);
+  gameOver=true;
+  document.getElementById('phaseTitle').textContent='遊戲結束';
+  document.getElementById('hint').textContent='勝利者已產生。';
+  document.getElementById('mainArea').innerHTML=`<h2 class="safe">${winners.map(p=>p.name).join('、')} 成為最後倖存者！</h2>`;
+  document.getElementById('nextBtn').disabled=true;
+  log(`<span class="safe">遊戲結束：${winners.map(p=>p.name).join('、')} 獲勝。</span>`);
+  pendingVictoryCeremony={winners:winners,reason:'最後倖存者'};
+  return;
+ }
+ let reached=alive.filter(p=>p.score>=15);
  if(reached.length){
-  let max=Math.max(...players.filter(p=>!p.out).map(p=>p.score));
-  let top=players.filter(p=>!p.out&&p.score===max);
-  if(top.length>=1){
-   gameOver=true;
-   document.getElementById('phaseTitle').textContent='遊戲結束';
-   document.getElementById('hint').textContent='勝利者已產生。';
-   document.getElementById('mainArea').innerHTML=`<h2 class="safe">${top.map(p=>p.name).join('、')} 獲勝！</h2><p>最高分 ${max} 分。</p>`;
-   document.getElementById('nextBtn').disabled=true;
-   log(`<span class="safe">遊戲結束：${top.map(p=>p.name).join('、')} 以 ${max} 分獲勝。</span>`);
-   showVictoryCeremony(top,top.length>1?'並列冠軍':'最高分獲勝');
-   return;
-  }
+  let max=Math.max(...alive.map(p=>p.score));
+  let top=alive.filter(p=>p.score===max);
+  gameOver=true;
+  document.getElementById('phaseTitle').textContent='遊戲結束';
+  document.getElementById('hint').textContent='勝利者已產生。';
+  document.getElementById('mainArea').innerHTML=`<h2 class="safe">${top.map(p=>p.name).join('、')} 獲勝！</h2><p>最高分 ${max} 分。</p>`;
+  document.getElementById('nextBtn').disabled=true;
+  log(`<span class="safe">遊戲結束：${top.map(p=>p.name).join('、')} 以 ${max} 分獲勝。</span>`);
+  pendingVictoryCeremony={winners:top,reason:(top.length>1?'並列冠軍':'最高分獲勝')};
+  return;
  }
  document.getElementById('mainArea').innerHTML='<h3>得分完成</h3><p>按下一步開始新一輪。</p>'; setPhaseTitle('得分完成。');
 }
-function declareLast(){let alive=players.filter(p=>!p.out); if(alive.length===1){gameOver=true;render();document.getElementById('phaseTitle').textContent='遊戲結束';document.getElementById('hint').textContent='僅存隊長獲勝。';document.getElementById('mainArea').innerHTML=`<h2 class="safe">${alive[0].name} 成為最後倖存者！</h2>`;document.getElementById('nextBtn').disabled=true;log(`<span class="safe">${alive[0].name} 僅存，立即獲勝。</span>`);showVictoryCeremony(alive,'最後倖存者');}}
+function declareLast(){ if(phase!==6){phase=6; setupPhase6();} }
 </script>
 </body>
 </html>
