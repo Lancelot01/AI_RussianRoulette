@@ -1246,7 +1246,7 @@ const Tutorial=window.Tutorial={active:false,busy:false,index:0,round:1,steps:[]
   say('抓到了！賞罰立即生效','這次電腦確實藏了 BANG。<strong>你立即抽 3 張行動卡</strong>；裁判處決對手一名隊員。<br>對手本輪停止開槍、得 0 分，立即抽 1 張死亡補償，Clean Gun 恢復 1 BANG＋6 CLICK。紅色名牌表示本輪死亡。');
   say('開槍是一發一發同步進行','你選了 1 槍。所有仍需開槍的人會同時翻第一發，再一起翻第二發……已完成或本輪死亡的人停止射擊。這次對手已被處決，只剩你開槍。',{enter:()=>this.phase(5)});
   shot('第一輪：扣下扳機','這次第一發是 CLICK。空響只有擊錘聲，沒有槍火；你安全完成 1 槍。');score();
-  say('12 → 14 分','你完成 1 槍且本輪未死亡，拿到 <strong>1＋1＝2 分</strong>，現在是 14 分。對手死亡，得 0 分。<br>下一輪示範質疑錯誤，以及槍內多一枚 BANG 的風險。',{act:()=>this.newRound(2)});
+  say('12 → 14 分','你完成 1 槍且本輪未死亡，拿到 <strong>1(存活)＋1(開槍數)＝2 分</strong>，現在是 14 分。對手死亡，得 0 分。<br>下一輪示範質疑錯誤，以及槍內多一枚 BANG 的風險。',{act:()=>this.newRound(2)});
   pocket();spin();bid(2);
   say('這次對手選了 4 槍','對手又選了很高的開槍數。本次再質疑他一次，看看「選很多槍」能不能證明他作弊。<br>每名玩家每輪最多一次正式質疑。',{gate:'challenge',focus:'#p1 .seatPlate',instruction:'再次點電腦名牌，提出質疑。',enter:()=>this.phase(4)});
   say('誤判了：CLICK → BANG','這次對手藏的是 CLICK，所以<strong>對手抽 1 張行動卡</strong>。你的 1 張 CLICK 被替換成 BANG，完整持有變成 <strong>2 BANG＋5 CLICK</strong>，仍共 7 張。<br>槍內自動重新洗牌，先前偷窺情報失效；額外 BANG 會保留到你的一名隊員死亡並 Clean Gun。',{focus:'.gunInspectButton',instruction:'可查看自己的子彈；藏了一張 CLICK，所以槍內現在是 2 BANG＋4 CLICK。'});
