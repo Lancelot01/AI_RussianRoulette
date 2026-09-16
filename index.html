@@ -305,6 +305,9 @@ body:after{content:none!important;display:none!important}
 @media(max-width:1100px){.tutorialCoach{width:250px;left:10px;padding:14px}.tutorialCoach h2{font-size:18px}.tutorialCoach p{font-size:12px}.menuArtCaption{letter-spacing:2px}.menuCopy h1{font-size:54px}.menuTagline{font-size:17px}}
 @media(max-width:700px){.mainMenu{display:block;padding:35px 26px}.menuCopy{max-width:480px}.menuArt{position:absolute;opacity:.18;top:120px;right:0;width:100%;pointer-events:none}.menuCopy h1{font-size:46px}.menuTagline{font-size:16px}.tutorialCoach{top:auto;bottom:0;left:0;width:100%;max-height:32svh;border-radius:9px 9px 0 0;padding:10px 14px}.tutorialCoach h2{font-size:16px;margin:6px 0}.tutorialCoach p{font-size:11px;line-height:1.5;margin:6px 0}.tutorialMeter,.tutorialDisclaimer{display:none}.tutorialCoach #tutorialNext{padding:7px}.loadGunNotice{inset:34% 2% auto}body.inTutorial{padding-bottom:32svh}}
 
+.playedCardStage{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:13px;width:min(440px,80%);text-align:center;filter:drop-shadow(0 12px 32px #000b)}.playedCardOwner{background:#0b1714ed;border:1px solid #c9ad72;border-radius:7px;padding:9px 20px;font-size:17px;color:#f1d8a1}.playedActionCard{width:278px;min-height:347px;padding:19px 21px 16px;border:2px solid #efdda9;border-radius:12px;background:radial-gradient(ellipse at 25% 10%,#f5ebcd,#d2c19a 65%,#ad9b73);box-shadow:inset 0 0 0 5px #65573535,0 10px 30px #0009;color:#202820;display:flex;flex-direction:column;align-items:center}.playedCardPhase{font-size:11px;letter-spacing:1px;align-self:stretch;border-bottom:1px solid #70654b66;padding-bottom:12px}.playedCardSymbol{font:49px Georgia,serif;line-height:1.3;width:80px;height:75px;margin:10px 0 4px;display:grid;place-items:center;color:#334435}.playedActionCard h2{font-size:26px;letter-spacing:3px;margin:2px 0 16px;color:#202820}.playedCardDescription{font-size:15px;line-height:1.85;text-align:left;margin:0 0 18px;flex:1}.playedCardFooter{font-size:10px;line-height:1.65;border-top:1px solid #70654b55;padding-top:10px;color:#4f553f}.playedCardStage>small{font-size:11px;color:#e5d4ae;background:#0b1714ed;border-radius:5px;padding:5px 10px}.cardTargetLabel{position:absolute;left:50%;top:31%;transform:translateX(-50%);padding:11px 19px;max-width:80%;text-align:center;background:#102019f5;border:1px solid #e2c48c;border-radius:8px;color:#f5d99c;font-size:16px}.seat.cardSource .seatPlate{box-shadow:0 0 0 2px #fff0b4,0 0 24px #e9cf8644}.seat.cardRecipient .seatPlate{box-shadow:0 0 0 3px #e4ac65,0 0 35px #d4a35377}.seat.cardSource .seatPlate:before,.seat.cardRecipient .seatPlate:before{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;border-radius:4px;padding:4px 9px;color:#152017;background:#efdb9d;font-size:12px}.seat.cardSource .seatPlate:before{content:'出牌者'}.seat.cardRecipient .seatPlate:before{content:'作用對象'}
+@media(max-width:600px){.playedCardStage{top:47%;gap:7px}.playedActionCard{width:245px;min-height:300px;padding:15px 18px}.playedCardSymbol{height:50px;font-size:37px}.playedCardDescription{font-size:13px}.playedCardOwner{font-size:14px}.cardTargetLabel{font-size:12px;top:39%}}
+
 </style>
 </head>
 <body>
@@ -567,7 +570,7 @@ function addBangToStack(p){
  shuffleGun(p);publicEvent({type:'load',target:p.id});return true;
 }
 function findCardIndex(p,name){return p.hand.findIndex(c=>c.name===name)}
-function removeAndFlash(p,idx){const card=p.hand.splice(idx,1)[0];discardCard(card);publicEvent({type:'card',actor:p.id,card:card.name});if(!simMode)effectQueue.push({kind:'card',name:p.name,card:card.name,txt:card.txt});log(`${p.name} 使用【${card.name}】。`);if(simStats)simStats.cards++;return card;}
+function removeAndFlash(p,idx,targetId=null,queueIndex=effectQueue.length){const card=p.hand.splice(idx,1)[0];discardCard(card);publicEvent({type:'card',actor:p.id,card:card.name});if(!simMode)effectQueue.splice(queueIndex,0,{kind:'card',actorId:p.id,name:p.name,card:card.name,txt:card.txt,at:card.at,skull:card.skull,targetId,targetName:targetId==null?null:players[targetId].name});log(`${p.name} 使用【${card.name}】。`);if(simStats)simStats.cards++;return card;}
 function isHighestLivingBet(p){
  const alive=livingThisRound();
  if(!p || !alive.includes(p) || !alive.length)return false;
@@ -586,8 +589,9 @@ function useCard(p,idx,targetId=null){
  const card=p.hand[idx];if(!card||gameOver||!canUseCard(p,card))return false;
  const targets=legalTargets(p,card.name),t=targetId==null?null:players[targetId];
  if(card.target&&(!t||!targets.includes(t)))return false;
+ const cardQueueStart=effectQueue.length;
  if(card.name==='上子彈'&&!addBangToStack(t))return false;
- removeAndFlash(p,idx);
+ removeAndFlash(p,idx,t?.id??null,cardQueueStart);
  if(t&&t!==p&&card.name!=='偷窺')recordHate(t,p,12,card.name);
  switch(card.name){
  case '偷窺': grantPeek(p,3);grantPeek(t,1);break;
@@ -962,8 +966,8 @@ async function presentChallenge(challengers,target,fromPocket,token){
  if(!target||!target.hidden||token!==sessionId)return;await GameFX.challenge(challengers,target);if(token!==sessionId)return;
  let bribe=false;const eligible=phase===4&&target.hidden==='BANG'&&target.aliveThisRound&&target.hand.some(c=>c.name==='賄賂裁判')&&target.deck.includes('空響');
  if(eligible){if(target.id===0)bribe=await responseBribe(token);else bribe=getAIKnowledge(target).self.hand.some(c=>c.name==='賄賂裁判');}if(token!==sessionId)return;
- if(target.hidden==='BANG'&&target.aliveThisRound&&!target.out){if(bribe)await TableFX.bribe(target);else await GameFX.judge(target);}if(token!==sessionId)return;
- const truth=target.hidden,mark=RuleFeedback.pending.length;const result=finishChallengeGroup(challengers,target,fromPocket,bribe);const events=RuleFeedback.pending.splice(mark);render();await RuleFeedback.challenge(challengers,target,truth,result,events);if(token!==sessionId)return;await drainEffects(token);
+ if(target.hidden==='BANG'&&target.aliveThisRound&&!target.out){if(!bribe)await GameFX.judge(target);}if(token!==sessionId)return;
+ const truth=target.hidden,mark=RuleFeedback.pending.length;const result=finishChallengeGroup(challengers,target,fromPocket,bribe);const events=RuleFeedback.pending.splice(mark);render();if(result?.bribed){await drainEffects(token);if(token!==sessionId)return;await TableFX.bribe(target);if(token!==sessionId)return;}await RuleFeedback.challenge(challengers,target,truth,result,events);if(token!==sessionId)return;await drainEffects(token);
 }
 async function responseBribe(token){return new Promise(resolve=>{const d=document.createElement('div');d.id='bribeModal';d.className='overlay';d.style.zIndex=130;d.innerHTML='<div class="modal"><h2>你被抓到藏 BANG</h2><p>使用賄賂裁判，交換口袋與槍內的 CLICK 並洗牌。</p><button class="btn" data-yes>使用賄賂裁判</button> <button class="btn" data-no>接受處決</button></div>';const done=v=>{d.remove();resolve(v);};d.querySelector('[data-yes]').onclick=()=>done(true);d.querySelector('[data-no]').onclick=()=>done(false);document.body.appendChild(d);GameFX.watchRemoval('bribeModal',()=>resolve(false),token);});}
 async function enterPoint(token){phase6Ready=true;phase6Scored=false;setPhaseTitle('結算前可使用第六階段行動卡，準備好再收取分數。');document.getElementById('mainArea').innerHTML='<h3>活下來的人，收取籌碼</h3><div class="scoreChips"><div class="scoreChip">＋</div></div><p>再來一發 · 乾了伏特加 · 掏口袋<br>此時仍可改變本輪結果。</p>';await thinkDelay(token,'結算前行動');if(token!==sessionId)return;aiUsePhase6Cards();await drainEffects(token);if(token===sessionId){checkVictory();render();}}
@@ -1224,44 +1228,44 @@ const Tutorial=window.Tutorial={active:false,busy:false,index:0,round:1,steps:[]
  rig(){for(const p of players)this.arrange(p,this.round===2?1:5);},
  async goto(index){if(!this.active)return;this.index=index;this.busy=true;const token=sessionId;this.paint();const step=this.steps[index];if(step.enter)await step.enter();if(!this.active||token!==sessionId)return;this.busy=false;render();this.paint();},
  current(){return this.steps[this.index]||{};},
- paint(){if(!this.active)return;const s=this.current();document.getElementById('tutorialCoach').hidden=false;document.getElementById('tutorialProgress').textContent=`教學 ${this.index+1} / ${this.steps.length}`;document.getElementById('tutorialMeter').style.width=((this.index+1)/this.steps.length*100)+'%';document.getElementById('tutorialRound').textContent=`第 ${this.round} 輪 · 目前 ${players[0].score} 分`;document.getElementById('tutorialTitle').textContent=s.title;document.getElementById('tutorialText').innerHTML=s.text;document.getElementById('tutorialInstruction').textContent=this.busy?'演出進行中；0.3 秒後可點桌面或按 Enter 快轉。':s.instruction||'讀完後，按下方按鈕繼續。';const b=document.getElementById('tutorialNext');b.disabled=this.busy||!!s.gate;b.textContent=this.busy?'進行中……':s.gate?'請完成桌上的操作':s.label||'繼續';this.highlight();},
+ paint(){if(!this.active)return;const s=this.current();document.getElementById('tutorialCoach').hidden=false;document.getElementById('tutorialProgress').textContent=`教學 ${this.index+1} / ${this.steps.length}`;document.getElementById('tutorialMeter').style.width=((this.index+1)/this.steps.length*100)+'%';document.getElementById('tutorialRound').textContent=`第 ${this.round} 輪 · 目前 ${players[0].score} 分`;document.getElementById('tutorialTitle').textContent=s.title;document.getElementById('tutorialText').innerHTML=s.text;document.getElementById('tutorialInstruction').textContent=this.busy?'演出進行中。卡面至少展示 2 秒；其他演出可在 0.3 秒後點桌面或按 Enter 快轉。':s.instruction||'讀完後，按下方按鈕繼續。';const b=document.getElementById('tutorialNext');b.disabled=this.busy||!!s.gate;b.textContent=this.busy?'進行中……':s.gate?'請完成桌上的操作':s.label||'繼續';this.highlight();},
  highlight(){document.querySelectorAll('.tutorialFocus').forEach(e=>e.classList.remove('tutorialFocus'));if(!this.active||this.busy)return;const s=this.current();if(s.focus)document.querySelectorAll(s.focus).forEach(e=>e.classList.add('tutorialFocus'));},
  async next(){if(!this.active||this.busy||this.current().gate)return;const s=this.current(),token=sessionId;this.busy=true;this.paint();if(s.act)await s.act();if(this.active&&token===sessionId)await this.goto(this.index+1);},
  async action(gate,fn,valid=()=>true){if(!this.active||this.busy||this.current().gate!==gate||uiLocked)return;this.busy=true;this.paint();const token=sessionId;await fn();if(!this.active||token!==sessionId)return;if(valid())await this.goto(this.index+1);else{this.busy=false;this.paint();}},
  async phase(n){phase=n;await ({2:setupPhase2,3:setupPhase3,4:setupPhase4,5:setupPhase5}[n]?.());render();},
  async newRound(n){this.round=n;setupRound();},
  makeSteps(){const steps=[],add=s=>steps.push(s),say=(title,text,extra={})=>add({title,text:'<p>'+text+'</p>',...extra});
-  const pocket=()=>say('親手藏好一枚子彈','將<strong>金色 CLICK 假子彈</strong>拖進黑色布袋。每輪只藏一枚，完成後槍內剩 6 張。這次先練習正常藏彈。',{gate:'hide',focus:'[data-bullet="空響"],#pocketBag',instruction:'拖曳金色假子彈 → 黑色袋口。'});
-  const spin=()=>say('轉輪：讓順序成為秘密','按住彈巢，沿圓周轉動至少四分之一圈，再放手。<strong>正式對局中，你和 AI 都不知道下一發</strong>；偷窺才可合法取得情報。',{gate:'spin',focus:'#spinObject',instruction:'拖動彈巢，轉過四分之一圈後放手。',enter:()=>this.phase(2)});
-  const bid=n=>say(n===0?'這次選擇 0 槍':'秘密決定開槍數',`選擇 <strong>${n} 槍</strong>，把數字骰拖入托盤。可選 0～5，沒有 6；全部決定後才一起公開。數字是你的選擇，不是隨機骰點。`,{gate:'bet',bet:n,focus:`[data-die="${n}"],#dieTray`,instruction:`拖曳 ${n} → 你的開槍數托盤。`,enter:()=>this.phase(3)});
-  const challenge=()=>say('高開槍數，是不是在作弊？',`電腦選了 <strong>${this.round===1?5:4} 槍</strong>。藏 BANG 可能讓高開槍數更安全，但數字本身不是證據：對手也可能在冒險或虛張聲勢。<br>本次請點對手名牌，提出「你藏了 BANG」的質疑。`,{gate:'challenge',focus:'#p1 .seatPlate',instruction:'點桌面上方電腦的名牌，正式質疑一次。',enter:()=>this.phase(4)});
+  const pocket=()=>say('親手藏好一枚子彈','按住<strong>金色 CLICK 假子彈</strong>，拖到黑色布袋的袋口，再放開。<br>藏起來的那一枚暫時不參與本輪射擊。因此，完整的 7 張槍牌會留下 6 張在槍內。<br>這次先藏假子彈：槍內會剩下 <strong>1 BANG＋5 CLICK</strong>。',{gate:'hide',focus:'[data-bullet="空響"],#pocketBag',instruction:'拖曳金色假子彈 → 黑色袋口。'});
+  const spin=()=>say('轉輪：讓順序成為秘密','按住桌上的六孔彈巢，沿圓周拖動至少四分之一圈，再放手，等待它停止。這個動作會把槍內的 6 張牌重新洗牌。<br><strong>正式對局中，玩家和 AI 都不知道洗牌後的順序。</strong>只有使用「偷窺」等合法效果，才能知道特定位置的牌；再次洗牌後，舊情報就失效。',{gate:'spin',focus:'#spinObject',instruction:'拖動彈巢，轉過四分之一圈後放手。',enter:()=>this.phase(2)});
+  const bid=n=>say(n===0?'這次選擇 0 槍':'秘密決定開槍數',`這輪請選擇 <strong>${n} 槍</strong>：把對應的數字骰拖進自己的托盤。<br>數字代表你打算扣幾次扳機，可以選 0～5；這不是擲骰，不會隨機決定。<br>每個人先秘密選好，等全員完成後才同時公開。你不能先看電腦的選擇再決定，電腦也不能偷看你的選擇。`,{gate:'bet',bet:n,focus:`[data-die="${n}"],#dieTray`,instruction:`拖曳 ${n} → 你的開槍數托盤。`,enter:()=>this.phase(3)});
+  const challenge=()=>say('高開槍數，是不是在作弊？',`電腦選了 <strong>${this.round===1?5:4} 槍</strong>，看起來很有把握。也許他藏了 BANG，也可能只是冒險，或故意引你質疑。<br><strong>開槍數高，不代表一定作弊。</strong>質疑的內容只有「你藏了 BANG」，對方必須公開袋中的牌。<br>這次請點電腦的名牌，試著抓出他的秘密。`,{gate:'challenge',focus:'#p1 .seatPlate',instruction:'點桌面上方電腦的名牌，正式質疑一次。',enter:()=>this.phase(4)});
   const shot=(title,text)=>say(title,text,{gate:'shot',focus:'#nextBtn',instruction:'點「同步扣扳機」；本次只開一發。'});
-  const score=()=>say('收取本輪分數','<strong>本輪完全沒有失去角色：開槍數＋1 分。</strong><br>本輪任何階段失去角色，就得 0 分，包括被裁判處決。按「收取分數」查看結果。',{gate:'score',focus:'#nextBtn',instruction:'點桌中央「收取分數」。'});
-  say('歡迎來到賭命大賽','你有 <strong>3 名隊員＋1 名隊長</strong>。隊員先死，最後才是隊長；隊長死亡才正式淘汰。<br>為了快速走到勝利示範，<strong>教學從 12 分開始</strong>。正式牌局從 0 分開始。');
-  say('七枚子彈，一個秘密','初始完整槍牌是 <strong>1 BANG 真子彈＋6 CLICK 假子彈，共 7 張</strong>。黑色是真子彈，金色是假子彈。<br>真、假比例會因懲罰或行動卡改變；增加實彈是替換假子彈，<strong>總數仍為 7</strong>。',{focus:'.gunInspectButton',instruction:'可按「查看自己的子彈」核對數量，關閉後繼續。'});
-  say('藏真子彈：收益與風險','藏 CLICK 是正常行為；藏 BANG 就是作弊。只有一枚 BANG 時，把它藏起來能讓本輪槍內全是 CLICK，是快速得分的手段。<br>但被抓到就失去一名角色；有多枚 BANG 時，藏一枚也不等於完全安全。');
+  const score=()=>say('收取本輪分數','計分先看你這輪有沒有失去角色。<br><strong>整輪沒有失去角色：存活基本分 1 分＋最後確定的開槍數。</strong>例如選 0 槍得 1 分，選 3 槍得 4 分。<br>只要本輪失去過任何角色，不論是被裁判處決或中彈，這輪都得 <strong>0 分</strong>。現在按「收取分數」查看結果。',{gate:'score',focus:'#nextBtn',instruction:'點桌中央「收取分數」。'});
+  say('歡迎來到賭命大賽','你帶領一支 <strong>3 名隊員＋1 名隊長</strong>的隊伍。每次失去角色時，先扣一名隊員；三名隊員都死亡後，才輪到隊長。隊長死亡，整支隊伍才正式淘汰。<br>一輪會依序經過藏彈、轉輪、決定開槍數、質疑、開槍、結算六個階段。<br>這段教學用三輪帶你實際操作，<strong>從 12 分開始</strong>，方便示範勝利。正式牌局仍從 0 分開始；隨時可按「離開教學」返回主選單。');
+  say('七枚子彈，一個秘密','每人起始持有 <strong>1 枚 BANG 真子彈＋6 枚 CLICK 假子彈</strong>，對應共 7 張槍牌。黑色 BANG 會造成死亡；金色 CLICK 只會空響。<br>真、假子彈的比例可能因懲罰或行動卡改變。例如增加一枚實彈，是將一枚假子彈換成實彈，變成 <strong>2 BANG＋5 CLICK</strong>，不是多拿一張牌。完整持有的總數仍為 7。',{focus:'.gunInspectButton',instruction:'可按「查看自己的子彈」核對數量，關閉後繼續。'});
+  say('藏真子彈：收益與風險','每輪都要秘密藏一枚子彈。藏 <strong>CLICK 假子彈</strong>是正常行為；藏 <strong>BANG 真子彈</strong>則算作弊。<br>只有一枚 BANG 時，把它藏起來，這輪槍內就全是 CLICK，你可以選擇較高的開槍數來爭取分數。<br>但若被質疑並抓到，就會遭裁判處決、失去一名角色，本輪也不能得分。若原本有多枚 BANG，即使藏起一枚，槍內仍可能有實彈。');
   pocket();spin();bid(1);
   // Text is fixed per scenario rather than inferred from hidden answers.
   challenge();
-  say('抓到了！賞罰立即生效','這次電腦確實藏了 BANG。<strong>你立即抽 3 張行動卡</strong>；裁判處決對手一名隊員。<br>對手本輪停止開槍、得 0 分，立即抽 1 張死亡補償，Clean Gun 恢復 1 BANG＋6 CLICK。紅色名牌表示本輪死亡。');
-  say('開槍是一發一發同步進行','你選了 1 槍。所有仍需開槍的人會同時翻第一發，再一起翻第二發……已完成或本輪死亡的人停止射擊。這次對手已被處決，只剩你開槍。',{enter:()=>this.phase(5)});
-  shot('第一輪：扣下扳機','這次第一發是 CLICK。空響只有擊錘聲，沒有槍火；你安全完成 1 槍。');score();
-  say('12 → 14 分','你完成 1 槍且本輪未死亡，拿到 <strong>1(存活)＋1(開槍數)＝2 分</strong>，現在是 14 分。對手死亡，得 0 分。<br>下一輪示範質疑錯誤，以及槍內多一枚 BANG 的風險。',{act:()=>this.newRound(2)});
+  say('抓到了！賞罰立即生效','袋中翻出了 BANG，你質疑成功！<strong>你立即抽 3 張行動卡</strong>；作弊的電腦被裁判處決，失去一名隊員。<br>對手本輪不再開槍，也不能得分。因為死的是普通隊員，他立即抽 1 張死亡補償，並清槍（Clean Gun），恢復 1 BANG＋6 CLICK。<br>紅色名牌代表「本輪已死亡」，不是整支隊伍已淘汰。下輪他會派下一名角色繼續。');
+  say('開槍是一發一發同步進行','你選了 1 槍，所以這輪需要扣一次扳機。<br>多人開槍時，是所有需要射擊的人一起開第一槍，再由仍需射擊的人一起開第二槍；不會讓某人先連續開完。<br>完成自己的開槍數，或本輪失去角色，就停止射擊。這次電腦已被處決，因此只有你需要開槍。',{enter:()=>this.phase(5)});
+  shot('第一輪：扣下扳機','請按桌中央的「同步扣扳機」。倒數後，人物會扣下扳機。<br>這段教學的第一發安排為 <strong>CLICK 空響</strong>，只有「喀」一聲，沒有槍火。完成這一槍後，你就能進入結算。');score();
+  say('12 → 14 分','你完成了 1 槍，整輪也沒有失去角色，因此拿到 <strong>1 分（存活基本分）＋1 分（開槍數）＝2 分</strong>，從 12 分增加到 14 分。<br>電腦這輪失去角色，所以得 0 分。<br>下一輪會把藏起的子彈歸回完整槍牌，再重新藏彈、轉輪。我們接著示範：質疑錯誤會發生甚麼事。',{act:()=>this.newRound(2)});
   pocket();spin();bid(2);
-  say('這次對手選了 4 槍','對手又選了很高的開槍數。本次再質疑他一次，看看「選很多槍」能不能證明他作弊。<br>每名玩家每輪最多一次正式質疑。',{gate:'challenge',focus:'#p1 .seatPlate',instruction:'再次點電腦名牌，提出質疑。',enter:()=>this.phase(4)});
-  say('誤判了：CLICK → BANG','這次對手藏的是 CLICK，所以<strong>對手抽 1 張行動卡</strong>。你的 1 張 CLICK 被替換成 BANG，完整持有變成 <strong>2 BANG＋5 CLICK</strong>，仍共 7 張。<br>槍內自動重新洗牌，先前偷窺情報失效；額外 BANG 會保留到你的一名隊員死亡並 Clean Gun。',{focus:'.gunInspectButton',instruction:'可查看自己的子彈；藏了一張 CLICK，所以槍內現在是 2 BANG＋4 CLICK。'});
-  say('接著開兩槍','你選了 2 槍，對手選了 4 槍。這段固定教學劇本安排雙方第二發 BANG，方便觀察死亡流程；<strong>正式對局不會告訴你哪一發是實彈</strong>。',{enter:()=>this.phase(5)});
-  shot('第二輪 · 第一發','雙方一起開第一槍，都是 CLICK。還活著不代表這輪已結束：你仍需完成第二槍。');
-  shot('第二輪 · 第二發','再扣一次扳機。這次雙方中彈，各失去一名隊員；尚未完成的射擊全部停止。');
-  say('死亡後，立刻清槍','你和對手各抽 1 張死亡補償。你的額外 BANG 清除，恢復 <strong>1 BANG＋6 CLICK</strong>。<br>本輪死亡者只能依卡面時機使用 ☠ 行動卡；普通卡不能使用。隊長死亡不抽補償、不 Clean Gun。');score();
-  say('仍然是 14 分','本輪失去角色，你的分數沒有增加，仍為 14。結算展示的重置只是紀錄，<strong>不會再次抽牌或清槍</strong>。<br>接著用最後一輪了解勝利與行動卡。',{act:()=>this.newRound(3)});
-  say('還有一件事：15 分勝利','得分結算後，必須<strong>至少 15 分，而且是唯一最高分</strong>才能獲勝。15 分以上並列最高時，所有未淘汰玩家繼續。<br>只剩一名隊長則立即勝利；同一事件所有隊長死亡則無人獲勝。');pocket();spin();bid(0);
-  say('0 槍也能得分','若本輪不死，0 槍仍拿 <strong>0＋1＝1 分</strong>，14 分就能到 15 分。<br>不過行動卡還能改變開槍數。這次跳過質疑，看看對手會做甚麼。',{enter:()=>this.phase(4),act:()=>LessonEngine.submitChallenges(null)});
-  say('對手打出「多開一槍」','這張卡只能在 <strong>PHASE 4 質疑階段</strong>使用，可以指定任意玩家（含自己），把開槍數加 1；<strong>5 會變成 0</strong>。<br>電腦指定你，你的 0 槍變成 1 槍。這會改變需要射擊的次數，也改變存活後的得分。',{enter:async()=>{this.giveCard(players[1],'多開一槍');await runUI(async token=>{useCard(players[1],players[1].hand.findIndex(c=>c.name==='多開一槍'),0);await drainEffects(token);});}});
-  say('看卡面，再選時機','每張卡標示合法階段；手牌和同階段出牌數沒有上限。金色可用、灰色目前不可用。<br>卡面寫「任意玩家」可選自己；射向別人也能指向本輪已死角色。衝突效果以最後打出的為準。<br>接著練習你手上的「空槍」。',{enter:()=>this.phase(5)});
-  say('親手使用「空槍」','「空槍」只能在 <strong>PHASE 5 開槍</strong>、你仍需開槍時使用，讓你的下一槍朝天空。<br>仍會翻牌並計入射擊次數，BANG 不會變 CLICK，只是不會傷人。請點發光的空槍卡。',{gate:'card',focus:'.actionCard[data-lesson-card="空槍"]',instruction:'點手牌中的「空槍」，實際使用一次。'});
-  shot('最後一槍 · 朝天空','你的槍口已朝天空。本次翻出 CLICK，完成被增加的 1 槍，沒有失去角色。');score();
-  say('16 分，教學完成','你本輪完成 1 槍且存活，獲得 <strong>2 分：14 → 16</strong>，成為唯一最高分並獲勝。<br>你已練過藏彈、洗牌、秘密選數、質疑賞罰、同步開槍、死亡清槍、行動卡與得分。正式牌局裡，請靠公開資訊判斷對手。',{label:'回主選單，開始正式牌局',act:()=>this.exit()});
+  say('這次對手選了 4 槍','電腦這輪選了 <strong>4 槍</strong>。他上一輪才被抓到作弊，這次是否又藏了真子彈？<br>這輪已重新藏彈，上輪的答案不能當成這輪的證據。請再質疑他一次，看看結果。<br>每人每輪最多提出一次正式質疑；新的一輪可以重新選擇。',{gate:'challenge',focus:'#p1 .seatPlate',instruction:'再次點電腦名牌，提出質疑。',enter:()=>this.phase(4)});
+  say('誤判了：CLICK → BANG','這次翻出的是 <strong>CLICK</strong>，電腦沒有作弊。因為被你誣告，<strong>電腦立即抽 1 張行動卡</strong>。<br>你受到懲罰：槍內一枚 CLICK 被換成 BANG，完整持有變成 <strong>2 BANG＋5 CLICK</strong>。你已藏了一枚 CLICK，所以本輪槍內是 2 BANG＋4 CLICK，共 6 張。<br>槍內隨即重新洗牌，舊的偷窺情報失效。多出的 BANG 不會在下一輪自動消失，必須等你的一名普通隊員死亡並清槍才會移除。',{focus:'.gunInspectButton',instruction:'可查看自己的子彈；藏了一張 CLICK，所以槍內現在是 2 BANG＋4 CLICK。'});
+  say('接著開兩槍','你需要開 2 槍，電腦需要開 4 槍。先一起開第一槍，只要仍存活且尚未完成開槍數，就繼續下一槍。<br>為了示範死亡流程，這段教學安排雙方第二發都是 BANG。<strong>這只限固定教學劇本；正式對局的牌序隨機，玩家與 AI 都不會事先知道。</strong>',{enter:()=>this.phase(5)});
+  shot('第二輪 · 第一發','按「同步扣扳機」，雙方一起開第一槍。這一發都是 CLICK，沒有人失去角色。<br>你選了 2 槍，因此第一槍安全之後，仍然要完成第二槍，不能中途自行停止。');
+  shot('第二輪 · 第二發','再按一次「同步扣扳機」。這次雙方都翻出 BANG，且槍口都朝向自己，因此各失去一名隊員。<br>兩人的名牌會立即標紅，本輪都不再射擊。即使電腦原本選了 4 槍，也不需要繼續開第三、第四槍。');
+  say('死亡後，立刻清槍','普通隊員死亡時，立即處理三件事：<strong>停止本輪射擊、抽 1 張補償牌、清槍</strong>。這些效果不會等到結算才發生。<br>你和電腦已各抽 1 張牌。你的額外 BANG 也已清除，完整槍牌恢復為 <strong>1 BANG＋6 CLICK</strong>，等待下輪重新藏彈。<br>本輪死亡後，只能在合法階段使用有 ☠ 標記的行動卡。若死的是最後的隊長，則立即淘汰，不抽死亡補償，也不清槍。');score();
+  say('仍然是 14 分','雖然你已經開了 2 槍，但本輪失去過角色，因此仍得 <strong>0 分</strong>，總分停在 14 分。電腦也因死亡而不得分。<br>結算時看到的清槍提示，是提醒你死亡當下已完成重置，<strong>不會再抽一次補償牌，也不會重複清槍</strong>。<br>下一輪將示範：接近勝利時，行動卡如何改變局面。',{act:()=>this.newRound(3)});
+  say('還有一件事：15 分勝利','你現在有 14 分，已經接近勝利。得分結算後，必須同時滿足<strong>總分至少 15 分</strong>，以及<strong>沒有其他玩家和你並列或超過你</strong>，才會獲勝。<br>例如 16 比 14，16 分者獲勝；若兩人都是 16 分，就繼續遊戲，而且其他未淘汰玩家也一起繼續。<br>另一種勝法是成為最後仍存活的隊長；若所有隊長在同一事件中死亡，則無人獲勝。');pocket();spin();bid(0);
+  say('0 槍也能得分','選 0 槍代表本輪原本不需要扣扳機。只要整輪沒有失去角色，仍能拿到 <strong>1 分（存活）＋0 分（開槍數）＝1 分</strong>，讓你從 14 分到 15 分。<br>但選完數字，還不代表安全過關：行動卡可以改變開槍數或造成額外射擊。<br>這次先不質疑對手，繼續觀察他的行動。',{enter:()=>this.phase(4),act:()=>LessonEngine.submitChallenges(null)});
+  say('對手打出「多開一槍」','剛才先展示的是電腦打出的完整卡面，接著虛線從電腦指向你，表示你是這張卡的作用對象。<br>「多開一槍」只能在 <strong>PHASE 4 質疑階段</strong>使用，能指定任意玩家，也可以指定自己。它讓開槍數加 1，但 <strong>5 會回到 0</strong>。<br>你的數字已從 <strong>0 變成 1</strong>：你需要開一槍；若存活，得分也改為 1＋1＝2 分。',{enter:async()=>{this.giveCard(players[1],'多開一槍');await runUI(async token=>{useCard(players[1],players[1].hand.findIndex(c=>c.name==='多開一槍'),0);await drainEffects(token);});}});
+  say('看卡面，再選時機','出牌前，先看卡面上方的 <strong>PHASE 階段標示</strong>，再看效果和可指定的對象。手牌亮起代表目前可用，灰色代表時機或條件還不符合。<br>手牌數量沒有上限，同一階段也能使用多張合法的牌。若效果互相衝突，以最後打出的效果為準。<br>卡面寫「任意玩家」時可指定自己；讓槍口轉向別人的牌，也可以瞄準本輪已死亡的角色。接下來請練習使用「空槍」。',{enter:()=>this.phase(5)});
+  say('親手使用「空槍」','現在是 <strong>PHASE 5 開槍階段</strong>，而你還有 1 槍要開，所以手上的「空槍」可以使用。請點發光的卡片。<br>它會讓<strong>你的下一槍朝天空</strong>。這一槍仍會翻出一張槍牌，也算完成一次射擊；若翻出 BANG，它仍是真子彈，只是不會打中任何人。<br>這張牌作用於你自己，因此展示卡面後不會畫對其他玩家的虛線。',{gate:'card',focus:'.actionCard[data-lesson-card="空槍"]',instruction:'點手牌中的「空槍」，實際使用一次。'});
+  shot('最後一槍 · 朝天空','「空槍」已生效，人物會把槍口舉向天空。現在按「同步扣扳機」，完成這輪被增加的 1 槍。<br>本次教學翻出 CLICK，你沒有失去角色，可以繼續結算。');score();
+  say('16 分，教學完成','你這輪完成 1 槍，且沒有失去角色，獲得 <strong>1 分（存活）＋1 分（開槍數）＝2 分</strong>，總分從 14 變成 16。你達到 15 分門檻，而且是唯一最高分，因此獲勝！<br>你已實際練習三輪，經歷成功與失敗的質疑、死亡補償、清槍，以及行動卡改變局面。<br>正式牌局不會預定子彈順序。觀察公開的開槍數、出牌與過往行為，再決定何時冒險、何時質疑。',{label:'回主選單，開始正式牌局',act:()=>this.exit()});
   return steps;
  }
 };
@@ -1296,6 +1300,45 @@ for(const type of ['pointerdown','click','keydown'])window.addEventListener(type
 },true);
 document.getElementById('modal').classList.add('hidden');
 document.querySelector('.headerTools').insertAdjacentHTML('afterbegin','<button class="btn" onclick="MainMenu.show()">主選單</button>');
+
+/* Only public, already played cards are presented. No private hand/deck inspection. */
+const cardPresentationSkip=TableFX.skip.bind(TableFX);
+TableFX.skip=function(){if(this.active?.cardHold)return;cardPresentationSkip();};
+TableFX.playedCard=async function(e){
+ const token=sessionId,rule=CARD_RULES.find(c=>c.name===e.card),at=e.at??rule?.at,skull=e.skull??rule?.skull;
+ const icons={'兩連發':'Ⅱ','多開一槍':'+1','上子彈':'●','死亡之骰':'⚄','再來一發':'↻','互射吧':'⇄','乾了伏特加':'V','鳴槍慶祝':'↑','賄賂裁判':'$','就打你':'◎','掏口袋':'?','空槍':'↑','偷窺':'◉'};
+ const stage=document.createElement('div');stage.className='playedCardStage';stage.setAttribute('role','status');
+ const who=document.createElement('div');who.className='playedCardOwner';who.textContent=e.name+' 打出行動卡';stage.appendChild(who);
+ const card=document.createElement('article');card.className='playedActionCard';
+ const phaseLabel=document.createElement('div');phaseLabel.className='playedCardPhase';phaseLabel.textContent=`PHASE ${at} · ${['','藏子彈','轉輪','決定開槍數','質疑','開槍','結算'][at]||''}`;
+ const icon=document.createElement('div');icon.className='playedCardSymbol';icon.textContent=icons[e.card]||'♦';
+ const title=document.createElement('h2');title.textContent=e.card;
+ const desc=document.createElement('p');desc.className='playedCardDescription';desc.textContent=e.txt;
+ const footer=document.createElement('div');footer.className='playedCardFooter';footer.textContent=skull?'☠ 本輪死亡或已淘汰者，也可在此階段使用':'僅限仍在本輪存活的玩家使用';
+ card.append(phaseLabel,icon,title,desc,footer);stage.appendChild(card);
+ const caption=document.createElement('small');caption.textContent='先閱讀卡面，再顯示作用對象 · 卡面至少停留 2 秒';stage.appendChild(caption);this.layer().appendChild(stage);
+ const speed=+document.getElementById('fxSpeed').value||1;
+ // Neutralize the speed multiplier only for this readable hold. Cancellation remains immediate.
+ const hold=this.animate(2250/speed,t=>{card.style.transform=`perspective(900px) rotateY(${Math.max(0,1-t*14)*-12}deg)`;},[[0,'wood']],()=>stage.remove());
+ if(this.active)this.active.cardHold=true;
+ const completed=await hold;if(!completed||token!==sessionId)return;
+ if(e.targetId!=null&&e.targetId!==e.actorId)await this.cardTarget(e);
+ else{
+  const scope=e.targetId===e.actorId?'對象：自己':e.card==='互射吧'||e.card==='鳴槍慶祝'?'作用範圍：所有仍需開槍的玩家':e.card==='偷窺'?'私人偷窺情報':'作用於出牌者自己';
+  await this.toast(e.name+' · '+e.card,scope,1050);
+ }
+};
+TableFX.cardTarget=function(e){
+ const {el,c,w,h}=this.canvas(),label=document.createElement('div');label.className='cardTargetLabel';label.textContent=`${e.name} ──【${e.card}】→ ${e.targetName}`;this.layer().appendChild(label);
+ const actor=document.getElementById('p'+e.actorId),target=document.getElementById('p'+e.targetId);actor?.classList.add('cardSource');target?.classList.add('cardRecipient');
+ return this.animate(1550,t=>{c.clearRect(0,0,w,h);const a=this.anchor(e.actorId),b=this.anchor(e.targetId),dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,ux=dx/d,uy=dy/d;
+  // Start and finish at seat edges, not under the portraits. Works with any 2–6-seat arrangement.
+  const edge=id=>{const r=document.querySelector('#p'+id+' .seatPlate')?.getBoundingClientRect();return r?Math.min(Math.abs(ux)>.001?r.width/2/Math.abs(ux):Infinity,Math.abs(uy)>.001?r.height/2/Math.abs(uy):Infinity)+12:65;};
+  const start=edge(e.actorId),end=edge(e.targetId),span=Math.max(0,d-start-end),f=Math.min(1,t/.38),sx=a.x+ux*start,sy=a.y+uy*start,ex=sx+ux*span*f,ey=sy+uy*span*f;
+  c.save();c.strokeStyle='#ffe0a0';c.fillStyle='#ffe0a0';c.shadowColor='#d7b36e';c.shadowBlur=8;c.lineWidth=3;c.setLineDash([9,8]);c.lineDashOffset=-t*35;c.beginPath();c.moveTo(sx,sy);c.lineTo(ex,ey);c.stroke();c.setLineDash([]);c.beginPath();c.moveTo(ex,ey);c.lineTo(ex-ux*15-uy*7,ey-uy*15+ux*7);c.lineTo(ex-ux*15+uy*7,ey-uy*15-ux*7);c.closePath();c.fill();c.restore();
+ },[[.1,'whoosh']],()=>{el.remove();label.remove();actor?.classList.remove('cardSource');target?.classList.remove('cardRecipient');});
+};
+GameFX.card=e=>TableFX.playedCard(e);
 
 </script>
 </body>
