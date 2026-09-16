@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>賭命大賽 v0.24 </title>
+<title>賭命大賽 · 圓桌版</title>
 <style>
 :root{--bg:#121018;--panel:#211b2a;--panel2:#2f263b;--gold:#e3bd65;--red:#ff4b5f;--green:#61e294;--blue:#65b7ff;--muted:#b8aec7;--text:#f8f0ff;}
 *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top,#30233d,#100e15 70%);color:var(--text);font-family:"Microsoft JhengHei",system-ui,sans-serif;overflow-x:hidden}.wrap{width:1080px;height:1080px;margin:0 auto;padding:10px;overflow:hidden}h1{margin:2px 0 6px;text-align:center;color:var(--gold);letter-spacing:2px;font-size:22px}.top{display:grid;grid-template-columns:680px 370px;gap:10px}.panel{background:rgba(33,27,42,.92);border:1px solid rgba(227,189,101,.35);box-shadow:0 0 24px rgba(0,0,0,.35);border-radius:14px;padding:10px}.status{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.phase{font-size:22px;color:var(--gold);font-weight:800}.btn{background:linear-gradient(#4c385f,#33263f);color:var(--text);border:1px solid rgba(227,189,101,.55);border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:700}.btn:hover{filter:brightness(1.15)}.btn:disabled{opacity:.35;cursor:not-allowed}.danger{color:var(--red)!important}.safe{color:var(--green)!important}.muted{color:var(--muted)}.players{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.player{position:relative;min-height:176px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:2px solid var(--c);border-radius:14px;padding:8px;box-shadow:0 0 18px color-mix(in srgb,var(--c),transparent 72%)}.player.dead{filter:grayscale(.7);opacity:.55}.phead{display:flex;align-items:center;justify-content:space-between;gap:8px}.name{font-size:16px;font-weight:900;color:var(--c)}.tag{font-size:12px;border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:3px 8px;color:var(--muted)}.score{font-size:22px;font-weight:900;color:var(--gold)}.roles{display:flex;gap:5px;margin:6px 0}.role{flex:1;min-height:42px;text-align:center;border-radius:14px;padding:7px 2px;background:linear-gradient(#191320,#0f0b14);border:1px solid rgba(255,255,255,.16);font-size:12px;position:relative;overflow:hidden}.role .icon{display:block;font-size:20px;line-height:20px;filter:drop-shadow(0 0 6px rgba(255,255,255,.16))}.role .rlabel{display:block;margin-top:3px;font-size:11px;color:var(--muted);font-weight:900}.role.captain{border-color:rgba(227,189,101,.62);box-shadow:inset 0 0 18px rgba(227,189,101,.08)}.role.captain .icon{font-size:22px}.role.deadrole{background:linear-gradient(#351721,#190c12);color:#ff9aa8;opacity:.62}.role.deadrole:after{content:'✕';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;color:#ff4055;text-shadow:0 0 14px #ff4055;font-weight:1000}.role.deadrole .icon{filter:grayscale(1);opacity:.4}.deck{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin:8px 0}.card{width:30px;height:40px;border-radius:8px;background:#17121e;border:1px solid rgba(227,189,101,.5);display:flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 4px 10px rgba(0,0,0,.3)}.card.bang{background:#4a121b;color:#fff;border-color:#ff6476}.card.blank{background:#1e2c35;color:#fff;text-shadow:0 0 8px rgba(255,255,255,.45)}.card.back{background:repeating-linear-gradient(45deg,#24172f,#24172f 6px,#342142 6px,#342142 12px);color:#a994bd}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.choice{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#191421;cursor:pointer}.choice.selected{outline:2px solid var(--gold);background:#30213b}.choice.cheat{color:var(--red);font-weight:900}.choice.cheat:hover::after{content:"但要注意你可能會被質疑。";position:absolute;transform:translate(-90px,34px);background:#08070a;color:#fff;border:1px solid var(--red);padding:8px;border-radius:8px;z-index:5;width:210px}.log{height:242px;overflow:auto;background:#100d15;border-radius:12px;padding:10px;font-size:14px;line-height:1.55}.log p{margin:0 0 6px}.shot{animation:flash .6s ease}@keyframes flash{0%{box-shadow:0 0 0 var(--red)}50%{box-shadow:0 0 35px var(--red)}100%{box-shadow:0 0 18px color-mix(in srgb,var(--c),transparent 72%)}}.centerText{font-size:15px;line-height:1.55}.betBox{display:flex;gap:6px;flex-wrap:wrap}.bet{width:42px;height:42px;border-radius:10px;background:#16111d;border:1px solid rgba(255,255,255,.24);color:white;cursor:pointer;font-size:18px;font-weight:900}.bet.sel{background:#573d20;border-color:var(--gold);color:var(--gold)}select{background:#18131f;color:white;border:1px solid rgba(227,189,101,.5);border-radius:8px;padding:8px}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;z-index:10}.modal{width:min(560px,92vw);background:#201929;border:1px solid var(--gold);border-radius:18px;padding:18px;text-align:center}.hidden{display:none}.small{font-size:12px}.bulletLine{display:flex;align-items:center;gap:8px;min-height:64px}.bigBang{font-size:42px;color:var(--red);font-weight:900;text-shadow:0 0 20px var(--red)}
@@ -222,24 +222,104 @@ body:after{content:none!important;display:none!important}
 
 #modal.hidden{display:none!important}
 @media(max-width:900px){.wrap{width:100vw;height:auto;overflow:visible}.top{grid-template-columns:1fr}.players{grid-template-columns:1fr}.handPanel{grid-template-columns:1fr}}
+/* The original board stays in place; all cinematic drawing lives in a fixed overlay. */
+.fxOverlay{position:fixed;inset:0;z-index:110;background:#03050a;display:flex;align-items:center;justify-content:center;isolation:isolate;touch-action:manipulation}
+.fxOverlay canvas{width:100%;height:100%;object-fit:contain;max-width:1600px;max-height:100vh}
+.fxHint{position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#949aa5;font-size:12px;pointer-events:none}.fxNew{position:absolute;right:18px;top:14px;opacity:.7;font-size:12px}
+.choice{color:var(--text)}.choice:not(.cheat){color:#edcb80}
+.card.bang,.peekCard.bang,.showdownCard.revealBang,.devMiniCard.bang{background:linear-gradient(115deg,#07090d,#66707c 30%,#1a2029 45%,#020305)!important;color:#fff!important;border-color:#a6b4c4!important;text-shadow:0 1px 3px #000!important}
+.card.blank,.peekCard.blank,.showdownCard.revealBlank,.devMiniCard.blank{background:linear-gradient(110deg,#76541f,#f1d179 35%,#b88c33 70%,#71501c)!important;color:#201708!important;border-color:#f5d891!important;text-shadow:none!important}
+.card{font-size:8px;min-width:32px}.devMiniCard{font-size:9px;min-width:36px}.devRow pre,.helpModal pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;max-height:450px;overflow:auto;text-align:left}.devBox{max-height:380px;overflow:auto}.handBox{max-height:260px}.top .panel:first-child{height:330px}.centerText{height:216px}.top{grid-template-columns:minmax(0,680px) minmax(0,370px)}.wrap{height:auto;min-height:100vh;padding-bottom:20px}.status{gap:5px}.status>div:last-child{display:flex;gap:4px;flex-wrap:wrap}.status .btn{padding:6px 9px}.status select{padding:5px}.helpBtn,.devLockBtn{z-index:60}.actionCard span{display:block}.actionCard{min-height:90px}
+@media(max-width:1080px){.wrap{width:100%;padding-top:50px}.top{grid-template-columns:minmax(0,1.7fr) minmax(230px,1fr)}.players{grid-template-columns:repeat(3,minmax(0,1fr))}.codename{font-size:15px!important}}
+@media(max-width:700px){.top{grid-template-columns:1fr}.players{grid-template-columns:repeat(2,minmax(0,1fr))}.top .panel:first-child{height:360px}.log{height:145px}.handPanel{grid-template-columns:1fr}.portrait{width:48px!important;height:62px!important}.role{min-width:0}.name{font-size:13px}.identityLine{font-size:9px!important}.card{width:24px;min-width:24px;font-size:7px}}
+
+@media(max-width:480px){.players{grid-template-columns:1fr}.identityLine{font-size:11px!important}.codename{font-size:17px!important}}
+
+:root{--gold:#d5b77d;--text:#ece5d6;--muted:#b6ac99;--green:#74ff91}*{box-sizing:border-box}body{margin:0;background:#090b0c;color:var(--text);font-family:system-ui,'Microsoft JhengHei',sans-serif;overflow-x:hidden;background-image:radial-gradient(ellipse at 50% 25%,#292923 0,transparent 65%)}.tableApp{max-width:1800px;margin:auto;min-height:100svh}.tableHeader{height:76px;display:flex;align-items:center;justify-content:space-between;padding:10px 28px;border-bottom:1px solid #ad906432}.brand{text-align:center;margin:auto}.brand small{font-size:9px;letter-spacing:5px;color:#ac9163}.brand h1{font-size:23px;letter-spacing:8px;margin:3px 0;color:#f1dfb7}.brand span{font-size:10px;letter-spacing:2px;color:#8b8478}.helpBtn,.devLockBtn{position:static!important;width:36px;height:36px;margin:0;display:inline-grid;place-items:center}.headerTools{display:flex;align-items:center;gap:7px}.btn{background:linear-gradient(#3b3529,#211f19);border:1px solid #85714c;border-radius:7px;color:#f2dfb8;padding:8px 15px;font-size:12px;box-shadow:0 3px 8px #0007}.btn:hover{background:#554831;transform:translateY(-1px)}.btn:disabled{opacity:.35;transform:none}.tableScene{position:relative;width:min(100%,1550px);height:clamp(660px,69vw,780px);margin:0 auto;isolation:isolate}.roomLight{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#cdc6a418,transparent 64%);pointer-events:none}.tableSurface,.tableRim{position:absolute;left:9%;top:14%;width:82%;height:71%;border-radius:50%;pointer-events:none}.tableRim{top:17%;background:linear-gradient(90deg,#110e0b,#68513a 25%,#24201a 50%,#63513b 76%,#15120d);box-shadow:0 25px 32px #000c,0 4px 0 #a58a53,0 10px 0 #302418}.tableSurface{background:radial-gradient(ellipse at 50% 30%,#43433370,#171e1bd9 70%),repeating-linear-gradient(7deg,#29251c 0,#30291f 2px,#241f19 4px,#342b21 9px);border:10px solid #826642;box-shadow:inset 0 0 0 2px #dbc18583,inset 0 0 0 9px #231c15,inset 0 0 70px 35px #0008,0 -2px 0 #d0ba89}.feltRing{position:absolute;inset:8%;border:1px solid #b69a6140;border-radius:50%;box-shadow:0 0 0 4px #0001}.tablePedestal{position:absolute;left:41%;top:64%;width:18%;height:29%;border-radius:20% 20% 40% 40%;background:linear-gradient(90deg,#080909,#42372a 45%,#141310);box-shadow:0 25px 35px #000}.tableBrand{position:absolute;bottom:14%;left:0;right:0;text-align:center;font-size:10px;letter-spacing:5px;color:#c8b28137}.players{display:block!important;position:absolute;inset:0;pointer-events:none;margin:0!important}.seat{position:absolute;left:var(--sx);top:var(--sy);width:clamp(150px,17vw,216px);transform:translate(-50%,-50%);pointer-events:auto;z-index:5}.seatPlate{position:relative;background:linear-gradient(135deg,#302d25ed,#121614f5);border:1px solid #8c795566;border-top:2px solid var(--c);border-radius:12px;padding:10px;box-shadow:0 9px 25px #0009,inset 0 0 16px #b59a4010;transition:box-shadow .2s,filter .2s,transform .2s}.seatHeader{display:flex;align-items:center;gap:8px}.seatAvatar{width:46px;height:46px;object-fit:cover;border-radius:50%;border:2px solid var(--c);background:#151515;flex:none}.seatName{font-size:15px;font-weight:800;letter-spacing:1px}.seatTag{font-size:9px;color:#ada493;display:block;margin-top:3px}.seatScore{margin-left:auto;display:flex;flex-direction:column;align-items:center;color:#eacb89;font-size:25px;font-family:Georgia,serif;line-height:1}.seatScore small{font-size:8px;letter-spacing:1px;margin-top:5px}.seatRoles{display:flex;gap:5px;margin-top:9px;align-items:center}.lifeToken{width:19px;height:24px;position:relative;color:#d5cbb5;font-size:19px;text-align:center;line-height:24px}.lifeToken.gone{color:#696d69}.lifeToken.gone:after{content:'×';position:absolute;inset:0;color:#cfa08c;font-size:28px;font-weight:900}.lifeToken.captain{color:#edc264}.lifeToken.gone.captain{color:#625e55}.seatState{margin-left:auto;font-size:10px;color:#bbb3a0}.seatFoot{display:flex;align-items:center;justify-content:space-between;margin-top:5px;font-size:10px;color:#b7b19f}.seat.critical .seatPlate{border-color:#a96145;box-shadow:0 0 18px #b34c2522}.seat.eliminated .seatPlate{filter:grayscale(.85);opacity:.55}.seat.targetable .seatPlate{border:2px solid #d8bd7d;cursor:pointer;animation:targetPulse 1.8s infinite}.seat.targetable:hover .seatPlate{transform:translateY(-5px);box-shadow:0 0 30px #e8c77b55}.seat.accused .seatPlate,.seat.hit .seatPlate{border-color:#ff745c;box-shadow:0 0 26px #ff543e88}.seat.hit .seatPlate{animation:seatShake .25s infinite}.seatDie{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);background:linear-gradient(135deg,#e6d9b8,#968461);color:#171b18;border:1px solid #decc99;width:34px;height:34px;border-radius:6px;display:grid;place-items:center;font:bold 22px Georgia;box-shadow:3px 5px 5px #0007;z-index:2}.seatDie.covered{background:linear-gradient(90deg,#0a0d0d,#45504a,#090c0b);color:#c3b48c;font:11px system-ui;border-radius:13px 13px 4px 4px;width:39px}.seatPocket{font-size:10px;color:#b5ae9d}.tableCenter{position:absolute;top:27%;left:50%;width:44%;max-width:650px;transform:translateX(-50%);text-align:center;z-index:6}#phaseTrack{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-bottom:14px}.phaseTab{padding:7px 2px;border-radius:4px;background:linear-gradient(#ece2c9,#b9ac8a);border:1px solid #c5b688;color:#101612;font-size:9px;box-shadow:0 3px 5px #0006;white-space:nowrap}.phaseTab b{display:block;font-size:8px;letter-spacing:.7px;margin-bottom:3px}.phaseTab.active{color:#75ff91;background:linear-gradient(#344237,#1b3123);border-color:#85c694;box-shadow:0 0 12px #70f79824}.phaseNotice{border:none;background:transparent;margin-bottom:8px;animation:noticeIn .45s}.phaseNotice .phase{font-size:19px;letter-spacing:2px;color:#ece0c4}.phaseNotice #hint{font-size:11px;line-height:1.6;color:#c5bba5;margin-top:6px}.centerText{padding:0!important;min-height:170px;background:none;border:none;color:#d2c5a7}#mainArea h3{font-size:16px;margin:8px 0}#mainArea p{font-size:11px;line-height:1.7;margin:8px 0}.nextControl{margin-top:6px;padding:8px 24px}.nextControl:disabled{visibility:hidden}.pocketObjects{display:flex;align-items:center;justify-content:center;gap:30px;min-height:166px}.clothBag{width:100px;height:112px;position:relative;border-radius:24% 24% 39% 36%;background:repeating-linear-gradient(84deg,#171d1b 0,#252b26 3px,#161c18 5px);box-shadow:inset 9px 0 12px #5b615929,inset -12px 0 15px #0009,0 14px 12px #0008;border:1px solid #777968;transform:rotate(-5deg);transition:box-shadow .2s}.clothBag:before{content:'';position:absolute;top:-9px;left:-3px;right:-3px;height:34px;background:radial-gradient(ellipse,#010303 55%,#525548 60%,#1b231d 80%);border:3px solid #6c6d55;border-radius:50%;box-shadow:0 4px 4px #0009}.clothBag:after{content:'袋口';position:absolute;bottom:22px;left:0;right:0;color:#a7aa94;font-size:12px}.clothBag.over{box-shadow:0 0 30px #e2c97588;transform:rotate(0) scale(1.04)}.clothBag.closed:before{left:34px;right:34px;height:9px;top:1px}.clothBag.closed:after{content:'已藏好'}.bulletChoices{display:flex;gap:25px}.bulletObject{width:76px;cursor:grab;touch-action:none;user-select:none;position:relative;padding:4px;border-radius:8px}.metalBullet{width:30px;height:78px;margin:auto auto 9px;border-radius:45% 45% 7% 7%;border:1px solid #cbd2d1;background:linear-gradient(90deg,#0c1012,#727c82 29%,#c1cbcf 39%,#20272c 52%,#090c0e 95%);box-shadow:inset 0 -9px 0 #6a717355,4px 6px 9px #0009}.bulletObject.blank .metalBullet{background:linear-gradient(90deg,#816022,#e9c971 30%,#fff0b7 42%,#ae853a 62%,#76551f);border-color:#f1d58b}.bulletObject b{display:block;font-size:11px}.bulletObject span{display:block;font:12px Georgia;margin-top:3px}.bulletObject small{font-size:9px;color:#bbac91}.bulletObject.bang b{color:#d3d8db}.bulletObject.blank b{color:#e0c180}.dragging{opacity:.28}.dragGhost{position:fixed!important;z-index:180;pointer-events:none!important;transform:translate(-50%,-50%) scale(1.1)!important;filter:drop-shadow(0 12px 9px #0009);margin:0!important}.spinObject{width:160px;height:156px;display:block;margin:5px auto;cursor:grab;touch-action:none;filter:drop-shadow(0 9px 8px #0008)}.diceRack{display:flex;justify-content:center;gap:12px;padding:12px 0 22px}.physicalDie{position:relative;width:43px;height:43px;background:linear-gradient(135deg,#ede4cf,#b3a17b);color:#181e19;box-shadow:3px 5px 0 #6e5d41,6px 9px 9px #0008;border:1px solid #f4e7c2;border-radius:8px;font:bold 30px Georgia;display:grid;place-items:center;cursor:grab;touch-action:none;user-select:none;transform:rotate(-8deg);transition:filter .2s}.physicalDie:nth-child(even){transform:rotate(7deg)}.physicalDie:hover{filter:brightness(1.2);translate:0 -5px}.dieTray{width:155px;height:68px;margin:auto;background:linear-gradient(155deg,#141a15,#242b20);border:4px solid #806344;border-radius:18px;box-shadow:inset 0 3px 9px #000c,0 4px 0 #30241b;color:#ada581;font-size:11px;display:grid;place-items:center}.dieTray.over{border-color:#e6cc86;box-shadow:0 0 22px #d4c48966}.dieCup{width:50px;height:52px;background:linear-gradient(90deg,#101511,#576053,#101511);border:2px solid #817b60;border-radius:19px 19px 4px 4px;box-shadow:4px 6px 8px #0008}.handPanel{position:relative!important;border:0!important;background:linear-gradient(transparent,#080b0a 45%)!important;margin:-6px auto 0!important;padding:8px 20px 22px!important;max-width:1100px;z-index:8}.handTitle{text-align:center;font-size:10px;letter-spacing:2px;color:#aea181;margin:0 0 24px}.actionCards{display:flex!important;justify-content:safe center;gap:0;overflow-x:auto;overflow-y:visible;min-height:164px;padding:25px 40px 12px}.actionCard{flex:0 0 124px!important;width:124px;min-height:137px!important;height:145px;margin-left:-13px;padding:12px 10px!important;background:linear-gradient(145deg,#ddd0ad,#97866a)!important;color:#191f1a!important;border:1px solid #e4cc89!important;border-radius:8px!important;box-shadow:0 0 12px #dbc08428,0 7px 10px #0007;transform:translateY(calc(var(--curve)*2px)) rotate(calc(var(--tilt)*1deg));transform-origin:bottom center;transition:transform .2s,filter .2s;position:relative;cursor:pointer}.actionCard b{font-size:13px!important;color:#20211b!important}.actionCard span{display:block;margin-top:7px;font-size:10px!important;line-height:1.55!important;color:#302f25!important}.actionCard.disabled{opacity:1!important;filter:brightness(.60) saturate(.35)}.actionCard:hover,.actionCard:focus{z-index:10;transform:translateY(-24px) rotate(0) scale(1.08);filter:brightness(1.06)}.actionCard .cardPhase{font-size:8px;letter-spacing:1px;border-bottom:1px solid #534b3444;padding-bottom:5px;margin-bottom:7px;display:block}.tableDrawer{position:fixed;top:0;right:0;height:100svh;width:min(400px,93vw);padding:25px;background:#151c19f7;border-left:1px solid #947c53;box-shadow:-15px 0 50px #0009;z-index:115;transform:translateX(110%);transition:transform .3s;overflow:auto;backdrop-filter:blur(15px)}.tableDrawer.open{transform:translateX(0)}.tableDrawer h2{font-size:21px;color:#dec28c;margin-top:24px}.drawerClose{float:right;color:#c9ba95;border:0;background:transparent;cursor:pointer}.tableDrawer .log{height:auto;max-height:none;font-size:12px}.settingsDrawer label{display:grid;gap:10px;margin:22px 0;font-size:12px;color:#bfb293}.settingsDrawer select{width:100%;background:#282e26;color:#e5d5b4;border:1px solid #655d47;padding:9px}.settingsDrawer p{font-size:12px;line-height:1.8;color:#a29983}.debugDrawer{width:min(720px,95vw)}.devBox{background:none;border:0}.devRow pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:10px}.tableFXLayer,#tableFXLayer{position:absolute;inset:0;z-index:15;pointer-events:none}.tableFXCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.countdown{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:70px Georgia;color:#f2d294;text-shadow:0 4px 20px #000}.shotWindow{position:absolute;width:176px;height:136px;transform:translate(-50%,-100%);border:1px solid #aa8c56;border-radius:10px;background:#111918;box-shadow:0 8px 30px #000d;overflow:hidden;animation:windowIn .22s}.shotWindow canvas{width:100%;height:100%}.shotWindow.judge{border-color:#d88666}.tableToast{position:absolute;left:50%;top:60%;transform:translate(-50%,-50%);max-width:80%;background:#101a16ed;border:1px solid #987d50;border-radius:8px;padding:13px 20px;text-align:center;font-size:12px;box-shadow:0 8px 30px #0009}.tableToast b{display:block;color:#e4c884;font-size:16px;margin-bottom:6px}.tableToast small{display:block;margin-top:6px;color:#c8bea6}.seatBubble{position:absolute;transform:translate(-50%,-100%);padding:9px 14px;background:#101814;border:1px solid #877751;border-radius:9px;font-size:11px;white-space:nowrap}.targetPrompt{position:absolute;z-index:20;left:50%;top:67%;transform:translateX(-50%);background:#16221df0;border:1px solid #d4b96d;padding:10px 15px;border-radius:9px;text-align:center;box-shadow:0 7px 20px #0008;font-size:12px}.targetPrompt button{margin-left:12px}.confirmCard{max-width:420px!important;background:#18201c!important;border:1px solid #b7935e!important;color:#e9ddc0}.confirmCard p{font-size:14px;line-height:1.8}.scoreChips{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:10px}.scoreChip{width:49px;height:49px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(#cfb576,#847044);border:4px dashed #ead39a;color:#172018;font:bold 19px Georgia;box-shadow:0 4px 0 #524426}.scoreChip small{font-size:8px;position:absolute;margin-top:75px;color:#d5c8a9}.resultRows{font-size:11px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.resultRows span{padding:5px 8px;background:#10181299;border-radius:5px}.peekBox{background:#15211df5;border-color:#a28c57}.peekSub{line-height:1.8}.peekContinue:before{content:'你只能看到自己的子彈順序；雙方的偷窺結果互不公開。';display:block;font-size:12px;margin-bottom:15px;color:#bbb49e}.overlay,.peekOverlay{backdrop-filter:blur(5px)}.modal{background:#17211deb;border-color:#978357}.helpCard{background:#222b21}.seatMiniStatus{font-size:9px;color:#e5c17e}.phaseChip{display:none!important}
+.handPanel{display:block!important}.actionCards{width:100%}.phaseNotice #hint{font-size:12px}.phaseTab{font-size:10px}.phaseTab b{font-size:9px}.tableHeader .brand span{display:none}.centerText:empty{min-height:170px}.tableCenter{top:32%}
+@keyframes targetPulse{50%{box-shadow:0 0 15px #dcc58b44}}@keyframes seatShake{25%{translate:-4px 1px}75%{translate:4px -2px}}@keyframes noticeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}@keyframes windowIn{from{opacity:0;scale:.8}to{opacity:1;scale:1}}
+@media(min-width:1600px){.tableScene{height:790px}.tableCenter{top:28%}.seat{width:225px}}
+@media(max-width:950px){.tableHeader{height:68px;padding:10px 15px}.seat{width:151px}.seatPlate{padding:7px}.seatAvatar{width:34px;height:34px}.seatName{font-size:12px}.seatScore{font-size:22px}.seatTag{font-size:8px}.tableCenter{width:46%;top:28%}.phaseTab{font-size:7px;padding:5px 1px}.phaseTab b{font-size:7px}.pocketObjects{gap:20px}.bulletChoices{gap:10px}.diceRack{gap:8px}.physicalDie{width:36px;height:36px;font-size:25px}.tableScene{height:660px}.shotWindow{width:150px;height:116px}}
+@media(max-width:600px){.tableHeader{padding:8px;height:70px}.brand small{font-size:7px;letter-spacing:2px}.brand h1{font-size:18px;letter-spacing:4px}.brand span{font-size:8px;letter-spacing:0}.headerTools{gap:4px}.headerTools .btn{padding:7px}.helpBtn,.devLockBtn{width:29px;height:29px;font-size:15px}.tableScene{height:720px}.tableSurface,.tableRim{left:3%;width:94%;top:14%;height:73%;border-width:5px}.tableRim{top:16%}.seat{width:119px}.seatPlate{padding:6px;border-radius:8px}.seatAvatar{width:27px;height:27px}.seatHeader{gap:5px}.seatName{font-size:10px;letter-spacing:0}.seatScore{font-size:17px}.seatTag{font-size:7px}.seatRoles{margin-top:4px;gap:2px}.lifeToken{width:14px;font-size:15px;height:18px;line-height:18px}.lifeToken.gone:after{font-size:21px}.seatState{font-size:8px}.seatFoot{font-size:8px}.seatDie{width:25px;height:25px;bottom:-17px;font-size:18px}.seatDie.covered{width:28px;font-size:9px}.seatPocket{font-size:8px}.tableCenter{top:33%;width:77%}#phaseTrack{gap:2px;margin-bottom:12px}.phaseTab{font-size:8px}.phaseTab b{font-size:7px}.phaseNotice .phase{font-size:16px;letter-spacing:1px}.phaseNotice #hint{font-size:10px}.pocketObjects{gap:25px;min-height:155px}.clothBag{width:78px;height:93px}.bulletChoices{gap:14px}.bulletObject{width:62px}.metalBullet{height:65px;width:26px}.centerText{min-height:165px}.handPanel{padding:0 4px 20px!important}.actionCards{padding-left:24px;padding-right:24px;justify-content:flex-start}.shotWindow{width:112px;height:98px}.countdown{font-size:48px}.targetPrompt{top:62%;width:80%;font-size:11px}.tableBrand{display:none}}
+@media(max-width:600px){.tableCenter{top:34%}.seatScore small{display:none}.seatScore{min-width:18px;font-size:18px}.seatHeader{gap:4px}.seatAvatar{width:24px;height:24px}.seatName{white-space:nowrap;font-size:10px}.seatTag{font-size:7px;letter-spacing:-.3px}.seatHeader>div:not(.seatScore){min-width:0}.tableToast{max-width:90%;font-size:10px}.tableToast b{font-size:13px}}
+@media(min-width:1600px){.tableCenter{top:32%}}
+
+/* 1080p layout budget: 64px header / flexible table / 252px hand. */
+.seat.roundDead .seatPlate{background:linear-gradient(135deg,#532924f5,#291413f5);border-color:#e76f62;box-shadow:0 0 0 1px #a33c36,0 8px 22px #0009,inset 0 0 26px #b22a241d}
+.seat.roundDead .seatState{color:#fff0e9;background:#a9312c;border:1px solid #e58775;border-radius:4px;padding:2px 5px;font-weight:700;white-space:nowrap}
+.seat.roundDead .seatMiniStatus{color:#f4b9a1}.seat.roundDead .seatAvatar{border-color:#ec8a77}.seat.roundDead.eliminated .seatPlate{filter:none;opacity:.92}
+.seat.roundDead.targetable .seatPlate{border-color:#f19480;outline:2px solid #e1c385;outline-offset:3px}
+.scoreChips{gap:12px;margin:0 auto;padding:8px 0;max-width:660px;width:100%}
+.scoreResult{display:flex;flex-direction:column;align-items:center;gap:9px;min-width:80px;flex:1 1 0}
+.scoreResult .scoreChip{position:relative;flex:none;width:52px;height:52px;font-size:21px}
+.scoreName{font-size:13px;line-height:1.4;white-space:nowrap;color:#e2d2ac;font-weight:600}
+.scoreNote{margin:10px 0 0!important}.seatHeader>div:not(.seatScore){min-width:0}.seatName{white-space:nowrap}
+.actionCards{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:thin;scrollbar-color:#9b855c #121a16}
+.actionCards::-webkit-scrollbar{height:6px}.actionCards::-webkit-scrollbar-thumb{background:#8f7b54;border-radius:5px}
+.centerText{height:auto;overflow:visible}.scoreChip small{position:static;margin:0}
+@media(min-width:1000px) and (min-height:800px){
+ html,body{height:100%;overflow:hidden}
+ .tableApp{height:100svh;min-height:1016px;max-width:1920px;display:grid;grid-template-rows:64px minmax(700px,1fr) 252px}
+ .tableHeader{height:64px;padding:8px 30px}.brand h1{font-size:23px}.brand small{font-size:9px}
+ .tableScene{width:min(100%,1720px);height:100%;min-height:0;margin:0 auto}
+ .tableSurface,.tableRim{left:8%;width:84%;top:13%;height:73%}.tableRim{top:16%}
+ .tableCenter{top:34%;bottom:24%;height:auto;width:min(44%,740px);max-width:740px;display:grid;grid-template-rows:48px 54px minmax(0,1fr) 36px;gap:5px;align-items:center}
+ #phaseTrack{margin:0;height:48px;gap:4px}.phaseTab{font-size:12px;padding:6px 2px}.phaseTab b{font-size:10px;margin-bottom:3px}
+ .phaseNotice{margin:0}.phaseNotice .phase{font-size:21px;letter-spacing:1px}.phaseNotice #hint{font-size:13px;line-height:1.45;margin-top:5px}
+ #mainArea{height:100%;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:visible}
+ #mainArea h3{font-size:17px;margin:5px 0}#mainArea p{font-size:13px;margin:6px 0;line-height:1.5}
+ .nextControl{margin:0 auto;min-width:132px;height:36px;max-width:260px;padding:5px 20px;font-size:14px;align-self:end;position:relative}
+ .seat{width:236px}.seatPlate{height:146px;padding:10px 11px}.seatAvatar{width:46px;height:46px}.seatName{font-size:16px;letter-spacing:.5px}
+ .seatTag{font-size:11px;white-space:nowrap}.seatScore{font-size:30px;min-width:38px}.seatScore small{font-size:8px}
+ .seatRoles{height:24px;margin-top:6px}.seatState{font-size:11px}.seatFoot{font-size:11px;margin-top:5px;gap:5px;white-space:nowrap}.seatPocket{font-size:11px}
+ .seatMiniStatus{font-size:11px;line-height:16px;margin-top:5px;white-space:nowrap;letter-spacing:-.25px}
+ .seatDie{width:34px;height:34px;bottom:-20px}.seat[data-player="0"] .seatDie{left:auto;right:-45px;top:52px;bottom:auto;transform:none}
+ .handPanel{height:252px;min-height:0;width:100%;max-width:1320px;margin:0 auto!important;padding:0 18px!important;display:grid!important;grid-template-columns:1fr;grid-template-rows:24px minmax(0,1fr);gap:0;align-items:stretch;background:linear-gradient(transparent,#090d0a 30%)!important}
+ .handTitle{margin:0;line-height:24px;font-size:12px;letter-spacing:1px}.handTitle .btn{padding:0 8px;font-size:10px}
+ .actionCards{height:100%;min-height:0;align-items:flex-start;justify-content:safe center;padding:35px 32px 12px;gap:0}
+ .actionCard{flex:0 0 160px!important;width:160px;height:170px!important;min-height:170px!important;padding:10px 12px!important;margin-left:-10px;transform:translateY(calc(var(--curve)*.3px)) rotate(calc(var(--tilt)*.6deg));box-shadow:0 0 12px #dbc08425,0 7px 10px #0007}
+ .actionCard .cardPhase{font-size:10px;line-height:16px;white-space:nowrap;margin-bottom:5px;padding-bottom:4px}
+ .actionCard b{font-size:15px!important;line-height:20px;margin-bottom:3px}.actionCard span{font-size:11.5px!important;line-height:1.5!important;margin-top:5px}
+ .actionCard:hover,.actionCard:focus{transform:translateY(-14px) rotate(0) scale(1.04)}
+ .physicalDie{width:46px;height:46px;font-size:31px}.diceRack{padding:6px 0 15px;gap:15px}.dieTray{height:59px;width:165px}.spinObject{width:142px;height:139px;margin:0 auto}.pocketObjects{min-height:145px;gap:40px}.bulletChoices{gap:30px}
+ .clothBag{width:95px;height:105px}.metalBullet{height:70px}.bulletObject b{font-size:12px}.bulletObject small{font-size:10px}
+ .scoreChips{flex-wrap:nowrap;gap:8px;padding:5px 0}.scoreResult{min-width:0}.scoreResult .scoreChip{width:51px;height:51px}.scoreName{font-size:13px}
+ .tableBrand{bottom:11%}.shotWindow{width:182px}
+}
+@media(min-width:1000px) and (min-height:800px) and (max-height:1015px){html,body{height:auto;overflow-y:auto}}
+/* Laptop and mobile retain a scrollable board, but never a clipped vertical hand. */
+@media(max-width:999px),(max-height:799px){
+ .centerText{height:auto;min-height:155px}.handPanel{overflow:visible}
+ .actionCards{max-height:none;min-height:215px;padding:35px 25px 18px;align-items:flex-start}
+ .actionCard{height:160px;min-height:160px;transform:translateY(calc(var(--curve)*.3px)) rotate(calc(var(--tilt)*.6deg))}
+ .actionCard:hover,.actionCard:focus{transform:translateY(-12px) rotate(0) scale(1.02)}
+ .scoreChips{gap:7px}.scoreResult{min-width:64px}.scoreName{font-size:11px}.scoreResult .scoreChip{width:44px;height:44px;font-size:18px}
+}
+
+.gunInspectButton,.rewardInspectButton{border:1px solid #7f7351;border-radius:5px;background:#243125;color:#e5d4a5;padding:2px 9px;font:inherit;font-size:11px;cursor:pointer;line-height:18px;margin-left:8px;letter-spacing:0}
+.rewardInspectButton{background:#20251e}.privateLabel{color:#d9c38d;font-size:12px}.ammoCounts{display:flex;gap:10px;margin:14px 0}.ammoCounts>span{flex:1;padding:12px;border-radius:8px;display:flex;flex-direction:column;gap:7px;font-size:12px}.ammoCounts b{font-size:29px}.ammoBang{background:linear-gradient(125deg,#111820,#35434c);color:#e2e9e9;border:1px solid #9aa8ac}.ammoBlank{background:linear-gradient(130deg,#bea15b,#efd390);color:#211c0f;border:1px solid #eed393}.ammoTokens{display:flex;gap:6px;flex-wrap:wrap}.ammoTokens span{font-size:11px;padding:10px 6px;border-radius:6px}.tableDrawer h3{font-size:15px;margin-top:22px}.tableDrawer p{font-size:12px;line-height:1.7}.rewardHistory{border-top:1px solid #86704455;margin-top:16px}.rewardHistory small{color:#c8b584}.resolutionNotice{position:absolute;top:43%;left:50%;transform:translateX(-50%);width:min(670px,80%);border:1px solid #d5ba7f;border-radius:12px;background:#111c17f5;box-shadow:0 9px 40px #000b;padding:16px 20px;text-align:center}.resolutionNotice h3{font-size:21px;margin:0 0 8px;color:#ecd39b}.resolutionNotice>p{font-size:12px;color:#cfbea0;margin:6px 0 12px}.resolutionNotice>small{display:block;color:#998f7a;font-size:10px;margin-top:10px}.resolutionNotice.success{border-color:#91c79b}.resolutionNotice.success h3{color:#a5efb2}.resolutionNotice.failure{border-color:#dcaa69}.resolutionNotice.failure h3{color:#f6c781}.rewardRow{display:grid;grid-template-columns:90px 1fr;text-align:left;align-items:start;gap:12px;padding:6px 0;border-top:1px solid #7b76582c;font-size:12px;line-height:1.6}.rewardRow b{color:#dfc792}.rewardRow span{color:#e1dfd2}
+@media(max-width:600px){.resolutionNotice{top:38%;width:94%;padding:12px}.resolutionNotice h3{font-size:17px}.rewardRow{grid-template-columns:63px 1fr;gap:7px;font-size:10px}.handTitle{letter-spacing:0;line-height:1.7}.gunInspectButton,.rewardInspectButton{font-size:10px;margin-left:4px;padding:2px 6px}.handTitle>span{display:none}}
+
 </style>
 </head>
 <body>
-<div class="wrap">
-<button class="helpBtn" onclick="openHelp()" title="教學與行動卡一覽">？</button>
-<button class="devLockBtn" id="devLockBtn" onclick="toggleDevMode()" title="開發者模式">🔒</button>
-<h1>賭命大賽 v0.24e</h1>
-<div class="top">
- <div class="panel">
-  <div class="status"><div><div class="phase" id="phaseTitle">設定遊戲</div><div class="muted" id="hint">選擇人數後開始。</div></div><div><select id="playerCount"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select> <select id="aiDifficulty" title="AI等級"><option value="normal">普通AI</option><option value="hard" selected>困難AI</option></select> <button class="btn" onclick="safeNewGame()">新遊戲</button> <button class="btn" id="nextBtn" onclick="nextStep()" disabled>下一步</button></div></div>
-  <div class="centerText" id="mainArea"></div>
- </div>
- <div class="panel"><b style="color:var(--gold)">紀錄</b><div class="log" id="log"></div></div>
+<div class="tableApp">
+ <header class="tableHeader"><button class="helpBtn" onclick="openHelp()" title="教學與行動卡一覽">？</button><div class="brand"><small>THE LAST CHAMBER</small><h1>賭命大賽</h1><span>地下圓桌俱樂部 · v0.24e</span></div><div class="headerTools"><button class="btn" onclick="TableUI.drawer('logDrawer')" aria-label="回合紀錄">📜</button><button class="btn" onclick="TableUI.drawer('settingsDrawer')">設定</button><button class="devLockBtn" id="devLockBtn" onclick="toggleDevMode();TableUI.syncDebug()" title="開發者模式">🔒</button></div></header>
+ <main class="tableScene" id="tableScene">
+  <div class="roomLight"></div><div class="tablePedestal"></div><div class="tableRim"></div><div class="tableSurface"><div class="feltRing"></div><span class="tableBrand">FORTUNE FAVOURS THE LIVING</span></div>
+  <div class="players" id="players"></div>
+  <section class="tableCenter"><nav id="phaseTrack" aria-label="六階段進度"></nav><div class="phaseNotice"><div id="phaseTitle" class="phase">設定遊戲</div><div id="hint">選擇人數後開始。</div></div><div class="centerText" id="mainArea"></div><button class="btn nextControl" id="nextBtn" onclick="nextStep()" disabled>下一步</button></section>
+  <div id="tableFXLayer"></div>
+ </main>
+ <section class="handPanel" id="handPanel" aria-label="你的行動卡"></section>
+ <aside class="tableDrawer" id="logDrawer"><button class="drawerClose" onclick="TableUI.drawer('logDrawer')">關閉 ×</button><h2>回合紀錄</h2><div class="log" id="log"></div></aside>
+ <aside class="tableDrawer settingsDrawer" id="settingsDrawer"><button class="drawerClose" onclick="TableUI.drawer('settingsDrawer')">關閉 ×</button><h2>牌局設定</h2><label>玩家人數<select id="playerCount"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label><label>AI 難度<select id="aiDifficulty"><option value="normal">普通 AI</option><option value="hard" selected>困難 AI</option></select></label><label>演出速度<select id="fxSpeed"><option value="1">標準</option><option value="0.6">快速</option></select></label><button class="btn" id="soundBtn" onclick="toggleSound()">音效 ON</button><button class="btn" onclick="safeNewGame()">新遊戲</button><p>拖曳物件完成操作。動畫開始 0.3 秒後，可點桌面或按 Enter 快轉。</p></aside>
+ <aside class="tableDrawer" id="gunDrawer"><button class="drawerClose" onclick="TableUI.drawer('gunDrawer')">關閉 ×</button><div id="gunContent"></div></aside>
+ <aside class="tableDrawer" id="rewardsDrawer"><button class="drawerClose" onclick="TableUI.drawer('rewardsDrawer')">關閉 ×</button><div id="rewardsContent"></div></aside>
+ <aside class="tableDrawer debugDrawer" id="debugDrawer"><button class="drawerClose" onclick="TableUI.drawer('debugDrawer')">關閉 ×</button><h2>開發者觀測室</h2><div id="debugContent"></div></aside>
 </div>
-<div class="players" id="players"></div>
-<div class="handPanel" id="handPanel"></div>
-</div>
-<div class="overlay" id="modal"><div class="modal"><h2 style="color:var(--gold)">賭命大賽</h2><p>每局隨機分發角色代號與頭像。黑衣裁判會在作弊被抓時登場；【上子彈】會把一張空響替換成 BANG。</p><p class="muted">流程：藏子彈 → 轉輪 → 下注 → 挑戰 → 開槍 → 得分</p><p class="muted">v0.24：困難AI每局生成人格，且每個AI有獨立仇恨值與懷疑度記憶庫。</p><button class="btn" onclick="startGameFromModal()">開始遊戲</button></div></div>
+
+<div class="overlay" id="modal"><div class="modal"><h2 style="color:var(--gold)">賭命大賽</h2><p>每局隨機分發角色代號與頭像。黑衣裁判會在作弊被抓時登場；【上子彈】會把一張空響替換成 BANG。</p><p class="muted">流程：藏子彈 → 轉輪 → 決定開槍數 → 質疑 → 開槍 → 結算</p><p class="muted">圓桌版：拖曳子彈、手轉彈巢、秘密選骰。偷窺：自己看 3 張，指定另一人看他自己 1 張。</p><button class="btn" onclick="startGameFromModal()">開始遊戲</button></div></div>
 <div id="gunOverlayRoot"></div>
 
 <div class="overlay hidden" id="helpModal"><div class="modal helpModal"><h2>賭命大賽｜教學與行動卡一覽</h2>
@@ -247,10 +327,10 @@ body:after{content:none!important;display:none!important}
 <ol class="ruleList">
 <li><b>藏子彈：</b>每人秘密藏一張子彈。藏 BANG 就是作弊，本輪射自己不會中彈，但可能被質疑。</li>
 <li><b>轉輪：</b>剩餘子彈堆洗牌。</li>
-<li><b>下注：</b>所有玩家先暗中決定本輪要開幾槍，0～5 不是擲骰；玩家選定後才同步公開所有數字。</li>
+<li><b>開槍數：</b>所有玩家先暗中決定本輪要開幾槍，0～5 不是擲骰；玩家選定後才同步公開所有數字。</li>
 <li><b>挑戰：</b>每輪可質疑一次。抓到作弊者，對方被裁判射殺，質疑者抽 3 張；質疑錯誤，自己一張空響換成 BANG，被誣告者抽 1 張。</li>
-<li><b>開槍：</b>依下注值一發一發開。中彈者本輪停止射擊並失去一名角色；抽行動卡與子彈重置延後到回合結算。</li>
-<li><b>得分：</b>存活者獲得 1 + 下注值。先到 15 分後比最高分；最高分平手則存活者繼續。</li>
+<li><b>開槍：</b>依開槍數值一發一發開。中彈者本輪停止射擊並失去一名角色；抽行動卡與子彈重置延後到回合結算。</li>
+<li><b>得分：</b>存活者獲得 1 + 開槍數值。先到 15 分後比最高分；最高分平手則存活者繼續。</li>
 </ol>
 <h3>死亡與淘汰</h3>
 <ul class="ruleList"><li>失去角色後不會立刻重置子彈或抽牌；本回合結束時才統一重置為 1 BANG + 6 空響，並依死亡次數抽行動卡。</li><li>隊長死亡即淘汰，但部分行動卡仍可於指定階段使用。</li></ul>
@@ -259,18 +339,18 @@ body:after{content:none!important;display:none!important}
 <h3>行動卡一覽</h3>
 <div class="helpGrid">
 <div class="helpCard"><b>兩連發 ×2</b><small>Phase 5。開過兩槍後使用。接下來兩槍可指向任意活著玩家，第一槍後可更換目標。</small></div>
-<div class="helpCard"><b>多開一槍 ×2</b><small>Phase 4。指定玩家下注 +1；若原本為 5，則變成 0。淘汰後可用。</small></div>
+<div class="helpCard"><b>多開一槍 ×2</b><small>Phase 4。指定玩家開槍數 +1；若原本為 5，則變成 0。淘汰後可用。</small></div>
 <div class="helpCard"><b>上子彈 ×2</b><small>Phase 1。指定玩家子彈堆內一張空響替換成 BANG，總牌數不變，並洗牌。若沒有空響則不能使用。淘汰後可用。</small></div>
-<div class="helpCard"><b>死亡之骰 ×2</b><small>Phase 4。指定玩家重新隨機 0～5 作為本輪下注。淘汰後可用。</small></div>
+<div class="helpCard"><b>死亡之骰 ×2</b><small>Phase 4。指定玩家重新隨機 0～5 作為本輪開槍數。淘汰後可用。</small></div>
 <div class="helpCard"><b>再來一發 ×2</b><small>Phase 6。指定一名活著玩家再開一槍，本次不計分。淘汰後可用。</small></div>
 <div class="helpCard"><b>互射吧 ×3</b><small>Phase 5。接下來一槍，所有本輪存活玩家都必須各自指定一名玩家；沒有剩餘射擊數者只指向，不開火。淘汰後可用。</small></div>
-<div class="helpCard"><b>乾了伏特加 ×1</b><small>Phase 6。只有本輪存活玩家中下注最高者才能使用；單獨最高額外 +2，並列最高額外 +1。不是最高者不能使用，卡片保留。</small></div>
+<div class="helpCard"><b>乾了伏特加 ×1</b><small>Phase 6。只有本輪存活玩家中開槍數最高者才能使用；單獨最高額外 +2，並列最高額外 +1。不是最高者不能使用，卡片保留。</small></div>
 <div class="helpCard"><b>鳴槍慶祝 ×3</b><small>Phase 5。接下來一槍，所有開槍者都朝天空，而且絕對視為空槍。</small></div>
 <div class="helpCard"><b>賄賂裁判 ×1</b><small>Phase 4。作弊被抓時使用。不失去角色，但質疑者仍抽 3 張；藏起來的 BANG 放回牌堆。</small></div>
 <div class="helpCard"><b>就打你 ×3</b><small>Phase 5。你的下一槍改射任意其他存活玩家。</small></div>
 <div class="helpCard"><b>掏口袋 ×1</b><small>Phase 6。得分階段額外質疑一名本輪仍存活玩家作弊；不能對本輪死亡或已淘汰玩家使用。淘汰後可用。</small></div>
 <div class="helpCard"><b>空槍 ×3</b><small>Phase 5。你的下一槍朝天空開槍。</small></div>
-<div class="helpCard"><b>偷窺 ×4</b><small>Phase 2。查看自己子彈堆前 3 張，並指定另一名玩家得知自己第一張。</small></div>
+<div class="helpCard"><b>偷窺 ×4</b><small>Phase 2。自己秘密看下 3 張，再指定另一人秘密看他自己下 1 張；雙方情報保密。</small></div>
 </div>
 <p style="text-align:center;margin-top:14px"><button class="btn" onclick="document.getElementById('helpModal').classList.add('hidden')">關閉</button></p></div></div>
 
@@ -297,9 +377,9 @@ let actionDeck=[], discardPile=[], nextShotGlobal=null, phase6Ready=false, phase
 let pendingVictoryCeremony=null;
 let uiLocked=false, shotResolving=false;
 let challengeQueue=[], challengeQueueCallback=null, currentChallengeGroupText='', activeChallengeGroup=null;
-const PH=['設定','Phase 1 藏子彈','Phase 2 轉輪','Phase 3 下注','Phase 4 挑戰','Phase 5 開槍','Phase 6 得分'];
+const PH=['設定','PHASE 1｜藏子彈','PHASE 2｜轉輪','PHASE 3｜決定開槍數','PHASE 4｜質疑','PHASE 5｜開槍','PHASE 6｜結算'];
 const DEAD_USABLE=new Set(['上子彈','多開一槍','死亡之骰','互射吧','鳴槍慶祝','再來一發','掏口袋']);
-function openHelp(){document.getElementById('helpModal').classList.remove('hidden');}
+function openHelp(){const m=document.querySelector('#helpModal .helpModal');m.innerHTML=`<h2>圓桌上的六個階段</h2><p>藏子彈：拖一枚子彈到袋口。真子彈需確認，取消不改動藏牌。<br>轉輪：沿圓周拖動彈巢至少四分之一圈，放手後等它停下。<br>決定開槍數：把 0～5 的骰子拖到托盤，這是選擇，不是隨機擲骰。<br>質疑：點擊發光的玩家名牌，或放棄質疑。<br>開槍：每次所有需要開槍的玩家同步扣扳機。<br>結算：收取分數籌碼，繼續下一輪。</p><p>完整槍牌固定 7 張，藏起一張後為 6 張。增加 BANG 是替換 CLICK。普通隊員死亡立即抽 1 張並 Clean Gun；隊長死亡立即淘汰。當輪失去角色就不計分。</p><p>存活得開槍數＋1 分。唯一最高且至少 15 分才贏；平手全體未淘汰者繼續。最後一名隊長立即獲勝，同一事件全滅則無人勝利。</p><p>每輪一次正式質疑，多人抓同一人只死一名角色，質疑者各抽 3 張；誣告者各換一顆 BANG，被誣告者每次抽 1 張。☠ 卡允許本輪死亡或已淘汰者使用。手牌／每階段出牌數無上限，後出的衝突效果優先。</p><p><b>本版指定的偷窺效果：</b>使用者秘密查看自己接下來的 3 張子彈，再指定另一名玩家，讓他秘密查看他自己下一張子彈。雙方看不到彼此的結果。須在轉輪完成後、所有人決定開槍數前使用。</p><div class="helpGrid">${CARD_RULES.map(c=>`<div class="helpCard"><b>${c.skull?'☠ ':''}${c.name} · ${PH[c.at]}</b><small>${c.txt}</small></div>`).join('')}</div><p class="small">保留 v0.24e 規則引擎與官方 PnP v2 的 33 張牌配置；偷窺依本次指定效果更新。點桌面或 Enter 可快轉演出；拖曳與秘密決策不能用快轉代替。</p><button class="btn" onclick="document.getElementById('helpModal').classList.add('hidden')">關閉</button>`;document.getElementById('helpModal').classList.remove('hidden');}
 function toggleDevMode(){
  if(!developerMode){
   const pw=prompt('開發者模式密碼');
@@ -314,20 +394,10 @@ function toggleDevMode(){
  if(b){b.textContent=developerMode?'🔓':'🔒'; b.classList.toggle('on',developerMode);}
  render();
 }
-function cardMini(c){return `<span class="devMiniCard ${c==='BANG'?'bang':c==='空響'?'blank':''}">${c==='BANG'?'BANG':c==='空響'?'空':c}</span>`;}
+function cardMini(c){return `<span class="devMiniCard ${c==='BANG'?'bang':c==='空響'?'blank':''}">${c==='BANG'?'BANG':c==='空響'?'CLICK':c}</span>`;}
 function devHandText(p){return (p.hand&&p.hand.length)?p.hand.map(c=>c.name).join('、'):'無';}
 function devPersonalityText(ai){if(!isHardAI(ai))return '普通AI'; return PERSONALITY_KEYS.map(k=>`${PERSONALITY_NAMES[k]}${ai.personalityMatrix[k]||0}`).join(' / ');}
-function renderDeveloperPanel(){
- if(!developerMode)return '';
- const rows=players.map(p=>{
-  const deck=(p.deck||[]).map(cardMini).join('');
-  const mem=isHardAI(p)?`<br>仇恨：${Object.entries(p.aiMemory?.hatred||{}).map(([id,o])=>`${players[id]?.name||id}:${o.value}`).join('、')||'無'}<br>懷疑：${Object.entries(p.aiMemory?.suspicion||{}).map(([id,o])=>`${players[id]?.name||id}:${o.value}`).join('、')||'無'}`:'';
-  const per=p.id===0?'玩家':devPersonalityText(p);
-  return `<div class="devRow"><b style="color:${p.color}">${p.name}</b>｜藏：${p.hidden||'-'}｜下注：${p.bet??'-'}｜實彈${p.bangs}｜手牌：${devHandText(p)}<br>${per}${mem}<div class="devCards">${deck}</div></div>`;
- }).join('');
- return `<div class="devBox"><div class="devBoxTitle">🔓 開發者模式：全玩家牌面與 AI 個性</div>${rows}</div>`;
-}
-
+function renderDeveloperPanel(){if(!developerMode)return '';const rows=players.map(p=>`<div class="devRow"><b>${p.name}</b> 真實答案：藏 ${p.hidden||'-'}；inventory ${p.gunInventory.bang} BANG / ${p.gunInventory.blank} CLICK；手牌 ${devHandText(p)}<div class="devCards">${p.deck.map(cardMini).join('')}</div><details><summary>AI 認知／Utility／人格（獨立記憶）</summary><pre>${JSON.stringify({personality:p.personalityMatrix,hatred:p.aiMemory?.hatred,suspicion:p.aiMemory?.suspicion,estimatedCheatProbability:p.debug.cheatProbabilities,cheatUtility:p.debug.hide,betUtility:p.debug.bet,challengeUtility:p.debug.challenge,actionUtility:p.debug.action,targetThreat:p.debug.threat,legalKnowledge:getAIKnowledge(p)},null,2)}</pre></details></div>`).join('');return `<div class="devBox"><div class="devBoxTitle">真實答案 vs AI 主觀推理</div><button class="btn" onclick="runAISimulation(1000)">無動畫模擬 1000 局</button><div id="simStatus">${lastSimulation?'上次：'+lastSimulation.games+' 局；詳見模擬報告':''}</div>${rows}</div>`;}
 function safeNewGame(){
  try{newGame();}
  catch(e){console.error('新遊戲初始化失敗：',e); alert('新遊戲初始化失敗：'+((e&&e.message)?e.message:String(e)));}
@@ -375,7 +445,7 @@ function initAIMind(p){
   p.personalityMatrix=null;
  }
 }
-function isHardAI(ai){return ai&&ai.id!==0&&ai.aiLevel==='hard'&&ai.personalityMatrix;}
+function isHardAI(ai){return ai&&ai.aiLevel==='hard'&&!!ai.personalityMatrix;}
 function trait(ai,key){return isHardAI(ai)?(ai.personalityMatrix[key]||0):0;}
 function trait01(ai,key){return trait(ai,key)/100;}
 function clamp(v,a=0,b=100){return Math.max(a,Math.min(b,v));}
@@ -400,7 +470,7 @@ function hateScore(ai,target){
  if(!ai||ai.id===0||!target)return 0; const arr=ensureAIMemory(ai.id); return arr.filter(e=>e.target===target.id).reduce((s,e)=>s+e.value,0);
 }
 function suspicionScore(ai,target){return isHardAI(ai)?mindValue(ai,'suspicion',target):0;}
-function decayAIMemory(){players.slice(1).forEach(ai=>{if(!isHardAI(ai))return; ['hatred','suspicion'].forEach(kind=>{Object.keys(ai.aiMemory[kind]||{}).forEach(id=>{ai.aiMemory[kind][id].value=clamp(ai.aiMemory[kind][id].value-(kind==='hatred'?3:5),0,100);});});});}
+function decayAIMemory(){players.filter(isHardAI).forEach(ai=>{for(const kind of ['hatred','suspicion'])for(const id of Object.keys(ai.aiMemory[kind]||{}))ai.aiMemory[kind][id].value=clamp(ai.aiMemory[kind][id].value-(kind==='hatred'?3:5),0,100);});}
 function personalityMul(ai,key){
  if(isHardAI(ai)){
   if(key==='risk')return clamp(0.75 + trait01(ai,'Risk')*.95 + trait01(ai,'Greedy')*.35 + trait01(ai,'Prank')*.28 - trait01(ai,'Coward')*.45 - trait01(ai,'Calm')*.20,.35,1.95);
@@ -432,35 +502,12 @@ function showSimpleEvent(title,htmlText,kind=''){
  d.innerHTML=`<div class="eventCard"><h2>${title}</h2><div class="eventSub ${kind}">${htmlText}</div></div>`;
  root.appendChild(d); setTimeout(()=>{if(d.parentNode)d.remove();},1450);
 }
-function triggerGunOverlay(text,isDanger=false){
- const root=document.getElementById('gunOverlayRoot'); if(!root)return; root.innerHTML='';
- document.querySelectorAll('.gunOverlay,.revolverOverlay').forEach(x=>x.remove());
- const d=document.createElement('div'); d.className='gunOverlay '+(isDanger?'gunDanger':'');
- const textDanger=/BANG|中彈/.test(text);
- d.innerHTML=`<div class="countdownFx"><span>3</span><span>2</span><span>1</span></div><div class="gunStage"><div class="gunWrap fire"><div class="gunBarrel"></div><div class="gunCylinder"></div><div class="gunGrip"></div><div class="gunTrigger"></div><div class="gunMuzzle"></div></div></div><div class="gunOverlayText ${textDanger?'danger':'safe'}">${text}</div>`;
- root.appendChild(d); setTimeout(()=>{if(d.parentNode)d.remove();},1850);
-}
-
 function triggerCameraBreak(){
  document.querySelectorAll('.cameraBreak').forEach(x=>x.remove());
  const d=document.createElement('div'); d.className='cameraBreak'; document.body.appendChild(d);
  setTimeout(()=>{if(d.parentNode)d.remove();},1250);
 }
 
-function triggerJudgeExecution(target){
- document.querySelectorAll('.judgeOverlay').forEach(x=>x.remove());
- const isPlayer=target&&target.id===0;
- const d=document.createElement('div'); d.className='judgeOverlay '+(isPlayer?'playerHit':'');
- d.innerHTML=`<div class="judgeScene">
-  <div class="judgeMan"><div class="judgeHat"></div><div class="judgeHead"></div><div class="judgeGlasses"></div><div class="judgeBody"></div><div class="judgeTie"></div><div class="judgeArm"><div class="judgeGun"><div class="judgeFlash"></div></div></div></div>
-  <div class="judgeBang">BANG！！</div>
-  ${target?avatarImg(target,'judgeTargetAvatar'):''}<div class="judgeTarget">${target?target.name:'作弊者'}</div>
-  <div class="judgeSubtitle">黑衣裁判執行處決</div>
- </div>`;
- document.body.appendChild(d);
- if(isPlayer)setTimeout(triggerCameraBreak,1320);
- setTimeout(()=>{if(d.parentNode)d.remove();},2100);
-}
 function showRoundSummary(scoreLines, deathLines){
  document.querySelectorAll('.roundSummaryOverlay').forEach(x=>x.remove());
  const scoreHtml=(scoreLines&&scoreLines.length?scoreLines:['本輪無人得分。']).map(x=>`<div class="roundSummaryLine">${x}</div>`).join('');
@@ -477,97 +524,37 @@ function continueAfterRoundSummary(){
   showVictoryCeremony(v.winners,v.reason);
  }
 }
-function showAIThinking(ai){
- if(!ai||ai.id===0)return;
- const d=document.createElement('div'); d.className='aiThinking'; d.textContent=`${ai.name} 思考中……`;
- document.body.appendChild(d); setTimeout(()=>{if(d.parentNode)d.remove();},880);
-}
-
-function triggerRevolverOverlay(onDone){
- const root=document.getElementById('gunOverlayRoot'); if(!root)return;
- root.innerHTML='';
- document.querySelectorAll('.gunOverlay,.revolverOverlay').forEach(x=>x.remove());
- const d=document.createElement('div'); d.className='revolverOverlay';
- d.innerHTML=`<div class="revolverBox">
-  <div class="revolverHole h1"></div><div class="revolverHole h2"></div><div class="revolverHole h3"></div>
-  <div class="revolverHole h4"></div><div class="revolverHole h5"></div><div class="revolverHole h6"></div>
- </div><div class="revolverText">轉輪中……</div>`;
- root.appendChild(d);
- setTimeout(()=>{if(d.parentNode)d.remove(); if(typeof onDone==='function')onDone();},2050);
-}
-
-
-function bulletLabel(c){return c==='BANG'?'BANG':'空響';}
+function bulletLabel(c){return c==='BANG'?'BANG':'CLICK · 空響';}
 function bulletClass(c){return c==='BANG'?'bang':'blank';}
-function showPeekOverlay(owner,cards,subtitle='這就是你接下來的子彈順序。'){
- const old=document.getElementById('peekOverlay'); if(old)old.remove();
- const arr=(cards&&cards.length?cards:['空響']).slice(0,3);
- const first=arr[0]||'空響';
- const d=document.createElement('div'); d.id='peekOverlay'; d.className='peekOverlay';
- const smallCards=arr.slice(1,3).map((c,i)=>`<div class="peekCol small"><div class="peekBadge">第 ${i+2} 發</div><div class="peekCard small ${bulletClass(c)}"><span>${bulletLabel(c)}</span></div></div>`).join('');
- d.innerHTML=`<div class="peekBox ${first==='BANG'?'peekDanger':''}">
-   <div class="peekTitle">👁 偷窺</div>
-   <div class="peekSub">${owner}｜${subtitle}</div>
-   <div class="peekNextLabel">★★★★★ 下一發／第 1 發 ★★★★★</div>
-   <div class="peekCards">
-     <div class="peekCol"><div class="peekCard big ${bulletClass(first)}"><span>${bulletLabel(first)}</span></div></div>
-     ${smallCards}
-   </div>
-   <div class="peekContinue"><button class="btn" onclick="document.getElementById('peekOverlay')?.remove()">繼續</button></div>
- </div>`;
- document.body.appendChild(d);
-}
-
-function log(t){const box=document.getElementById('log'); box.innerHTML='<p>'+t+'</p>'+box.innerHTML;}
+function showPeekOverlay(owner,cards){document.getElementById('peekOverlay')?.remove();const d=document.createElement('div');d.id='peekOverlay';d.className='peekOverlay';d.innerHTML=`<div class="peekBox"><div class="peekTitle">偷窺 · 私人情報</div><div class="peekSub"><b>只有你能看到自己的結果。</b><br>以下是你自己的下 ${cards.length} 張子彈。其他人無法看見。</div><div class="peekCards">${cards.slice(0,3).map((c,i)=>`<div class="peekCol ${i?'small':''}"><div class="peekBadge">第 ${i+1} 發</div><div class="peekCard ${i?'small':'big'} ${bulletClass(c)}"><span>${bulletLabel(c)}</span></div></div>`).join('')}</div><div class="peekContinue"><button class="btn" onclick="document.getElementById('peekOverlay').remove()">收起私人情報</button></div></div>`;document.body.appendChild(d);}
+function log(t){if(simMode)return;const box=document.getElementById('log');box.innerHTML='<p>'+t+'</p>'+box.innerHTML;while(box.children.length>180)box.lastElementChild.remove();}
 function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function newGame(){
- let n=+document.getElementById('playerCount').value;
- currentAIDifficulty=document.getElementById('aiDifficulty')?.value||'hard';
- players=[]; loadAIMemory(); initActionDeck();
- const identities=shuffle(ROLE_POOL.slice()).slice(0,n);
- for(let i=0;i<n;i++){
-  const role=identities[i];
-  const p={id:i,name:role.codeName,color:role.color,colorName:role.colorName,cname:'',avatar:role.avatar,silhouette:role.silhouette,roleKey:role.key,score:0,roles:[true,true,true,true],out:false,hidden:null,deck:[],bet:null,shotsTaken:0,aliveThisRound:true,challenged:false,knownTop:[],bangs:1,hand:[],nextShotTarget:null,burstShots:0,burstTarget:null,pendingScoreBonus:0,pendingDeathEvents:[],lastBets:[],lastHides:[],roundNo:0};
-  initAIMind(p);
-  players.push(p); resetDeck(p); ensureAIMemory(i);
- }
- players.forEach(p=>drawCards(p,1,false));
- phase=1; gameOver=false; nextShotGlobal=null; pendingVictoryCeremony=null; roundDeaths=[]; roundDeathEvents=[];
- log(`新遊戲開始。角色代號已隨機分發，每位角色抽 1 張行動卡。${currentAIDifficulty==='hard'?'困難AI已生成各自性格與獨立記憶庫。':'普通AI維持原本邏輯。'}`);
- if(currentAIDifficulty==='hard')console.table(players.slice(1).map(p=>({AI:p.name,...p.personalityMatrix})));
- render(); setupPhase1();
+ if(simulationRunning)return;
+ TableUI.reset(); GameFX.cancel(); sessionId++; uiLocked=false; shotResolving=false; effectQueue=[]; activeChallengeGroup=null; challengeQueue=[]; challengeQueueCallback=null; delete window.__targetPick;
+ document.querySelectorAll('.stageBanner,.gunOverlay,.revolverOverlay,.judgeOverlay,.eventTheater,.cardFlash,.aiThinking,.cameraBreak,.challengeGroupNotice,.showdownOverlay,.roundSummaryOverlay,.victoryOverlay,#targetModal,#peekOverlay').forEach(x=>x.remove());
+ document.getElementById('modal').classList.add('hidden'); document.getElementById('log').innerHTML='';
+ currentAIDifficulty=document.getElementById('aiDifficulty').value; initializeGame(+document.getElementById('playerCount').value,currentAIDifficulty);
+ log('新遊戲：3 隊員＋1 隊長、7 張槍牌、1 張行動卡。'); setupPhase1(); render();
 }
-function resetDeck(p){p.deck=['BANG','空響','空響','空響','空響','空響','空響'];p.bangs=1;}
-function initActionDeck(){actionDeck=[]; discardPile=[]; const add=(name,count,phase,txt)=>{for(let i=0;i<count;i++)actionDeck.push({name,phase,txt})};
- add('兩連發',2,'Phase 5','開過兩槍後使用。你接下來兩槍可指向任意活著玩家。');
- add('多開一槍',2,'Phase 4','指定玩家下注 +1；若為 5 則轉成 0。淘汰後可用。');
- add('上子彈',2,'Phase 1','指定玩家：一張空響替換成 BANG，總牌數不變，並重新洗牌。若沒有空響則不能使用。淘汰後可用。');
- add('死亡之骰',2,'Phase 4','指定玩家重新隨機 0～5 作為本輪下注。淘汰後可用。');
- add('再來一發',2,'Phase 6','指定一名活著玩家再開一槍，本次不計分。淘汰後可用。');
- add('互射吧',3,'Phase 5','接下來一槍，所有活著玩家都要指定一名其他活著玩家；沒有剩餘射擊數者只指人、不會開火。淘汰後可用。');
- add('乾了伏特加',1,'Phase 6','只有本輪存活玩家中下注最高者才能使用；單獨最高 +2，並列最高 +1。不是最高者不能使用，卡片保留。');
- add('鳴槍慶祝',3,'Phase 5','接下來一槍，所有開槍者都朝天空，且絕對視為空槍。淘汰後可用。');
- add('賄賂裁判',1,'Phase 4','被抓到作弊時使用。不失去隊員，但質疑者仍抽 3 張。');
- add('就打你',3,'Phase 5','你的下一槍改射任意其他存活玩家。');
- add('掏口袋',1,'Phase 6','得分階段額外質疑一名本輪仍存活玩家作弊；不能對死人或淘汰者使用。淘汰後可用。');
- add('空槍',3,'Phase 5','你的下一槍朝天空開槍。');
- add('偷窺',4,'Phase 2','查看自己子彈堆前 3 張，並讓一名玩家知道自己第一張。');
- shuffle(actionDeck);}
-function drawCards(p,n=1,announce=true){let got=0; for(let i=0;i<n;i++){if(actionDeck.length===0){actionDeck=shuffle(discardPile.splice(0)); if(actionDeck.length===0)break;} const c=actionDeck.pop(); p.hand.push(c); got++;} if(announce&&got)log(`${p.name} 抽 ${got} 張行動卡，目前 🃏×${p.hand.length}。`); if(announce)render();}
+function resetDeck(p){p.gunInventory={bang:1,blank:6};p.bangs=1;p.deck=['BANG',...Array(6).fill('空響')];invalidateKnowledge(p);}
+function initActionDeck(){actionDeck=[];discardPile=[];for(const c of CARD_RULES)for(let i=0;i<c.count;i++)actionDeck.push({...c});shuffle(actionDeck);}
+function drawCards(p,n=1,announce=true){let got=0;for(let i=0;i<n;i++){if(!actionDeck.length){actionDeck=shuffle(discardPile.splice(0));if(!actionDeck.length)break;}p.hand.push(actionDeck.pop());got++;}if(simStats)simStats.drawnCards+=got;if(announce&&got)log(`${p.name} 立即抽 ${got} 張行動卡。`);return got;}
 function discardCard(card){discardPile.push(card)}
 function showCardFlash(who,name,txt){const d=document.createElement('div'); d.className='cardFlash'; d.innerHTML=`<h2>${name}</h2><p>${who}<br>${txt}</p>`; document.body.appendChild(d); setTimeout(()=>d.remove(),1150);}
 function addBangToStack(p){
- if(!p||!Array.isArray(p.deck))return false;
- // 固定張數規則：只把一張空響替換成 BANG，不新增子彈牌。
- // 若已經開過槍，優先替換尚未開出的空響，避免改到已翻出的歷史牌面。
- let start=Math.max(0,p.shotsTaken||0);
- let idx=p.deck.findIndex((c,i)=>i>=start&&c==='空響');
- if(idx<0)idx=p.deck.indexOf('空響');
- if(idx>=0){p.deck[idx]='BANG';p.bangs=(p.bangs||0)+1;shuffle(p.deck);return true;}
- return false;
+ if(!p||p.out)return false;
+ // Inventory is authoritative. During a round only a non-pocketed CLICK may be exchanged.
+ const available=p.gunInventory.blank-(p.hidden==='空響'&&!p.lostRoleThisRound?1:0);
+ if(available<=0)return false;
+ p.gunInventory.blank--;p.gunInventory.bang++;p.bangs=p.gunInventory.bang;
+ if(!p.hidden||p.lostRoleThisRound){p.deck=inventoryCards(p);}else{
+  const at=p.deck.indexOf('空響');if(at<0)throw Error('No CLICK in gun');p.deck[at]='BANG';
+ }
+ shuffleGun(p);publicEvent({type:'load',target:p.id});return true;
 }
 function findCardIndex(p,name){return p.hand.findIndex(c=>c.name===name)}
-function removeAndFlash(p,idx){const card=p.hand[idx]; p.hand.splice(idx,1); discardCard(card); showCardFlash(`${p.name} 使用`,card.name,card.txt); log(`<b>${p.name} 使用【${card.name}】。</b>`); return card;}
+function removeAndFlash(p,idx){const card=p.hand.splice(idx,1)[0];discardCard(card);publicEvent({type:'card',actor:p.id,card:card.name});if(!simMode)effectQueue.push({kind:'card',name:p.name,card:card.name,txt:card.txt});log(`${p.name} 使用【${card.name}】。`);if(simStats)simStats.cards++;return card;}
 function isHighestLivingBet(p){
  const alive=livingThisRound();
  if(!p || !alive.includes(p) || !alive.length)return false;
@@ -581,279 +568,97 @@ function vodkaBonusFor(p){
  const tied=alive.filter(x=>(x.bet||0)===max);
  return tied.length===1?2:1;
 }
-function setGlobalShotEffect(effect,who,cardName){
- const old=nextShotGlobal;
- nextShotGlobal=effect;
- players.forEach(x=>{x.mutualTarget=null});
- if(old&&old!==effect){
-  const oldName=old==='others'?'互射吧':old==='sky'?'鳴槍慶祝':'前一個效果';
-  log(`<span class="muted">後發覆蓋：${who.name} 的【${cardName}】覆蓋了【${oldName}】，下一槍只結算最後發動的效果。</span>`);
- } else {
-  log(`<span class="muted">後發規則：下一槍目前以 ${who.name} 最後發動的【${cardName}】為準。</span>`);
+function setGlobalShotEffect(effect,who,cardName){nextShotGlobal=effect;globalAimOrder=++effectSerial;players.forEach(p=>p.mutualTarget=null);log(`${who.name} 的【${cardName}】覆蓋較早的衝突瞄準效果。`);}
+function useCard(p,idx,targetId=null){
+ const card=p.hand[idx];if(!card||gameOver||!canUseCard(p,card))return false;
+ const targets=legalTargets(p,card.name),t=targetId==null?null:players[targetId];
+ if(card.target&&(!t||!targets.includes(t)))return false;
+ if(card.name==='上子彈'&&!addBangToStack(t))return false;
+ removeAndFlash(p,idx);
+ if(t&&t!==p&&card.name!=='偷窺')recordHate(t,p,12,card.name);
+ switch(card.name){
+ case '偷窺': grantPeek(p,3);grantPeek(t,1);break;
+ case '空槍': setAim(p,'sky',1);break;
+ case '就打你': setAim(p,t.id,1);break;
+ case '兩連發': setAim(p,t.id,2);p.burstRetarget=false;break;
+ case '互射吧':setGlobalShotEffect('others',p,card.name);break;
+ case '鳴槍慶祝':setGlobalShotEffect('sky',p,card.name);break;
+ case '多開一槍':{const before=t.bet;t.bet=(t.bet+1)%6;publicEvent({type:'bidChange',target:t.id,before,after:t.bet});log(`${t.name}：${before} → ${t.bet}`);break;}
+ case '死亡之骰':{const before=t.bet;t.bet=Math.floor(Math.random()*6);publicEvent({type:'bidChange',target:t.id,before,after:t.bet});log(`${t.name}：${before} → ${t.bet}`);break;}
+ case '再來一發':extraShot(t,card.name);break;
+ case '乾了伏特加':p.pendingScoreBonus+=vodkaBonusFor(p);break;
+ case '掏口袋':if(simMode)finishChallengeGroup([p],t,true,false);else effectQueue.push({kind:'challenge',challengers:[p],target:t,fromPocket:true});break;
  }
+ render();return true;
 }
-function useCard(p,idx,targetId=null){const card=p.hand[idx]; if(!card||!canUseCard(p,card))return false;
- if(card.name==='上子彈'){
-  const t=players[targetId];
-  if(!t||t.out)return false;
-  if(!t.deck.includes('空響')){log(`${t.name} 的子彈堆沒有空響，【上子彈】無法使用，卡片保留。`); return false;}
-  removeAndFlash(p,idx);
-  recordHate(t,p,18,'上子彈');
-  if(addBangToStack(t))log(`${t.name} 的一張空響被替換成 BANG，總牌數不變。`); recordSuspicionForAll(t,12,'被上子彈');
- }
- else {removeAndFlash(p,idx);}
- if(false){}
- else if(card.name==='偷窺'){
-  p.knownTop=p.deck.slice(0,3);
-  if(p.id===0){
-   log(`${p.name} 使用【偷窺】，已確認自己的前三發。`);
-   showPeekOverlay(`${p.name}`,p.knownTop,'前三張已揭示，第一張就是下一發。');
-  } else {
-   log(`${p.name} 使用【偷窺】，正在查看自己的前三發。`);
-   showSimpleEvent('👁 偷窺',`${p.name} 正在查看自己的前三發。<br><span style="color:#b8aec7">內容不公開。</span>`,'safe');
-  }
-  const t=targetId!=null?players[targetId]:players.find(x=>!x.out&&x.id!==p.id);
-  if(t){
-   t.knownTop=[t.deck[0]];
-   if(t.id===0){
-    log(`${t.name} 得知自己的下一發子彈。`);
-    showPeekOverlay(`${t.name}`,t.knownTop,'你被指定偷看自己的第一張；這張就是下一發。');
-   } else {
-    log(`${t.name} 得知自己第一張子彈。`);
-   }
-  }
- }
- else if(card.name==='空槍'){p.nextShotTarget='sky'; log(`${p.name} 下一槍將朝天空。`);}
- else if(card.name==='就打你'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound&&t.id!==p.id){p.nextShotTarget=t.id; recordHate(t,p,12,'就打你瞄準'); log(`${p.name} 下一槍將指向 ${t.name}。`);}}
- else if(card.name==='互射吧'){setGlobalShotEffect('others',p,'互射吧'); log(`<span class="danger">下一槍全體存活玩家都必須指定其他玩家；沒有剩餘射擊數者只指人，不會開火。</span>`);}
- else if(card.name==='鳴槍慶祝'){setGlobalShotEffect('sky',p,'鳴槍慶祝'); log(`<span class="safe">下一槍全體開槍者都朝天空，且絕對空槍。</span>`);}
- else if(card.name==='兩連發'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound&&t.id!==p.id){p.burstShots=2; p.burstTarget=t.id; recordHate(t,p,18,'兩連發瞄準'); log(`${p.name} 接下來兩槍將優先指向 ${t.name}。`);}}
- else if(card.name==='多開一槍'){const t=players[targetId]; if(t&&!t.out){let old=t.bet??0; t.bet=(old>=5)?0:old+1; recordHate(t,p,10,'多開一槍'); recordSuspicionForAll(t,6,'被多開一槍'); log(`${t.name} 下注由 ${old} 變成 ${t.bet}。`);}}
- else if(card.name==='死亡之骰'){const t=players[targetId]; if(t&&!t.out){let old=t.bet??0; t.bet=Math.floor(Math.random()*6); recordHate(t,p,12,'死亡之骰'); log(`${t.name} 被死亡之骰改成下注 ${t.bet}（原本 ${old}）。`);}}
- else if(card.name==='再來一發'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound){recordHate(t,p,20,'再來一發'); extraShot(t,`${p.name} 的【再來一發】`);}}
- else if(card.name==='乾了伏特加'){const bonus=vodkaBonusFor(p); if(!bonus){log(`${p.name} 不是本輪存活玩家中的最高下注者，【乾了伏特加】不能使用，卡片保留。`); return false;} p.pendingScoreBonus+=bonus; log(`${p.name} 乾了伏特加，待會額外 +${bonus} 分。`);}
- else if(card.name==='掏口袋'){const t=players[targetId]; if(t&&!t.out&&t.aliveThisRound){resolveChallenge(p,t,true);} else {log('【掏口袋】不能對已死亡或淘汰的玩家使用，卡片保留。'); return false;}}
- render(); return true;}
-function canUseCard(p,card){if(!card)return false; if(p.out && !DEAD_USABLE.has(card.name))return false; if(card.name==='上子彈')return phase===1;
- if(card.name==='偷窺')return phase===2 && !p.out;
- if(card.name==='多開一槍'||card.name==='死亡之骰')return phase===4;
- if(card.name==='互射吧'||card.name==='鳴槍慶祝')return phase===5;
- if(card.name==='空槍'||card.name==='就打你')return phase===5 && !p.out && p.aliveThisRound && p.shotsTaken<(p.bet||0) && true;
- if(card.name==='兩連發')return phase===5 && !p.out && p.aliveThisRound && shotNo>=2 && p.shotsTaken<(p.bet||0) && p.burstShots<=0;
- if(card.name==='再來一發'||card.name==='掏口袋')return phase===6 && phase6Ready && !phase6Scored;
- if(card.name==='乾了伏特加')return phase===6 && phase6Ready && !phase6Scored && !p.out && p.aliveThisRound && isHighestLivingBet(p);
- if(card.name==='賄賂裁判')return false; return false;}
-
-function renderHand(){
- const box=document.getElementById('handPanel');
- if(!box)return;
- const me=players&&players[0];
- if(!me){box.innerHTML='';return;}
- const hand=(me.hand||[]).map((c,i)=>{
-  const ok=typeof canUseCard==='function'?canUseCard(me,c):false;
-  return `<div class="actionCard ${ok?'':'disabled'}" onclick="playerUseCard(${i})"><b>${c.name}</b><span>${c.phase||''}<br>${c.txt||''}</span></div>`;
- }).join('') || '<span class="muted small">目前沒有行動卡。</span>';
- let info='';
- if(developerMode){
-  info=renderDeveloperPanel();
- }else if(currentAIDifficulty==='hard'){
-  info=`<div class="handBox"><div class="handTitle">AI等級</div><div class="small muted">困難AI：每局隱藏生成性格，且每個AI有獨立仇恨/懷疑記憶庫。按右上角鎖頭輸入密碼可開啟開發者模式。</div></div>`;
- }else{
-  info=`<div class="handBox"><div class="handTitle">AI等級</div><div class="small muted">普通AI：維持原本行為邏輯。</div></div>`;
- }
- box.innerHTML=`<div class="handBox"><div class="handTitle">你的行動卡 <span class="cardCount">${me.hand?me.hand.length:0}</span></div><div class="actionCards">${hand}</div></div>${info}`;
+function canUseCard(p,card){
+ if(!p||!card||gameOver)return false;
+ if((p.out||!p.aliveThisRound)&&!DEAD_USABLE.has(card.name))return false;
+ const rule=CARD_RULES.find(c=>c.name===card.name);if(!rule||rule.at!==phase)return false;
+ if(phase===6&&(!phase6Ready||phase6Scored))return false;
+ if(card.name==='賄賂裁判')return false; // Only the explicit phase-4 caught-cheating response.
+ if(card.name==='偷窺')return !p.out&&!p.lostRoleThisRound&&(simMode||TableUI.spinReady)&&legalTargets(p,card.name).length>0;
+ if(['空槍','就打你','兩連發'].includes(card.name)&&p.shotsTaken>=p.bet)return false;
+ if(card.name==='兩連發'&&p.shotsTaken<2)return false;
+ if(card.name==='乾了伏特加'&&!isHighestLivingBet(p))return false;
+ if(rule.target&&!legalTargets(p,card.name).length)return false;
+ return true;
 }
-
-function render(){
- const playersBox=document.getElementById('players');
- if(!playersBox)return;
- playersBox.innerHTML=players.map(p=>{
-  const reveal=developerMode;
-  const identity=`${colorLabel(p)} ${p.id===0?'你操控':(p.aiLevel==='hard'?'對手':'對手')}｜${p.out?'淘汰':p.aliveThisRound?'存活':'本輪死亡'}`;
-  const hideText=reveal?(p.hidden||'-'):(p.id===0&&p.hidden?p.hidden:'?');
-  const deckHtml=(p.deck||[]).map((c,idx)=>{
-   const face=reveal||idx<p.shotsTaken;
-   return `<div class="card ${face?(c==='BANG'?'bang':'blank'):'back'}">${face?(c==='BANG'?'BANG':'空'):''}</div>`;
-  }).join('');
-  const devLine=reveal?`<div class="small" style="color:#ffe08a;margin-top:3px">手牌：${devHandText(p)}</div>`:'';
-  return `<div class="player ${p.out?'dead':''}" id="p${p.id}" style="--c:${p.color}"><div class="phead compact"><div class="portraitWrap"><img class="portrait ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="${p.name}"><div><div class="codename">${p.name}</div><div class="identityLine">${identity}</div></div></div><div class="score">${p.score}</div></div><div class="roles">${p.roles.map((r,i)=>`<div class="role ${i===3?'captain':''} ${i===3&&r&&p.roles.filter(Boolean).length===1?'critical':''} ${!r?'deadrole':''}">${i<3?`<img class="roleSilhouette" src="${p.silhouette||p.avatar}" alt="手下">`:`<img class="roleCaptainImg ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="隊長">`}<span class="rlabel">${i<3?'手下':'隊長'}</span></div>`).join('')}</div><div class="small muted">🎯${p.bet??'-'}｜🃏×${p.hand?p.hand.length:0}｜實彈${p.bangs}｜藏：${hideText}</div>${devLine}<div class="deck">${deckHtml}</div></div>`;
- }).join('');
- renderHand();
+function renderHand(){if(simMode)return;const p=players[0];if(!p)return;const n=p.hand.length;
+ document.getElementById('handPanel').innerHTML=`<div class="handTitle">你的手牌 · ${n} 張 <span>／ 金色牌可於本階段使用</span><button class="gunInspectButton" onclick="RuleFeedback.openGun()">查看自己的子彈</button><button class="rewardInspectButton" onclick="RuleFeedback.openHistory()">本輪賞罰</button>${developerMode?' <button class="btn" onclick="TableUI.drawer(\'debugDrawer\')">Debug</button>':''}</div><div class="actionCards">${p.hand.map((c,i)=>{const ok=!uiLocked&&!gameOver&&canUseCard(p,c);const tilt=Math.max(-9,Math.min(9,(i-(n-1)/2)*3));return `<div class="actionCard ${ok?'':'disabled'}" tabindex="0" role="button" aria-disabled="${!ok}" style="--tilt:${tilt};--curve:${Math.abs(tilt)}" onclick="playerUseCard(${i})" onkeydown="if(event.key==='Enter')playerUseCard(${i})"><small class="cardPhase">PHASE ${c.at} · ${['','藏子彈','轉輪','決定開槍數','質疑','開槍','結算'][c.at]}</small><b>${c.skull?'☠ ':''}${c.name}</b><span>${c.name==='偷窺'?'自己秘密看下 3 張，再指定另一人秘密看他自己下 1 張；雙方情報保密。':c.txt}</span></div>`;}).join('')||'<p class="muted">目前沒有行動卡</p>'}</div>`;
 }
-function playerUseCard(idx){const p=players[0], card=p.hand[idx]; if(!card)return; if(!canUseCard(p,card)){if(card.name==='乾了伏特加')log('只有本輪存活玩家中下注最高者才能使用【乾了伏特加】，卡片保留。'); return;} const aliveTargets=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==0); const anyTargets=players.filter(x=>!x.out&&x.id!==0); if(card.name==='上子彈'){
- const targets=players.filter(x=>!x.out&&x.deck&&x.deck.includes('空響'));
- if(!targets.length){log('沒有玩家的子彈堆還有空響，【上子彈】暫時不能使用。');return;}
- showTargetPicker('選擇要把一張空響替換成 BANG 的玩家',targets,tid=>useCard(p,idx,tid));
+function playerUseCard(idx){if(uiLocked||gameOver||TableUI.confirming)return;const p=players[0],card=p.hand[idx];if(!canUseCard(p,card))return;
+ const apply=tid=>runUI(async token=>{if(p.hand[idx]!==card)return;useCard(p,idx,tid);await drainEffects(token);if(token===sessionId)checkVictory();});
+ if(card.target)showTargetPicker(`【${card.name}】選擇目標`,legalTargets(p,card.name),apply);else apply(null);
 }
- else if(card.name==='偷窺'){showTargetPicker('選擇一名玩家讓他偷看自己第一張',anyTargets,tid=>useCard(p,idx,tid));}
- else if(card.name==='就打你'||card.name==='兩連發'){showTargetPicker('選擇射擊目標',aliveTargets,tid=>useCard(p,idx,tid));}
- else if(card.name==='多開一槍'||card.name==='死亡之骰'){showTargetPicker('選擇目標玩家',players.filter(x=>!x.out&&x.id!==0),tid=>useCard(p,idx,tid));}
- else if(card.name==='掏口袋'){showTargetPicker('選擇掏口袋質疑目標',players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==0),tid=>useCard(p,idx,tid));}
- else if(card.name==='再來一發'){showTargetPicker('選擇再開一槍的玩家',players.filter(x=>!x.out&&x.aliveThisRound),tid=>useCard(p,idx,tid));}
- else {useCard(p,idx,null);} }
-function showTargetPicker(title,targets,cb){const old=document.getElementById('targetModal'); if(old)old.remove(); const d=document.createElement('div'); d.id='targetModal'; d.className='overlay'; d.innerHTML=`<div class="modal"><h2 style="color:var(--gold)">${title}</h2><div class="targetGrid">${targets.map(t=>`<button class="targetBtn" onclick="window.__targetPick(${t.id})">${t.name}</button>`).join('')||'<span class="muted">沒有合法目標</span>'}</div><p><button class="btn" onclick="document.getElementById('targetModal').remove()">取消</button></p></div>`; window.__targetPick=(id)=>{d.remove(); cb(id); delete window.__targetPick;}; document.body.appendChild(d);}
-function targetScoreForCard(ai,t){
- let score=t.score*2+(t.bet||0)*3+t.hand.length;
- score += hateScore(ai,t)*(isHardAI(ai)?2.2:1.6);
- score += suspicionScore(ai,t)*(isHardAI(ai)?0.8:0);
- if(isHardAI(ai))score += trait(ai,'Revenge')*.15*hateScore(ai,t)/20 + trait(ai,'Prank')*.18 + trait(ai,'Greedy')*.05*t.score;
- return score+Math.random()*4;
-}
-function targetScoreForShot(ai,t){
- let score=t.score*3+(t.bet||0)*2+t.hand.length;
- score += hateScore(ai,t)*(isHardAI(ai)?2.8:2.0);
- score += suspicionScore(ai,t)*(isHardAI(ai)?0.5:0);
- if(isHardAI(ai))score += trait(ai,'Revenge')*.22*hateScore(ai,t)/20 + trait(ai,'Prank')*.12;
- return score+Math.random()*5;
-}
-function chooseThreatTarget(ai){
- const candidates=players.filter(p=>!p.out&&p.id!==ai.id);
- candidates.sort((a,b)=>targetScoreForCard(ai,b)-targetScoreForCard(ai,a));
- return candidates[0];
-}
-function chooseAliveTarget(ai){let candidates=players.filter(p=>!p.out&&p.aliveThisRound&&p.id!==ai.id); candidates.sort((a,b)=>targetScoreForShot(ai,b)-targetScoreForShot(ai,a)); return candidates[0];}
+function showTargetPicker(title,targets,cb){TableUI.cancelTarget();const token=sessionId,at=phase;const d=document.createElement('div');d.id='targetModal';d.className='targetPrompt';d.innerHTML=`${title} <button class="btn" onclick="TableUI.cancelTarget()">取消</button>`;document.getElementById('tableScene').appendChild(d);TableUI.target={ids:targets.map(p=>p.id),cb,token,phase:at};window.__targetPick=id=>TableUI.select(id);TableUI.sync();}
+function targetScoreForCard(ai,t){const k=getAIKnowledge(ai);return AIPolicy.threat(k,k.opponents.find(x=>x.id===t.id));}
+function targetScoreForShot(ai,t){return targetScoreForCard(ai,t);}
+function chooseThreatTarget(ai){const k=getAIKnowledge(ai);const t=k.opponents.filter(p=>!p.out).sort((a,b)=>AIPolicy.threat(k,b)-AIPolicy.threat(k,a))[0];return t?players[t.id]:null;}
+function chooseAliveTarget(ai){const k=getAIKnowledge(ai);const t=k.opponents.filter(p=>!p.out&&p.alive).sort((a,b)=>AIPolicy.threat(k,b)-AIPolicy.threat(k,a))[0];return t?players[t.id]:null;}
 function mutualParticipants(){return players.filter(p=>!p.out&&p.aliveThisRound);}
-function needPlayerMutualTarget(){const p=players[0]; return nextShotGlobal==='others' && p && !p.out && p.aliveThisRound && typeof p.mutualTarget!=='number';}
-function askPlayerMutualTarget(){const p=players[0]; const targets=mutualParticipants().filter(x=>x.id!==0); showTargetPicker('互射吧：所有存活者都要指一名玩家',targets,tid=>{p.mutualTarget=tid; const t=players[tid]; if(t){recordHate(t,p,10,'互射吧瞄準'); const canFire=p.shotsTaken<(p.bet||0); log(`互射吧：${p.name} 指定 ${t.name}${canFire?'為射擊目標':'，但沒有剩餘射擊數，不會開火'}。`);} doShot();});}
-function assignAIMutualTargets(){if(nextShotGlobal!=='others')return; mutualParticipants().forEach(p=>{if(p.id===0)return; if(typeof p.mutualTarget==='number')return; const t=chooseForcedTarget(p); if(t){p.mutualTarget=t.id; const canFire=p.shotsTaken<(p.bet||0); log(`互射吧：${p.name} 指定 ${t.name}${canFire?'為射擊目標':'，但沒有剩餘射擊數，不會開火'}。`);}});}
-function aiUseChance(ai,t,card){let ch=0.1; if(t.score>=12)ch+=0.22; if((t.bet||0)>=4)ch+=0.18; if(t.hand.length>=3)ch+=0.08; if(ai.hand.length>=4)ch+=0.08; ch += hateScore(ai,t)*0.006 + suspicionScore(ai,t)*0.003; if(isHardAI(ai)){ch += trait01(ai,'Prank')*.18 + trait01(ai,'Revenge')*.20 + trait01(ai,'Greedy')*.06 - trait01(ai,'Coward')*.12;} ch *= personalityMul(ai,'attack'); return Math.min(.86,ch);}
-function aiUsePhaseCards(phaseName){players.slice(1).forEach(ai=>{if(Math.random()<0.28)showAIThinking(ai); if(ai.out&&!['Phase 1','Phase 4','Phase 5','Phase 6'].includes(phaseName))return; let guard=0; while(guard++<4){let idx=ai.hand.findIndex(c=>c.name==='上子彈'&&phaseName==='Phase 1'); if(idx>=0){let t=chooseThreatTarget(ai); if(t&&Math.random()<aiUseChance(ai,t,'上子彈')){useCard(ai,idx,t.id);continue;}}
- idx=ai.hand.findIndex(c=>c.name==='偷窺'&&phaseName==='Phase 2'); if(idx>=0&&!ai.out&&Math.random()<0.82){let others=players.filter(x=>!x.out&&x.id!==ai.id); let t=others[Math.floor(Math.random()*others.length)]; useCard(ai,idx,t?.id);continue;} break;}})}
-function aiUsePhase4Cards(){players.slice(1).forEach(ai=>{if(Math.random()<0.24)showAIThinking(ai); if(ai.out&&!ai.hand.some(c=>DEAD_USABLE.has(c.name)))return; let guard=0; while(guard++<2){let idx=ai.hand.findIndex(c=>c.name==='死亡之骰'); let t=chooseThreatTarget(ai); if(idx>=0&&t&&Math.random()<0.16+Math.max(0,t.score-ai.score)*0.02+trait01(ai,'Prank')*.22+trait01(ai,'Revenge')*.14){useCard(ai,idx,t.id);continue;} idx=ai.hand.findIndex(c=>c.name==='多開一槍'); t=chooseThreatTarget(ai); if(idx>=0&&t&&Math.random()<0.14+((t.bet||0)>=4?0.12:0)+trait01(ai,'Prank')*.18+trait01(ai,'Greedy')*.08){useCard(ai,idx,t.id);continue;} break;}})}
-function aiUseShotCards(){players.slice(1).forEach(ai=>{if(Math.random()<0.18)showAIThinking(ai); if(ai.out){let idx=ai.hand.findIndex(c=>c.name==='互射吧'||c.name==='鳴槍慶祝'); if(idx>=0&&Math.random()<0.12+trait01(ai,'Prank')*.25)useCard(ai,idx,null); return;} if(!ai.aliveThisRound||ai.shotsTaken>=(ai.bet||0))return; const next=ai.deck[ai.shotsTaken]; const hp=ai.roles.filter(Boolean).length; const leader=players.filter(x=>!x.out).sort((a,b)=>b.score-a.score)[0]; {let idxG=ai.hand.findIndex(c=>c.name==='互射吧'&&leader&&leader.id!==ai.id); if(idxG>=0&&Math.random()<0.10+leader.score*0.008+trait01(ai,'Prank')*.24+trait01(ai,'Revenge')*.08){useCard(ai,idxG,null);return;} let idxC=ai.hand.findIndex(c=>c.name==='鳴槍慶祝'); if(idxC>=0&&next==='BANG'&&Math.random()<0.52+trait01(ai,'Coward')*.22){useCard(ai,idxC,null);return;}}
- if(next==='BANG'){let idx=ai.hand.findIndex(c=>c.name==='空槍'); if(idx>=0&&(hp<=2||Math.random()<0.86+trait01(ai,'Coward')*.12)){useCard(ai,idx,null);return;}}
- let idx2=ai.hand.findIndex(c=>c.name==='兩連發'); let t=chooseAliveTarget(ai); if(idx2>=0&&t&&shotNo>=2&&ai.bet-ai.shotsTaken>=2&&Math.random()<0.22+trait01(ai,'Revenge')*.20+trait01(ai,'Prank')*.10){useCard(ai,idx2,t.id);return;}
- let idx=ai.hand.findIndex(c=>c.name==='就打你'); if(idx>=0&&t&&ai.bet>=2&&Math.random()<0.22+t.score*0.012+trait01(ai,'Revenge')*.20+trait01(ai,'Prank')*.12){useCard(ai,idx,t.id);return;}
- });}
-function aiUsePhase6Cards(){players.slice(1).forEach(ai=>{if(Math.random()<0.20)showAIThinking(ai); let guard=0; while(guard++<2){let leader=players.filter(x=>!x.out).sort((a,b)=>b.score-a.score)[0]; let idx=ai.hand.findIndex(c=>c.name==='再來一發'); if(idx>=0&&leader&&leader.id!==ai.id&&leader.aliveThisRound&&Math.random()<0.22+leader.score*0.01+trait01(ai,'Revenge')*.18){useCard(ai,idx,leader.id);continue;} idx=ai.hand.findIndex(c=>c.name==='乾了伏特加'); if(idx>=0&&canUseCard(ai,ai.hand[idx])&&Math.random()<0.72+trait01(ai,'Greedy')*.25){useCard(ai,idx,null);continue;} idx=ai.hand.findIndex(c=>c.name==='掏口袋'); if(idx>=0){let t=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==ai.id).sort((a,b)=>suspicionScore(ai,b)-suspicionScore(ai,a))[0]||((leader&&!leader.out&&leader.aliveThisRound&&leader.id!==ai.id)?leader:null); if(t&&t.id!==ai.id&&Math.random()<0.12+trait01(ai,'Suspicious')*.22+suspicionScore(ai,t)*.004){useCard(ai,idx,t.id);continue;}} break;}})}
+function aiUseChance(){return 0; /* Retired: action decisions use evaluateActionCard. */}
+function aiUsePhaseCards(){playAICards();}
+function aiUsePhase4Cards(){playAICards();}
+function aiUseShotCards(){playAICards();}
+function aiUsePhase6Cards(){playAICards();}
 function alivePlayers(){return players.filter(p=>!p.out)}
 function livingThisRound(){return players.filter(p=>!p.out && p.aliveThisRound)}
-function setPhaseTitle(h=''){document.getElementById('phaseTitle').textContent=PH[phase];document.getElementById('hint').textContent=h;document.getElementById('nextBtn').disabled=false;}
+function setPhaseTitle(h=''){document.getElementById('phaseTitle').textContent=PH[phase];document.getElementById('hint').textContent=h;TableUI.sync();}
 function showStage(title,sub=''){const old=document.querySelector('.stageBanner'); if(old)old.remove(); const d=document.createElement('div'); d.className='stageBanner'; d.innerHTML=`<div class="stageCard"><h2>${title}</h2><p>${sub}</p></div>`; document.body.appendChild(d); setTimeout(()=>d.remove(),1350);}
 function render(){
- const playersBox=document.getElementById('players');
- if(!playersBox)return;
- playersBox.innerHTML=players.map(p=>{
-  const reveal=developerMode;
-  const identity=`${colorLabel(p)} ${p.id===0?'你操控':(p.aiLevel==='hard'?'對手':'對手')}｜${p.out?'淘汰':p.aliveThisRound?'存活':'本輪死亡'}`;
-  const hideText=reveal?(p.hidden||'-'):(p.id===0&&p.hidden?p.hidden:'?');
-  const deckHtml=(p.deck||[]).map((c,idx)=>{
-   const face=reveal||idx<p.shotsTaken;
-   return `<div class="card ${face?(c==='BANG'?'bang':'blank'):'back'}">${face?(c==='BANG'?'BANG':'空'):''}</div>`;
-  }).join('');
-  const devLine=reveal?`<div class="small" style="color:#ffe08a;margin-top:3px">手牌：${devHandText(p)}</div>`:'';
-  return `<div class="player ${p.out?'dead':''}" id="p${p.id}" style="--c:${p.color}"><div class="phead compact"><div class="portraitWrap"><img class="portrait ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="${p.name}"><div><div class="codename">${p.name}</div><div class="identityLine">${identity}</div></div></div><div class="score">${p.score}</div></div><div class="roles">${p.roles.map((r,i)=>`<div class="role ${i===3?'captain':''} ${i===3&&r&&p.roles.filter(Boolean).length===1?'critical':''} ${!r?'deadrole':''}">${i<3?`<img class="roleSilhouette" src="${p.silhouette||p.avatar}" alt="手下">`:`<img class="roleCaptainImg ${p.roleKey==='agent'?'agentPortrait':''}" src="${p.avatar}" alt="隊長">`}<span class="rlabel">${i<3?'手下':'隊長'}</span></div>`).join('')}</div><div class="small muted">🎯${p.bet??'-'}｜🃏×${p.hand?p.hand.length:0}｜實彈${p.bangs}｜藏：${hideText}</div>${devLine}<div class="deck">${deckHtml}</div></div>`;
- }).join('');
- renderHand();
+ if(simMode)return;const box=document.getElementById('players');if(!box)return;
+ const positions=TableUI.positions(players.length);
+ box.innerHTML=players.map((p,i)=>{const hp=p.roles.filter(Boolean).length,[x,y]=positions[i];return `<div class="seat ${p.out?'eliminated':''} ${hp===1?'critical':''} ${p.lostRoleThisRound?'roundDead':''}" id="p${p.id}" style="--sx:${x}%;--sy:${y}%;--c:${p.color}" data-player="${p.id}"><div class="seatPlate" role="button" tabindex="0" aria-label="${p.name}" onclick="TableUI.select(${p.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();TableUI.select(${p.id})}"><div class="seatHeader"><img class="seatAvatar" src="${p.avatar}" alt="${p.name}"><div><div class="seatName">${p.name}</div><span class="seatTag">${p.id===0?'你的座位':p.aiLevel==='hard'?'困難 AI':'普通 AI'} · ${p.colorName||''}</span></div><div class="seatScore">${p.score}<small>POINTS</small></div></div><div class="seatRoles">${p.roles.map((r,j)=>`<span class="lifeToken ${j===3?'captain':''} ${r?'':'gone'}" title="${j===3?'隊長':'隊員'}${r?'存活':'死亡'}">${j===3?'★':'●'}</span>`).join('')}<span class="seatState">${p.out?'淘汰':p.aliveThisRound?'存活':'本輪死亡'}</span></div><div class="seatFoot"><span class="seatPocket">${p.hidden?'▣ 已藏好':'▢ 尚未藏彈'}</span><span>手牌 ${p.hand.length} · ${p.shotsTaken} / ${betsRevealed?p.bet??'—':'—'} 槍</span></div>${p.lostRoleThisRound?`<div class="seatMiniStatus">${p.out?'隊長陣亡':'＋1 張牌 · 已清槍'} · 本輪 +0</div>`:''}</div>${phase>=3?`<div class="seatDie ${betsRevealed?'':'covered'}">${betsRevealed?p.bet??'—':'秘密'}</div>`:''}</div>`;}).join('');
+ renderHand();TableUI.sync();if(document.getElementById('gunDrawer').classList.contains('open'))document.getElementById('gunContent').innerHTML=RuleFeedback.gunHTML();if(developerMode)document.getElementById('debugContent').innerHTML=renderDeveloperPanel();else document.getElementById('debugContent').innerHTML='';
 }
-function setupRound(){
- decayAIMemory();
- players.forEach(p=>{if(!p.out){p.hidden=null;p.bet=null;p.shotsTaken=0;p.aliveThisRound=true;p.challenged=false;p.knownTop=[];p.nextShotTarget=null;p.burstShots=0;p.burstTarget=null;p.pendingScoreBonus=0;p.pendingDeathEvents=[];p.roundNo=(p.roundNo||0)+1;}});
- nextShotGlobal=null; pendingVictoryCeremony=null; phase6Ready=false; phase6Scored=false; roundDeaths=[]; roundDeathEvents=[]; phase=1; setupPhase1(); render();
+function setupRound(){TableUI.reset();resetRoundState();setupPhase1();render();}
+function setupPhase1(){TableUI.spinReady=false;TableUI.spinStarted=false;setPhaseTitle('請選擇一枚子彈，拖入袋子中，暫時移除遊戲。');const p=players[0];document.getElementById('mainArea').innerHTML=p.out?'<h3>隊長已淘汰</h3><p>仍可使用 ☠ 行動卡。</p><button class="btn" onclick="chooseHide(null)">觀看本輪藏彈</button>':`<div class="pocketObjects"><div class="clothBag" id="pocketBag" aria-label="將子彈放入袋口"></div><div class="bulletChoices"><div class="bulletObject bang" data-bullet="BANG" role="img" aria-label="可拖曳的真子彈 BANG"><div class="metalBullet"></div><b>⚠ 真子彈</b><span>BANG</span><small>藏入＝作弊</small></div><div class="bulletObject blank" data-bullet="空響" role="img" aria-label="可拖曳的假子彈 CLICK"><div class="metalBullet"></div><b>假子彈</b><span>CLICK</span><small>藏入＝正常</small></div></div></div>`;
+ document.querySelectorAll('[data-bullet]').forEach(el=>TableUI.drag(el,()=>document.getElementById('pocketBag'),()=>TableUI.pocketDrop(el.dataset.bullet)));TableUI.sync();
 }
-function setupPhase1(){showStage('第一階段：藏子彈','選擇藏空響，或冒險藏 BANG 作弊');setPhaseTitle('可先使用【上子彈】，再選擇要藏空響或藏 BANG（作弊）。');document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 1</span><h3>你要藏哪一張子彈？</h3><div class="controls"><button class="choice" onclick="chooseHide('空響')">藏 空響</button><button class="choice cheat" onclick="chooseHide('BANG')">藏 BANG（作弊）</button></div><p class="muted">藏 BANG 代表本輪你牌堆沒有實彈，但可能在挑戰階段被質疑。</p>`;document.getElementById('nextBtn').disabled=true;aiUsePhaseCards('Phase 1');players.slice(1).forEach(ai=>aiHide(ai));}
-function chooseHide(type){let p=players[0]; if(p.out)return; p.hidden=type; buildDeckAfterHide(p); log(`${p.name} 藏了${type==='BANG'?'BANG（作弊）':'空響'}。`); document.getElementById('nextBtn').disabled=false; render();}
-function aiHide(p){
- let cheatChance=0.16*personalityMul(p,'cheat');
- if(p.score>=12)cheatChance+=.10*personalityMul(p,'cheat');
- if(p.roles.filter(Boolean).length<=1)cheatChance*=.45;
- if(isHardAI(p)){
-  cheatChance += trait01(p,'Fraud')*.24 + trait01(p,'Greedy')*.06 + trait01(p,'Complex')*.05;
-  cheatChance -= trait01(p,'Prank')*.18 + trait01(p,'Justice')*.16 + trait01(p,'Coward')*.10 + trait01(p,'Calm')*.06;
-  if((p.lastHides||[]).slice(-2).every(x=>x==='空響') && trait(p,'Complex')>35)cheatChance+=.06;
-  if((p.lastHides||[]).slice(-2).every(x=>x==='BANG') && trait(p,'Complex')>25)cheatChance-=.10;
- }else if(p.personality==='troll')cheatChance=Math.min(0.04,cheatChance);
- cheatChance=clamp(cheatChance,0.01,0.62);
- p.hidden=Math.random()<cheatChance?'BANG':'空響';
- if(!p.lastHides)p.lastHides=[]; p.lastHides.push(p.hidden); while(p.lastHides.length>6)p.lastHides.shift();
- buildDeckAfterHide(p);
+function chooseHide(type){if(phase!==1||uiLocked||players[0].hidden||players.every(p=>p.out||p.hidden))return;if(type==='BANG'&&!TableUI.confirmedBang)return;TableUI.confirmedBang=false;return runUI(async token=>{
+ const p=players[0];await thinkDelay(token,'藏子彈');if(token!==sessionId)return;aiUsePhaseCards();await drainEffects(token);if(token!==sessionId)return;
+ if(!p.out){if(!['BANG','空響'].includes(type)||(type==='空響'&&!p.gunInventory.blank)){setPhaseTitle('槍牌中已沒有 CLICK，請選擇真子彈。');return;}TableUI.lastPocketType=type;await TableFX.pocket();if(token!==sessionId)return;p.hidden=type;buildDeckAfterHide(p);}
+ players.slice(1).filter(p=>!p.out).forEach(aiHide);await TableFX.pockets(players.slice(1).filter(p=>!p.out));if(token!==sessionId)return;
+ document.getElementById('mainArea').innerHTML='<div class="clothBag closed" style="margin:24px auto 14px"></div><p>你已藏好一枚子彈。所有人的選擇保持秘密。</p>';setPhaseTitle('藏彈完成，準備轉輪。');render();
+ });}
+function aiHide(p){const k=getAIKnowledge(p),d=AIPolicy.hide(k);p.debug.hide=d;p.hidden=d.choice;p.memory.ownHides.push(d.choice);p.memory.ownHides=p.memory.ownHides.slice(-12);buildDeckAfterHide(p);if(simStats){simStats.pockets++;if(d.choice==='BANG')simStats.cheats++;}}
+function buildDeckAfterHide(p){const b=p.gunInventory.bang-(p.hidden==='BANG'?1:0),c=p.gunInventory.blank-(p.hidden==='空響'?1:0);if(b<0||c<0||b+c!==6)throw Error('Invalid pocket inventory');p.deck=[...Array(b).fill('BANG'),...Array(c).fill('空響')];invalidateKnowledge(p);}
+function nextStep(){if(gameOver||uiLocked||shotResolving||TableUI.confirming||TableUI.target||document.getElementById('peekOverlay')||document.querySelector('.roundSummaryOverlay'))return;
+ if(phase===1){if(players.some(p=>!p.out&&!p.hidden))return;phase=2;setupPhase2();}else if(phase===2){if(!TableUI.spinReady)return;phase=3;setupPhase3();}else if(phase===3){if(!betsRevealed)return;phase=4;setupPhase4();}else if(phase===4){if(challengeComplete){phase=5;setupPhase5();}}else if(phase===5)doShot();else if(phase===6){if(!phase6Scored)scorePhase6();else setupRound();}render();
 }
-function buildDeckAfterHide(p){let blanks=6, bangs=p.bangs; if(p.hidden==='BANG')bangs--; else blanks--; p.deck=[]; for(let i=0;i<bangs;i++)p.deck.push('BANG'); for(let i=0;i<blanks;i++)p.deck.push('空響');}
-function nextStep(){if(gameOver||uiLocked||shotResolving)return; if(phase===1){phase=2; setupPhase2();} else if(phase===2){phase=3; setupPhase3();} else if(phase===3){phase=4; setupPhase4();} else if(phase===4){phase=5; setupPhase5();} else if(phase===5){doShot();} else if(phase===6){if(!phase6Scored)scorePhase6(); else setupRound();}}
-function setupPhase2(){showStage('第二階段：轉輪','洗勻子彈堆，命運開始轉動');uiLocked=true;document.getElementById('nextBtn').disabled=true;players.forEach(p=>{if(!p.out)shuffle(p.deck)});setPhaseTitle('轉輪動畫播放中，請稍候。');document.getElementById('nextBtn').disabled=true;document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 2</span><h3>轉輪中……</h3><p>左輪彈巢正在旋轉，動畫結束後才能操作。</p><p class="muted">背景操作已暫時鎖定。</p>';render();setTimeout(()=>triggerRevolverOverlay(()=>{uiLocked=false;aiUsePhaseCards('Phase 2');setPhaseTitle('所有玩家洗勻自己的子彈堆。');document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 2</span><h3>轉輪完成</h3><p>若有【偷窺】可在此階段使用，按下一步進入下注。</p><p class="muted">轉輪完成，現在可以進行偷窺或下一步。</p>';document.getElementById('nextBtn').disabled=false;render();}),1320);}
-function setupPhase3(){showStage('第三階段：下注','自行決定本輪射擊數，不是擲骰');setPhaseTitle('選擇本輪要開幾槍。數字由玩家自行決定，不是擲骰。');players.forEach(p=>{p.bet=null;});document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 3</span><h3>選擇下注值 / 射擊數</h3><p class="muted">下注採同步公開：你選定前，AI 不會先公開數字。</p><div class="betBox">${[0,1,2,3,4,5].map(n=>`<button class="bet" onclick="setBet(${n})">${n}</button>`).join('')}</div><div class="riskBox" id="riskPreview">選擇下注值後，所有玩家才會同時公開下注。</div>`;document.getElementById('nextBtn').disabled=true;render();}
-function setBet(n){if(players[0].bet!==null)return; players[0].bet=n;players.slice(1).forEach(aiBet);document.querySelectorAll('.bet').forEach((b,i)=>{b.classList.toggle('sel',i===n); b.disabled=true;});let prob=survivalProb(players[0],n);const reveal=players.filter(p=>!p.out).map(p=>`${p.name}：${p.bet}`).join('｜');document.getElementById('riskPreview').innerHTML=`下注 ${n}：存活約 <b class="safe">${Math.round(prob*100)}%</b>，成功得 <b>${n+1}</b> 分；中彈本輪不得分。<br><b style="color:var(--gold)">同步公開：</b>${reveal}`;log(`下注同步公開：${reveal}`);updateSuspicionAfterBetReveal();document.getElementById('nextBtn').disabled=false;render();}
-function aiBet(p){
- let best=1,bestVal=-99999; const alive=players.filter(x=>!x.out); const leader=Math.max(...alive.map(x=>x.score)); const hp=p.roles.filter(Boolean).length;
- for(let b=0;b<=5;b++){
-  let prob=survivalProb(p,b); let riskMul=personalityMul(p,'risk');
-  let gain=(b+1)*140; let deathPenalty=(hp<=1?5200:900+hp*130+180*b); let lostOpportunity=b*95;
-  let catchup=Math.max(0,leader-p.score)*28; let leaderCaution=(p.score>=leader&&p.score>=10)?b*55:0; let winBonus=(p.score+b+1>=15)?850:0;
-  let zeroPenalty=(p.score<14?260:80); let midPreference=(b>=1&&b<=3)?90:0; let desperate=(leader>=13&&p.score+3<leader)?b*70:0;
-  let personalityBias=0;
-  if(isHardAI(p)){
-   personalityBias += trait(p,'Calm')*((b>=2&&b<=3)?4.0:0) - trait(p,'Calm')*(b===5?2.4:0);
-   personalityBias += trait(p,'Coward')*((b<=1)?4.4:0) - trait(p,'Coward')*(b>=4?5.0:0);
-   personalityBias += trait(p,'Greedy')*(b>=4?4.2:b===3?2.2:0);
-   personalityBias += trait(p,'Risk')*((b===0||b===5)?4.6:(b===4?2.8:0));
-   personalityBias += trait(p,'Prank')*((b>=3&&b<=5)?5.0:0) - trait(p,'Prank')*(b<=1?3.5:0);
-   personalityBias += trait(p,'Fraud')*((p.hidden==='BANG'&&b>=3)?4.2:(p.hidden==='BANG'?1.0:0));
-   personalityBias += trait(p,'Justice')*((b>=1&&b<=3)?2.1:0) - trait(p,'Justice')*(b===5?2.2:0);
-   const recent=(p.lastBets||[]).slice(-3);
-   if(trait(p,'Complex')>0){
-    const same=recent.filter(x=>x===b).length;
-    personalityBias += trait(p,'Complex')*((same? -3.0*same:1.2) + (recent.length&&Math.abs(b-recent[recent.length-1])>=3?2.4:0));
-    if(recent.length>=2&&recent.every(x=>x>=4) && b<=2)personalityBias += trait(p,'Complex')*3.4;
-    if(recent.length>=2&&recent.every(x=>x<=1) && b>=4)personalityBias += trait(p,'Complex')*3.4;
-   }
-   let maxH=Math.max(0,...players.filter(x=>!x.out&&x.id!==p.id).map(x=>hateScore(p,x)));
-   personalityBias += trait(p,'Revenge')*(maxH>35&&b>=3?3.5:0);
-   deathPenalty *= clamp(1.15-trait01(p,'Risk')*.35-trait01(p,'Prank')*.18+trait01(p,'Coward')*.35,.65,1.55);
-  }else{
-   if(p.personality==='conservative'){personalityBias += (b>=1&&b<=2?170:0) - (b>=4?320:0) - (b===0&&p.score<12?80:0);}
-   if(p.personality==='gambler'){personalityBias += (b>=4?260:0) + (b===5?110:0) - (b===0?260:0); deathPenalty*=.82;}
-   if(p.personality==='troll'){personalityBias += (b>=4?420:0) + (b===5?180:0) - (b<=1?240:0); deathPenalty*=.86;}
-   if(p.personality==='revenge'){let maxH=Math.max(0,...players.filter(x=>!x.out&&x.id!==p.id).map(x=>hateScore(p,x))); personalityBias += maxH*2.2 + (maxH>25&&b>=3?160:0);}
-  }
-  let val=prob*(gain+winBonus+midPreference+catchup+desperate+personalityBias)-(1-prob)*(deathPenalty/riskMul+lostOpportunity)-leaderCaution-(b===0?zeroPenalty:0)+Math.random()*(isHardAI(p)?120:75);
-  if(val>bestVal){bestVal=val;best=b}
- }
- p.bet=best; if(!p.lastBets)p.lastBets=[]; p.lastBets.push(best); while(p.lastBets.length>6)p.lastBets.shift();
-}
-function survivalProb(p,b){if(b===0)return 1; if(p.knownTop&&p.knownTop.length){let known=p.knownTop.slice(0,Math.min(b,p.knownTop.length)); if(known.includes('BANG'))return 0.02; if(b<=known.length)return 0.98;} let bangs=p.deck.filter(x=>x==='BANG').length; let total=p.deck.length; let safe=1; for(let i=0;i<b;i++){safe*=Math.max(0,total-bangs-i)/Math.max(1,total-i)} return Math.max(0,Math.min(1,safe));}
-function updateSuspicionAfterBetReveal(){
- players.slice(1).forEach(ai=>{if(!isHardAI(ai))return; players.forEach(t=>{if(t.out||t.id===ai.id)return; let add=0; if((t.bet||0)>=5)add+=16; else if((t.bet||0)>=4)add+=10; else if((t.bet||0)>=3)add+=5; if(t.score>=12&&t.bet>=3)add+=4; if(t.hidden==='BANG'&&Math.random()<0.18)add+=6; recordSuspicion(ai,t,add,'高下注');});});
-}
-
-function setupPhase4(){players.filter(p=>!p.out&&p.bet==null).forEach(p=>{p.bet=0;});showStage('第四階段：挑戰','先行動卡，後質疑；質疑要有理由，亂抓會讓自己多一發 BANG');setPhaseTitle('先使用行動卡，再宣告質疑；可用【多開一槍】或【死亡之骰】。');aiUsePhase4Cards();document.getElementById('mainArea').innerHTML=`<span class="phaseChip">Phase 4</span><h3>行動卡 → 挑戰 / 質疑作弊</h3><p>先使用本階段行動卡；確認後再質疑或跳過。本輪可質疑一次。</p><div class="controls">${players.filter(p=>p.id!==0&&!p.out).map(p=>`<button class="btn" onclick="playerChallenge(${p.id})">質疑 ${p.name}</button>`).join('')}<button class="btn" onclick="skipChallenge()">跳過質疑</button></div><p class="muted">若多人質疑，會依序進入質疑對決；同一名被質疑者會顯示多人 VS 一人的提示。</p>`;document.getElementById('nextBtn').disabled=true;render();}
-function playerChallenge(id){const q=[{challenger:players[0],target:players[id],fromPocket:false}].concat(aiChallenges(true)); startChallengeQueue(q,()=>{phase=5;setupPhase5();});}
-function skipChallenge(){log(`${players[0].name} 跳過質疑。`); const q=aiChallenges(true); startChallengeQueue(q,()=>{phase=5;setupPhase5();});}
-function aiChallenges(returnOnly=false){
- const q=[];
- players.slice(1).forEach(ai=>{
-  if(ai.out)return;
-  let bestT=null,bestScore=-999;
-  players.filter(p=>!p.out&&p.id!==ai.id).forEach(t=>{
-   let s=2;
-   if(t.bet>=4)s+=10; if(t.bet>=5)s+=8; if(t.score>=12)s+=8; if(t.roles.filter(Boolean).length<=1)s-=5;
-   s += suspicionScore(ai,t)*1.15 + hateScore(ai,t)*(isHardAI(ai)?0.22:0.35);
-   if(t.hidden==='BANG'&&Math.random()<0.22)s+=18;
-   if(isHardAI(ai)){
-    s += trait(ai,'Suspicious')*.55 + trait(ai,'Justice')*.30 + trait(ai,'Revenge')*.15;
-    if(trait(ai,'Prank')>40 && t.bet>=4)s-=trait(ai,'Prank')*.38; // 搗蛋型知道高押未必作弊，比較不亂抓同類行為。
-    if(trait(ai,'Calm')>35)s-=trait(ai,'Calm')*.22;
-   }
-   s*=personalityMul(ai,'challenge');
-   s+=Math.random()*18;
-   if(s>bestScore){bestScore=s;bestT=t;}
-  });
-  let threshold=isHardAI(ai)?(42-trait(ai,'Suspicious')*.12-trait(ai,'Justice')*.06+trait(ai,'Calm')*.10):(36);
-  let falseAccuseCost=ai.bangs>=2?10:0;
-  if(bestT && bestScore>falseAccuseCost+threshold)q.push({challenger:ai,target:bestT,fromPocket:false});
- });
- if(returnOnly)return q;
- startChallengeQueue(q,()=>{});
- return q;
-}
-function startChallengeQueue(q,onDone){
- const raw=(q||[]).filter(x=>x&&x.challenger&&x.target&&!x.challenger.out&&!x.target.out);
- challengeQueue=groupChallengesByTarget(raw);
- challengeQueueCallback=onDone||null;
- if(!challengeQueue.length){const cb=challengeQueueCallback; challengeQueueCallback=null; if(cb)cb(); return;}
- document.getElementById('nextBtn').disabled=true;
- showChallengeGroupNotice(challengeQueue);
- processNextChallenge();
-}
+function setupPhase2(){TableUI.spinReady=false;TableUI.spinStarted=false;setPhaseTitle('按住彈巢，沿圓周拖動，旋轉至少四分之一圈再放手。');document.getElementById('mainArea').innerHTML='<canvas id="spinObject" class="spinObject" width="380" height="370" aria-label="拖曳旋轉六孔彈巢"></canvas><p id="spinHint">親手轉動彈巢 · 孔內不顯示子彈</p>';TableUI.bindSpin();if(players[0].out)TableUI.finishSpin(1,8);render();}
+function setupPhase3(){pendingBets={};betsRevealed=false;players.forEach(p=>p.bet=null);setPhaseTitle('選擇你這一輪要開幾槍。將數字骰拖入自己的托盤。');const snapshots=players.filter(p=>!p.out&&p.id!==0).map(p=>[p,getAIKnowledge(p)]);snapshots.forEach(([p,k])=>pendingBets[p.id]=aiBet(p,k));
+ document.getElementById('mainArea').innerHTML=players[0].out?'<p>所有玩家正在秘密決定開槍數。</p><button class="btn" onclick="setBet(0)">等待大家揭盅</button>':`<div class="diceRack">${[0,1,2,3,4,5].map(n=>`<div class="physicalDie" data-die="${n}" role="img" aria-label="${n} 槍，可拖入托盤">${n}</div>`).join('')}</div><div class="dieTray" id="dieTray">你的開槍數托盤</div>`;
+ document.querySelectorAll('[data-die]').forEach(el=>TableUI.drag(el,()=>document.getElementById('dieTray'),()=>setBet(+el.dataset.die)));render();}
+function setBet(n){if(phase!==3||uiLocked||betsRevealed||!Number.isInteger(n)||n<0||n>5)return;return runUI(async token=>{if(!players[0].out)pendingBets[0]=n;SFX.play('wood');document.getElementById('mainArea').innerHTML='<h3>你的選擇已蓋好</h3><div class="dieCup" style="margin:22px auto"></div><p>等待全員完成，接著一起揭盅。</p>';await thinkDelay(token,'決定開槍數');if(token!==sessionId)return;await TableFX.countdown('所有人已決定');if(token!==sessionId)return;commitBets();render();document.getElementById('mainArea').innerHTML='<h3>骰盅同時揭開</h3><p>開槍數已顯示於每位玩家面前。</p>';log('開槍數同步公開：'+players.filter(p=>!p.out).map(p=>p.name+' '+p.bet).join('｜'));setPhaseTitle('全員開槍數已公開，準備質疑。');});}
+function aiBet(p,k=getAIKnowledge(p)){const d=AIPolicy.bid(k);p.debug.bet=d.utilities;return d.choice;}
+function survivalProb(p,b){return AIPolicy.survival(getAIKnowledge(p),b);}
+function updateSuspicionAfterBetReveal(){for(const p of players){const k=getAIKnowledge(p);p.debug.cheatProbabilities={};for(const t of k.opponents){const v=AIPolicy.cheatProbability(k,t);p.debug.cheatProbabilities[t.id]=v;if(p.aiMemory)p.aiMemory.suspicion[t.id]={value:Math.round(v*100),type:'公開行為推論'};}}}
+function setupPhase4(){return runUI(async token=>{setPhaseTitle('認為有人藏了 BANG 嗎？點擊發光的玩家名牌。');await thinkDelay(token,'評估質疑與行動卡');if(token!==sessionId)return;aiUsePhase4Cards();await drainEffects(token);if(token!==sessionId)return;document.getElementById('mainArea').innerHTML='<h3>誰把真子彈藏起來了？</h3><p>每人本輪最多一次正式質疑。<br>所有選擇將一起揭曉。</p><button class="btn" onclick="skipChallenge()">放棄質疑</button>';});}
+function playerChallenge(id){if(phase!==4||uiLocked||players[0].out||players[0].challenged||id===0||!players[id]||players[id].out)return;submitChallenges(id);}
+function skipChallenge(){if(phase!==4||uiLocked)return;submitChallenges(null);}
+function aiChallenges(){const q=[];for(const p of players.filter(p=>p.id!==0&&!p.out&&!p.challenged)){const k=getAIKnowledge(p),d=AIPolicy.challenge(k);p.debug.challenge=d.utilities;if(d.target!=null)q.push({challenger:p,target:players[d.target],fromPocket:false});}return q;}
 function groupChallengesByTarget(raw){
  const map=new Map(), groups=[];
  raw.forEach(x=>{
@@ -875,171 +680,45 @@ function showChallengeGroupNotice(q){
  const d=document.createElement('div'); d.className='challengeGroupNotice'; d.innerHTML=`多人質疑合併<br>${groups.join('<br>')}`;
  document.body.appendChild(d); setTimeout(()=>{if(d.parentNode)d.remove();},1750);
 }
-function processNextChallenge(){
- if(!challengeQueue.length){const cb=challengeQueueCallback; challengeQueueCallback=null; if(cb)cb(); return;}
- const item=challengeQueue.shift();
- item.challengers=(item.challengers||[]).filter(c=>c&&!c.out);
- if(!item.challengers.length||!item.target||item.target.out){setTimeout(processNextChallenge,120);return;}
- currentChallengeGroupText=item.challengers.length>1?`${challengersText(item.challengers)} VS ${item.target.name}`:'';
- resolveChallengeGroup(item.challengers,item.target,item.fromPocket);
-}
-function showChallengeShowdownGroup(challengers,target,fromPocket=false){
- const old=document.getElementById('showdownOverlay'); if(old)old.remove();
- activeChallengeGroup={challengerIds:challengers.map(c=>c.id),targetId:target.id,fromPocket:!!fromPocket};
- const d=document.createElement('div'); d.id='showdownOverlay'; d.className='showdownOverlay heartbeat';
- const isBang=target.hidden==='BANG';
- const bribeIdx=findCardIndex(target,'賄賂裁判');
- const playerCanBribe=target.id===0 && isBang && bribeIdx>=0;
- const actionText=fromPocket?'掏口袋質疑':'質疑';
- const cardText=isBang?'BANG':'空響';
- const cardClass=isBang?'revealBang':'revealBlank';
- const leftText=challengersText(challengers);
- const finalActions = playerCanBribe
-  ? `<div class="showdownWarn">你被多人抓到作弊！可以現在打出【賄賂裁判】。</div><div class="showdownActions"><button class="btn" onclick="resolveChallengeGroupAfterShowdown(true)">使用【賄賂裁判】</button><button class="btn" onclick="resolveChallengeGroupAfterShowdown(false)">不使用</button></div>`
-  : `<div class="showdownActions"><button class="btn" onclick="resolveChallengeGroupAfterShowdown(false)">翻牌結算</button></div>`;
- d.innerHTML=`<div class="showdownBox heartbeatBox"><div class="showdownTitle">質疑對決</div>${currentChallengeGroupText?`<div class="showdownHint" style="color:#ffe08a">${currentChallengeGroupText}</div>`:''}<div class="showdownDuel"><span>${leftText}</span><span class="showdownVs">VS</span><span>${target.name}</span></div><div class="showdownHint">${leftText} ${actionText} ${target.name} 藏 BANG。</div><div class="showdownCountdown">心臟跳動中……3 秒後翻牌</div><div id="showdownCard" class="showdownCard revealPending">？</div><div id="showdownActions" class="showdownActions"><button class="btn" disabled>等待翻牌……</button></div></div>`;
- document.body.appendChild(d);
- setTimeout(()=>{
-  const card=d.querySelector('#showdownCard'); const actions=d.querySelector('#showdownActions'); const cd=d.querySelector('.showdownCountdown');
-  if(card){card.className=`showdownCard ${cardClass}`; card.textContent=cardText;}
-  if(cd)cd.textContent=isBang?'翻開：BANG！':'翻開：空響。';
-  if(actions)actions.outerHTML=finalActions;
-  if(!playerCanBribe){ setTimeout(()=>resolveChallengeGroupAfterShowdown(false),450); }
- },3000);
-}
-function resolveChallengeGroupAfterShowdown(useBribe=false){
- const old=document.getElementById('showdownOverlay'); if(old)old.remove();
- const g=activeChallengeGroup; activeChallengeGroup=null;
- if(!g)return;
- const challengers=(g.challengerIds||[]).map(id=>players[id]).filter(Boolean);
- const target=players[g.targetId];
- if(!target||!challengers.length)return;
- const delay=finishChallengeGroup(challengers,target,g.fromPocket,useBribe)||900;
- currentChallengeGroupText='';
- if(challengeQueueCallback){setTimeout(processNextChallenge,delay);}
-}
-function resolveChallengeGroup(challengers,target,fromPocket=false){
- challengers=(challengers||[]).filter(c=>c&&!c.out);
- if(!challengers.length)return;
- const actionText=fromPocket?' 掏口袋質疑 ':' 質疑 ';
- log(`${challengersText(challengers)}${actionText}${target.name} 藏 BANG。`);
- showChallengeShowdownGroup(challengers,target,fromPocket);
-}
-function resolveChallenge(challenger,target,fromPocket=false){
- if(!challenger||!target)return;
- resolveChallengeGroup([challenger],target,fromPocket);
-}
 function finishChallengeGroup(challengers,target,fromPocket=false,forceBribe=false){
- challengers=(challengers||[]).filter(c=>c&&!c.out);
- if(!challengers.length||!target)return 900;
- const names=challengersText(challengers);
- if(target.hidden==='BANG'){
-  challengers.forEach(c=>recordHate(target,c,35,fromPocket?'掏口袋成功':'質疑成功'));
-  recordSuspicionForAll(target,34,fromPocket?'掏口袋抓到作弊':'質疑抓到作弊');
-  challengers.forEach(c=>recordSuspicion(c,target,26,'親自抓到作弊'));
-  let bribe=findCardIndex(target,'賄賂裁判');
-  if(forceBribe&&target.id===0&&bribe>=0){
-   removeAndFlash(target,bribe);
-   showSimpleEvent('💰 賄賂裁判',`${target.name} 在最後一刻塞錢成功。<br>裁判放下槍，沒有射殺。<br>但 ${names} 仍各抽 3 張。`,'safe');
-   log(`<span class="safe">${target.name} 使用【賄賂裁判】，沒有失去角色；所有質疑者仍各抽 3 張。</span>`);
-   target.hidden='空響'; addBangToStack(target); challengers.forEach(c=>drawCards(c,3));
-   render(); return 1750;
-  } else if(target.id!==0 && bribe>=0){
-   removeAndFlash(target,bribe);
-   showSimpleEvent('💰 賄賂裁判',`${target.name} 塞錢成功，沒有被射殺。<br>但 ${names} 仍各抽 3 張。`,'safe');
-   log(`<span class="safe">賄賂裁判成功！${target.name} 不失去角色；所有質疑者仍各抽 3 張。</span>`);
-   target.hidden='空響'; addBangToStack(target); challengers.forEach(c=>drawCards(c,3));
-   render(); return 1750;
-  } else {
-   triggerJudgeExecution(target);
-   log(`<span class="danger">質疑成功！${names} 抓到 ${target.name} 作弊；黑衣裁判只處決 ${target.name} 一次。</span>`);
-   loseRole(target,'裁判射殺'); challengers.forEach(c=>drawCards(c,3)); log(`${names} 因質疑正確各獲得 3 張行動卡。`);
-   render(); return 2350;
+ if(!target||target.challengeResolved&&!fromPocket)return null;
+ const truth=target.hidden;if(!truth)return null;
+ target.challengeResolved=true;target.pocketRevealed=true;
+ publicEvent({type:'challenge',target:target.id,challengers:challengers.map(p=>p.id),cheat:truth==='BANG'});
+ if(simStats){simStats.challenges+=challengers.length;simStats.correct+=truth==='BANG'?challengers.length:0;}
+ if(truth==='BANG'){
+  challengers.forEach(p=>{drawCards(p,3);recordHate(target,p,25,'抓到作弊');});
+  const bribe=phase===4&&target.aliveThisRound&&findCardIndex(target,'賄賂裁判');
+  if(phase===4&&target.aliveThisRound&&bribe>=0&&forceBribe&&target.deck.includes('空響')){
+   removeAndFlash(target,bribe);const i=target.deck.indexOf('空響');target.deck[i]='BANG';target.hidden='空響';shuffleGun(target);publicEvent({type:'pocketSwap',target:target.id,value:'空響'});log(`${target.name} 賄賂裁判：交換口袋 BANG 與槍內 CLICK，洗牌；完整槍牌數量不變。`);return {bribed:true};
   }
- } else {
-  challengers.forEach(c=>recordHate(target,c,22,fromPocket?'掏口袋誣告':'質疑誣告'));
-  recordSuspicionForAll(target,-22,'被證明空響');
-  challengers.forEach(c=>recordSuspicionForAll(c,8,'發起誣告',c.id));
-  showSimpleEvent('❌ 誣告！',`${target.name} 翻出空響。<br>${names} 的一張空響各替換成 BANG。<br>${target.name} 抽 ${challengers.length} 張行動卡補償。`,'danger');
-  log(`質疑失敗。${names} 各一張空響換成 BANG；${target.name} 獲得 ${challengers.length} 張行動卡補償。`);
-  challengers.forEach(c=>{if(!c.out){ if(!addBangToStack(c))log(`${c.name} 沒有空響可替換，沒有增加子彈張數。`); }}); drawCards(target,challengers.length);
-  render(); return 1850;
+  const died=loseRole(target,'裁判射殺');log(`質疑正確：每位質疑者立即抽 3 張；${target.name}${died?'失去一名角色':'本輪已死亡，不再扣角色'}。`);return {judge:died};
  }
-}
-function finishChallenge(challenger,target,fromPocket=false,forceBribe=false){
- return finishChallengeGroup([challenger],target,fromPocket,forceBribe);
+ drawCards(target,challengers.length);if(!fromPocket)challengers.forEach(p=>addBangToStack(p));log(`${target.name} 翻出 CLICK，抽 ${challengers.length} 張。${fromPocket?'掏口袋誤判不受懲罰。':'各質疑者一張 CLICK 換成 BANG，重新洗牌。'}`);return {innocent:true};
 }
 function addBang(p){return addBangToStack(p)}
-function setupPhase5(){showStage('第五階段：開槍','一發一發翻牌，直到完成下注或有人中彈');shotNo=0;nextShotGlobal=null;setPhaseTitle('按「下一步」逐發開槍。可用第五階段行動卡。');document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 5</span><h3>開槍階段</h3><div id="shotText" class="bulletLine">準備第一發。</div><p class="muted">每一發都會倒數後射擊。</p><div id="shotResult" class="shotResult safe" style="position:static;margin-top:8px">槍口已舉起。</div>';render();}
-function chooseForcedTarget(shooter){let candidates=players.filter(x=>!x.out&&x.aliveThisRound&&x.id!==shooter.id); candidates.sort((a,b)=>targetScoreForShot(shooter,b)-targetScoreForShot(shooter,a)); const t=candidates[0]||null; if(t)recordHate(t,shooter,10,'互射吧瞄準'); return t;}
-function doShot(){
- if(uiLocked||shotResolving)return;
- let active=players.filter(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet);
- if(active.length===0){phase=6;setupPhase6();return;}
- aiUseShotCards();
- active=players.filter(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet);
- if(nextShotGlobal==='others'){
-  assignAIMutualTargets();
-  if(needPlayerMutualTarget()){askPlayerMutualTarget(); return;}
+function setupPhase5(){shotNo=0;nextShotGlobal=null;setPhaseTitle('所有仍需射擊的人將同時扣扳機。可先使用本階段行動卡。');document.getElementById('mainArea').innerHTML='<h3>舉槍，等待下一次心跳</h3><p id="shotText">射擊視窗將在每位射手的座位上方展開。</p><p>開槍前可使用金色手牌。</p>';render();}
+function chooseForcedTarget(ai){return chooseAliveTarget(ai)||players.find(p=>p.id!==ai.id);}
+function doShot(){if(phase!==5||uiLocked||shotResolving||gameOver)return;return runUI(async token=>{
+ shotResolving=true;await thinkDelay(token,'射擊策略');if(token!==sessionId)return;aiUseShotCards();await drainEffects(token);if(token!==sessionId)return;
+ const active=players.filter(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet);
+ if(!active.length){shotResolving=false;phase=6;await enterPoint(token);return;}
+ const me=players[0];
+ if(active.includes(me)&&((nextShotGlobal==='others'&&globalAimOrder>(me.aim?.order||0))||(me.aim?.remaining>0&&me.burstRetarget))){
+  const tid=await pickAsync('選擇這一槍的目標（可以射向本輪已死角色）',players.filter(p=>p.id!==0),token);if(token!==sessionId)return;if(tid==null){shotResolving=false;return;}if(nextShotGlobal==='others'&&globalAimOrder>(me.aim?.order||0))me.mutualTarget=tid;else{me.aim.target=tid;me.burstRetarget=false;}
  }
- shotNo++;
- const res=document.getElementById('shotResult');
- const shotText=document.getElementById('shotText');
- const wasSkyCelebration = nextShotGlobal==='sky';
- let preview=[];
- let nonFirePointers=[];
- if(nextShotGlobal==='others'){
-  mutualParticipants().filter(p=>!active.some(a=>a.id===p.id)).forEach(p=>{
-   const t=typeof p.mutualTarget==='number'?players[p.mutualTarget]:null;
-   if(t)nonFirePointers.push(`${p.name} 指向 ${t.name}，但沒有剩餘射擊數，不會開火。`);
-  });
- }
- active.forEach(p=>{
-  let c=p.deck[p.shotsTaken];
-  let target=p;
-  if(nextShotGlobal==='sky'){target=null; c='空響';}
-  else if(nextShotGlobal==='others')target=(typeof p.mutualTarget==='number')?players[p.mutualTarget]:chooseForcedTarget(p);
-  else if(p.nextShotTarget==='sky')target=null;
-  else if(typeof p.nextShotTarget==='number')target=players[p.nextShotTarget];
-  else if(p.burstShots>0&&p.burstTarget!=null)target=players[p.burstTarget];
-  preview.push({p,c,target});
- });
- const hitsPreview=preview.filter(x=>x.c==='BANG'&&x.target).map(x=>x.target);
- const overlayText=wasSkyCelebration?'鳴槍慶祝：Click……空響':(hitsPreview.length?`BANG！${hitsPreview.map(p=>p.name).join('、')} 中彈`:'Click……空響');
- if(shotText)shotText.innerHTML=`<b>第 ${shotNo} 發，倒數準備。</b><span class="muted">　快速倒數後扣下扳機：${active.map(p=>p.name).join('、')}</span>`;
- if(res){res.className='shotResult safe'; res.textContent='3、2、1……';}
- uiLocked=true; shotResolving=true; document.getElementById('nextBtn').disabled=true;
- triggerGunOverlay(overlayText,hitsPreview.some(x=>x.id===0));
- setTimeout(()=>{
-  document.body.classList.remove('screenShake'); void document.body.offsetWidth; document.body.classList.add('screenShake');
-  if(shotText)shotText.innerHTML=`<b>第 ${shotNo} 發，射擊！</b><span class="muted">　${active.map(p=>p.name).join('、')} 扣下扳機。</span>`;
-  nonFirePointers.forEach(t=>log(t));
-  let hits=[];
-  preview.forEach(({p,c,target})=>{
-   if(p.out||!p.aliveThisRound)return;
-   p.shotsTaken++;
-   const targetText=target?`${target.name}`:'天空';
-   log(`${p.name} 朝 ${targetText} 開槍。`);
-   p.nextShotTarget=null;
-   if(p.burstShots>0){p.burstShots--; if(p.burstShots<=0)p.burstTarget=null;}
-   if(c==='BANG'){
-    if(target){hits.push(target); document.getElementById('p'+target.id)?.classList.add('shot'); log(`<span class="danger">BANG！${target.name} 被擊中！</span>`); if(target!==p)recordHate(target,p,28,'被射殺'); loseRole(target,target===p?'中彈':'被射殺');}
-    else {log(`<span class="danger">BANG！但子彈射向天空，無人受傷。</span>`);}
-   }
-  });
-  if(nextShotGlobal==='others')players.forEach(p=>p.mutualTarget=null);
-  nextShotGlobal=null;
-  if(res){res.className='shotResult '+(hits.length?'danger':'safe'); res.textContent=wasSkyCelebration?'鳴槍慶祝：所有人朝天空，絕對空槍。':(hits.length?`BANG！${hits.map(p=>p.name).join('、')} 中彈。`:'Click。這一發沒有擊中任何人。');}
-  if(hits.some(x=>x.id===0))triggerCameraBreak();
-  render();
-  uiLocked=false; shotResolving=false; document.getElementById('nextBtn').disabled=false;
-  active=players.filter(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet);
-  if(active.length===0){setTimeout(()=>{if(!uiLocked&&!shotResolving){phase=6;setupPhase6();}},450);}
- },1550);
+ const preview=collectShots();shotNo++;await GameFX.fireVolley(preview);if(token!==sessionId)return;resolveVolley(preview);render();await RuleFeedback.flush(token);if(token!==sessionId)return;shotResolving=false;
+ if(checkVictory())return;if(!players.some(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet)){phase=6;await enterPoint(token);}
+ });}
+function extraShot(t,reason){if(!t||t.out||!t.aliveThisRound||t.shotsTaken>=t.deck.length)return false;const row={p:t,c:t.deck[t.shotsTaken],target:t,mode:'self',targetWasAlive:true,extra:true};if(simMode)resolveVolley([row],false);else effectQueue.push({kind:'extraShot',row});log(`${reason}：${t.name} 額外一槍，開槍數不變。`);return true;}
+function loseRole(p,reason){
+ if(!p||p.out||!p.aliveThisRound||p.lostRoleThisRound)return false;const idx=p.roles.findIndex(Boolean);if(idx<0)return false;
+ p.roles[idx]=false;p.aliveThisRound=false;p.lostRoleThisRound=true;p.pendingScoreBonus=0;p.nextShotTarget=null;p.burstShots=0;p.burstTarget=null;p.aim=null;
+ roundDeaths.push(`${p.name} ${idx===3?'隊長':'隊員'}陣亡（${reason}）`);roundDeathEvents.push({player:p,roleIndex:idx,reason});
+ if(idx===3){p.out=true;log(`${p.name} 隊長死亡，立即淘汰。`);}else{drawCards(p,1);resetDeck(p);p.shotsTaken=0;log(`${p.name} 隊員死亡，立即抽 1 張，Clean Gun 恢復 1 BANG＋6 CLICK；本輪不得分。`);}
+ publicEvent({type:'death',target:p.id,captain:idx===3});if(simStats)simStats.deaths[p.id]++;return true;
 }
-function extraShot(t,reason){if(!t||t.out||!t.aliveThisRound)return; if(t.deck.length===0)t.deck=['空響']; let c=t.deck[t.shotsTaken] || t.deck[0] || '空響'; t.shotsTaken=Math.min(t.shotsTaken+1,t.deck.length); log(`${reason}：${t.name} 額外開一槍。`); if(c==='BANG'){triggerGunOverlay('再來一發 BANG！',t.id===0); log(`<span class="danger">再來一發 BANG！${t.name} 中彈。</span>`); loseRole(t,'再來一發'); if(t.id===0)triggerCameraBreak();} else {triggerGunOverlay('再來一發 Click……',false); log(`${t.name} 額外一槍是空響。`);}}
-function loseRole(p,reason){let idx=p.roles.findIndex(r=>r); if(idx<0)return; p.roles[idx]=false; p.aliveThisRound=false; const deathText=`${avatarImg(p)}${p.name} ${idx<3?'手下陣亡':'隊長陣亡'}（${reason||'中彈'}）`; roundDeaths.push(deathText); const ev={player:p,roleIndex:idx,reason:reason||'中彈'}; roundDeathEvents.push(ev); if(!p.pendingDeathEvents)p.pendingDeathEvents=[]; p.pendingDeathEvents.push(ev); p.nextShotTarget=null; p.burstShots=0; p.burstTarget=null; log(`${p.name} 失去${idx<3?'一名隊員':'隊長'}，死亡效果延後到本回合結算。`); if(idx===3){log(`<span class="danger">${p.name} 隊長死亡，將於回合結算時淘汰。</span>`);} }
-function setupPhase6(){showStage('第六階段：得分','先處理第六階段行動卡，再結算分數');phase6Ready=true; phase6Scored=false; setPhaseTitle('可使用【再來一發】【乾了伏特加】【掏口袋】；按下一步結算得分。');document.getElementById('mainArea').innerHTML='<span class="phaseChip">Phase 6</span><h3>得分前反應時間</h3><p>可先打第六階段行動卡。按下一步後，存活者獲得 1 + 下注值 + 額外分。</p>'; aiUsePhase6Cards(); render();}
+function setupPhase6(){return runUI(token=>enterPoint(token));}
 function showVictoryCeremony(winners,reason='最高分獲勝'){
  document.querySelectorAll('.victoryOverlay').forEach(x=>x.remove());
  const maxScore=Math.max(...winners.map(w=>w.score));
@@ -1074,73 +753,434 @@ function openPrizeCase(){
  d.innerHTML=`<div class="moneyStorm">${bills}</div><div class="victoryBox"><h2>黑色手提包</h2><div class="briefcaseScene"><div class="cashGlow"></div><div class="briefcase"><div class="briefcaseLid"></div></div>${burst}</div><p class="prizeRichText">獎金狂撒中，錢源源不斷。</p><button class="btn" onclick="document.querySelector('.victoryOverlay')?.remove()">關閉</button></div>`;
 }
 
-function applyRoundSettlement(){
- const events=roundDeathEvents.slice();
- if(!events.length)return [];
- const lines=[];
- const byPlayer=new Map();
- events.forEach(ev=>{if(!byPlayer.has(ev.player.id))byPlayer.set(ev.player.id,[]); byPlayer.get(ev.player.id).push(ev);});
- byPlayer.forEach((arr,id)=>{
-  const p=players[id]; if(!p)return;
-  const deaths=arr.length;
-  resetDeck(p);
-  p.hidden=null;
-  p.knownTop=[];
-  p.nextShotTarget=null;
-  p.burstShots=0;
-  p.burstTarget=null;
-  p.mutualTarget=null;
-  drawCards(p,deaths);
-  lines.push(`${avatarImg(p)}${p.name} 子彈重置為 1 BANG + 6 空響，抽 ${deaths} 張行動卡。`);
-  if(arr.some(ev=>ev.roleIndex===3)){
-   p.out=true;
-   p.aliveThisRound=false;
-   lines.push(`<span class="roundSummaryDead">${avatarImg(p)}${p.name} 隊長死亡，正式淘汰。</span>`);
-   log(`<span class="danger">${p.name} 隊長死亡，於回合結算正式淘汰。</span>`);
-  }
- });
- roundDeathEvents=[];
- players.forEach(p=>{p.pendingDeathEvents=[];});
- return lines;
-}
-
-function scorePhase6(){
- phase6Scored=true;
- let lines=[];
- players.forEach(p=>{if(!p.out&&p.aliveThisRound){let g=1+(p.bet||0)+(p.pendingScoreBonus||0); p.score+=g; lines.push(`${avatarImg(p)}${p.name} 存活，+${g} 分。`); p.pendingScoreBonus=0;}});
- log(lines.join('<br>')||'本輪無人得分。');
- const settlementLines=applyRoundSettlement();
- const summaryLines=lines.concat(settlementLines);
- showRoundSummary(summaryLines,roundDeaths.slice());
- render();
- let alive=players.filter(p=>!p.out);
- if(alive.length<=1){
-  const winners=alive.length?alive:players.slice().sort((a,b)=>b.score-a.score).slice(0,1);
-  gameOver=true;
-  document.getElementById('phaseTitle').textContent='遊戲結束';
-  document.getElementById('hint').textContent='勝利者已產生。';
-  document.getElementById('mainArea').innerHTML=`<h2 class="safe">${winners.map(p=>p.name).join('、')} 成為最後倖存者！</h2>`;
-  document.getElementById('nextBtn').disabled=true;
-  log(`<span class="safe">遊戲結束：${winners.map(p=>p.name).join('、')} 獲勝。</span>`);
-  pendingVictoryCeremony={winners:winners,reason:'最後倖存者'};
-  return;
- }
- let reached=alive.filter(p=>p.score>=15);
- if(reached.length){
-  let max=Math.max(...alive.map(p=>p.score));
-  let top=alive.filter(p=>p.score===max);
-  gameOver=true;
-  document.getElementById('phaseTitle').textContent='遊戲結束';
-  document.getElementById('hint').textContent='勝利者已產生。';
-  document.getElementById('mainArea').innerHTML=`<h2 class="safe">${top.map(p=>p.name).join('、')} 獲勝！</h2><p>最高分 ${max} 分。</p>`;
-  document.getElementById('nextBtn').disabled=true;
-  log(`<span class="safe">遊戲結束：${top.map(p=>p.name).join('、')} 以 ${max} 分獲勝。</span>`);
-  pendingVictoryCeremony={winners:top,reason:(top.length>1?'並列冠軍':'最高分獲勝')};
-  return;
- }
- document.getElementById('mainArea').innerHTML='<h3>得分完成</h3><p>按下一步開始新一輪。</p>'; setPhaseTitle('得分完成。');
-}
+function applyRoundSettlement(){return []; /* Death, severance and Clean Gun already resolved at the event. */}
+function scorePhase6(){if(phase!==6||phase6Scored||uiLocked||gameOver)return;return runUI(async token=>{const gains=players.map(p=>({id:p.id,gain:!p.out&&!p.lostRoleThisRound&&p.aliveThisRound?(p.bet||0)+1+p.pendingScoreBonus:0}));await TableFX.points(gains);if(token!==sessionId)return;await RuleFeedback.roundSummary(token);if(token!==sessionId)return;scoreRound();render();if(checkVictory(true))return;setPhaseTitle('本輪結算完成，準備下一輪。');document.getElementById('mainArea').innerHTML='<div class="scoreChips">'+gains.map(x=>`<div class="scoreResult"><div class="scoreChip">+${x.gain}</div><span class="scoreName">${players[x.id].name}</span></div>`).join('')+'</div><p class="scoreNote">本輪 '+roundDeaths.length+' 名角色陣亡 · 死亡者本輪 +0 <button class="rewardInspectButton" onclick="RuleFeedback.openHistory()">賞罰／重置紀錄</button></p>';});}
 function declareLast(){ if(phase!==6){phase=6; setupPhase6();} }
+/* v0.24e correction layer. Original DOM, roles/assets and hand/score rendering retained.
+   Rules: retail English rulebook pp.5–14 and publisher WCRRPnP_v2.zip card faces.
+   AI policy below has NO engine/player references: only copied legal observations. */
+let sessionId=0,pendingBets={},betsRevealed=false,effectSerial=0,globalAimOrder=0,challengeComplete=false;
+let effectQueue=[],simMode=false,simStats=null,lastSimulation=null,simulationRunning=false;
+const CARD_RULES=[
+ {name:'兩連發',count:1,at:5,target:true,txt:'自己已扣兩次扳機後，接下來兩槍可射向其他玩家；兩槍可選不同目標，也可選屍體。'},
+ {name:'多開一槍',count:6,at:4,skull:true,target:true,txt:'任意玩家（含自己）開槍數 +1；5 變成 0。'},
+ {name:'上子彈',count:4,at:1,skull:true,target:true,txt:'任意玩家（含自己）的槍內一張 CLICK 換成 BANG，總數不變。'},
+ {name:'死亡之骰',count:1,at:4,skull:true,target:true,txt:'任意玩家（含自己）擲骰，開槍數隨機改為 0～5。'},
+ {name:'再來一發',count:2,at:6,skull:true,target:true,txt:'一名本輪活著的玩家額外扣一次扳機；這一槍不增加開槍數或得分。'},
+ {name:'互射吧',count:3,at:5,skull:true,txt:'下一次扳機，所有活著玩家改瞄準另一人，可指屍體；已完成開槍數者不開火。'},
+ {name:'乾了伏特加',count:1,at:6,txt:'本輪存活的最高開槍數者額外 +2 分；並列最高者 +1 分。'},
+ {name:'鳴槍慶祝',count:3,at:5,skull:true,txt:'下一次扳機，所有活著的射手朝天空；照常翻牌，BANG 仍是 BANG，但不傷人。'},
+ {name:'賄賂裁判',count:1,at:4,txt:'挑戰階段被抓作弊時：免死，把口袋 BANG 與槍內一張 CLICK 交換並洗牌；質疑者照常抽 3 張。'},
+ {name:'就打你',count:3,at:5,target:true,txt:'你的下一槍改指向另一名玩家，可射向本輪已死的角色。'},
+ {name:'掏口袋',count:1,at:6,skull:true,target:true,txt:'得分前額外質疑一人，即使本輪已質疑過。猜錯不受換 BANG 懲罰。'},
+ {name:'空槍',count:3,at:5,txt:'你的下一槍朝天空，照常翻牌。'},
+ {name:'偷窺',count:4,at:2,target:true,txt:'秘密查看自己接下來的 3 張子彈，再指定另一名玩家，讓他秘密查看他自己下一張子彈。雙方看不到彼此的結果。'}
+].map(c=>({...c,phase:'Phase '+c.at}));
+function initializeGame(n,difficulty){
+ currentAIDifficulty=difficulty;players=[];aiMemoryStore={};initActionDeck();
+ shuffle(ROLE_POOL.slice()).slice(0,n).forEach((r,id)=>{const p={id,name:r.codeName,color:r.color,colorName:r.colorName,avatar:r.avatar,silhouette:r.silhouette,roleKey:r.key,score:0,roles:[true,true,true,true],out:false,hand:[],deck:[],lastBets:[],lastHides:[],debug:{},knowledge:{top:{},publicPocket:{},events:[]},memory:{opponents:{},ownHides:[],accused:0,caught:0,rounds:0}};initAIMind(p);p.aiMemory=p.aiMemory||{hatred:{},suspicion:{}};players.push(p);resetDeck(p);});
+ players.forEach(p=>drawCards(p,1,false));gameOver=false;pendingVictoryCeremony=null;resetRoundState();
+}
+function inventoryCards(p){return [...Array(p.gunInventory.bang).fill('BANG'),...Array(p.gunInventory.blank).fill('空響')];}
+function invalidateKnowledge(p){p.knownTop=[];if(p.knowledge)p.knowledge.top={};}
+function shuffleGun(p){shuffle(p.deck);invalidateKnowledge(p);p.publicRevealed=[];}
+function resetRoundState(){
+ challengeComplete=false;
+ decayAIMemory();phase=1;shotNo=0;nextShotGlobal=null;globalAimOrder=0;effectSerial=0;phase6Ready=false;phase6Scored=false;roundDeaths=[];roundDeathEvents=[];pendingBets={};betsRevealed=false;
+ for(const p of players){p.hidden=null;p.pocketRevealed=false;p.challengeResolved=false;p.bet=null;p.shotsTaken=0;p.aliveThisRound=!p.out;p.lostRoleThisRound=false;p.challenged=false;p.pendingScoreBonus=0;p.pendingDeathEvents=[];p.aim=null;p.burstRetarget=false;p.burstShots=0;p.burstTarget=null;p.nextShotTarget=null;p.mutualTarget=null;p.publicRevealed=[];p.peeked=false;p.roundNo=(p.roundNo||0)+1;p.memory.rounds++;p.knowledge.publicPocket={};p.knowledge.events=[];invalidateKnowledge(p);if(!p.out)p.deck=inventoryCards(p);}
+}
+function publicEvent(event){
+ for(const observer of players){const e=JSON.parse(JSON.stringify(event));observer.knowledge.events.push(e);if(observer.knowledge.events.length>100)observer.knowledge.events.shift();
+ const id=event.target;if(id==null)continue;const m=observer.memory.opponents[id]||(observer.memory.opponents[id]={caught:0,innocent:0,bets:[],highBets:0,observations:0,attacks:0});
+ if(event.type==='challenge'){observer.knowledge.publicPocket[id]=event.cheat?'BANG':'空響';if(event.cheat)m.caught++;else m.innocent++;if(observer.id===id){observer.memory.accused++;if(event.cheat)observer.memory.caught++;}}
+ if(event.type==='pocketSwap')observer.knowledge.publicPocket[id]=event.value;
+ if(event.type==='bet'){m.bets.push(event.bet);m.bets=m.bets.slice(-12);m.observations++;if(event.bet>=4)m.highBets++;}
+ }
+}
+function grantPeek(p,n){if(!p||p.out||!p.aliveThisRound)return;const cards=p.deck.slice(p.shotsTaken,p.shotsTaken+n);cards.forEach((c,i)=>p.knowledge.top[p.shotsTaken+i]=c);p.knownTop=cards;p.peeked=true;publicEvent({type:'peek',target:p.id});if(p.id===0&&!simMode)effectQueue.push({kind:'peek',name:p.name,cards});}
+function getAIKnowledge(ai){
+ // Whitelist boundary. No deck order, other hands, other minds or pending bets cross it.
+ const publicView=p=>({id:p.id,name:p.name,score:p.score,hp:p.roles.filter(Boolean).length,out:p.out,alive:p.aliveThisRound,bet:betsRevealed?p.bet:null,handCount:p.hand.length,bangs:p.gunInventory.bang,shots:p.shotsTaken,revealed:[...(p.publicRevealed||[])],peeked:!!p.peeked,aim:p.aim?{target:p.aim.target,remaining:p.aim.remaining,order:p.aim.order}:null});
+ const k={phase,shotNo,self:{...publicView(ai),pocket:ai.hidden,inventory:{...ai.gunInventory},hand:ai.hand.map(c=>({name:c.name,at:c.at,skull:!!c.skull,target:!!c.target})),known:{...ai.knowledge.top},lostRole:ai.lostRoleThisRound,challenged:ai.challenged},opponents:players.filter(p=>p.id!==ai.id).map(publicView),personality:{...(ai.personalityMatrix||normalTraits(ai.personality))},difficulty:ai.aiLevel||currentAIDifficulty,memory:JSON.parse(JSON.stringify(ai.memory)),hate:Object.fromEntries(Object.entries(ai.aiMemory?.hatred||{}).map(([id,v])=>[id,v.value])),publicPocket:{...ai.knowledge.publicPocket},events:ai.knowledge.events.map(e=>({...e})),globalAim:nextShotGlobal,globalAimOrder,ready:phase6Ready&&!phase6Scored};
+ return k;
+}
+function normalTraits(t){const o=Object.fromEntries(PERSONALITY_KEYS.map(k=>[k,5]));o[t==='gambler'?'Risk':t==='troll'?'Prank':t==='revenge'?'Revenge':'Coward']+=50;return o;}
+const AIPolicy=(()=>{
+ const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+ const tr=(k,n)=>(k.personality[n]||0)/100;
+ const leader=k=>Math.max(k.self.score,...k.opponents.filter(p=>!p.out).map(p=>p.score));
+ const lifeValue=k=>(k.self.hp===1?10:2.0+3/(k.self.hp||1))*(1+1.5*tr(k,'Coward')+.35*tr(k,'Calm')-.65*tr(k,'Risk'));
+ function cheatProbability(k,t){
+  if(k.publicPocket[t.id])return k.publicPocket[t.id]==='BANG'?.95:.02;
+  const m=k.memory.opponents[t.id]||{caught:0,innocent:0,bets:[],highBets:0,observations:0};
+  const prior=(2+m.caught*.75)/(7+(m.caught+m.innocent)*.75);
+  const avg=m.bets.length?m.bets.reduce((s,b)=>s+b,0)/m.bets.length:2;
+  let logit=Math.log(prior/(1-prior))+(t.bet??2)*.34-.46;
+  logit+=((t.bet??2)-avg)*.12+(t.bangs-1)*.21+(t.score>=12?.16:0)-(t.hp===1?.26:0);
+  logit-=t.peeked?.30:0;logit-=m.observations?m.highBets/m.observations*.26:0;
+  logit+=tr(k,'Suspicious')*.9+tr(k,'Justice')*.2-tr(k,'Calm')*.35;
+  return clamp(1/(1+Math.exp(-logit)),.04,.94);
+ }
+ function threat(k,t){if(!t||t.out)return 0;return t.score*.65+Math.max(0,t.score-10)*1.8+(t.score+(t.bet||0)+1>=15?5:0)+(t.hp===1?3.5:1/t.hp)+t.handCount*.25+(t.bet||0)*.3+Math.min(100,k.hate[t.id]||0)*(.018+tr(k,'Revenge')*.16);}
+ function catchRisk(k,b){const m=k.memory;const base=.055+b*.045+(m.caught/Math.max(2,m.rounds))*.23+(m.accused/Math.max(2,m.rounds))*.10;return clamp(1-Math.pow(1-clamp(base,.03,.65),k.opponents.filter(t=>!t.out).length),.03,.88);}
+ function survival(k,b,pocket=k.self.pocket){
+  if(b<=0)return 1;const s=k.self,n=6-s.shots;if(b>n)return 0;
+  let bangs=s.inventory.bang-(pocket==='BANG'?1:0)-(s.revealed||[]).filter(c=>c==='BANG').length;
+  const known=Object.entries(s.known).filter(([i])=>+i>=s.shots);let unknown=n-known.length;
+  bangs-=known.filter(([,c])=>c==='BANG').length;let prob=1;
+  for(let i=s.shots;i<s.shots+b;i++){const c=s.known[i];if(c==='BANG')return 0;if(c==='空響')continue;prob*=clamp((unknown-bangs)/Math.max(1,unknown));unknown--;}
+  return prob;
+ }
+ function bidUtilities(k,pocket=k.self.pocket){
+  const s=k.self,lv=lifeValue(k),gap=leader(k)-s.score,prev=s.bet,protect=s.hand.filter(c=>['空槍','就打你','兩連發'].includes(c.name)).length;
+  return Array.from({length:6},(_,b)=>{
+   const raw=survival(k,b,pocket),surv=clamp(raw+(1-raw)*Math.min(.32,protect*.13));
+   const catchP=pocket==='BANG'?catchRisk(k,b)*(s.hand.some(c=>c.name==='賄賂裁判')?.12:1):0;
+   const win=s.score+b+1>=15&&s.score+b+1>leader(k)?7:0;
+   const recent=k.memory.ownBets||[];const repeat=recent.filter(x=>x===b).length/Math.max(1,recent.length);
+   const bluff=pocket!=='BANG'&&b>=4?(tr(k,'Prank')*4+tr(k,'Complex')*1.3)*(s.hp/4)*(1+Math.min(gap,8)/12):0;
+   const conceal=pocket==='BANG'&&b<=2?(tr(k,'Fraud')+tr(k,'Complex'))*catchRisk(k,5)*2:0;
+   const gain=(b+1)*(1+tr(k,'Greedy')*.7+Math.min(gap,10)*.025)+win;
+   return {bet:b,utility:(1-catchP)*(surv*gain-(1-surv)*lv)-catchP*lv+bluff+conceal-repeat*(.2+tr(k,'Complex')*1.4)+tr(k,'Risk')*b*.23,survival:raw,caught:catchP};
+  });
+ }
+ function select(rows,k,key){const sorted=rows.slice().sort((a,b)=>b.utility-a.utility);const explore=k.difficulty==='hard'?.05+tr(k,'Complex')*.10:.18;return Math.random()<explore?sorted[Math.floor(Math.random()*Math.min(3,sorted.length))]:sorted[0];}
+ function hide(k){
+  const legal=k.self.inventory.blank>0?Math.max(...bidUtilities(k,'空響').map(x=>x.utility)):-Infinity;
+  const cheat=Math.max(...bidUtilities(k,'BANG').map(x=>x.utility))+.5*tr(k,'Fraud')-tr(k,'Justice')*.9;
+  const recent=k.memory.ownHides.slice(-4);const pattern=recent.length&&recent.every(x=>x==='BANG')?.3+tr(k,'Complex')*.8:0;
+  const d=cheat-legal-pattern;const temp=k.difficulty==='hard'?.65:.95;
+  let probability=clamp(1/(1+Math.exp(-d/temp)),.04,.9);
+  if(k.self.hp===1&&tr(k,'Coward')>.45)probability*=.1;
+  if(k.self.inventory.blank===0)probability=1;
+  return {choice:Math.random()<probability?'BANG':'空響',cheatUtility:cheat,legalUtility:legal,probability,estimatedCatchRisk:catchRisk(k,3)};
+ }
+ function bid(k){const utilities=bidUtilities(k);return {choice:select(utilities,k).bet,utilities};}
+ function challengeUtility(k,t,noPenalty=false){const p=cheatProbability(k,t),success=2.0+threat(k,t)*.12+(t.hp===1?2.4:.8),cost=noPenalty?0:(1.5+lifeValue(k)*.36+(k.self.inventory.bang-1)*.4);return {id:t.id,p,utility:p*success-(1-p)*cost+tr(k,'Suspicious')*.8+tr(k,'Justice')*(p-.4)+tr(k,'Risk')*.5-tr(k,'Calm')*.5+Math.min(k.hate[t.id]||0,100)/100*tr(k,'Revenge')*.9};}
+ function challenge(k){const utilities=k.opponents.filter(t=>!t.out&&!k.publicPocket[t.id]).map(t=>challengeUtility(k,t));const best=utilities.sort((a,b)=>b.utility-a.utility)[0];return {target:best&&best.utility>(k.difficulty==='hard'?.28:.65)?best.id:null,utilities};}
+ function risk(k,t){if(t.id===k.self.id)return 1-survival(k,1);const revealed=t.revealed.filter(c=>c==='BANG').length;return clamp((t.bangs-cheatProbability(k,t)-revealed)/Math.max(1,6-t.shots));}
+ function valueBid(k,t,b){const p=cheatProbability(k,t);let safe=1;const bangs=Math.max(0,t.bangs-p);for(let i=0;i<b;i++)safe*=clamp((6-bangs-i)/(6-i));return safe*(b+1+(t.score+b+1>=15?6:0))-(1-safe)*(t.hp===1?7:1.7);}
+ function evaluateActionCard(k,card,t){
+  const s=k.self,self=t?.id===s.id,enemy=t?threat(k,t):0,r=1-survival(k,1),def=lifeValue(k)+((s.bet||0)+1)*.8;
+  const protectedNow=(s.aim&&s.aim.target!==s.id)||(k.globalAim&&k.globalAimOrder>(s.aim?.order||0));let v=-Infinity;
+  switch(card.name){
+  case '上子彈':v=self?-2:enemy*.055+.25+(t.hp===1?.8:0);break;
+  case '偷窺':v=Object.keys(s.known).length>=3?-2:.9+(s.inventory.bang-1)*.2+(s.hp===1?.6:0)-enemy*.016;break;
+  case '多開一槍':case '死亡之骰':{const before=self?bidUtilities(k).find(x=>x.bet===s.bet).utility:valueBid(k,t,t.bet);const afters=card.name==='多開一槍'?[(t.bet+1)%6]:[0,1,2,3,4,5];const after=afters.reduce((a,b)=>a+(self?bidUtilities(k).find(x=>x.bet===b).utility:valueBid(k,t,b)),0)/afters.length;v=(self?after-before:before-after)* (self?1:1+enemy*.025);break;}
+  case '空槍':v=protectedNow?-2:r*def-.65;break;
+  case '就打你':case '兩連發':v=(protectedNow?0:r*def)+r*(t.alive&&!t.out?enemy*.20+1:0)-.75;if(card.name==='兩連發')v+=Math.min(1,Math.max(0,s.bet-s.shots-1))*.5;break;
+  case '鳴槍慶祝':{const harm=k.opponents.filter(x=>x.alive&&!x.out&&x.shots<x.bet).reduce((a,t)=>a+risk(k,t)*(1+threat(k,t)*.10),0);v=(s.alive&&s.shots<s.bet&&!protectedNow?r*def:0)-harm-.5;break;}
+  case '互射吧':v=k.globalAim==='others'?-2:(s.alive&&s.shots<s.bet&&!protectedNow?r*def:0)+k.opponents.filter(x=>x.alive&&x.shots<x.bet).reduce((a,t)=>a+risk(k,t)*.15,0)-.9;break;
+  case '再來一發':v=self?-3:risk(k,t)*(enemy*.22+(t.hp===1?4:1)+t.bet+1)-.65;break;
+  case '掏口袋':v=self?-3:challengeUtility(k,t,true).utility-.9;break;
+  case '乾了伏特加':v=2;break;
+  }
+  return v;
+ }
+ return {cheatProbability,threat,survival,hide,bid,challenge,challengeUtility,evaluateActionCard,risk};
+})();
+function evaluateActionCard(ai,card,t){const k=getAIKnowledge(ai),target=t?(t.id===ai.id?k.self:k.opponents.find(x=>x.id===t.id)):null;return AIPolicy.evaluateActionCard(k,card,target);}
+function legalTargets(p,name){
+ switch(name){case '上子彈':return players.filter(t=>!t.out&&t.gunInventory.blank-(t.hidden==='空響'?1:0)>0);
+ case '偷窺':return players.filter(t=>t.id!==p.id&&!t.out&&t.aliveThisRound);
+ case '就打你':case '兩連發':case '互射吧':return players.filter(t=>t.id!==p.id);
+ case '再來一發':return players.filter(t=>!t.out&&t.aliveThisRound&&t.shotsTaken<t.deck.length);
+ case '多開一槍':case '死亡之骰':return players.filter(t=>!t.out);
+ case '掏口袋':return players.filter(t=>t.id!==p.id&&!t.out&&t.aliveThisRound&&!t.pocketRevealed);
+ default:return [];}
+}
+function aiLegalActions(k){
+ // Derive candidate actions entirely from the observation, then let the engine validate.
+ const s=k.self,all=[s,...k.opponents];return s.hand.flatMap((card,idx)=>{
+  if(card.at!==k.phase||((s.out||!s.alive)&&!card.skull)||card.name==='賄賂裁判'||(k.phase===6&&!k.ready))return [];
+  if(['空槍','就打你','兩連發'].includes(card.name)&&(s.shots>=s.bet||card.name==='兩連發'&&s.shots<2))return [];
+  if(card.name==='乾了伏特加'&&(!s.alive||all.some(t=>t.alive&&!t.out&&t.bet>s.bet)))return [];
+  let targets=[null];if(card.target){switch(card.name){
+   case '上子彈':targets=all.filter(t=>!t.out&&t.bangs<7);break;
+   case '偷窺':targets=k.opponents.filter(t=>!t.out&&t.alive);break;
+   case '就打你':case '兩連發':targets=k.opponents;break;
+   case '再來一發':targets=all.filter(t=>!t.out&&t.alive&&t.shots<6);break;
+   case '掏口袋':targets=k.opponents.filter(t=>!t.out&&t.alive&&!k.publicPocket[t.id]);break;
+   default:targets=all.filter(t=>!t.out);}}
+  return targets.map(t=>({idx,name:card.name,target:t?.id??null,utility:AIPolicy.evaluateActionCard(k,card,t)}));
+ });
+}
+function playAICards(includeHuman=false){
+ for(const ai of players.filter(p=>includeHuman||p.id!==0)){
+  let iterations=0;
+  while(!gameOver&&iterations++<64){const k=getAIKnowledge(ai),options=aiLegalActions(k);
+   ai.debug.action=options;ai.debug.threat=Object.fromEntries(k.opponents.map(t=>[t.id,AIPolicy.threat(k,t)]));const best=options.sort((a,b)=>b.utility-a.utility)[0];
+   if(!best||best.utility<.18)break;if(!useCard(ai,best.idx,best.target))break;
+   // Cards that open a response window are resumed by the presentation loop.
+   if(!simMode&&effectQueue.some(e=>e.kind==='challenge'||e.kind==='extraShot'))break;
+   if(simMode&&checkVictory())return;
+   if(!simMode&&victoryResult())return;
+  }
+ }
+}
+function commitBets(){if(betsRevealed)return false;const living=players.filter(p=>!p.out);if(living.some(p=>!Number.isInteger(pendingBets[p.id])))return false;for(const p of living){p.bet=pendingBets[p.id];p.lastBets.push(p.bet);p.lastBets=p.lastBets.slice(-12);p.memory.ownBets=p.lastBets.slice();}betsRevealed=true;for(const p of living){publicEvent({type:'bet',target:p.id,bet:p.bet});if(simStats){simStats.betTotal+=p.bet;simStats.bets++;simStats.betHistogram[p.bet]++;simStats[p.hidden==='BANG'?'cheatingBets':'honestBets'][p.bet]++;}}pendingBets={};updateSuspicionAfterBetReveal();return true;}
+function setAim(p,target,n){p.aim={target,remaining:n,total:n,order:++effectSerial};p.nextShotTarget=target;p.burstShots=n===2?2:0;p.burstTarget=n===2?target:null;}
+function collectShots(){return players.filter(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet).map(p=>{
+ let target=p;const global=nextShotGlobal&&globalAimOrder>(p.aim?.order||0);
+ if(global)target=nextShotGlobal==='sky'?null:(typeof p.mutualTarget==='number'?players[p.mutualTarget]:chooseForcedTarget(p));
+ else if(p.aim?.remaining>0)target=p.aim.target==='sky'?null:players[p.aim.target];
+ if(p.aim?.remaining>0&&p.burstRetarget&&p.id!==0&&!global){target=chooseForcedTarget(p);p.aim.target=target.id;}
+ const c=p.deck[p.shotsTaken];if(!c)throw Error('Cannot pull exhausted gun');return {p,c,target,mode:target==null?'sky':target===p?'self':'other'};
+ });}
+function resolveVolley(rows,consumeEffects=true){
+ // Snapshot the whole volley before touching anyone: mutual last captains can both die.
+ const hits=new Map();
+ for(const {p,c,target} of rows){p.publicRevealed.push(c);delete p.knowledge.top[p.shotsTaken];p.shotsTaken++;publicEvent({type:'shot',actor:p.id,target:target?.id??null,result:c});log(`${p.name} → ${target?.name||'天空'}：${c==='BANG'?'BANG':'CLICK'}`);if(c==='BANG'&&target&&target.aliveThisRound&&!target.out)hits.set(target.id,{target,shooter:p});
+  if(consumeEffects&&p.aim){p.aim.remaining--;if(p.aim.remaining<=0)p.aim=null;else p.burstRetarget=true;}p.nextShotTarget=null;p.mutualTarget=null;
+ }
+ for(const {target,shooter} of hits.values()){if(target!==shooter)recordHate(target,shooter,25,'射擊');loseRole(target,target===shooter?'自己中彈':'遭到射擊');}
+ if(consumeEffects){nextShotGlobal=null;globalAimOrder=0;}
+}
+function scoreRound(){if(phase6Scored)return [];phase6Scored=true;const lines=[];for(const p of players){let gain=!p.out&&!p.lostRoleThisRound&&p.aliveThisRound?(p.bet||0)+1+p.pendingScoreBonus:0;p.score+=gain;p.pendingScoreBonus=0;lines.push(`${p.name} +${gain} 分（總分 ${p.score}）`);}return lines;}
+function victoryResult(points=false){const living=players.filter(p=>!p.out);if(!living.length)return {winners:[],reason:'所有隊長同時陣亡，無人獲勝',type:'none'};if(living.length===1)return {winners:living,reason:'最後一名隊長',type:'captain'};if(points){const max=Math.max(...living.map(p=>p.score));const top=living.filter(p=>p.score===max);if(max>=15&&top.length===1)return {winners:top,reason:'唯一最高分且達 15 分',type:'points'};}return null;}
+function checkVictory(points=false){if(gameOver)return true;const result=victoryResult(points);if(!result)return false;gameOver=true;pendingVictoryCeremony=result;if(simMode)return true;document.getElementById('phaseTitle').textContent='遊戲結束';document.getElementById('hint').textContent=result.reason;document.getElementById('nextBtn').disabled=true;document.getElementById('mainArea').innerHTML=`<h2>${result.winners.map(p=>p.name).join('、')||'無人'}獲勝</h2><p>${result.reason}</p>`;if(result.winners.length)showVictoryCeremony(result.winners,result.reason);else showRoundSummary(['無人獲勝'],roundDeaths);return true;}
+async function runUI(fn){if(uiLocked||simulationRunning)return;const token=sessionId;uiLocked=true;document.getElementById('nextBtn').disabled=true;render();try{await fn(token);}catch(e){console.error(e);log('操作失敗：'+e.message);}finally{if(token===sessionId){uiLocked=false;shotResolving=false;render();document.getElementById('nextBtn').disabled=gameOver||(phase===1&&players.some(p=>!p.out&&!p.hidden))||(phase===2&&!TableUI.spinReady)||(phase===3&&!betsRevealed)||(phase===4&&!challengeComplete);}}}
+async function thinkDelay(token,text){if(simMode||currentAIDifficulty!=='hard')return;await GameFX.think(text,300+Math.random()*600);return token===sessionId;}
+async function drainEffects(token){while(effectQueue.length&&token===sessionId){const e=effectQueue.shift();if(e.kind==='card')await GameFX.card(e);else if(e.kind==='shot')await GameFX.fireVolley(e.rows);else if(e.kind==='extraShot'){if(e.row.target.aliveThisRound&&!e.row.target.out){await GameFX.fireVolley([e.row]);if(token!==sessionId)return;resolveVolley([e.row],false);render();}}else if(e.kind==='challenge')await presentChallenge(e.challengers,e.target,e.fromPocket,token);else if(e.kind==='peek')await presentPeek(e,token);}}
+async function presentPeek(e,token){if(token!==sessionId)return;showPeekOverlay(e.name,e.cards);await GameFX.waitForClose('peekOverlay');}
+async function pickAsync(title,targets,token){return new Promise(resolve=>{showTargetPicker(title,targets,id=>resolve(id));GameFX.watchRemoval('targetModal',()=>resolve(null),token);});}
+async function submitChallenges(id){if(challengeComplete)return;return runUI(async token=>{await thinkDelay(token,'質疑');if(token!==sessionId)return;const q=aiChallenges();if(id!=null)q.push({challenger:players[0],target:players[id],fromPocket:false});for(const e of q)e.challenger.challenged=true;await TableFX.pointing(q);if(token!==sessionId)return;for(const g of groupChallengesByTarget(q)){await presentChallenge(g.challengers,g.target,false,token);if(token!==sessionId)return;if(checkVictory())return;}aiUsePhase4Cards();await drainEffects(token);if(token!==sessionId)return;challengeComplete=true;setPhaseTitle('質疑結算完成。可以使用剛抽到的本階段行動卡。');document.getElementById('mainArea').innerHTML='<h3>桌上的指控已經落定</h3><p>死亡者的補償牌已立即取得；☠ 卡仍可使用。</p>';});}
+async function presentChallenge(challengers,target,fromPocket,token){
+ if(!target||!target.hidden||token!==sessionId)return;await GameFX.challenge(challengers,target);if(token!==sessionId)return;
+ let bribe=false;const eligible=phase===4&&target.hidden==='BANG'&&target.aliveThisRound&&target.hand.some(c=>c.name==='賄賂裁判')&&target.deck.includes('空響');
+ if(eligible){if(target.id===0)bribe=await responseBribe(token);else bribe=getAIKnowledge(target).self.hand.some(c=>c.name==='賄賂裁判');}if(token!==sessionId)return;
+ if(target.hidden==='BANG'&&target.aliveThisRound&&!target.out){if(bribe)await TableFX.bribe(target);else await GameFX.judge(target);}if(token!==sessionId)return;
+ const truth=target.hidden,mark=RuleFeedback.pending.length;const result=finishChallengeGroup(challengers,target,fromPocket,bribe);const events=RuleFeedback.pending.splice(mark);render();await RuleFeedback.challenge(challengers,target,truth,result,events);if(token!==sessionId)return;await drainEffects(token);
+}
+async function responseBribe(token){return new Promise(resolve=>{const d=document.createElement('div');d.id='bribeModal';d.className='overlay';d.style.zIndex=130;d.innerHTML='<div class="modal"><h2>你被抓到藏 BANG</h2><p>使用賄賂裁判，交換口袋與槍內的 CLICK 並洗牌。</p><button class="btn" data-yes>使用賄賂裁判</button> <button class="btn" data-no>接受處決</button></div>';const done=v=>{d.remove();resolve(v);};d.querySelector('[data-yes]').onclick=()=>done(true);d.querySelector('[data-no]').onclick=()=>done(false);document.body.appendChild(d);GameFX.watchRemoval('bribeModal',()=>resolve(false),token);});}
+async function enterPoint(token){phase6Ready=true;phase6Scored=false;setPhaseTitle('結算前可使用第六階段行動卡，準備好再收取分數。');document.getElementById('mainArea').innerHTML='<h3>活下來的人，收取籌碼</h3><div class="scoreChips"><div class="scoreChip">＋</div></div><p>再來一發 · 乾了伏特加 · 掏口袋<br>此時仍可改變本輪結果。</p>';await thinkDelay(token,'結算前行動');if(token!==sessionId)return;aiUsePhase6Cards();await drainEffects(token);if(token===sessionId){checkVictory();render();}}
+function assertGameState(){for(const p of players){if(p.gunInventory.bang+p.gunInventory.blank!==7)throw Error('Inventory != 7');if(p.gunInventory.bang<1||p.gunInventory.blank<0)throw Error('Invalid inventory');if(p.out!==!p.roles.some(Boolean))throw Error('Captain state mismatch');if(!p.out&&p.hidden&&!p.lostRoleThisRound&&p.deck.length!==6)throw Error('Pocket deck != 6');if(p.bet!=null&&(p.bet<0||p.bet>5))throw Error('Invalid bet');}return true;}
+async function runAISimulation(n=1000){
+ if(!developerMode||uiLocked||simulationRunning)return null;n=Math.max(1,Math.min(100000,Math.floor(n)));simulationRunning=true;
+ const saved={players,phase,shotNo,gameOver,actionDeck,discardPile,nextShotGlobal,phase6Ready,phase6Scored,roundDeaths,roundDeathEvents,pendingVictoryCeremony,pendingBets,betsRevealed,effectSerial,globalAimOrder,currentAIDifficulty,aiMemoryStore,challengeComplete};
+ const stats={games:n,rounds:0,pockets:0,cheats:0,challenges:0,correct:0,betTotal:0,bets:0,cards:0,drawnCards:0,honestBets:[0,0,0,0,0,0],cheatingBets:[0,0,0,0,0,0],deaths:[0,0,0,0,0,0],seatGames:[0,0,0,0,0,0],betHistogram:[0,0,0,0,0,0],wins:{points:0,captain:0,none:0},personalities:{},matrix:{},timeouts:0};
+ simMode=true;simStats=stats;
+ try{for(let g=0;g<n;g++){
+   const count=2+g%5,diff=Math.floor(g/5)%2?'normal':'hard';initializeGame(count,diff);for(const p of players){if(p.id===0){p.aiLevel=diff;p.personality=pickAIType();p.personalityMatrix=diff==='hard'?randomPersonality():null;}const key=diff==='hard'?PERSONALITY_KEYS.slice().sort((a,b)=>p.personalityMatrix[b]-p.personalityMatrix[a])[0]:'Normal';p.simPersonality=key;stats.personalities[key]??={games:0,wins:0};stats.personalities[key].games++;stats.seatGames[p.id]++;}
+   const cell=stats.matrix[count+'P-'+diff]??={games:0,wins:0,rounds:0};cell.games++;let rounds=0;
+   while(!gameOver&&rounds++<160){stats.rounds++;cell.rounds++;phase=1;playAICards(true);players.filter(p=>!p.out).forEach(aiHide);phase=2;players.filter(p=>!p.out).forEach(shuffleGun);playAICards(true);phase=3;pendingBets={};const ks=players.filter(p=>!p.out).map(p=>[p,getAIKnowledge(p)]);ks.forEach(([p,k])=>pendingBets[p.id]=aiBet(p,k));commitBets();phase=4;playAICards(true);
+    const q=players.filter(p=>!p.out).map(p=>{const d=AIPolicy.challenge(getAIKnowledge(p));return d.target==null?null:{challenger:p,target:players[d.target]};}).filter(Boolean);q.forEach(e=>e.challenger.challenged=true);
+    for(const group of groupChallengesByTarget(q)){const k=getAIKnowledge(group.target);finishChallengeGroup(group.challengers,group.target,false,k.self.hand.some(c=>c.name==='賄賂裁判'));if(checkVictory())break;}
+    if(!gameOver){playAICards(true);phase=5;shotNo=0;let pulls=0;while(players.some(p=>!p.out&&p.aliveThisRound&&p.shotsTaken<p.bet)&&pulls++<6){playAICards(true);const rows=collectShots();shotNo++;resolveVolley(rows);assertGameState();if(checkVictory())break;}}
+    if(!gameOver){phase=6;phase6Ready=true;playAICards(true);if(!checkVictory()){scoreRound();checkVictory(true);}}
+    assertGameState();if(!gameOver)resetRoundState();
+   }
+   if(!gameOver)stats.timeouts++;else{const r=pendingVictoryCeremony;stats.wins[r.type]++;for(const w of r.winners)stats.personalities[w.simPersonality].wins++;cell.wins+=r.winners.length;}
+   if(g%25===0){simMode=false;const el=document.getElementById('simStatus');if(el)el.textContent=`模擬 ${g+1} / ${n}`;await new Promise(r=>setTimeout(r,0));simMode=true;}
+  }
+  stats.averageRounds=stats.rounds/n;stats.cheatRate=stats.cheats/Math.max(1,stats.pockets);stats.challengeRate=stats.challenges/Math.max(1,stats.pockets);stats.correctChallengeRate=stats.correct/Math.max(1,stats.challenges);stats.wrongChallengeRate=1-stats.correctChallengeRate;stats.averageBet=stats.betTotal/Math.max(1,stats.bets);stats.cardsPerGame=stats.cards/n;stats.actionCardUseRate=stats.cards/Math.max(1,stats.drawnCards);stats.victoryRatios=Object.fromEntries(Object.entries(stats.wins).map(([k,v])=>[k,v/n]));stats.averageDeaths=stats.deaths.map((d,i)=>d/Math.max(1,stats.seatGames[i]));for(const v of Object.values(stats.personalities))v.winRate=v.wins/v.games;lastSimulation=stats;return stats;
+ }finally{({players,phase,shotNo,gameOver,actionDeck,discardPile,nextShotGlobal,phase6Ready,phase6Scored,roundDeaths,roundDeathEvents,pendingVictoryCeremony,pendingBets,betsRevealed,effectSerial,globalAimOrder,currentAIDifficulty,aiMemoryStore,challengeComplete}=saved);simMode=false;simStats=null;simulationRunning=false;render();if(lastSimulation)showSimulationReport(lastSimulation);}
+}
+function showSimulationReport(s){if(!developerMode)return;const d=document.createElement('div');d.className='overlay';d.id='simulationReport';d.style.zIndex=120;d.innerHTML=`<div class="modal helpModal"><h2>AI 模擬 ${s.games} 局</h2><p>2～6 人 × 普通／困難，同一規則引擎，不播放動畫。</p><p>平均 ${s.averageRounds.toFixed(2)} 輪｜平均開槍數 ${s.averageBet.toFixed(2)}<br>作弊 ${(s.cheatRate*100).toFixed(1)}%｜質疑 ${(s.challengeRate*100).toFixed(1)}%｜質疑正確 ${(s.correctChallengeRate*100).toFixed(1)}%<br>15 分勝利 ${s.wins.points}｜最後隊長 ${s.wins.captain}｜無人勝利 ${s.wins.none}｜超時 ${s.timeouts}</p><p class="small">人格依本局最高權重分類；不同人數與人格的樣本數不同，勝率是診斷資料，不代表強度排名。</p><pre>${JSON.stringify(s,null,2)}</pre><button class="btn" onclick="document.getElementById('simulationReport').remove()">關閉</button></div>`;document.body.appendChild(d);}
+
+const SFX={enabled:true,ctx:null,
+ unlock(){if(!this.enabled)return;try{this.ctx??=new(window.AudioContext||window.webkitAudioContext)();if(this.ctx.state==='suspended')this.ctx.resume();}catch{}},
+ play(kind){if(!this.enabled||simMode)return;this.unlock();const a=this.ctx;if(!a)return;
+ const settings={ui:[900,.035,.025],metal:[1900,.14,.065],bag:[160,.15,.065],spin:[520,.09,.025],tick:[850,.035,.06],hammer:[1200,.025,.05],click:[1600,.065,.065],bang:[70,.28,.20],judge:[55,.34,.21],heart:[55,.14,.075]};
+ const [hz,dur,vol]=settings[kind]||settings.ui,now=a.currentTime,g=a.createGain();g.gain.setValueAtTime(vol,now);g.gain.exponentialRampToValueAtTime(.001,now+dur);g.connect(a.destination);
+ if(['bag','spin','bang','judge','click','hammer'].includes(kind)){const b=a.createBuffer(1,Math.ceil(a.sampleRate*dur),a.sampleRate),data=b.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1);const src=a.createBufferSource(),filter=a.createBiquadFilter();filter.type=kind==='bag'?'lowpass':'highpass';filter.frequency.value=kind==='bag'?550:kind==='bang'?100:900;src.buffer=b;src.connect(filter);filter.connect(g);src.start();src.stop(now+dur);}
+ const osc=a.createOscillator();osc.type=['bang','judge'].includes(kind)?'triangle':'sine';osc.frequency.setValueAtTime(hz,now);osc.frequency.exponentialRampToValueAtTime(Math.max(30,hz*.35),now+dur);osc.connect(g);osc.start();osc.stop(now+dur);
+ }};
+function toggleSound(){SFX.enabled=!SFX.enabled;if(!SFX.enabled&&SFX.ctx)SFX.ctx.suspend();else SFX.unlock();document.getElementById('soundBtn').textContent='音效 '+(SFX.enabled?'ON':'OFF');}
+const GameFX={active:null,watchers:new Set(),
+ cancel(){if(this.active)this.active.finish(false);for(const stop of [...this.watchers])stop();document.querySelectorAll('.fxOverlay,#bribeModal,#targetModal,#peekOverlay').forEach(e=>e.remove());},
+ skip(){const a=this.active;if(a&&performance.now()-a.started>=300)a.skip=true;},
+ play(kind,data,duration){if(simMode)return Promise.resolve(true);if(this.active)this.active.finish(false);return new Promise(resolve=>{
+  const d=document.createElement('div');d.className='fxOverlay';d.innerHTML='<canvas width="1440" height="900" aria-label="遊戲演出"></canvas><div class="fxHint">0.3 秒後可點畫面或 Enter 快轉演出</div><button class="btn fxNew">新遊戲</button>';document.body.appendChild(d);
+  const canvas=d.querySelector('canvas'),ctx=canvas.getContext('2d'),start=performance.now(),speed=Number(document.getElementById('fxSpeed')?.value||1),fired=new Set();let raf,finished=false;
+  const finish=ok=>{if(finished)return;finished=true;cancelAnimationFrame(raf);d.remove();if(this.active?.finish===finish)this.active=null;resolve(ok);};
+  const active={started:start,finish,skip:false};this.active=active;
+  d.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;e.preventDefault();e.stopPropagation();this.skip();});d.querySelector('button').onclick=e=>{e.stopPropagation();safeNewGame();};
+  const cues=kind==='hide'?[[.26,'metal'],[.52,'bag'],[.7,'metal']]:kind==='spin'?[[.06,'spin'],[.17,'spin'],[.28,'spin'],[.39,'spin'],[.58,'tick'],[.72,'tick'],[.85,'tick'],[.97,'tick']]:kind==='shot'||kind==='judge'?[[.1,'heart'],[.3,'heart'],[.5,'heart'],[.64,'hammer'],[.66,kind==='judge'?'judge':data.rows.some(r=>r.c==='BANG')?'bang':'click']]:kind==='challenge'?[[.12,'heart'],[.38,'heart'],[.65,'metal']]:[];
+  const tick=now=>{let t=Math.min(1,(now-start)/(duration*speed));if(active.skip)t=Math.max(.96,t);for(let i=0;i<cues.length;i++)if(t>=cues[i][0]&&!fired.has(i)){fired.add(i);SFX.play(cues[i][1]);}
+   FXPainter.frame(ctx,kind,data,t);if(t>=1||active.skip){if(active.skip&&!active.ending){active.skip=false;active.ending=true;raf=requestAnimationFrame(()=>{FXPainter.frame(ctx,kind,data,1);raf=requestAnimationFrame(()=>finish(true));});}else finish(true);}else raf=requestAnimationFrame(tick);};
+  raf=requestAnimationFrame(tick);
+ });},
+ hideBullet(name,type,secret){return this.play('hide',{name,type:secret?null:type,secret},1300);},
+ spinCylinder(){return this.play('spin',{turns:3+Math.random()*3,offset:Math.random()*Math.PI*2},1850);},
+ fireVolley(rows){return this.play('shot',{rows:rows.map(r=>({name:r.p.name,targetName:r.target?.name||'天空',mode:r.mode,c:r.c,targetDead:r.targetWasAlive===true?false:r.target?!r.target.aliveThisRound:false}))},2100);},
+ fireShot(shooter,target,result,mode){return this.fireVolley([{p:shooter,target,c:result,mode}]);},
+ judge(target){return this.play('judge',{rows:[{name:'黑衣裁判',targetName:target.name,mode:'other',c:'BANG',judge:true}]},1700);},
+ challenge(challengers,target){return this.play('challenge',{names:challengers.map(p=>p.name).join('、'),target:target.name,truth:target.hidden},1350);},
+ card(e){return this.play('card',e,560);},
+ think(text,duration){return this.play('think',{text},duration);},
+ watchRemoval(id,cb,token=sessionId){let raf,done=false;const stop=()=>{if(done)return;done=true;cancelAnimationFrame(raf);this.watchers.delete(stop);cb();};const tick=()=>{if(token!==sessionId||!document.getElementById(id))stop();else raf=requestAnimationFrame(tick);};this.watchers.add(stop);raf=requestAnimationFrame(tick);return stop;},
+ waitForClose(id){return new Promise(resolve=>this.watchRemoval(id,resolve));}
+};
+function playShotAnimation(shooter,target,result,mode='self'){return GameFX.fireShot(shooter,target,result,mode);}
+const FXPainter={
+ text(c,s,x,y,size=30,color='#e3bd65'){c.fillStyle=color;c.font=`700 ${size}px "Microsoft JhengHei",sans-serif`;c.textAlign='center';c.fillText(s,x,y);},
+ ellipse(c,x,y,rx,ry,fill,stroke){c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}},
+ poly(c,points,fill,stroke){c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}},
+ gradient(c,x1,y1,x2,y2,stops){const g=c.createLinearGradient(x1,y1,x2,y2);stops.forEach(([p,color])=>g.addColorStop(p,color));return g;},
+ bullet(c,x,y,type,scale=1){c.save();c.translate(x,y);c.scale(scale,scale);const bang=type==='BANG';const g=this.gradient(c,-24,0,24,0,bang?[[0,'#030405'],[.25,'#3b414a'],[.4,'#89939f'],[.55,'#12171d'],[1,'#020304']]:[[0,'#725020'],[.3,'#e3b752'],[.43,'#fff0ac'],[.6,'#cca14b'],[1,'#825925']]);c.fillStyle=g;c.strokeStyle=bang?'#b2bbc9':'#efca6e';c.lineWidth=2;c.beginPath();c.moveTo(-22,38);c.lineTo(-22,-30);c.quadraticCurveTo(-20,-61,0,-76);c.quadraticCurveTo(20,-61,22,-30);c.lineTo(22,38);c.closePath();c.fill();c.stroke();this.ellipse(c,0,39,25,7,g,'#9c9b91');this.text(c,bang?'BANG':'CLICK',0,79,19,bang?'#e5ebf1':'#ffe4a0');c.restore();},
+ hand(c,x,y,scale=1){c.save();c.translate(x,y);c.scale(scale,scale);const g=this.gradient(c,-70,0,60,20,[[0,'#020306'],[.7,'#13171f'],[1,'#343b48']]);this.poly(c,[[-190,-47],[-35,-45],[8,-32],[60,-10],[63,18],[43,33],[10,23],[-14,49],[-53,51],[-72,24],[-190,40]],g,'#5a6270');for(let i=0;i<4;i++){c.strokeStyle='#222a35';c.beginPath();c.moveTo(8+i*11,-10);c.lineTo(10+i*11,20);c.stroke();}c.restore();},
+ hide(c,d,t){const drop=Math.max(0,Math.sin(Math.min(1,Math.max(0,(t-.65)/.25))*Math.PI))*12;
+  this.ellipse(c,750,691,340,46,'#030305');const table=this.gradient(c,0,390,0,900,[[0,'#25202a'],[1,'#08090d']]);this.poly(c,[[220,410],[1150,410],[1360,830],[80,830]],table,'#514654');
+  if(!d.secret){if(t<.26||d.type!=='BANG')this.bullet(c,440,558,'BANG',1.15);if(t<.26||d.type!=='空響')this.bullet(c,620,558,'空響',1.15);}else this.text(c,'所有人的動作、時間與聲音完全相同',720,300,23,'#9299a9');
+  c.save();c.translate(935,575+drop);const open=t<.78?Math.sin(Math.min(1,t/.32)*Math.PI/2):Math.max(.1,1-(t-.78)*4);const bag=this.gradient(c,-120,-80,120,90,[[0,'#010203'],[.45,'#252832'],[.65,'#101219'],[1,'#020305']]);this.poly(c,[[-62,-100],[67,-100],[107,62],[80,120],[-81,122],[-110,67]],bag,'#747b86');for(let i=-2;i<=2;i++){c.strokeStyle='#343843';c.beginPath();c.moveTo(i*22,-82);c.quadraticCurveTo(i*29,20,i*32,100);c.stroke();}this.ellipse(c,0,-100,72,12+open*16,'#020305','#8c919a');c.strokeStyle='#c5bba4';c.lineWidth=4;c.beginPath();c.moveTo(-70,-83);c.quadraticCurveTo(0,-62,70,-83);c.stroke();c.restore();
+  const reach=Math.min(1,t/.28),move=Math.max(0,Math.min(1,(t-.28)/.33)),from=d.type==='BANG'?440:620,x=from+(935-from)*move,y=517-75*Math.sin(move*Math.PI)+(t>.60?(t-.6)*330:0);
+  if(t<.73){if(!d.secret&&t>.26){c.save();c.globalAlpha=t>.62?Math.max(0,1-(t-.62)*10):1;this.bullet(c,x,y,d.type,.85);c.restore();}this.hand(c,d.secret?650+285*move:from-340*(1-reach)+(935-from)*move,y-30,1.15);}
+  this.text(c,t>.87?`${d.name} 已藏好`:`${d.name} · 藏子彈`,720,160,36);this.text(c,d.secret?'已經藏好一枚子彈':t>.87?'已藏好':d.type==='BANG'?'黑色真子彈 · BANG':'金色假子彈 · CLICK',720,790,26,'#c9cdd4');
+ },
+ spin(c,d,t){this.text(c,'SPIN · 轉輪',720,135,42);this.ellipse(c,752,742,300,38,'#000');
+ c.save();c.translate(720,425);c.transform(1,0,-.16,.64,0,0);const angle=d.offset+d.turns*Math.PI*2*(1-Math.pow(1-t,3));
+ for(let z=66;z>=0;z-=3){this.ellipse(c,0,z,248,248,this.gradient(c,-240,0,240,0,[[0,'#080c12'],[.35,'#7c8187'],[.55,'#222833'],[1,'#05070b']]),z===66?'#505766':null);}
+ c.rotate(angle);const metal=this.gradient(c,-220,-230,220,230,[[0,'#e2e6e9'],[.2,'#515a68'],[.43,'#151b25'],[.65,'#8a929b'],[1,'#202631']]);this.ellipse(c,0,0,248,248,metal,'#d1d5db');this.ellipse(c,0,0,228,228,'#242b35','#717b8c');for(let i=0;i<6;i++){const a=i*Math.PI/3,x=Math.cos(a)*155,y=Math.sin(a)*155;this.ellipse(c,x,y,58,58,'#afb6c0','#d6d7d8');this.ellipse(c,x,y+3,49,51,'#05070a','#394353');this.ellipse(c,x+6,y+12,34,34,'#000');c.strokeStyle='#4a5260';c.beginPath();c.arc(x,y,46,Math.PI,Math.PI*1.75);c.stroke();}
+ this.ellipse(c,0,0,57,57,metal,'#d0d4da');this.ellipse(c,0,0,27,27,'#111720','#697483');this.poly(c,[[-8,-18],[14,-11],[18,8],[-12,17]],'#9399a1');c.restore();
+ if(t<.25)this.hand(c,470+200*t,295,1.35);this.text(c,t>.94?'喀 · 已停住':'洗牌中 · 彈孔不顯示子彈',720,790,28,'#c6ccd4');
+ },
+ gun(c,x,y,angle,recoil,fire){c.save();c.translate(x,y);if(angle===Math.PI){c.scale(-1,1);c.rotate(-recoil*.18);}else c.rotate(angle-recoil*.18);c.translate(-recoil*12,0);const g=this.gradient(c,0,-17,0,24,[[0,'#a6afb9'],[.26,'#424a54'],[.5,'#090c11'],[1,'#737c89']]);this.poly(c,[[-25,-15],[64,-15],[72,-10],[72,4],[23,6],[14,18],[-18,17]],g,'#bac1c8');this.ellipse(c,-5,1,17,20,g,'#646e7e');this.poly(c,[[-23,10],[2,14],[-5,54],[-33,49]],'#08090b','#5d626a');this.poly(c,[[-25,-15],[-34,-29+recoil*8],[-24,-28+recoil*8],[-14,-14]],'#9ba2ab');c.strokeStyle='#818b99';c.lineWidth=3;c.beginPath();c.ellipse(15,20,13,13,0,0,Math.PI*2);c.stroke();if(fire){const f=c.createRadialGradient(75,0,0,75,0,95);f.addColorStop(0,'#fffef0');f.addColorStop(.25,'#fff1a0');f.addColorStop(.6,'#ec9b39');f.addColorStop(1,'#d4520000');this.poly(c,[[69,-9],[107,-31],[97,-7],[163,0],[105,12],[120,39],[68,8]],f);}c.restore();},
+ person(c,x,y,scale,mode,t,bang,hit=false,judge=false){c.save();c.translate(x-(judge?Math.max(0,1-t/.25)*145:0),y);c.scale(scale,scale);const after=Math.max(0,(t-.66)/.34),recoil=t>.66&&t<.82?Math.sin((t-.66)/.16*Math.PI)*(bang?1:.08):0;
+ if(hit&&t>.66){c.translate(after*58,after*35);c.rotate(after*.62);}const body=this.gradient(c,-82,-230,80,20,[[0,'#010204'],[.42,'#101721'],[.8,'#080b11'],[1,'#3b4654']]);
+ this.poly(c,[[-45,-191],[32,-199],[70,-153],[92,18],[-83,18],[-66,-150]],body,'#556473');
+ this.poly(c,[[-15,-228],[14,-228],[21,-188],[-23,-181]],body,'#42515e');this.ellipse(c,0,-255,36,47,body,'#72818b');
+ this.poly(c,[[-58,-166],[-87,-133],[-96,-40],[-74,-28],[-54,-120]],'#06090e','#283742');
+ if(judge){this.poly(c,[[-45,-293],[44,-294],[26,-321],[-29,-321]],'#020306','#73828e');this.poly(c,[[-58,-290],[54,-290],[56,-283],[-55,-282]],'#0b0d11','#687887');this.poly(c,[[-5,-182],[8,-182],[15,-99],[0,-84],[-10,-100]],'#55515a');}
+ if(mode){const raised=Math.min(1,t/.22)*(bang?1:1-Math.max(0,t-.83)*.8),lower=mode==='self'?[110,-65]:[84,-73];let wrist=mode==='self'?[111,-248]:mode==='sky'?[59,-309]:[128,-251];wrist=[lower[0]+(wrist[0]-lower[0])*raised,lower[1]+(wrist[1]-lower[1])*raised];let elbow=mode==='self'?[118,-131]:mode==='sky'?[92,-207]:[79,-201];wrist[0]-=recoil*(mode==='self'?-8:10);wrist[1]-=recoil*8;
+ c.lineCap='round';c.lineJoin='round';for(const [width,color] of [[30,'#586775'],[26,'#0a1018']]){c.strokeStyle=color;c.lineWidth=width;c.beginPath();c.moveTo(42,-166);c.lineTo(elbow[0],elbow[1]);c.lineTo(wrist[0],wrist[1]);c.stroke();}this.ellipse(c,wrist[0],wrist[1],18,15,'#0e151e','#7a8794');const angle=mode==='self'?Math.PI:mode==='sky'?-Math.PI/2:0;this.gun(c,wrist[0],wrist[1]-5,angle,recoil,bang&&t>.66&&t<.73);
+ }c.restore();},
+ shot(c,d,t){const rows=d.rows,n=rows.length,cols=n===1?1:n===2?2:3,rCount=Math.ceil(n/cols),w=1360/cols,h=650/rCount;this.text(c,d.rows[0]?.judge?'黑衣裁判 · 執行處決':'TRIGGER · 同步扣扳機',720,92,36);
+ rows.forEach((r,i)=>{const x=40+(i%cols)*w,y=145+Math.floor(i/cols)*h;c.save();c.translate(x,y);c.beginPath();c.rect(4,0,w-8,h-10);c.clip();const bg=c.createRadialGradient(w*.5,h*.42,0,w*.5,h*.42,w*.6);bg.addColorStop(0,'#3a3441');bg.addColorStop(1,'#070a10');c.fillStyle=bg;c.fillRect(0,0,w,h);
+ const s=Math.min(w/580,h/455),foot=h*.82;this.ellipse(c,w*.5,foot+10,w*.3,14,'#000');const hit=r.c==='BANG'&&r.mode!=='sky'&&!r.targetDead;
+ if(r.mode==='other'){this.person(c,w*.25,foot,s*.92,'other',t,r.c==='BANG',false,r.judge);this.person(c,w*.76,foot,s*.89,null,t,false,hit);}
+ else this.person(c,w*.48,foot,s*(r.mode==='sky'?.68:1.14),r.mode,t,r.c==='BANG',hit);
+ if(r.c==='BANG'&&t>.66&&t<.70){c.fillStyle='rgba(255,230,211,.32)';c.fillRect(0,0,w,h);}
+ this.text(c,r.mode==='self'?`${r.name} → 自己`:r.name+' → '+r.targetName,w/2,34,Math.min(24,w/21),'#d8dce4');
+ if(t<.64)this.text(c,String(3-Math.min(2,Math.floor(t/.215))),w*.84,h*.38,Math.min(80,w/5),'#e3bd65');else this.text(c,r.c==='BANG'?'BANG！':t<.82?'喀！':'CLICK · 空響',w/2,h-25,Math.min(34,w/13),r.c==='BANG'?'#f3b37a':'#e2c471');c.restore();});
+ this.text(c,t<.65?'舉槍 · 3 / 2 / 1':rows.some(r=>r.c==='BANG')?'結果已揭示':'只有擊錘聲 · 沒有槍火',720,856,25,'#a4acb9');
+ },
+ frame(c,kind,d,t){c.clearRect(0,0,1440,900);const g=c.createRadialGradient(720,350,30,720,400,850);g.addColorStop(0,'#29232e');g.addColorStop(1,'#03050a');c.fillStyle=g;c.fillRect(0,0,1440,900);c.save();
+ if((kind==='shot'||kind==='judge')&&t>.66&&t<.78&&d.rows.some(r=>r.c==='BANG'))c.translate(Math.sin(t*300)*6,Math.cos(t*250)*3);
+ if(kind==='hide')this.hide(c,d,t);else if(kind==='spin')this.spin(c,d,t);else if(kind==='shot'||kind==='judge')this.shot(c,d,t);else if(kind==='challenge'){this.text(c,'質疑對決',720,180,52);this.text(c,d.names+'  →  '+d.target,720,280,30,'#d8dce4');if(t>.63){this.bullet(c,720,510,d.truth,2);this.text(c,d.truth==='BANG'?'藏了 BANG':'清白 · CLICK',720,760,34);}else{this.text(c,'？',720,535,120);this.text(c,'口袋即將翻開',720,720,30,'#a8afbb');}}
+ else if(kind==='card'){this.text(c,d.name+' 使用',720,280,32,'#a8afbb');this.text(c,d.card,720,420,62);const chunks=d.txt.match(/.{1,28}/g)||[];chunks.forEach((s,i)=>this.text(c,s,720,530+i*45,28,'#dedfe6'));}
+ else if(kind==='think'){this.text(c,d.text+' · 思考中',720,430,38);for(let i=0;i<3;i++)this.ellipse(c,680+i*40,505,6,6,Math.floor(t*9)%3===i?'#f3d993':'#5a5463');}
+ c.restore();}
+};
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&GameFX.active){e.preventDefault();e.stopImmediatePropagation();if(!e.repeat)GameFX.skip();}},true);
+document.addEventListener('pointerdown',e=>{if(e.target.closest('button,.choice,.actionCard'))SFX.play('ui');},{capture:true});
+
+/* Round-table presentation: the v0.24e engine remains the sole rule authority. */
+const TableUI={spinReady:false,spinStarted:false,confirmedBang:false,confirming:false,target:null,dragCancel:null,lastPhase:0,
+ positions(n){const mobile=innerWidth<=600;const p={2:[[50,87],[50,20]],3:[[50,87],[25,22],[75,22]],4:[[50,87],[14,55],[50,20],[86,55]],5:[[50,87],[14,62],[29,22],[71,22],[86,62]],6:[[50,88],[14,62],[25,23],[50,20],[75,23],[86,62]]}[n]||[];
+ if(mobile)return {2:[[50,86],[50,20]],3:[[50,86],[22,21],[78,21]],4:[[50,87],[18,26],[50,18],[82,26]],5:[[50,88],[18,72],[22,21],[78,21],[82,72]],6:[[50,89],[18,74],[19,26],[50,18],[81,26],[82,74]]}[n]||p;return p;},
+ reset(){this.dragCancel?.();this.cancelTarget();this.confirmedBang=false;this.confirming=false;this.spinReady=false;this.spinStarted=false;document.querySelectorAll('#bangConfirm,.dragGhost').forEach(x=>x.remove());TableFX.cancel();document.getElementById('settingsDrawer')?.classList.remove('open');},
+ drawer(id){document.getElementById(id)?.classList.toggle('open');},
+ syncDebug(){setTimeout(()=>{if(developerMode){document.getElementById('debugContent').innerHTML=renderDeveloperPanel();document.getElementById('debugDrawer').classList.add('open');}else document.getElementById('debugDrawer').classList.remove('open');},0);},
+ sync(){const track=document.getElementById('phaseTrack');if(!track)return;document.getElementById('phaseTitle').textContent=PH[phase];track.innerHTML=PH.slice(1).map((p,i)=>`<div class="phaseTab ${phase===i+1?'active':''}" ${phase===i+1?'aria-current="step"':''}><b>PHASE ${i+1}</b>${p.split('｜')[1]}</div>`).join('');if(phase!==this.lastPhase){this.lastPhase=phase;const n=document.querySelector('.phaseNotice');n.style.animation='none';void n.offsetWidth;n.style.animation='';}
+ const labels=['','準備轉輪','決定開槍數','開始質疑','進入開槍','同步扣扳機',phase6Scored?'下一輪':'收取分數'];const b=document.getElementById('nextBtn');b.textContent=labels[phase]||'下一步';b.disabled=uiLocked||gameOver||this.confirming||!!this.target||(phase===1&&players.some(p=>!p.out&&!p.hidden))||(phase===2&&!this.spinReady)||(phase===3&&!betsRevealed)||(phase===4&&!challengeComplete);
+ document.querySelectorAll('.seat').forEach(el=>{const id=+el.dataset.player;const allowed=this.target?this.target.ids.includes(id):phase===4&&!challengeComplete&&!uiLocked&&!players[0]?.out&&!players[0]?.challenged&&id!==0&&!players[id].out;el.classList.toggle('targetable',!!allowed);el.querySelector('.seatPlate').setAttribute('aria-disabled',String(!allowed));});
+ },
+ cancelTarget(){this.target=null;delete window.__targetPick;document.getElementById('targetModal')?.remove();this.sync();},
+ select(id){if(this.target){const t=this.target;if(t.token!==sessionId||t.phase!==phase||!t.ids.includes(id))return;this.cancelTarget();t.cb(id);}else if(phase===4&&!uiLocked&&!challengeComplete)playerChallenge(id);},
+ drag(el,getZone,onDrop){el.addEventListener('pointerdown',e=>{if(e.button!==0||uiLocked||this.confirming||this.target||gameOver)return;e.preventDefault();this.dragCancel?.();SFX.play('metal');const token=sessionId,at=phase,zone=getZone();if(!zone)return;const box=el.getBoundingClientRect(),ghost=el.cloneNode(true);ghost.removeAttribute('id');ghost.classList.add('dragGhost');ghost.style.width=box.width+'px';ghost.style.height=box.height+'px';document.body.appendChild(ghost);el.classList.add('dragging');el.setPointerCapture(e.pointerId);let over=false;
+ const move=ev=>{ghost.style.left=ev.clientX+'px';ghost.style.top=ev.clientY+'px';const z=zone.getBoundingClientRect();over=ev.clientX>=z.left-8&&ev.clientX<=z.right+8&&ev.clientY>=z.top-15&&ev.clientY<=z.bottom;zone.classList.toggle('over',over);};move(e);
+ const cleanup=()=>{ghost.remove();el.classList.remove('dragging');zone.classList.remove('over');el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',cancel);try{el.releasePointerCapture(e.pointerId);}catch{}this.dragCancel=null;};
+ const cancel=()=>cleanup(),up=ev=>{move(ev);const valid=over&&token===sessionId&&at===phase;cleanup();if(valid){SFX.play('snap');onDrop();}else{el.animate([{transform:'scale(1.07)'},{transform:'scale(1)'}],{duration:220});}};
+ this.dragCancel=cancel;el.addEventListener('pointermove',move);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',cancel);
+ });},
+ pocketDrop(type){if(phase!==1||uiLocked||this.confirming||players[0].hidden)return;if(type!=='BANG'){chooseHide(type);return;}this.confirming=true;this.sync();const token=sessionId;const d=document.createElement('div');d.id='bangConfirm';d.className='overlay';d.innerHTML='<div class="modal confirmCard"><h2>⚠ 確認藏入真子彈</h2><p>你正在藏入「真子彈 BANG」。<br>藏真子彈代表作弊，可能遭到其他玩家質疑。是否確認？</p><button class="btn" data-confirm>確認藏入</button> <button class="btn" data-cancel>取消</button></div>';document.body.appendChild(d);
+ d.querySelector('[data-confirm]').onclick=()=>{if(token!==sessionId)return;d.remove();this.confirming=false;this.confirmedBang=true;chooseHide('BANG');};d.querySelector('[data-cancel]').onclick=()=>{d.remove();this.confirming=false;const bullet=document.querySelector('[data-bullet="BANG"]');bullet?.animate([{transform:'translate(-80px,5px)',opacity:.2},{transform:'translate(0,0)',opacity:1}],{duration:300,easing:'ease-out'});this.sync();};},
+ cylinder(canvas,angle){const c=canvas.getContext('2d');c.clearRect(0,0,380,370);c.save();c.translate(190,173);c.scale(1,.76);const g=c.createLinearGradient(-150,-150,145,145);g.addColorStop(0,'#e2e0d6');g.addColorStop(.24,'#4c5457');g.addColorStop(.53,'#b5b7b0');g.addColorStop(.7,'#252f31');g.addColorStop(1,'#697273');FXPainter.ellipse(c,0,22,153,153,'#161e20','#697270');FXPainter.ellipse(c,0,0,153,153,g,'#e1d9bd');FXPainter.ellipse(c,0,0,133,133,'#394345','#a5aaa0');c.rotate(angle);for(let i=0;i<6;i++){const a=i*Math.PI/3,x=Math.cos(a)*91,y=Math.sin(a)*91;FXPainter.ellipse(c,x,y,31,31,'#9da29a','#d2ceb8');FXPainter.ellipse(c,x,y-2,25,25,'#020809','#222e2c');FXPainter.ellipse(c,x+3,y+4,19,16,'#111918');}FXPainter.ellipse(c,0,0,29,29,g,'#afb3a4');FXPainter.ellipse(c,0,0,9,9,'#182022','#c7cbb9');c.restore();},
+ bindSpin(){const el=document.getElementById('spinObject');if(!el)return;let rotation=0;this.cylinder(el,rotation);el.onpointerdown=e=>{if(e.button!==0||uiLocked||this.spinStarted||this.spinReady)return;e.preventDefault();const b=el.getBoundingClientRect(),cx=b.left+b.width/2,cy=b.top+b.height/2;let last=Math.atan2(e.clientY-cy,e.clientX-cx),travel=0,previous=performance.now(),velocity=0;el.setPointerCapture(e.pointerId);
+ const move=ev=>{const a=Math.atan2(ev.clientY-cy,ev.clientX-cx);let diff=a-last;while(diff>Math.PI)diff-=2*Math.PI;while(diff<-Math.PI)diff+=2*Math.PI;const now=performance.now();velocity=diff/Math.max(8,now-previous)*1000;rotation+=diff;travel+=Math.abs(diff);last=a;previous=now;this.cylinder(el,rotation);document.getElementById('spinHint').textContent=travel>=Math.PI/2?'可以放手，讓彈巢轉動':'再多轉一些……';};
+ const clean=()=>{el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',cancel);this.dragCancel=null;},cancel=()=>{clean();document.getElementById('spinHint')&&(document.getElementById('spinHint').textContent='拖曳已取消，請重新轉動。');},up=()=>{clean();if(travel>=Math.PI/2)this.finishSpin(rotation,velocity);else document.getElementById('spinHint').textContent='旋轉幅度不足，請至少轉動四分之一圈。';};this.dragCancel=cancel;el.addEventListener('pointermove',move);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',cancel);};},
+ finishSpin(angle,velocity){if(this.spinStarted||this.spinReady||phase!==2||uiLocked)return;this.spinStarted=true;return runUI(async token=>{players.filter(p=>!p.out).forEach(shuffleGun);const el=document.getElementById('spinObject');const turns=3+Math.min(3,Math.abs(velocity)/8),direction=velocity<0?-1:1;await TableFX.animate(1600+turns*80,t=>{if(el?.isConnected)this.cylinder(el,angle+direction*turns*Math.PI*2*(1-Math.pow(1-t,3)));},[[.08,'spin'],[.25,'spin'],[.5,'tick'],[.7,'tick'],[.86,'tick'],[.98,'tick']]);if(token!==sessionId)return;this.spinReady=true;setPhaseTitle('轉輪完成。現在可以使用【偷窺】，或進入決定開槍數。');document.getElementById('spinHint').textContent='彈巢已停下 · 洗牌完成';aiUsePhaseCards();await drainEffects(token);});}
+};
+const TableFX={active:null,
+ cancel(){this.active?.finish(false);document.querySelectorAll('.shotWindow,.tableToast,.seatBubble,.tableFXCanvas,.countdown').forEach(x=>x.remove());document.querySelectorAll('.seat.hit,.seat.accused').forEach(x=>x.classList.remove('hit','accused'));},
+ skip(){if(this.active&&performance.now()-this.active.start>=300)this.active.skip=true;},
+ animate(ms,paint,cues=[],cleanup=()=>{}){if(simMode)return Promise.resolve(true);this.active?.finish(false);return new Promise(resolve=>{const start=performance.now(),speed=+document.getElementById('fxSpeed').value||1;let raf,done=false;const fired=new Set();const finish=ok=>{if(done)return;done=true;cancelAnimationFrame(raf);cleanup();if(this.active?.finish===finish)this.active=null;resolve(ok);};this.active={start,finish,skip:false};const tick=now=>{if(done)return;const t=this.active?.skip?1:Math.min(1,(now-start)/(ms*speed));for(let i=0;i<cues.length;i++)if(t>=cues[i][0]&&!fired.has(i)){fired.add(i);SFX.play(cues[i][1]);}paint(t);if(t>=1)finish(true);else raf=requestAnimationFrame(tick);};raf=requestAnimationFrame(tick);});},
+ layer(){return document.getElementById('tableFXLayer');},
+ anchor(id){const p=document.getElementById('p'+id),scene=document.getElementById('tableScene').getBoundingClientRect();if(!p)return{x:scene.width/2,y:scene.height/2,top:scene.height/2};const b=p.getBoundingClientRect();return{x:b.left+b.width/2-scene.left,y:b.top+b.height/2-scene.top,top:b.top-scene.top};},
+ canvas(){const el=document.createElement('canvas'),b=document.getElementById('tableScene').getBoundingClientRect();el.className='tableFXCanvas';el.width=Math.round(b.width*devicePixelRatio);el.height=Math.round(b.height*devicePixelRatio);this.layer().appendChild(el);const c=el.getContext('2d');c.scale(devicePixelRatio,devicePixelRatio);return{el,c,w:b.width,h:b.height};},
+ toast(title,sub,ms=650){const d=document.createElement('div');d.className='tableToast';d.innerHTML=`<b>${title}</b>${sub||''}`;this.layer().appendChild(d);return this.animate(ms,t=>{d.style.opacity=t>.8?(1-t)*5:1;},[],()=>d.remove());},
+ countdown(title){const d=document.createElement('div');d.className='countdown';this.layer().appendChild(d);return this.animate(1500,t=>{d.innerHTML=String(Math.max(1,3-Math.floor(t*3)))+'<small style="display:block;font:12px system-ui;white-space:nowrap">'+title+'</small>';},[[0,'heart'],[.34,'heart'],[.67,'heart']],()=>d.remove());},
+ pocket(){const bag=document.getElementById('pocketBag'),bullet=document.createElement('div');bullet.className='metalBullet';const rect=bag?.getBoundingClientRect(),scene=document.getElementById('tableScene').getBoundingClientRect();if(rect){Object.assign(bullet.style,{position:'absolute',left:rect.left+rect.width/2-scene.left-15+'px',top:rect.top-scene.top-55+'px',pointerEvents:'none'});if(TableUI.lastPocketType==='空響')bullet.style.background='linear-gradient(90deg,#806025,#e4c578,#fff1b5,#987435)';this.layer().appendChild(bullet);}return this.animate(650,t=>{bullet.style.transform=`translateY(${t*83}px) scale(${1-t*.65})`;bullet.style.opacity=String(Math.max(0,1-t*1.5));if(bag){bag.classList.toggle('closed',t>.7);bag.style.transform=`rotate(${Math.sin(t*20)*(1-t)*8}deg) translateY(${Math.sin(t*Math.PI)*7}px)`;}document.querySelectorAll('.bulletObject').forEach(x=>x.style.opacity=String(Math.max(0,1-t*3)));},[[.1,'metal'],[.5,'bag']],()=>{bullet.remove();if(bag)bag.style.transform='';});},
+ pockets(ps){const els=ps.map(p=>{const d=document.createElement('div'),a=this.anchor(p.id);d.className='seatBubble';d.style.left=a.x+'px';d.style.top=(a.top-8)+'px';d.textContent='▣ 正在藏子彈……';this.layer().appendChild(d);return d;});return this.animate(680,t=>els.forEach((d,i)=>{d.textContent=t>(.3+i*.07)?'▣ 已藏好':'▣ 正在藏子彈……';d.style.opacity=t>.9?(1-t)*10:1;}),[[.4,'bag']],()=>els.forEach(e=>e.remove()));},
+ pointing(q){const {el,c,w,h}=this.canvas(),n=document.createElement('div');n.className='countdown';this.layer().appendChild(n);const counts={};q.forEach(e=>counts[e.target.id]=(counts[e.target.id]||0)+1);return this.animate(2000,t=>{c.clearRect(0,0,w,h);n.innerHTML=t<.57?String(3-Math.min(2,Math.floor(t/.19))):Object.entries(counts).map(([id,count])=>`<span style="display:block;font:14px system-ui">${players[id].name} 遭到 ${count} 人質疑</span>`).join('')||'<small style="font:16px system-ui">全員放棄質疑</small>';if(t>.57){q.forEach(e=>{const a=this.anchor(e.challenger.id),b=this.anchor(e.target.id),angle=Math.atan2(b.y-a.y,b.x-a.x),reach=Math.min(1,(t-.57)*8);document.getElementById('p'+e.target.id)?.classList.add('accused');c.save();c.translate(a.x+(b.x-a.x)*.26*reach,a.y+(b.y-a.y)*.26*reach);c.rotate(angle);c.scale(.58*reach,.58*reach);c.fillStyle='#131c19';c.strokeStyle='#d6bd85';c.lineWidth=2;c.beginPath();c.moveTo(-85,-17);c.lineTo(-12,-17);c.lineTo(12,-35);c.lineTo(88,-35);c.quadraticCurveTo(108,-27,86,-22);c.lineTo(30,-18);c.lineTo(42,-6);c.lineTo(28,23);c.lineTo(-15,28);c.lineTo(-85,23);c.closePath();c.fill();c.stroke();c.restore();c.save();c.strokeStyle='#d6b97680';c.setLineDash([4,6]);c.beginPath();c.moveTo(a.x+(b.x-a.x)*.4,a.y+(b.y-a.y)*.4);c.lineTo(b.x,b.y);c.stroke();c.restore();});}},[[0,'heart'],[.19,'heart'],[.38,'heart'],[.57,'whoosh']],()=>{el.remove();n.remove();document.querySelectorAll('.seat.accused').forEach(x=>x.classList.remove('accused'));});},
+ challenge(challengers,target){const {el,c,w,h}=this.canvas(),a=this.anchor(target.id);return this.animate(1450,t=>{c.clearRect(0,0,w,h);const travel=Math.min(1,t/.45),x=a.x+(w*.5-a.x)*travel,y=a.y+(h*.57-a.y)*travel;c.save();c.translate(x,y);if(t<.57){FXPainter.ellipse(c,0,4,39,45,'#142018','#a99b74');FXPainter.ellipse(c,0,-29,38,12,'#010705','#c0b184');}else FXPainter.bullet(c,0,8,target.hidden,.72);c.restore();if(t>.57){FXPainter.text(c,target.name+' · '+(target.hidden==='BANG'?'發現 BANG':'清白 CLICK'),w*.5,h*.73,17,target.hidden==='BANG'?'#ffad90':'#edddb2');}},[[.05,'bag'],[.57,'metal']],()=>el.remove());},
+ async shots(rows,judge=false){if(judge)rows.forEach(r=>document.getElementById('p'+r.target.id)?.classList.add('accused'));const {el,c,w,h}=this.canvas();const windows=rows.map(r=>{const d=document.createElement('div');d.className='shotWindow'+(judge?' judge':'');const anchor=this.anchor(judge?r.target.id:r.p.id);d.style.left=anchor.x+'px';d.style.top=(anchor.top-8)+'px';d.style.height=Math.min(innerWidth<=600?98:136,Math.max(64,anchor.top-12))+'px';d.innerHTML='<canvas width="440" height="330"></canvas>';this.layer().appendChild(d);return d;});const n=document.createElement('div');n.className='countdown';this.layer().appendChild(n);
+ return this.animate(judge?1850:2000,t=>{c.clearRect(0,0,w,h);n.textContent=t<.64?String(3-Math.min(2,Math.floor(t/.215))):'';rows.forEach((r,i)=>{const ctx=windows[i].querySelector('canvas').getContext('2d'),bang=r.c==='BANG',fire=t>.66&&t<.77;ctx.clearRect(0,0,440,330);const g=ctx.createRadialGradient(220,140,10,220,170,290);g.addColorStop(0,'#384b42');g.addColorStop(1,'#080e0d');ctx.fillStyle=g;ctx.fillRect(0,0,440,330);const title=judge?'裁判執行處決':r.extra?'額外一槍':r.p.aim?.total===2?'連發 '+(3-r.p.aim.remaining)+' / 2':`第 ${r.p.shotsTaken+(r.extra?0:1)} / ${r.p.bet} 槍`;FXPainter.text(ctx,title,220,29,22,'#e4cc9e');const mode=r.mode||'self';if(judge){FXPainter.person(ctx,100,280,.6,'other',t,bang,false,true);FXPainter.person(ctx,339,280,.58,null,t,false,bang&&t>.66);}else if(mode==='other'){const aim=this.aimGeometry(r.p.id,r.target.id);ctx.save();ctx.translate(210,166);ctx.scale(1.1,1.1);FXPainter.gun(ctx,0,0,aim.angle,t>.66&&t<.80?(bang?1:.08):0,bang&&fire);ctx.restore();}else FXPainter.person(ctx,190,285,mode==='sky'?.5:.68,mode,t,bang,bang&&mode==='self'&&t>.66);FXPainter.text(ctx,t>.65?(bang?'BANG！':'CLICK · 喀！'):(mode==='sky'?'朝天空':mode==='other'?'瞄準 '+r.target.name:judge?'作弊確認 · 發現 BANG':'瞄準自己'),220,315,25,t>.65&&bang?'#ffc0a0':'#e5dbb8');if(fire&&bang){ctx.fillStyle='#ff9d6b35';ctx.fillRect(0,0,440,330);}this.drawDirectedGun(c,r,t);if(bang&&r.target&&t>.66&&t<.9)document.getElementById('p'+r.target.id)?.classList.add('hit');});},[[.05,'heart'],[.27,'heart'],[.48,'heart'],[.64,'hammer'],[.66,judge?'judge':rows.some(r=>r.c==='BANG')?'bang':'click']],()=>{windows.forEach(d=>d.remove());el.remove();n.remove();document.querySelectorAll('.seat.hit,.seat.accused').forEach(d=>d.classList.remove('hit','accused'));});},
+ bribe(p){return this.toast('處決取消',p.name+' 使用賄賂裁判。裁判收槍離開。',900);},
+ points(gains){const {el,c,w,h}=this.canvas();return this.animate(950,t=>{c.clearRect(0,0,w,h);gains.forEach(({id,gain})=>{const b=this.anchor(id),f=1-Math.pow(1-t,3),x=w*.5+(b.x-w*.5)*f,y=h*.55+(b.y-h*.55)*f;c.save();FXPainter.ellipse(c,x,y,23,23,'#c2a569','#f2d99f');FXPainter.text(c,'+'+gain,x,y+6,18,'#141f18');c.restore();});},[[.2,'wood'],[.7,'metal']],()=>el.remove());}
+};
+// Reuse the existing cancellation controller API without full-screen routine effects.
+const originalFXCancel=GameFX.cancel.bind(GameFX),originalFXSkip=GameFX.skip.bind(GameFX);
+GameFX.cancel=()=>{TableFX.cancel();originalFXCancel();};GameFX.skip=()=>{TableFX.skip();originalFXSkip();};
+GameFX.fireVolley=rows=>TableFX.shots(rows);GameFX.judge=target=>TableFX.shots([{p:target,target,c:'BANG',mode:'other'}],true);GameFX.challenge=(cs,t)=>TableFX.challenge(cs,t);
+GameFX.card=e=>TableFX.toast(e.name+' · '+e.card,e.txt,750);GameFX.think=(text,ms)=>TableFX.toast(text+'……','',ms);
+const originalSFX=SFX.play.bind(SFX);SFX.play=function(kind){if(!['snap','wood','whoosh'].includes(kind))return originalSFX(kind);if(!this.enabled||simMode)return;this.unlock();const a=this.ctx;if(!a)return;const now=a.currentTime,dur=kind==='whoosh'?.18:.10,g=a.createGain();g.gain.setValueAtTime(.065,now);g.gain.exponentialRampToValueAtTime(.001,now+dur);g.connect(a.destination);const buffer=a.createBuffer(1,Math.ceil(a.sampleRate*dur),a.sampleRate),samples=buffer.getChannelData(0);for(let i=0;i<samples.length;i++)samples[i]=(Math.random()*2-1)*(1-i/samples.length);const noise=a.createBufferSource(),f=a.createBiquadFilter();f.type='bandpass';f.frequency.setValueAtTime(kind==='wood'?360:kind==='snap'?1300:1900,now);f.frequency.exponentialRampToValueAtTime(kind==='wood'?150:300,now+dur);noise.buffer=buffer;noise.connect(f);f.connect(g);noise.start(now);noise.stop(now+dur);};
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&TableFX.active){e.preventDefault();e.stopImmediatePropagation();TableFX.skip();}},true);
+document.getElementById('tableScene').addEventListener('pointerdown',e=>{if(TableFX.active&&!e.target.closest('button,.seat,.bulletObject,.physicalDie,#spinObject'))TableFX.skip();});
+window.addEventListener('resize',()=>{if(!simMode&&players.length&&!TableFX.active&&!TableUI.dragCancel)render();});
+TableUI.sync();
+
+// Public target geometry only. Hidden gun order never enters aiming or input.
+TableFX.aimGeometry=function(shooterId,targetId){
+ const a=this.anchor(shooterId),b=this.anchor(targetId),dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1;
+ const ux=dx/d,uy=dy/d,scale=innerWidth<=600?.48:.83;
+ let reach=Math.min(d*.28,innerWidth<=600?95:175);
+ const nav=document.getElementById('phaseTrack').getBoundingClientRect(),scene=document.getElementById('tableScene').getBoundingClientRect();
+ const blocked=p=>p.x>nav.left-scene.left-75&&p.x<nav.right-scene.left+75&&p.y>nav.top-scene.top-40&&p.y<nav.bottom-scene.top+40;
+ // Keep the physical gun clear of the permanent phase strip when possible.
+ const candidates=[reach,reach+95,Math.max(45,reach-70)].filter(v=>v<d-75);
+ for(const v of candidates){if(!blocked({x:a.x+ux*v,y:a.y+uy*v})){reach=v;break;}}
+ const x=a.x+ux*reach,y=a.y+uy*reach;
+ return {x,y,angle:Math.atan2(dy,dx),scale,targetX:b.x,targetY:b.y,muzzleX:x+ux*72*scale,muzzleY:y+uy*72*scale};
+};
+TableFX.drawDirectedGun=function(c,row,t){
+ if(!row.target||row.target.id===row.p.id||row.mode==='sky')return;
+ const g=this.aimGeometry(row.p.id,row.target.id),bang=row.c==='BANG',fire=bang&&t>.66&&t<.74;
+ const recoil=t>.66&&t<.83?Math.sin((t-.66)/.17*Math.PI)*(bang?1:.08):0;
+ c.save();c.globalAlpha=Math.min(1,t*6);c.strokeStyle=fire?'#ffe5a5':'#edb37eaa';c.lineWidth=fire?3:1.4;c.setLineDash(fire?[]:[6,7]);
+ c.beginPath();c.moveTo(g.muzzleX,g.muzzleY);c.lineTo(g.targetX,g.targetY);c.stroke();c.setLineDash([]);
+ c.strokeStyle=fire?'#fff0c5':'#f1b786';c.lineWidth=1.5;c.beginPath();c.arc(g.targetX,g.targetY,12,0,Math.PI*2);c.stroke();
+ c.translate(g.x,g.y);c.rotate(g.angle);c.scale(g.scale,g.scale);c.translate(-recoil*8,0);
+ const glove=FXPainter.gradient(c,-95,-8,0,45,[[0,'#070d0c'],[.65,'#182823'],[1,'#46594a']]);
+ FXPainter.poly(c,[[-120,19],[-65,11],[-37,20],[-15,17],[3,28],[-5,49],[-45,51],[-65,40],[-120,46]],glove,'#9b9e81');
+ FXPainter.gun(c,0,0,0,recoil,fire);c.restore();
+};
+
+/* Read-only own-gun inspection and public settlement presentation. */
+const RuleFeedback={pending:[],history:[],context:null,
+ clear(){this.pending=[];this.history=[];document.getElementById('gunDrawer')?.classList.remove('open');document.getElementById('rewardsDrawer')?.classList.remove('open');},
+ push(e){if(simMode)return;const event={...e,phase};this.pending.push(event);this.history.push(event);},
+ ownGun(){const p=players[0];if(!p)return null;const full={...p.gunInventory};let bang=full.bang,blank=full.blank,stage='完整槍牌 · 尚未藏彈';
+  if(p.out)stage='隊長已淘汰，無後續射擊';else if(p.lostRoleThisRound)stage='死亡後整理的槍牌 · 下輪使用';else if(p.hidden){bang-=p.hidden==='BANG'?1:0;blank-=p.hidden==='空響'?1:0;for(const c of p.publicRevealed||[]){if(c==='BANG')bang--;else blank--;}stage='本輪槍內剩餘 · 不含藏牌與已翻出的牌';}
+  return {full,bang:Math.max(0,bang),blank:Math.max(0,blank),stage,out:p.out,known:Object.entries(p.knowledge.top).filter(([i])=>+i>=p.shotsTaken).map(([i,c])=>({offset:+i-p.shotsTaken+1,card:c}))};
+ },
+ gunHTML(){const k=this.ownGun();if(!k)return '';return `<h2>自己的子彈</h2><p class="privateLabel">私人資訊 · 只查看你自己的槍</p><h3>完整持有：7 張</h3><div class="ammoCounts"><span class="ammoBang">實彈 BANG <b>${k.full.bang}</b></span><span class="ammoBlank">空響 CLICK <b>${k.full.blank}</b></span></div><h3>${k.stage}</h3>${k.out?'<p>隊長死亡不執行 Clean Gun。</p>':`<div class="ammoCounts"><span class="ammoBang">實彈 BANG <b>${k.bang}</b></span><span class="ammoBlank">空響 CLICK <b>${k.blank}</b></span></div><p>剩餘 ${k.bang+k.blank} 張。下列圖示僅按種類整理，<b>不代表槍牌順序</b>。</p><div class="ammoTokens">${Array(k.bang).fill('<span class="ammoBang">BANG</span>').join('')}${Array(k.blank).fill('<span class="ammoBlank">CLICK</span>').join('')}</div>`}<h3>合法偷窺情報</h3>${k.known.length?k.known.map(x=>`<p>接下來第 ${x.offset} 發：<b class="${x.card==='BANG'?'ammoBang':'ammoBlank'}">${x.card==='BANG'?'BANG':'CLICK'}</b></p>`).join(''):'<p>目前沒有可用的偷窺情報。未揭示的順序保持未知。</p>'}<p class="small">普通隊員死亡時立即整理為 1 BANG＋6 CLICK；結算只顯示紀錄，不會再次重置。</p>`;},
+ openGun(){if(!players.length)return;document.getElementById('gunContent').innerHTML=this.gunHTML();document.getElementById('gunDrawer').classList.add('open');},
+ describe(e){switch(e.kind){case 'draw':return `${e.reason==='death'?'死亡補償：':''}抽 ${e.count} 張行動卡${e.count<e.requested?'（可抽牌不足）':''}`;case 'penalty':return e.changed?`誣告懲罰：1 CLICK → BANG；現持有 ${e.bang} BANG＋${e.blank} CLICK，已洗牌`:'誣告懲罰：已無 CLICK 可替換，實彈數不變';case 'clean':return `Clean Gun 已完成：${e.beforeBang} BANG → 1 BANG＋6 CLICK`;case 'death':return e.captain?'隊長死亡，正式淘汰；不抽死亡補償、不重置槍牌':'隊員死亡，本輪停止射擊、得分 +0';case 'bribe':return '賄賂裁判：免於處決，交換口袋 BANG 與槍內 CLICK，已洗牌';case 'noPenalty':return '掏口袋質疑失敗，不增加 BANG';default:return e.text||'';}},
+ grouped(events){const groups=new Map();for(const e of events){if(e.id==null)continue;if(!groups.has(e.id))groups.set(e.id,[]);groups.get(e.id).push(e);}return [...groups].map(([id,es])=>({id,name:players[id]?.name||'玩家',events:es,text:es.map(e=>this.describe(e)).join('；')}));},
+ openHistory(){document.getElementById('rewardsContent').innerHTML='<h2>本輪賞罰與槍牌整理</h2><p>以下均為已完成的結算紀錄。</p>'+this.grouped(this.history).map(g=>`<section class="rewardHistory"><h3>${g.name}</h3>${g.events.map(e=>`<p><small>PHASE ${e.phase}</small> ${this.describe(e)}</p>`).join('')}</section>`).join('')+(this.history.length?'':'<p>本輪尚未發生抽牌、懲罰或槍牌整理。</p>');document.getElementById('rewardsDrawer').classList.add('open');},
+ async present(title,events,subtitle='',tone='neutral'){
+  if(simMode)return;const groups=this.grouped(events),d=document.createElement('div');d.className='resolutionNotice '+tone;d.innerHTML=`<h3>${title}</h3>${subtitle?`<p>${subtitle}</p>`:''}<div>${groups.map(g=>`<div class="rewardRow"><b>${g.name}</b><span>${g.text}</span></div>`).join('')}</div><small>賞罰明細已留在「本輪賞罰」，可隨時重看。</small>`;TableFX.layer().appendChild(d);
+  const {el,c,w,h}=TableFX.canvas();const draws=events.filter(e=>e.kind==='draw'&&e.count>0);
+  await TableFX.animate(Math.min(4200,2000+groups.length*250),t=>{c.clearRect(0,0,w,h);const f=Math.min(1,Math.max(0,(t-.12)/.6)),ease=1-(1-f)**3;for(const e of draws){const a=TableFX.anchor(e.id);for(let i=0;i<Math.min(e.count,3);i++){const x=w*.5+(a.x-w*.5)*ease+(i-1)*12,y=h*.53+(a.y-h*.53)*ease-45;c.save();c.translate(x,y);c.rotate((1-ease)*.4+i*.07);c.globalAlpha=t>.84?(1-t)/.16:1;c.fillStyle='#252c21';c.strokeStyle='#e1c380';c.lineWidth=2;c.fillRect(-13,-20,26,40);c.strokeRect(-13,-20,26,40);FXPainter.text(c,'♦',0,4,15,'#e4c785');c.restore();}if(t>.62)FXPainter.text(c,'＋'+e.count+' 張',a.x,a.top-10,16,'#f4d495');}},[[.2,'metal'],[.6,'snap']],()=>{d.remove();el.remove();});
+ },
+ async flush(token){if(token!==sessionId||!this.pending.length)return;const events=this.pending.splice(0);await this.present(events.some(e=>e.kind==='death')?'角色死亡 · 賞罰立即結算':'抽牌／懲罰已完成',events);},
+ async challenge(challengers,target,truth,result,events){
+  if(!result)return;const extra=[];if(result.bribed)extra.push({kind:'bribe',id:target.id,phase});if(result.innocent&&events.every(e=>e.kind!=='penalty'))for(const p of challengers)extra.push({kind:'noPenalty',id:p.id,phase});this.history.push(...extra);
+  await this.present(truth==='BANG'?'質疑成功 · 發現 BANG':'質疑失敗 · 翻出 CLICK',[...events,...extra],`${challengers.map(p=>p.name).join('、')} → ${target.name}${result.bribed?' · 處決取消':''}`,truth==='BANG'?'success':'failure');
+ },
+ async roundSummary(token){if(token!==sessionId)return;const cleans=this.history.filter(e=>e.kind==='clean'),captains=this.history.filter(e=>e.kind==='death'&&e.captain);if(!cleans.length&&!captains.length)return;await this.present('本輪死亡與槍牌重置紀錄',[...cleans,...captains],'以下重置已在死亡時立即完成；本階段不再洗牌或抽取補償。');}
+};
+// Observers record actual engine results; they never perform a second settlement.
+const feedbackDrawCards=drawCards,feedbackResetDeck=resetDeck,feedbackLoseRole=loseRole,feedbackAddBang=addBangToStack,feedbackDrain=drainEffects,feedbackResetUI=TableUI.reset.bind(TableUI);
+drawCards=function(p,n=1,announce=true){const count=feedbackDrawCards(p,n,announce);if(announce)RuleFeedback.push({kind:'draw',id:p.id,count,requested:n,reason:RuleFeedback.context});return count;};
+resetDeck=function(p){const beforeBang=p.gunInventory?.bang;feedbackResetDeck(p);if(RuleFeedback.context==='death')RuleFeedback.push({kind:'clean',id:p.id,beforeBang});};
+loseRole=function(p,reason){const previous=RuleFeedback.context;RuleFeedback.context='death';let changed;try{changed=feedbackLoseRole(p,reason);}finally{RuleFeedback.context=previous;}if(changed)RuleFeedback.push({kind:'death',id:p.id,captain:p.out});return changed;};
+addBangToStack=function(p){const before=p.gunInventory.bang,result=feedbackAddBang(p);if(phase===4)RuleFeedback.push({kind:'penalty',id:p.id,changed:p.gunInventory.bang>before,bang:p.gunInventory.bang,blank:p.gunInventory.blank});return result;};
+drainEffects=async function(token){await feedbackDrain(token);if(token===sessionId)await RuleFeedback.flush(token);};
+TableUI.reset=function(){RuleFeedback.clear();feedbackResetUI();};
+
 </script>
 </body>
 </html>
